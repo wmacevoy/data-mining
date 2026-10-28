@@ -66,6 +66,18 @@ signs the release (SE1/U9).
   often a second person disagrees; for definitions, [DM1/H5](guide/09-people.md#h5) asks who chose
   it. What the templates lacked was the falsifier: DATASHEET and MODEL_CARD now say who wrote them,
   when, and what would show them wrong.
+- [SE1/A3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a3), an agent may ask, and a
+  private agent memory is a head: confirmed, no change. This guide never said the client does not
+  talk to the agent, and [DM1/A3](guide/10-agents.md#a3) already keeps the record of what was
+  tried in the ledger, not in the agent's memory.
+- [SE1/W7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/08-work.md#w7), Brown's experiment as he ran
+  it: confirmed, no change. [DM1/W5](guide/08-work.md#w5) cites the gradient and does not restate
+  the experiment.
+- [SE1/W2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/08-work.md#w2) and
+  [SE1/T5](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t5), wording only: no DM1
+  principle quotes the changed words.
+- Not reviewed: whether the 73 reframings written against the earlier commit still read true
+  against v1.3's unchanged principles. Their IDs resolve, which is all `tools/check.js` can say.
 
 **For copies:** copy AGENTS.md beside SE1's AGENTS.md, and import both at every start.
 
