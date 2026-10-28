@@ -11,6 +11,10 @@ source. After Gebru et al., *Datasheets for Datasets*, cut to what the guide's p
 - **Pulled:** _how (command), how often, and where the raw copy lives_
 - **Revisions:** _can the source change values after the fact? (provisional data, corrections)_
 - **Excluded before it reached us:** _what, by whom, why — usually the most important line here_
+- **This sheet:** written by _name or agent_ on _date_; each line above is measured, told by _whom_,
+  or *(inferred)*. **What would show it wrong:** _the query or assertion that fails if a Meaning,
+  Units, or Knowable at entry below is wrong, and when it last ran_
+  ([SE1/U9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u9))
 
 ## People
 

@@ -61,6 +61,11 @@ signs the release (SE1/U9).
   question: reframed as [DM1/H8](guide/09-people.md#h8). The discomfort in data work has a short
   list of shapes, each an early sign of something this guide names, so the question becomes *what
   about the current number do you not believe?*
+- [SE1/U9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u9), *rules change*: not a
+  principle here. For labels, [DM1/R7](guide/04-requirements.md#r7) already asks who, when, and how
+  often a second person disagrees; for definitions, [DM1/H5](guide/09-people.md#h5) asks who chose
+  it. What the templates lacked was the falsifier: DATASHEET and MODEL_CARD now say who wrote them,
+  when, and what would show them wrong.
 
 **For copies:** copy AGENTS.md beside SE1's AGENTS.md, and import both at every start.
 

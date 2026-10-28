@@ -14,6 +14,9 @@ Everything needed to rebuild it ([DM1/D6](https://github.com/wmacevoy/data-minin
   ([DM1/D2](https://github.com/wmacevoy/data-mining/blob/main/guide/05-design.md#d2))
 - **Owner:** _name_ · **Next check that it is still true:** _date_
   ([DM1/D12](https://github.com/wmacevoy/data-mining/blob/main/guide/05-design.md#d12))
+- **This card:** written by _name or agent_ on _date_ · **What would retire it:** _the slice
+  result, monitoring signal, or shift that would show the claims below wrong, with its threshold_
+  ([SE1/U9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u9))
 
 ## Intended use
 
