@@ -42,6 +42,11 @@ signs the release (SE1/U9).
   *cure*: adopted. The guide said *cure* in [DM1/U2](guide/02-unknowing.md#u2),
   [DM1/U6](guide/02-unknowing.md#u6), and [DM1/D9](guide/05-design.md#d9). A K3 factory is
   lessened, not fixed, and so is train/serve skew.
+- [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u7), *torn work*: adopted
+  into [DM1/U2](guide/02-unknowing.md#u2), which names its data shapes (a pipeline half-run, a
+  model trained on a partial extract, a notebook run out of order) and the medicine (idempotent
+  stages, the cold run from raw, and treating what you find on resuming as torn), and in one
+  sentence into [DM1/U6](guide/02-unknowing.md#u6): an interrupted retrain's checkpoint answers.
 
 **For copies:** copy AGENTS.md beside SE1's AGENTS.md, and import both at every start.
 

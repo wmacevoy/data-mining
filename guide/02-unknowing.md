@@ -35,13 +35,21 @@ entirely misleading table. A `try/except` around a fetch turns an outage into a 
 of these is a K3 factory in the sense of SE1/U7 — it keeps saying "fine" with no way to say "wrong" —
 and pandas ships with dozens.
 
+SE1/U7's *torn work* has a data shape, and it is the commonest of these. A pipeline interrupted
+between stages leaves a partition half-written that reads as current. A model trained on an extract
+that stopped on Tuesday is a model, with a score. A notebook run out of order holds a kernel state
+that no top-to-bottom run of its cells produces, and every cell still returns. Nothing in the
+output says which of these happened.
+
 SE1/F4 says software has no mass, so nothing sags to warn you. Data has less than none: a wrong
 number has the same shape as a right one, and the most likely thing to happen to it is that it gets
 used.
 
 The medicine is the one SE1/U7 names: give each of these a way to say *wrong*. Row counts asserted
 across every join, keys asserted unique, ranges and units asserted at the boundary
-([DM1/T2](06-testing.md#t2)).
+([DM1/T2](06-testing.md#t2)). For torn work: every stage overwrites its own partition and never
+appends ([DM1/D4](05-design.md#d4)), the cold run from raw is the fence ([DM1/W4](08-work.md#w4)),
+and on resuming, what you find is torn until a run from raw agrees with it.
 
 > **Ask:** "What here would return a plausible number if it were wrong?"
 
@@ -110,7 +118,9 @@ modeling estimate.
 
 A classifier asked about an input unlike anything it was trained on does not raise. It returns a
 class, often with high confidence. That is the purest K3 factory in the field: it has no way to say
-*wrong*, and no way to say *I have never seen this*.
+*wrong*, and no way to say *I have never seen this*. A checkpoint from a retrain that was interrupted
+answers as confidently as the finished model would have, and no prediction says which it came
+from: torn work (SE1/U7), served.
 
 Three medicines, cheapest first:
 
