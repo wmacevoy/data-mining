@@ -31,6 +31,18 @@ every SE1 link from one constant, `SE_RELEASE`, and CI checks SE1 IDs against th
 bump is that one edit, a rewrite of the links, and a walk through SE1's CHANGELOG for every ID this
 guide reframes, recorded here by ID.
 
+### SE1 v1.2 to v1.3, reviewed
+
+Each SE1 principle that changed between the commit this guide was written against and v1.3, and
+what this guide did about it. Reviewed 2026-10-28 by Claude Fable 5.1 with Warren MacEvoy, who
+signs the release (SE1/U9).
+
+- [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u7) and
+  [SE1/R8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r8), *medicine* for
+  *cure*: adopted. The guide said *cure* in [DM1/U2](guide/02-unknowing.md#u2),
+  [DM1/U6](guide/02-unknowing.md#u6), and [DM1/D9](guide/05-design.md#d9). A K3 factory is
+  lessened, not fixed, and so is train/serve skew.
+
 **For copies:** copy AGENTS.md beside SE1's AGENTS.md, and import both at every start.
 
 ### New

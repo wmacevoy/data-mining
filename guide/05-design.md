@@ -148,7 +148,7 @@ another way where predictions are served — a different window, a different clo
 handling of missing values. The model is then trained on one thing and fed another, and no metric
 measured offline can see it.
 
-The cure is structural: one function, imported by both. The same holds for metric definitions, the
+The medicine is structural: one function, imported by both. The same holds for metric definitions, the
 outcome, and "day" ([DM1/D5](#d5)). Two people with two definitions of "occupancy" produce two
 dashboards that disagree, and the meeting about which is right is about vocabulary.
 

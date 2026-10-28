@@ -39,7 +39,7 @@ SE1/F4 says software has no mass, so nothing sags to warn you. Data has less tha
 number has the same shape as a right one, and the most likely thing to happen to it is that it gets
 used.
 
-The cure is the one SE1/U7 names: give each of these a way to say *wrong*. Row counts asserted
+The medicine is the one SE1/U7 names: give each of these a way to say *wrong*. Row counts asserted
 across every join, keys asserted unique, ranges and units asserted at the boundary
 ([DM1/T2](06-testing.md#t2)).
 
@@ -112,7 +112,7 @@ A classifier asked about an input unlike anything it was trained on does not rai
 class, often with high confidence. That is the purest K3 factory in the field: it has no way to say
 *wrong*, and no way to say *I have never seen this*.
 
-Three cures, cheapest first:
+Three medicines, cheapest first:
 
 - **Check the input against the training envelope** — ranges, categories never seen, a lot that
   did not exist last season — and refuse or flag outside it.
