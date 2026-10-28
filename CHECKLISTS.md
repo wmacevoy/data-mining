@@ -48,6 +48,8 @@ to the pipeline as software; these are the ones data work adds.
       ([DM1/R5](guide/04-requirements.md#r5))
 - [ ] The raw copy is immutable, with its fetch time and source recorded.
       ([DM1/D6](guide/05-design.md#d6), [DM1/D2](guide/05-design.md#d2))
+- [ ] Someone has looked at the raw rows with no question in hand, and written down what they
+      found. ([DM1/U9](guide/02-unknowing.md#u9))
 
 **Before trusting a pipeline**
 
@@ -81,6 +83,7 @@ to the pipeline as software; these are the ones data work adds.
       ([DM1/U8](guide/02-unknowing.md#u8))
 - [ ] Who is missing from the rows is said out loud. ([DM1/F8](guide/03-feedback.md#f8))
 - [ ] A plot and the rows that disagree most have been looked at. ([DM1/U7](guide/02-unknowing.md#u7))
+- [ ] Each person has said out loud what about it they do not believe. ([DM1/H8](guide/09-people.md#h8))
 - [ ] Stated in the decision's units, with how often it will be wrong.
       ([DM1/H6](guide/09-people.md#h6))
 - [ ] The K4s it rests on are written and have been read to the client.
