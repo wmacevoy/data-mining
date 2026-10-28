@@ -364,6 +364,36 @@ CHANGELOG for every ID this guide reframes, and a CHANGELOG entry here saying wh
 declined, or confirmed, by SE1 ID. A new SE1 principle that data work sharpens is a new DM1 principle
 in the matching chapter; one that applies to data unchanged is left off the SE1 map on purpose.
 
+## Why to trust this, and why to doubt it
+
+Who made it, when, and what would show it wrong, as [SE1/U9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u9)
+asks of any rule.
+
+- **Who, and when.** One author, teaching from it, with Claude models drafting: the course document
+  in August 2026 (Claude Opus 5), the refactor into this guide on 2026-10-27 (a Claude model; which
+  one was not recorded), and the review against SE1 v1.3 on 2026-10-28 (Claude Fable 5.1). Every
+  commit since the repository was initialized that day carries the agent's trailer, and AGENTS.md
+  says so in its header.
+- **What it rests on.** A course document, the author's teaching, and SE1's trials and field reports
+  by reference. Nothing of its own: no field report, no trial, and no review by anyone, of any model
+  family, has yet tested a principle here ([GAPS.md](GAPS.md)). The reframings were written against
+  one SE1 commit and re-read against v1.3 only where SE1 changed; the other 73 were not re-read.
+- **What has been seen to fail.** `tools/check.js`, on three planted breakages: SE1 pinned to a
+  release that lacks three cited principles, a copy of SE1 with no tag to read, and an AGENTS.md
+  citing an ID its release does not define. A check never seen red proves nothing
+  ([SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t3)), so these were.
+- **What has not.** Whether a reader who has not read SE1 can follow a *Reframes* link and come away
+  with the idea. Whether an agent given AGENTS.md here works differently from one given SE1's
+  alone. Every checklist, every template, and every *Ask*.
+- **What would show it wrong.** A course project where following a principle here made the analysis
+  worse, or cost more than it caught. A holdout an agent reached despite
+  [DM1/A4](guide/10-agents.md#a4). A reframing that contradicts its SE1 source about software, which
+  by the section below is a bug here. An agent of another family for which the working agreement
+  makes the work worse.
+- **How to check it yourself.** `node tools/check.js` with a clone of SE1 beside this one; the SE1
+  map above, read against SE1's text at v1.3; and [CHANGELOG.md](CHANGELOG.md), which says by ID
+  what was reframed, declined, confirmed, and not reviewed.
+
 ## Where this came from
 
 Refactored from the course document `DATA-SCIENCE.md` in the

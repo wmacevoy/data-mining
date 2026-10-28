@@ -84,6 +84,14 @@ signs the release (SE1/U9).
   after a gap is torn; a kernel is a summary). CHECKLISTS' *Handing an agent data work* aligns
   with SE1's *Handing a task to an agent*: loaded not opened, checks in the pipeline, the retro
   questions. The `./se` line waits until `se` knows this guide's documents.
+- `tools/check.js`, after SE1 v1.2.1 to v1.3's: SE1 IDs and anchors resolve at the pinned tag,
+  read from the local clone through git, and a clone without the tag is a named problem; copies
+  cite no DM1 ID their labeled release lacks; a patch release (`v1.0.1`) changes no principle,
+  AGENTS.md, or template, and a principle's text ends at a horizontal rule. Seen red on three
+  planted breakages. *Changed in* markers wait for a release to mark against.
+- README gains *Why to trust this, and why to doubt it*: SE1/U9 applied to the guide on its front
+  page. CI checks out SE1 at the pinned tag and this repository with its history, for the checks
+  that read tags.
 
 **For copies:** copy AGENTS.md beside SE1's AGENTS.md, inside the working directory; import both at
 every start, and check that they loaded (SE1/A11).
