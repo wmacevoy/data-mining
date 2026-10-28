@@ -52,3 +52,4 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Train/serve skew**    | A feature computed differently in training than where predictions are served ([DM1/D9](guide/05-design.md#d9)). |
 | **Unit of analysis**    | What one row is ([DM1/R2](guide/04-requirements.md#r2)).                                             |
 | **Validation set**      | Development data used to choose among models; reused freely, and so not an unbiased estimate.        |
+| **Whitespace**          | Time with no agenda, in SE1/U8's sense. Free when spent on the inputs; a look, counted in the ledger, when spent on the outcome ([DM1/U9](guide/02-unknowing.md#u9)). |

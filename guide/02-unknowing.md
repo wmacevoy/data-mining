@@ -191,6 +191,32 @@ the small lots, with few events of their own, get forecasts shaped by the big on
 > **Ask:** "Is this question about one case or a population — and which reference class does this
 > number actually describe?"
 
+### <a id="u9"></a>U9. Whitespace is free on the inputs and spent on the outcome
+
+*Reframes [SE1/U8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u8).*
+
+SE1/U8 asks for time with no agenda, because an agenda finds only what it looks for, and K2 is what
+nobody asked about. Data work needs that time more than software does: the sentence *that column
+means something different before 2024* ([DM1/U1](#u1)) arrives only to someone looking at the
+column with no question in hand. And it can afford it less, because here a look is not free: every
+look at the outcome that changes what you try next spends evidence ([DM1/F4](03-feedback.md#f4),
+[DM1/F5](03-feedback.md#f5)).
+
+The two agree once you say what is being looked at. Whitespace spent on the inputs costs nothing:
+the raw rows, the extremes, the datasheet, a column's distribution over time, the pipeline's
+partitions, the world since the last session. That is where K2 lives, and a choice made from the
+inputs alone, with the outcome out of view, does not select for a good score. Whitespace spent on
+the outcome is a look like any other, a subgroup noticed, a residual plot pored over, and goes in
+the ledger ([DM1/F6](03-feedback.md#f6)), because it is a search even when nobody meant it as one.
+So leave the time, point it at the inputs, and write what it finds in FINDINGS or the datasheet,
+not into a feature.
+
+Wrong if an hour with the raw rows and no question in hand finds nothing a profiling script would
+not.
+
+> **Ask:** "When did someone last look at the raw rows with no question in hand, and did they look
+> at the outcome while they were there?"
+
 ---
 
 Next: [3. Feedback](03-feedback.md) — what evidence costs, and why searching for it changes it.

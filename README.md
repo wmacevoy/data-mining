@@ -140,6 +140,7 @@ these.)
 - [**DM1/U6**](guide/02-unknowing.md#u6) A model always answers; give it a way to say "I don't know"
 - [**DM1/U7**](guide/02-unknowing.md#u7) A summary statistic is a concussion: look at the rows
 - [**DM1/U8**](guide/02-unknowing.md#u8) People ask Prob(result | me); the data holds Prob(result | the rows it counts as like me)
+- [**DM1/U9**](guide/02-unknowing.md#u9) Whitespace is free on the inputs and spent on the outcome
 
 **[3. Feedback](guide/03-feedback.md)**
 
@@ -259,6 +260,7 @@ software applies to it.
 - [SE1/U4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u4) → [DM1/U4](guide/02-unknowing.md#u4)
 - [SE1/U5](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u5) → [DM1/U5](guide/02-unknowing.md#u5)
 - [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u7) → [DM1/U2](guide/02-unknowing.md#u2), [DM1/U6](guide/02-unknowing.md#u6)
+- [SE1/U8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u8) → [DM1/U9](guide/02-unknowing.md#u9)
 - [SE1/F1](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/03-feedback.md#f1) → [DM1/F1](guide/03-feedback.md#f1)
 - [SE1/F2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/03-feedback.md#f2) → [DM1/F2](guide/03-feedback.md#f2)
 - [SE1/F3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/03-feedback.md#f3) → [DM1/F3](guide/03-feedback.md#f3)

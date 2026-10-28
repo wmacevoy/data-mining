@@ -17,9 +17,9 @@ yours.
 
 ## v1.0 — unreleased
 
-· 91 principles
+· 92 principles
 
-The first release: 73 principles that reframe SE1 principles for data work, and 18 new ones that
+The first release: 74 principles that reframe SE1 principles for data work, and 18 new ones that
 SE1 has no counterpart for. Refactored from the course document `DATA-SCIENCE.md`, reorganized into
 SE1's ten chapters. Bias is treated as SE1 treats security: a permanent requirement
 ([DM1/R10](guide/04-requirements.md#r10)), an audit before and after deploy
@@ -52,6 +52,11 @@ signs the release (SE1/U9).
   command does on every run, and [DM1/A2](guide/10-agents.md#a2): a leakage check the agent must
   choose to run will be read and not run, so the assertions go in the pipeline and CI. A11's
   other change, that the import boundary is the working directory, is in AGENTS.md.
+- [SE1/U8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u8), *leave whitespace*:
+  reframed as [DM1/U9](guide/02-unknowing.md#u9). It pulls against [DM1/F4](guide/03-feedback.md#f4)
+  to [DM1/F6](guide/03-feedback.md#f6), where every look spends evidence; the resolution is what
+  is looked at. Whitespace on the inputs is free and is where K2 lives; on the outcome it is a
+  look, and goes in the ledger. GLOSSARY gains *whitespace*.
 
 **For copies:** copy AGENTS.md beside SE1's AGENTS.md, and import both at every start.
 
