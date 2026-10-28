@@ -1,7 +1,7 @@
 # Glossary
 
 The terms this guide uses precisely, beyond those in
-[SE1's glossary](https://github.com/wmacevoy/software-engineering/blob/main/GLOSSARY.md) — K0–K4,
+[SE1's glossary](https://github.com/wmacevoy/software-engineering/blob/v1.3/GLOSSARY.md) — K0–K4,
 K3 factory, cache, contract, blast radius, and the rest mean the same here. One thing, one word
 ([DM1/D9](guide/05-design.md#d9)): if you find the guide using one of these loosely, that is a bug.
 

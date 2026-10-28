@@ -3,14 +3,14 @@
 Where the question comes from, and how to write it down so that it can be wrong. In data mining the
 requirements are mostly decisions about the *question* — the decision it serves, the unit, the
 outcome, the moment of prediction, the price of each kind of error — and most of them are one-way
-doors made in the first week. Read with [SE1 chapter 4](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md);
+doors made in the first week. Read with [SE1 chapter 4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md);
 the [QUESTION template](../templates/QUESTION_v1.md) is where these go.
 
 ---
 
 ### <a id="r1"></a>R1. Keep the decision; test the question
 
-*Reframes [SE1/R1](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r1).*
+*Reframes [SE1/R1](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r1).*
 
 SE1/R1 says keep the client's pain and test their proposed solution. In data the proposed solution
 usually arrives as a technique — "use machine learning to find patterns" — and the pain is a
@@ -49,7 +49,7 @@ expensive to change once features, labels, and splits are built on them.
 
 ### <a id="r3"></a>R3. Specific and wrong: name the metric, the baseline, and the bar before you look
 
-*Reframes [SE1/R2](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r2).*
+*Reframes [SE1/R2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r2).*
 
 "A good model" cannot be rejected. "Predicts the time each lot fills to within fifteen minutes for
 80% of events, against a baseline of *same as the last comparable event* that manages 55%, on the
@@ -62,7 +62,7 @@ set after seeing the score is set to the score. Mark guesses *(invented)* and ge
 
 ### <a id="r4"></a>R4. The confusion matrix has a price
 
-*Reframes [SE1/R4](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r4).*
+*Reframes [SE1/R4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r4).*
 
 A requirement with no price is a wish (SE1/R4). A classifier's requirement has at least two prices,
 and they are almost never equal:
@@ -81,7 +81,7 @@ needs.
 
 ### <a id="r5"></a>R5. Every column can be absent, late, wrong, or lying — and missingness is data
 
-*Reframes [SE1/R6](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r6).*
+*Reframes [SE1/R6](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r6).*
 
 Most analyses describe the happy path of a dataset and inherit the rest by accident: whatever pandas
 does with a missing value becomes the method, chosen by nobody.
@@ -140,7 +140,7 @@ be yours. Before it becomes the target, find out:
 
 ### <a id="r8"></a>R8. The operating envelope includes rows, labels, compute, and expert hours
 
-*Reframes [SE1/R7](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r7).*
+*Reframes [SE1/R7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r7).*
 
 SE1/R7 asks for scale, speed, recovery, and availability with numbers and horizons. A data project
 adds resources that are finite and usually unwritten:
@@ -159,7 +159,7 @@ adds resources that are finite and usually unwritten:
 
 ### <a id="r9"></a>R9. Ethics, law, and security are requirements, and the people in the data never filed one
 
-*Reframes [SE1/R8](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r8).*
+*Reframes [SE1/R8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r8).*
 
 Everything in SE1/R8 holds, and data work sharpens each part:
 
@@ -186,7 +186,7 @@ visitors." The code change is one join. The requirements change is a new kind of
 
 ### <a id="r10"></a>R10. Bias is always a requirement, alongside ethics, law, and security
 
-*Reframes [SE1/R8](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r8).*
+*Reframes [SE1/R8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r8).*
 
 SE1/R8 makes security, law, and ethics permanent requirements, because nobody asks for them and they
 are the most expensive to discover late. Bias belongs on that list for the same reasons, and in data
@@ -221,7 +221,7 @@ the small ones is biased against the small lots, and the attendants working them
 
 ### <a id="r11"></a>R11. Write down who the model is not for
 
-*Reframes [SE1/R9](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r9).*
+*Reframes [SE1/R9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r9).*
 
 SE1/R9 asks for non-goals. For a model, the non-goals are populations, conditions, and uses: lots
 that did not exist in the training seasons; events larger than any seen; use as a staffing tool when

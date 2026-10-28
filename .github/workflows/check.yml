@@ -9,10 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      # The SE1 guide, so every SE1 ID this guide cites is checked to exist.
+      # The SE1 guide at the release this guide is pinned to (SE_RELEASE in tools/check.js), so every
+      # SE1 ID this guide cites is checked to exist in that release, not in whatever main says now.
       - uses: actions/checkout@v7
         with:
           repository: wmacevoy/software-engineering
+          ref: v1.3
           path: .se1
       - uses: actions/setup-node@v7
         with:

@@ -1,7 +1,7 @@
 # 9. People
 
 The domain expert, the client, the team, and what passes between them when the product is a claim.
-Read with [SE1 chapter 9](https://github.com/wmacevoy/software-engineering/blob/main/guide/09-people.md),
+Read with [SE1 chapter 9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md),
 all of which applies; the people outside the room are in [DM1/P3](01-purpose.md#p3) and
 [DM1/R9](04-requirements.md#r9).
 
@@ -9,7 +9,7 @@ all of which applies; the people outside the room are in [DM1/P3](01-purpose.md#
 
 ### <a id="h1"></a>H1. The domain expert is a feedback loop no test replaces; show them rows, not summaries
 
-*Reframes [SE1/H5](https://github.com/wmacevoy/software-engineering/blob/main/guide/09-people.md#h5).*
+*Reframes [SE1/H5](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h5).*
 
 SE1/H5: the client knows the domain and cannot see its edges. In data work, the person who knows the
 domain is usually the only loop that can catch the most expensive errors ([DM1/F3](03-feedback.md#f3)):
@@ -29,7 +29,7 @@ Then ask what surprises them. Their surprise is your K2, found cheaply.
 
 ### <a id="h2"></a>H2. Read your assumptions to the client, in their words
 
-*Reframes [SE1/H6](https://github.com/wmacevoy/software-engineering/blob/main/guide/09-people.md#h6).*
+*Reframes [SE1/H6](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h6).*
 
 Every analysis rests on K4s ([DM1/U4](02-unknowing.md#u4)), and most of them are statistical
 sentences the client cannot evaluate as written. Translate each into a claim about their world, and
@@ -49,7 +49,7 @@ before hearing it.
 
 ### <a id="h3"></a>H3. Report a null the same week you find it, in the same tone as a win
 
-*Reframes [SE1/H9](https://github.com/wmacevoy/software-engineering/blob/main/guide/09-people.md#h9).*
+*Reframes [SE1/H9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h9).*
 
 SE1/H9: with bad news, the delay is the cost. "The effect isn't there" in week two is a finding, and
 an inexpensive one: the client can stop paying for the question or change it. The same sentence in
@@ -63,7 +63,7 @@ the team that nulls are failures, and the next one will be found later, or not a
 
 ### <a id="h4"></a>H4. One owner per definition: two people cleaning the same dataset produce three datasets
 
-*Reframes [SE1/H4](https://github.com/wmacevoy/software-engineering/blob/main/guide/09-people.md#h4).*
+*Reframes [SE1/H4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h4).*
 
 SE1/H4: the interface between two people is a contract. In data work the contract is usually a
 definition — what counts as an event, what "occupied" means, which rows are excluded — and when two
@@ -78,7 +78,7 @@ why two dashboards disagree is a missing contract.
 
 ### <a id="h5"></a>H5. Whoever owns the definition owns the conclusion
 
-*Reframes [SE1/H1](https://github.com/wmacevoy/software-engineering/blob/main/guide/09-people.md#h1).*
+*Reframes [SE1/H1](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h1).*
 
 SE1/H1 says the team's shape becomes the system's shape. In data, it becomes the *conclusions'*
 shape: the team that owns the pipeline owns the metric definitions, the definitions decide the
@@ -112,7 +112,7 @@ model cannot tell them, in the same breath.
 
 ### <a id="h7"></a>H7. A model demo is a test: choose the examples before the meeting, and include failures
 
-*Reframes [SE1/H8](https://github.com/wmacevoy/software-engineering/blob/main/guide/09-people.md#h8).*
+*Reframes [SE1/H8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h8).*
 
 SE1/H8: a demo is a test, so run it like one. A model demo has a specific temptation: pick the
 examples that work. Then the demo shows the client a model that does not exist, and the client's

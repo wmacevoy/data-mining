@@ -1,14 +1,14 @@
 # 10. Agents
 
 What changes when the analyst is fast, fluent, and has no stake in whether the number is true. Read
-with [SE1 chapter 10](https://github.com/wmacevoy/software-engineering/blob/main/guide/10-agents.md),
+with [SE1 chapter 10](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md),
 all of which applies; the working agreement is [AGENTS.md](../AGENTS.md).
 
 ---
 
 ### <a id="a1"></a>A1. Producing an analysis got cheaper faster than knowing it is right
 
-*Reframes [SE1/A1](https://github.com/wmacevoy/software-engineering/blob/main/guide/10-agents.md#a1).*
+*Reframes [SE1/A1](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a1).*
 
 An agent can write a pipeline, train a dozen models, and draft the report in an afternoon. None of
 that made the question better posed, the data's provenance clearer, the labels more reliable, or the
@@ -20,7 +20,7 @@ provenance, the checks, the review, and the ownership of the claim.
 
 ### <a id="a2"></a>A2. Code that throws is safe; code that returns a number is not
 
-*Reframes [SE1/A2](https://github.com/wmacevoy/software-engineering/blob/main/guide/10-agents.md#a2).*
+*Reframes [SE1/A2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a2).*
 
 SE1/A2: an agent is a K3 factory; never let confidence substitute for a run. Data work is the worst
 place to install one, because here the wrongness does not raise ([DM1/U2](02-unknowing.md#u2)). An
@@ -35,7 +35,7 @@ each join, a plot, and one prediction traced back to its rows.
 
 ### <a id="a3"></a>A3. An agent's tries count as your looks
 
-*Reframes [SE1/A9](https://github.com/wmacevoy/software-engineering/blob/main/guide/10-agents.md#a9).*
+*Reframes [SE1/A9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a9).*
 
 SE1/A9 hands agents the search-shaped work. In data mining the search is the hazard
 ([DM1/F4](03-feedback.md#f4)), and an agent searches at machine speed: sixty feature sets, forty
@@ -65,7 +65,7 @@ for the labels of any evaluation set, and for the answer key of an assignment.
 
 ### <a id="a5"></a>A5. Spend the speed on checks: fixtures, assertions, the boring second case
 
-*Reframes [SE1/A5](https://github.com/wmacevoy/software-engineering/blob/main/guide/10-agents.md#a5).*
+*Reframes [SE1/A5](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a5).*
 
 The work agents do best and humans skip most is exactly the work that multiplies in a data project:
 the hand-computed fixture ([DM1/T6](06-testing.md#t6)), the row-count and uniqueness assertions
@@ -77,7 +77,7 @@ More checks do.
 
 ### <a id="a6"></a>A6. Point review at the data handling
 
-*Reframes [SE1/A6](https://github.com/wmacevoy/software-engineering/blob/main/guide/10-agents.md#a6).*
+*Reframes [SE1/A6](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a6).*
 
 SE1/A6: review capacity is the bottleneck. Spend it where K3 lives: the joins, filters, splits, fills,
 time conversions, and the definition of the outcome. Model code is usually library calls and
@@ -91,7 +91,7 @@ and read the data handling line by line.
 
 ### <a id="a7"></a>A7. You present it, so you own it
 
-*Reframes [SE1/A7](https://github.com/wmacevoy/software-engineering/blob/main/guide/10-agents.md#a7).*
+*Reframes [SE1/A7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a7).*
 
 Delegation is not abdication. If you cannot explain why the number is what it is — which rows, which
 definition, which split, how many tries — you cannot defend it, update it next quarter, or notice when

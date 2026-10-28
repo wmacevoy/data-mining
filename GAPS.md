@@ -2,7 +2,7 @@
 
 Where the guide falls short. In SE1 this file holds field reports — what happened when the guide met
 a real project — and each entry is closed by changing the guide, or by a sentence saying why not
-([SE1/P4](https://github.com/wmacevoy/software-engineering/blob/main/guide/01-purpose.md#p4)).
+([SE1/P4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/01-purpose.md#p4)).
 
 **There are no field reports yet.** DM1 has not been applied to a project in its current form; the
 first reports are expected from the fall 2026 course projects. Until then, this file lists where the
@@ -50,7 +50,7 @@ has not been tested, with people or with agents.
 
 [DM1/O1](guide/07-operating.md#o1) asks that each result record the resolved environment, so that it
 works whether or not a lock file is committed.
-[SE1/O2](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o2) says to
+[SE1/O2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o2) says to
 commit the lock. The course repository leaves its lock file uncommitted, because it resolves
 differently across students' machines.
 

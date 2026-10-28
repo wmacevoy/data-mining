@@ -2,7 +2,7 @@
 // Checks the guide's own consistency, so its conventions are enforced rather than hoped for
 // (SE1/O3): every relative link and anchor resolves; every DM1 citation names a real principle in the
 // file that defines it; every principle says, on the line under its heading, whether it is *New.* or
-// which SE1 principles it *Reframes*; every SE1 link points at the chapter and anchor its ID implies
+// which SE1 principles it *Reframes*; every SE1 link names the pinned SE1 release and the chapter and anchor its ID implies
 // (and, given a local copy of the SE1 guide, names a principle that exists); README's principle index
 // and its SE1 map match the chapters exactly; chapter numbers agree; llms.txt links to files that
 // exist; and CHANGELOG.md, AGENTS.md, and the templates agree on the release.
@@ -15,7 +15,11 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const VERSION = 'DM1';
 const SE = 'SE1';
-const SE_BLOB = 'https://github.com/wmacevoy/software-engineering/blob/main/';
+// The SE1 release this guide is written against. Every SE1 link names it, so a reader lands on the
+// text that was read, not on whatever main says now (SE1/R10, SE1/U9). Bumping it is one edit here
+// plus a rewrite of the links, and a walk through SE1's CHANGELOG for every ID this guide reframes.
+const SE_RELEASE = 'v1.3';
+const SE_BLOB = `https://github.com/wmacevoy/software-engineering/blob/${SE_RELEASE}/`;
 const SE_CHAPTER = { P: '01-purpose', U: '02-unknowing', F: '03-feedback', R: '04-requirements', D: '05-design', T: '06-testing', O: '07-operating', W: '08-work', H: '09-people', A: '10-agents' };
 const HEADING = /^### <a id="([a-z0-9]+)"><\/a>([A-Z]\d+)\. (.*)$/;
 const BASIS = /^\*(New|Reframes (.+))\.\*$/;
@@ -163,7 +167,8 @@ for (const f of files) {
 // llms.txt points agents at raw files by URL, which the link check above never sees.
 const RAW = 'https://raw.githubusercontent.com/wmacevoy/data-mining/main/';
 for (const m of fs.readFileSync(path.join(root, 'llms.txt'), 'utf8').matchAll(/\]\(([^)]+)\)/g)) {
-  if (m[1].startsWith('https://raw.githubusercontent.com/wmacevoy/software-engineering/')) continue;
+  const seRaw = m[1].match(/^https:\/\/raw\.githubusercontent\.com\/wmacevoy\/software-engineering\/([^/]+)\//);
+  if (seRaw) { if (seRaw[1] !== SE_RELEASE) problem(`SE1 not pinned llms.txt: ${m[0]} should name ${SE_RELEASE}`); continue; }
   if (!m[1].startsWith(RAW)) problem(`not a raw link llms.txt: ${m[0]}`);
   else if (!fs.existsSync(path.join(root, m[1].slice(RAW.length)))) problem(`missing file   llms.txt: ${m[0]}`);
 }

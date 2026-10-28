@@ -2,7 +2,7 @@
 
 The longer arguments behind the guide, one line each on what the source actually says, so you can pick
 one rather than all. Grouped by the chapter they support most. For software engineering's sources, see
-[SE1's READING](https://github.com/wmacevoy/software-engineering/blob/main/READING.md).
+[SE1's READING](https://github.com/wmacevoy/software-engineering/blob/v1.3/READING.md).
 
 **Purpose and unknowing** ([1](guide/01-purpose.md)–[2](guide/02-unknowing.md))
 

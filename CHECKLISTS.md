@@ -3,7 +3,7 @@
 Every checklist in the guide, in the order a project meets them. Each item cites the principle that
 explains it; if an item retires no fear on your project, drop it and say why
 ([DM1/P4](guide/01-purpose.md#p4)). SE1's
-[checklists](https://github.com/wmacevoy/software-engineering/blob/main/CHECKLISTS.md) still apply
+[checklists](https://github.com/wmacevoy/software-engineering/blob/v1.3/CHECKLISTS.md) still apply
 to the pipeline as software; these are the ones data work adds.
 
 ## Starting

@@ -1,7 +1,7 @@
 # Contributing
 
 How to work on this repository — for a new teammate and for an agent, who both arrive knowing
-nothing ([SE1/A3](https://github.com/wmacevoy/software-engineering/blob/main/guide/10-agents.md#a3)).
+nothing ([SE1/A3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a3)).
 Keep it short and true: a change that makes a line here untrue updates it in the same change.
 
 ## Run it

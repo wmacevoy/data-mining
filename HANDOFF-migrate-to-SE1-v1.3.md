@@ -2,7 +2,7 @@
 
 Written 2026-10-28 by Claude Fable 5.1, from a read-only survey made from the SE1 checkout beside
 this directory; nothing here was changed. **This is a handoff note, so everything in it is recalled,
-not observed** ([SE1/A11](https://github.com/wmacevoy/software-engineering/blob/main/guide/10-agents.md#a11)): before acting on any
+not observed** ([SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a11)): before acting on any
 line, run the two commands under *Baseline* and open the files named. Where this note and the
 repository disagree, the repository wins. One concern per change, the checker after each.
 
@@ -21,8 +21,8 @@ repository disagree, the repository wins. One concern per change, the checker af
 - **Every reference to SE1 floats.** All 175 links name `blob/main`; llms.txt names `main`;
   `tools/check.js` has `SE_BLOB` at `main`; CI checks out SE1's default branch. SE1 has moved
   three releases since, and nothing here says so: a citation with no version is a K3 factory
-  ([SE1/U7](https://github.com/wmacevoy/software-engineering/blob/main/guide/02-unknowing.md#u7),
-  [SE1/R10](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r10)).
+  ([SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u7),
+  [SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r10)).
 - Its checker resolves SE1 IDs against the local checkout, now v1.3, and passes. IDs resolve;
   **meaning was not reviewed**, by anyone, against the changes.
 
@@ -60,7 +60,7 @@ d256d10..v1.3 --stat`; this is the list to walk, not the record.
 ## The review, in order
 
 0. **Stop and ask first: git, and the GitHub repository.** Nothing below should be done without a
-   history to put it in ([SE1/U9](https://github.com/wmacevoy/software-engineering/blob/main/guide/02-unknowing.md#u9): git keeps what
+   history to put it in ([SE1/U9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u9): git keeps what
    a rule's text cannot). Initializing a repository and creating the remote are the owner's
    decisions.
 1. **Pin SE1 to v1.3.** One constant in `tools/check.js` (say `SE_RELEASE = 'v1.3'`) that builds

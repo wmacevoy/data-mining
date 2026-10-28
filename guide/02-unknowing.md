@@ -1,6 +1,6 @@
 # 2. Unknowing
 
-The five kinds of not-knowing (`K0`–`K4`) from [SE1 chapter 2](https://github.com/wmacevoy/software-engineering/blob/main/guide/02-unknowing.md),
+The five kinds of not-knowing (`K0`–`K4`) from [SE1 chapter 2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md),
 applied to datasets and methods — and why data work is unusually good at producing the dangerous
 kind. The labels are defined there and in [GLOSSARY.md](../GLOSSARY.md).
 
@@ -8,7 +8,7 @@ kind. The labels are defined there and in [GLOSSARY.md](../GLOSSARY.md).
 
 ### <a id="u1"></a>U1. Mining is discovering, in the right order and at the right price, which category each column and each step belongs to
 
-*Reframes [SE1/U2](https://github.com/wmacevoy/software-engineering/blob/main/guide/02-unknowing.md#u2).*
+*Reframes [SE1/U2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u2).*
 
 | From | To     | How, in data                                                                                       |
 | ---- | ------ | -------------------------------------------------------------------------------------------------- |
@@ -25,7 +25,7 @@ means something different before 2024*. Plan for the sentence.
 
 ### <a id="u2"></a>U2. Data work manufactures K3, because the failure is a returned value, not an exception
 
-*Reframes [SE1/U3](https://github.com/wmacevoy/software-engineering/blob/main/guide/02-unknowing.md#u3) and [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/main/guide/02-unknowing.md#u7).*
+*Reframes [SE1/U3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u3) and [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u7).*
 
 Software that is wrong tends to stop. Analysis that is wrong tends to continue and produce a chart.
 
@@ -67,7 +67,7 @@ to the rows that produced it and checked that each of them existed at the predic
 
 ### <a id="u4"></a>U4. Every model is a chosen falsehood; name the direction it is wrong
 
-*Reframes [SE1/U4](https://github.com/wmacevoy/software-engineering/blob/main/guide/02-unknowing.md#u4).*
+*Reframes [SE1/U4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u4).*
 
 Box's *all models are wrong, some are useful* is a sentence about K4, and the half that matters is
 unspoken: **wrong in a specific, nameable direction.** A catalogue, every entry false and every
@@ -91,7 +91,7 @@ falsehood held unknowingly is K3** — and the distance between them is one writ
 
 ### <a id="u5"></a>U5. Estimate the category: time-box the cleaning, estimate the modeling
 
-*Reframes [SE1/U5](https://github.com/wmacevoy/software-engineering/blob/main/guide/02-unknowing.md#u5).*
+*Reframes [SE1/U5](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u5).*
 
 "Two days to clean this dataset" is a K0 statement about K2 work: you cannot estimate the time to
 discover things you do not know are there. Cleaning and exploration get time-boxed, and each box ends
@@ -106,7 +106,7 @@ modeling estimate.
 
 ### <a id="u6"></a>U6. A model always answers; give it a way to say "I don't know"
 
-*Reframes [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/main/guide/02-unknowing.md#u7).*
+*Reframes [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u7).*
 
 A classifier asked about an input unlike anything it was trained on does not raise. It returns a
 class, often with high confidence. That is the purest K3 factory in the field: it has no way to say
@@ -125,7 +125,7 @@ Three cures, cheapest first:
 
 ### <a id="u7"></a>U7. A summary statistic is a concussion: look at the rows
 
-*Reframes [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/main/guide/10-agents.md#a11).*
+*Reframes [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a11).*
 
 SE1/A11 says a summary of a session drops things without knowing what it dropped, and must be
 checked from outside. A mean, a correlation, or an accuracy is the same thing for a dataset.

@@ -12,7 +12,7 @@ lowercase ID without the version, e.g. DM1/F5 is guide/03-feedback.md#f5.
 ## Start here
 
 - [AGENTS.md](https://raw.githubusercontent.com/wmacevoy/data-mining/main/AGENTS.md): the working agreement for agents doing data work
-- [SE1 AGENTS.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/AGENTS.md): the working agreement it extends
+- [SE1 AGENTS.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/v1.3/AGENTS.md): the working agreement it extends
 - [README.md](https://raw.githubusercontent.com/wmacevoy/data-mining/main/README.md): the argument in ten lines, the running example, the principle index, and the map from SE1
 - [CHANGELOG.md](https://raw.githubusercontent.com/wmacevoy/data-mining/main/CHANGELOG.md): what changed in each release, by principle ID
 

@@ -3,14 +3,14 @@
 What happens to a pipeline and a model after they leave your machine: environments, CI, monitoring
 when the true answers arrive late, shift, fallbacks, shadow deploys, dataset versions, security,
 scale, and the feedback loop no rollback undoes. Read with
-[SE1 chapter 7](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md),
+[SE1 chapter 7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md),
 which covers the service around the model.
 
 ---
 
 ### <a id="o1"></a>O1. Record the environment and the hardware with every result; numbers depend on both
 
-*Reframes [SE1/O1](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o1) and [SE1/O2](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o2).*
+*Reframes [SE1/O1](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o1) and [SE1/O2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o2).*
 
 SE1/O1 and SE1/O2 make a build repeatable: describe the environment as constraints, record the exact
 resolution, install with the command that refuses drift. Numerical work adds that the *result*, not
@@ -27,7 +27,7 @@ months later, whether or not the lock file is committed.
 
 ### <a id="o2"></a>O2. CI runs the pipeline from raw on the fixture, every change
 
-*Reframes [SE1/O3](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o3).*
+*Reframes [SE1/O3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o3).*
 
 SE1/O3: CI runs the command you run. For a data repository that command goes from raw to report: the
 committed fixture through every stage, the assertions ([DM1/T2](06-testing.md#t2)), the property tests
@@ -42,7 +42,7 @@ correct on known cases; whether the method is *good* is a decision made delibera
 
 ### <a id="o3"></a>O3. A model in production needs signals that do not wait for labels
 
-*Reframes [SE1/O4](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o4).*
+*Reframes [SE1/O4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o4).*
 
 SE1/O4: every failure needs a signal a person will see and believe. A model's characteristic
 failure is to keep answering, confidently and wrongly, and the signal you want — accuracy — needs the
@@ -81,7 +81,7 @@ Only labeled outcomes catch it, which is why their latency belongs in the requir
 
 ### <a id="o5"></a>O5. Every model has a fallback that is not a model
 
-*Reframes [SE1/O5](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o5).*
+*Reframes [SE1/O5](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o5).*
 
 SE1/O5: handle failure on purpose, with a stated fallback. When the model's input is missing, out of
 envelope, or late; when the model service is down; when monitoring says it has drifted — something
@@ -97,7 +97,7 @@ with no fallback turns every upstream outage into a confident wrong answer.
 
 ### <a id="o6"></a>O6. Run a new model in shadow before it decides anything; a retrain is a deploy
 
-*Reframes [SE1/O6](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o6).*
+*Reframes [SE1/O6](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o6).*
 
 SE1/O6: a deploy is a test whose failure is an outage. For models there is a cheaper test first:
 **shadow mode** — the new model receives live inputs and logs its predictions, and the old one still
@@ -113,7 +113,7 @@ the current model — before it serves anything.
 
 ### <a id="o7"></a>O7. Version datasets, and change a feature in steps that can each be undone
 
-*Reframes [SE1/O7](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o7).*
+*Reframes [SE1/O7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o7).*
 
 SE1/O7: change data and interfaces in steps that can each be undone. A feature table and a training
 set are interfaces to every model trained on them. Give each a version — a content hash, a dated
@@ -127,7 +127,7 @@ silently changes the meaning of every model that reads it — including the one 
 
 ### <a id="o8"></a>O8. Secure the data, the copies, and the model
 
-*Reframes [SE1/O8](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o8).*
+*Reframes [SE1/O8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o8).*
 
 Everything in SE1/O8 applies, and a data system has more copies to secure than its owners usually
 count: the raw pull, every cache, every intermediate Parquet file, every extract on a laptop, every
@@ -143,7 +143,7 @@ model trained on personal data as personal data.
 
 ### <a id="o9"></a>O9. Unbiased is not a default: audit for bias like an attacker, before and after deploy
 
-*Reframes [SE1/O8](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o8).*
+*Reframes [SE1/O8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o8).*
 
 SE1/O8 says secure by default, and asks what an attacker can reach and whether anyone has tried.
 Bias needs the same posture, because no step of a pipeline is unbiased by default. Every source in
@@ -167,7 +167,7 @@ from.
 
 ### <a id="o10"></a>O10. Test at the size you will have: a sample hides what the full table does
 
-*Reframes [SE1/O10](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o10).*
+*Reframes [SE1/O10](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o10).*
 
 A pipeline developed on a sample meets three problems only at full size: memory (a frame that fit
 becomes one that doesn't), joins (a key that was unique in the sample isn't across all seasons, and a
@@ -180,7 +180,7 @@ Measure before optimizing (SE1/O10). The slow stage is rarely the model.
 
 ### <a id="o11"></a>O11. A model in production changes the data it will be trained on next
 
-*Reframes [SE1/O11](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o11).*
+*Reframes [SE1/O11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/07-operating.md#o11).*
 
 You can roll back a model. You cannot roll back the data it generated or the behavior it taught
 people. In the running example, the app shows drivers which lots are forecast to fill, so drivers go

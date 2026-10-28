@@ -2,13 +2,13 @@
 
 How you find out you are wrong when the thing being tested is a claim: what evidence costs, which
 loop catches which error, and the fact with no counterpart in software — **searching for a result
-changes it.** Read with [SE1 chapter 3](https://github.com/wmacevoy/software-engineering/blob/main/guide/03-feedback.md).
+changes it.** Read with [SE1 chapter 3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/03-feedback.md).
 
 ---
 
 ### <a id="f1"></a>F1. Tests of code are free; tests of a claim are not
 
-*Reframes [SE1/F1](https://github.com/wmacevoy/software-engineering/blob/main/guide/03-feedback.md#f1).*
+*Reframes [SE1/F1](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/03-feedback.md#f1).*
 
 Data work inherits software's free tests for its *code* and emphatically does not inherit them for
 its *evidence*. Both regimes live in the same afternoon:
@@ -28,7 +28,7 @@ analysis, the outcome definition, the split, and the labeling scheme ([DM1/W2](0
 
 ### <a id="f2"></a>F2. The cost of checking a result is designed, not given
 
-*Reframes [SE1/F2](https://github.com/wmacevoy/software-engineering/blob/main/guide/03-feedback.md#f2).*
+*Reframes [SE1/F2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/03-feedback.md#f2).*
 
 The toolkit, in data:
 
@@ -50,7 +50,7 @@ about checking.*
 
 ### <a id="f3"></a>F3. Push each class of error down to the cheapest loop that can catch it
 
-*Reframes [SE1/F3](https://github.com/wmacevoy/software-engineering/blob/main/guide/03-feedback.md#f3).*
+*Reframes [SE1/F3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/03-feedback.md#f3).*
 
 | Loop                                  | Latency   | Catches                                                   |
 | ------------------------------------- | --------- | --------------------------------------------------------- |
@@ -169,7 +169,7 @@ network most when a lot is busiest. Five years of readings describe the quiet ho
 
 ### <a id="f9"></a>F9. When a metric becomes a target, it stops measuring — and the search is the hardest optimizer you will meet
 
-*Reframes [SE1/F5](https://github.com/wmacevoy/software-engineering/blob/main/guide/03-feedback.md#f5).*
+*Reframes [SE1/F5](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/03-feedback.md#f5).*
 
 SE1/F5 is about people gaming a measure. In data mining the optimizer is usually not a person. It is
 the training loop, the hyperparameter search, the feature selection, the agent re-running until the
