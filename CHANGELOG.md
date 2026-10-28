@@ -78,8 +78,15 @@ signs the release (SE1/U9).
   principle quotes the changed words.
 - Not reviewed: whether the 73 reframings written against the earlier commit still read true
   against v1.3's unchanged principles. Their IDs resolve, which is all `tools/check.js` can say.
+- AGENTS.md, after SE1 v1.2's: says who drafted it and when, and that nothing in it has been
+  tried; loads from copies inside the working directory, with a check that they loaded; a new
+  section *After a gap, additions* (the ledger, not the summary, counts looks; derived data found
+  after a gap is torn; a kernel is a summary). CHECKLISTS' *Handing an agent data work* aligns
+  with SE1's *Handing a task to an agent*: loaded not opened, checks in the pipeline, the retro
+  questions. The `./se` line waits until `se` knows this guide's documents.
 
-**For copies:** copy AGENTS.md beside SE1's AGENTS.md, and import both at every start.
+**For copies:** copy AGENTS.md beside SE1's AGENTS.md, inside the working directory; import both at
+every start, and check that they loaded (SE1/A11).
 
 ### New
 

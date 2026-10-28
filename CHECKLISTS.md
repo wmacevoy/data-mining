@@ -135,7 +135,11 @@ to the pipeline as software; these are the ones data work adds.
 
 **Handing an agent data work**
 
-- [ ] It loads both AGENTS.md files at start. ([AGENTS.md](AGENTS.md))
+- [ ] Both AGENTS.md files are loaded at every start from copies inside the working directory, not
+      left in files to be opened, and a fresh session has been seen to quote a line of each.
+      ([AGENTS.md](AGENTS.md), [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a11))
+- [ ] The checks it is asked for are in the pipeline and CI, where they run on the work without it
+      choosing to. ([DM1/A2](guide/10-agents.md#a2))
 - [ ] It cannot read the holdout. ([DM1/A4](guide/10-agents.md#a4))
 - [ ] It sees the schema and a fixture, not rows about people, unless decided otherwise.
       ([DM1/A8](guide/10-agents.md#a8))
@@ -147,3 +151,5 @@ to the pipeline as software; these are the ones data work adds.
 - [ ] The joins, filters, splits, and fills read line by line. ([DM1/A6](guide/10-agents.md#a6))
 - [ ] Its count of tries, and its holdout looks (should be zero). ([DM1/A3](guide/10-agents.md#a3))
 - [ ] You can explain the number without it. ([DM1/A7](guide/10-agents.md#a7))
+- [ ] You asked the retro questions, including what it assumed about the data because nobody wrote
+      it down, and wrote the answers into the repository. ([SE1/A10](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a10))

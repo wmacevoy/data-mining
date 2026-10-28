@@ -2,8 +2,8 @@
 
 A working agreement for AI agents doing data work — analysis, pipelines, models, evaluation — in a
 repository that follows this guide. It **extends** the
-[SE1 working agreement](https://github.com/wmacevoy/software-engineering/blob/v1.3/AGENTS.md), which
-still governs everything about the code: ownership, authority, stop/ask/proceed, writing for human
+[SE1 working agreement](https://github.com/wmacevoy/software-engineering/blob/v1.3/AGENTS.md) at
+SE1 v1.3, which still governs everything about the code: ownership, authority, stop/ask/proceed, writing for human
 attention, verifying, finishing. This file adds what data work needs on top, and where the two
 overlap, the stricter rule wins. Each rule cites the principle behind it by versioned ID — (DM1/F5),
 (SE1/T3) — so that it can be argued with rather than merely obeyed.
@@ -14,9 +14,22 @@ them all, and each has an anchor in its chapter (for example, `guide/03-feedback
 from **v1.0**; what changed since, by ID, is in the guide's
 [CHANGELOG](https://github.com/wmacevoy/data-mining/blob/main/CHANGELOG.md).
 
-**Load both files at every start** — for example, import both from `CLAUDE.md`, with both copies kept
-in the repository. A rule in a file you would have to open is a rule you will not follow
-(SE1/A11).
+Drafted 2026-10-27 by a Claude model with Warren MacEvoy, refactoring the course document
+`DATA-SCIENCE.md` (drafted 2026-08-27 with Claude Opus 5); which model did the refactoring was not
+recorded. Revised with Claude Fable 5.1 on 2026-10-28 against SE1 v1.3; the human signs each
+release. These are rules an agent wrote for agents (SE1/U9), and **none of them has been tried**:
+no field report, no trial, and no review by anyone, of any model family, has yet tested a rule in
+this file or in the guide behind it. Each is an inference from SE1's trials and from the author's
+teaching, marked here once rather than on every line (SE1/W12). The first field reports are
+expected from the fall 2026 course projects. An agent or a person who finds a rule wrong for their
+case should say so and propose the change, with what was observed.
+
+**Load both files at every start, from copies kept inside the working directory**, for example by
+importing both from `CLAUDE.md`; an import from outside the working directory may load nothing and
+say nothing. Then check that they loaded: a fresh session, asked without opening any file, can
+quote a line of each. A rule in a file you would have to open is a rule you will not follow, and
+in SE1's trials a rule that was loaded was still not applied unless a check ran on the work
+(SE1/A11). So the checks this file asks for belong in the pipeline and in CI, not only here.
 
 The repository's own guide (`CONTRIBUTING.md` or equivalent) wins over this file where they disagree.
 It knows the local mechanics — where raw data lives, which split is the holdout, how to reset — and
@@ -46,6 +59,20 @@ the design. A task that contradicts either is a question for the human, not a ta
   you cannot check a number you cannot regenerate. (DM1/D6)
 - **Look at the data before writing code against it**: the schema, a profile, ten rows at random and
   the extremes. Never assert something about a column you have not looked at. (DM1/U1, DM1/U7)
+
+## After a gap, additions
+
+SE1's *After a gap* holds: a summary is recalled, not observed. In data work the summary's claims
+have records to check against, and derived data is one of the things a gap tears.
+
+- **The count of looks is in the ledger, not in the summary.** "Best of 12, holdout untouched" is
+  a claim; the ledger says how many, and a look only the summary remembers was not counted. If the
+  summary reports a holdout score, that look happened: count it. (DM1/F5, DM1/F6, DM1/A3)
+- **Derived data you find is torn until a run from raw agrees with it.** A partition, a feature
+  table, a model file: regenerate it before building on it, or say that you did not. (DM1/U2,
+  DM1/D4)
+- **A notebook's kernel state is a summary.** Restart and run all before trusting any cell's
+  output. (DM1/U2)
 
 ## Stop and ask, additions
 
