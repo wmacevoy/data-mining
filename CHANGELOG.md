@@ -17,9 +17,9 @@ yours.
 
 ## v1.0 — unreleased
 
-· 92 principles
+· 93 principles
 
-The first release: 74 principles that reframe SE1 principles for data work, and 18 new ones that
+The first release: 75 principles that reframe SE1 principles for data work, and 18 new ones that
 SE1 has no counterpart for. Refactored from the course document `DATA-SCIENCE.md`, reorganized into
 SE1's ten chapters. Bias is treated as SE1 treats security: a permanent requirement
 ([DM1/R10](guide/04-requirements.md#r10)), an audit before and after deploy
@@ -57,6 +57,10 @@ signs the release (SE1/U9).
   to [DM1/F6](guide/03-feedback.md#f6), where every look spends evidence; the resolution is what
   is looked at. Whitespace on the inputs is free and is where K2 lives; on the outcome it is a
   look, and goes in the ledger. GLOSSARY gains *whitespace*.
+- [SE1/H4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h4), the stand-up's fourth
+  question: reframed as [DM1/H8](guide/09-people.md#h8). The discomfort in data work has a short
+  list of shapes, each an early sign of something this guide names, so the question becomes *what
+  about the current number do you not believe?*
 
 **For copies:** copy AGENTS.md beside SE1's AGENTS.md, and import both at every start.
 

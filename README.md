@@ -231,6 +231,7 @@ these.)
 - [**DM1/H5**](guide/09-people.md#h5) Whoever owns the definition owns the conclusion
 - [**DM1/H6**](guide/09-people.md#h6) Present uncertainty in the client's units and decisions, not the model's
 - [**DM1/H7**](guide/09-people.md#h7) A model demo is a test: choose the examples before the meeting, and include failures
+- [**DM1/H8**](guide/09-people.md#h8) Say out loud what you do not believe about the number; here, disbelief is data
 
 **[10. Agents](guide/10-agents.md)**
 
@@ -313,7 +314,7 @@ software applies to it.
 - [SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/08-work.md#w10) → [DM1/W6](guide/08-work.md#w6)
 - [SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/08-work.md#w11) → [DM1/W7](guide/08-work.md#w7)
 - [SE1/H1](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h1) → [DM1/H5](guide/09-people.md#h5)
-- [SE1/H4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h4) → [DM1/H4](guide/09-people.md#h4)
+- [SE1/H4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h4) → [DM1/H4](guide/09-people.md#h4), [DM1/H8](guide/09-people.md#h8)
 - [SE1/H5](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h5) → [DM1/H1](guide/09-people.md#h1)
 - [SE1/H6](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h6) → [DM1/H2](guide/09-people.md#h2)
 - [SE1/H8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h8) → [DM1/H7](guide/09-people.md#h7)

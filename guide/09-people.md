@@ -124,6 +124,24 @@ to them. That answer is a requirement ([DM1/R4](04-requirements.md#r4)).
 
 > **Ask:** "Were these examples chosen before we knew how the model would do on them?"
 
+### <a id="h8"></a>H8. Say out loud what you do not believe about the number; here, disbelief is data
+
+*Reframes [SE1/H4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h4).*
+
+SE1/H4's stand-up asks a fourth question: *do you notice discomfort? can you name it?* In data work
+the discomfort has a short list of shapes, and each one is worth more said than kept. "This is too
+good" is the first sign of leakage ([DM1/U3](02-unknowing.md#u3)). "I keep wanting to look at the
+holdout" is a look about to be spent ([DM1/F5](03-feedback.md#f5)). "I don't trust the Sunday
+labels" is a K4 about to become a K3 ([DM1/U4](02-unknowing.md#u4)). "The effect went away when I
+changed the window" is a null being negotiated with ([DM1/W5](08-work.md#w5)). Each is cheaper to
+say in week two than to find in week eleven, and none of them shows up in a metric.
+
+So the stand-up for a data project asks, per person: done, next, blocked, and *what about the
+current number do you not believe?* One sentence. Noticing without a reason is still data, and a
+disbelief nobody can name yet goes in FINDINGS as a question, not in a drawer.
+
+> **Ask:** "What about this result do you not believe, and has anyone said it out loud?"
+
 ---
 
 Next: [10. Agents](10-agents.md) — what changes when a fast analyst has no stake in the answer.
