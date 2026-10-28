@@ -8,13 +8,18 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      # Full history: the checker reads this guide's own tags once there are any (a copy's label,
+      # a patch release's minor).
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       # The SE1 guide at the release this guide is pinned to (SE_RELEASE in tools/check.js), so every
       # SE1 ID this guide cites is checked to exist in that release, not in whatever main says now.
       - uses: actions/checkout@v7
         with:
           repository: wmacevoy/software-engineering
           ref: v1.3
+          fetch-depth: 0
           path: .se1
       - uses: actions/setup-node@v7
         with:
