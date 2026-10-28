@@ -1,0 +1,23 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # The SE1 guide, so every SE1 ID this guide cites is checked to exist.
+      - uses: actions/checkout@v7
+        with:
+          repository: wmacevoy/software-engineering
+          path: .se1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      # The same command a contributor runs locally (SE1/O3); no dependencies to install.
+      - run: node tools/check.js
+        env:
+          SE_GUIDE: .se1

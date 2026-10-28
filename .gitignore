@@ -1,0 +1,4 @@
+.DS_Store
+node_modules/
+# CI's checkout of the SE1 guide, used to check SE1 IDs
+.se1/
