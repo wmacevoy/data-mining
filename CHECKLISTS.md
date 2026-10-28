@@ -140,6 +140,8 @@ to the pipeline as software; these are the ones data work adds.
       ([AGENTS.md](AGENTS.md), [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a11))
 - [ ] The checks it is asked for are in the pipeline and CI, where they run on the work without it
       choosing to. ([DM1/A2](guide/10-agents.md#a2))
+- [ ] `./dm --doctor` ran, and what it found is in the task or the queue. ([dm.py](dm.py),
+      [SE1/T2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t2))
 - [ ] It cannot read the holdout. ([DM1/A4](guide/10-agents.md#a4))
 - [ ] It sees the schema and a fixture, not rows about people, unless decided otherwise.
       ([DM1/A8](guide/10-agents.md#a8))

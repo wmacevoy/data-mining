@@ -50,6 +50,11 @@ the design. A task that contradicts either is a question for the human, not a ta
 
 ## Before you start
 
+- **If the repository has `./dm`, run `./dm --doctor` once.** It is SE1's doctor plus this guide's
+  rows: both working agreements loaded, the question's one-way doors, the plan, where the holdout
+  lives and whether it is in reach, every column's knowable-at, raw read-only, the ledger's writer.
+  Work by what it finds; a *none yet* row is reported once, not invented to satisfy a rule.
+  (SE1/T2, DM1/A2)
 - **Read the datasheet for every source the task touches**, and in particular, per column: units,
   sentinels, and *when the value becomes knowable*. If there is no datasheet, say so; draft one as a
   proposal rather than guess. (DM1/R5, DM1/R6)

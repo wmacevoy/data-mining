@@ -55,3 +55,29 @@ commit the lock. The course repository leaves its lock file uncommitted, because
 differently across students' machines.
 
 **Open:** whether that is a gap in SE1/O2, or a local exception that should be written down as one.
+
+### 7. The doctor has never met a project
+
+`dm --doctor` (`dm.py`, beside SE1's `se.py` in a project) was written on 2026-10-28 from the
+principles, not from a project. Every row is something this guide says must be mechanical rather
+than told ([DM1/A4](guide/10-agents.md#a4), [DM1/D6](guide/05-design.md#d6),
+[DM1/F6](guide/03-feedback.md#f6), [DM1/R6](guide/04-requirements.md#r6)), and every threshold and
+heuristic in it is invented: which files count as the ledger, what a placeholder looks like, what
+*readable* means for a holdout. Its tests are fixtures written beside it, which is the guard tested
+against its own stub that SE1's GAPS warns about. It has not been run on a repository that was not
+built to pass it.
+
+Two things it exposed while being written:
+
+- **The two AGENTS.md copies have no names.** AGENTS.md says *copy this beside SE1's AGENTS.md*,
+  and both are called AGENTS.md. The doctor tells them apart by which guide they link to and accepts
+  any file name; the guide should say what to call them, or that CLAUDE.md imports both by whatever
+  name they have.
+- **"Readable from the working directory" has no definition** ([DM1/A4](guide/10-agents.md#a4)).
+  The doctor treats a path outside the repository, or inside it but absent and git-ignored, as out
+  of reach, and a tracked or present file as in reach. An agent with a shell can read any path the
+  user can; the thing that would make a holdout truly unreachable, a permission or another host, is
+  not something a doctor can see from the repository.
+
+**Wrong if** the first course project runs it and every row that failed was one the owner already
+knew about, or a row that passed hid the thing that went wrong. **Open:** the first field report.

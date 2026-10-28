@@ -44,3 +44,4 @@ lowercase ID without the version, e.g. DM1/F5 is guide/03-feedback.md#f5.
 - [templates/MODEL_CARD.md](https://raw.githubusercontent.com/wmacevoy/data-mining/main/templates/MODEL_CARD.md): a model's contract
 - [templates/LEDGER.md](https://raw.githubusercontent.com/wmacevoy/data-mining/main/templates/LEDGER.md): the log of everything scored
 - [templates/CONTRIBUTING.md](https://raw.githubusercontent.com/wmacevoy/data-mining/main/templates/CONTRIBUTING.md): the repository guide for a data project
+- [dm.py](https://raw.githubusercontent.com/wmacevoy/data-mining/main/dm.py): the data project's doctor, run beside SE1's se.py (`./dm --doctor`)

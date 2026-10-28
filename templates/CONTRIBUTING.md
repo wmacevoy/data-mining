@@ -19,6 +19,10 @@ Keep it short and true: a change that makes a line here untrue updates it in the
   tests, and the golden-output diff; the same command CI runs
   ([DM1/O2](https://github.com/wmacevoy/data-mining/blob/main/guide/07-operating.md#o2))
 - **Success prints:** `_the line that means it passed_`
+- **The doctor:** `./dm --doctor` — SE1's rows and this guide's: both agreements loaded, the
+  question's one-way doors, the holdout's reach, every column's knowable-at, raw read-only, the
+  ledger's writer; *none yet* is a true answer
+  ([DM1/A2](https://github.com/wmacevoy/data-mining/blob/main/guide/10-agents.md#a2))
 - **Golden output:** `_path_` — regenerate with `_command_` and review the diff
   ([DM1/T7](https://github.com/wmacevoy/data-mining/blob/main/guide/06-testing.md#t7))
 
@@ -37,4 +41,5 @@ Keep it short and true: a change that makes a line here untrue updates it in the
 - **Working set:** `docs/` — `QUESTION_vN`, `PLAN_vN`, datasheets, model cards, the ledger, `QUEUE`,
   `FINDINGS` ([DM1/W6](https://github.com/wmacevoy/data-mining/blob/main/guide/08-work.md#w6))
 - **Agents:** read `AGENTS.md` (copied from the [data mining guide](https://github.com/wmacevoy/data-mining/blob/main/AGENTS.md))
-  and the SE1 `AGENTS.md` it extends, and this file, before acting.
+  and the SE1 `AGENTS.md` it extends, and this file, before acting. `dm`, `dm.ps1`, and `dm.py`
+  sit beside SE1's `se.py`.

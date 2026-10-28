@@ -58,7 +58,8 @@ by ID when you raise a concern or explain a choice.
 
 **Teams adopting it:** copy both AGENTS.md files into your repository and import them from your
 agent's instruction file, and start your working set from the templates listed under
-[Contents](#contents).
+[Contents](#contents). Copy `dm`, `dm.ps1`, and `dm.py` beside SE1's `se.py` and run `./dm --doctor`:
+it says what the data working set lacks, and *none yet* is a true answer.
 
 ## Contents
 
@@ -84,6 +85,7 @@ agent's instruction file, and start your working set from the templates listed u
 | [CHANGELOG.md](CHANGELOG.md)       | what changed in each release, by principle ID                   |
 | `templates/`                       | starting points: [QUESTION](templates/QUESTION_v1.md), [PLAN](templates/PLAN_v1.md), [DATASHEET](templates/DATASHEET.md), [MODEL_CARD](templates/MODEL_CARD.md), [LEDGER](templates/LEDGER.md), [CONTRIBUTING](templates/CONTRIBUTING.md) — and SE1's [DESIGN](https://github.com/wmacevoy/software-engineering/blob/v1.3/templates/DESIGN_v1.md), [QUEUE](https://github.com/wmacevoy/software-engineering/blob/v1.3/templates/QUEUE.md), and [FINDINGS](https://github.com/wmacevoy/software-engineering/blob/v1.3/templates/FINDINGS.md), unchanged |
 | [GAPS.md](GAPS.md)                 | where the guide falls short, and what is not yet tested         |
+| `dm`, `dm.py`                      | the data project's doctor: SE1's rows plus this guide's, run in a repository that follows both (`./dm --doctor`); untried on a real project ([GAPS 7](GAPS.md#7-the-doctor-has-never-met-a-project)) |
 
 ## The running example
 
@@ -355,7 +357,9 @@ this repository (`../software-engineering`, or `SE_GUIDE=path`), it also checks 
 anchor exists at the SE1 release this guide is pinned to, read from that tag; a clone without the tag
 is a problem it names, and without a clone it says so. `node tools/check.js --print` prints the index
 and the SE1 map as they should read, to paste in after adding or rewording a principle. Reword
-freely; never reuse an ID for a different idea.
+freely; never reuse an ID for a different idea. `python3 -I tools/test_dm.py` runs the doctor's
+tests, every row seen red on a fixture built to fail it; CI runs the checker and the tests on three
+platforms and two Pythons.
 
 **This guide is pinned to one SE1 release**, named once, by `SE_RELEASE` in `tools/check.js`, and
 every SE1 link, llms.txt, and CI name it: a reader lands on the text that was read, not on whatever

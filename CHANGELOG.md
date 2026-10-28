@@ -92,6 +92,15 @@ signs the release (SE1/U9).
 - README gains *Why to trust this, and why to doubt it*: SE1/U9 applied to the guide on its front
   page. CI checks out SE1 at the pinned tag and this repository with its history, for the checks
   that read tags.
+- `dm`, `dm.ps1`, `dm.py`: a command-line companion for a data project, beside SE1's `se.py`.
+  `./dm --doctor` runs SE1's doctor and adds eleven rows this guide asks to be mechanical: both
+  working agreements loaded, the question's one-way doors, the plan, the holdout's home and reach,
+  every column's knowable-at, raw read-only, raw to report, the ledger and its writer, the model
+  card and its bias audit, the environment, and citations of the question. Every row seen red on a
+  fixture built to fail it (`tools/test_dm.py`); every threshold invented, none yet run on a real
+  project (GAPS 7). CI runs the checker and the tests on Linux, macOS, and Windows, on Python 3.9
+  and the newest; `.gitattributes` keeps line endings LF. MODEL_CARD's bias row cites `Q1/BIAS-1`,
+  versioned, as the question template asks (SE1/R10).
 
 **For copies:** copy AGENTS.md beside SE1's AGENTS.md, inside the working directory; import both at
 every start, and check that they loaded (SE1/A11).
