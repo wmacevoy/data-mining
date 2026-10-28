@@ -1,4 +1,5 @@
 .DS_Store
 node_modules/
+__pycache__/
 # CI's checkout of the SE1 guide, used to check SE1 IDs
 .se1/

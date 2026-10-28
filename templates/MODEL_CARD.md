@@ -45,8 +45,8 @@ On _which split_, with intervals, against the baseline, after _N_ configurations
 ([DM1/R10](https://github.com/wmacevoy/data-mining/blob/main/guide/04-requirements.md#r10),
 [DM1/O9](https://github.com/wmacevoy/data-mining/blob/main/guide/07-operating.md#o9))
 
-| Group | *n* | Measure (interval) | Calibration | Gap vs. requirement `BIAS-1` |
-| ----- | --- | ------------------ | ----------- | ---------------------------- |
+| Group | *n* | Measure (interval) | Calibration | Gap vs. `Q1/BIAS-1` |
+| ----- | --- | ------------------ | ----------- | ------------------- |
 
 - **Worst group found by search, and confirmed on fresh data?** _…_
 - **Sources of bias not checked, and why:** _…_
