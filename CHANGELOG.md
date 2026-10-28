@@ -47,6 +47,11 @@ signs the release (SE1/U9).
   model trained on a partial extract, a notebook run out of order) and the medicine (idempotent
   stages, the cold run from raw, and treating what you find on resuming as torn), and in one
   sentence into [DM1/U6](guide/02-unknowing.md#u6): an interrupted retrain's checkpoint answers.
+- [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a11), *knowing is not doing*:
+  adopted into [DM1/U7](guide/02-unknowing.md#u7), where *look at the rows* becomes something the
+  command does on every run, and [DM1/A2](guide/10-agents.md#a2): a leakage check the agent must
+  choose to run will be read and not run, so the assertions go in the pipeline and CI. A11's
+  other change, that the import boundary is the working directory, is in AGENTS.md.
 
 **For copies:** copy AGENTS.md beside SE1's AGENTS.md, and import both at every start.
 

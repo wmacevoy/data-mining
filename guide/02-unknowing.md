@@ -145,6 +145,14 @@ nothing alike.
 Checking from outside, here, means a plot and a handful of raw rows — chosen at random, and then
 chosen at the extremes. Before you trust a summary, look at the rows that most disagree with it.
 
+SE1/A11's later trials add a second injury, and it is this guide's problem in one sentence: a rule
+freshly read was still left out of the work, and the only thing that got it in was a check that ran
+on the work without the agent choosing to run it. *Look at the rows* is such a rule. Left as a
+habit, it is the step the deadline skips ([DM1/W5](08-work.md#w5)). So have the command that
+produces the number also produce the plot and print the ten rows that most disagree with it, every
+run, and put the knowable-at check in the pipeline ([DM1/T2](06-testing.md#t2)), not in the
+instructions.
+
 > **Ask:** "What did this number average away — and have I looked at the rows that disagree?"
 
 ### <a id="u8"></a>U8. People ask Prob(result | me); the data holds Prob(result | the rows it counts as like me)

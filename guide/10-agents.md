@@ -31,6 +31,12 @@ So a run is not enough either. "It ran and the AUC went up" is the shape of leak
 ([DM1/U3](02-unknowing.md#u3)). Require the evidence a run cannot fake: row counts before and after
 each join, a plot, and one prediction traced back to its rows.
 
+And a check the agent is told to run is not a check that runs. In SE1/A11's trials a guard the
+agent had to choose to run was read and never run; what changed the work was a check that ran on
+it with nobody choosing to. Put the row-count assertions in the pipeline and the knowable-at check
+in CI, where they run on the work ([DM1/T2](06-testing.md#t2)), and make the holdout unreachable
+rather than forbidden ([DM1/A4](#a4)).
+
 > **Ask:** "Was this run — and then, was the output looked at, or only its summary?"
 
 ### <a id="a3"></a>A3. An agent's tries count as your looks
