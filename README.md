@@ -350,14 +350,19 @@ If you remember nothing else, each of these can be asked out loud, and each has 
 
 The guide follows its own advice. Run `node tools/check.js` before committing: it fails if a link or
 anchor is broken, a principle has no *New* or *Reframes* line, an SE1 citation points at the wrong
-place, or the index or the SE1 map above no longer matches the chapters. With a copy of SE1 beside
-this repository (`../software-engineering`, or `SE_GUIDE=path`), it also checks that every SE1 ID
-exists; without one it says so. `node tools/check.js --print` prints the index and the SE1 map as
-they should read, to paste in after adding or rewording a principle. Reword freely; never reuse an ID
-for a different idea.
+place, or the index or the SE1 map above no longer matches the chapters. With a clone of SE1 beside
+this repository (`../software-engineering`, or `SE_GUIDE=path`), it also checks that every SE1 ID and
+anchor exists at the SE1 release this guide is pinned to, read from that tag; a clone without the tag
+is a problem it names, and without a clone it says so. `node tools/check.js --print` prints the index
+and the SE1 map as they should read, to paste in after adding or rewording a principle. Reword
+freely; never reuse an ID for a different idea.
 
-When SE1 changes, the reframing may need to change with it. A new SE1 principle that data work
-sharpens is a new DM1 principle in the matching chapter.
+**This guide is pinned to one SE1 release**, named once, by `SE_RELEASE` in `tools/check.js`, and
+every SE1 link, llms.txt, and CI name it: a reader lands on the text that was read, not on whatever
+SE1's `main` says now. Bumping it is that one edit, a rewrite of the links, a walk through SE1's
+CHANGELOG for every ID this guide reframes, and a CHANGELOG entry here saying what was reframed,
+declined, or confirmed, by SE1 ID. A new SE1 principle that data work sharpens is a new DM1 principle
+in the matching chapter; one that applies to data unchanged is left off the SE1 map on purpose.
 
 ## Where this came from
 
