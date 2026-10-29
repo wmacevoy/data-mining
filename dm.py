@@ -3,7 +3,8 @@
 
   dm --doctor   Is the data project sound? Runs SE1's doctor (se.py, found beside this file, or by
                 SE_PY, SE_GUIDE, .se1/, or ../software-engineering/) and adds the rows DM1 asks to be
-                mechanical rather than told: both working agreements loaded, the question and its
+                mechanical rather than told: both working agreements loaded and the SE1 release the data
+                one extends against the SE1 copy present, the question and its
                 one-way doors, the plan, where the holdout lives and whether it is in reach, a
                 datasheet per source with every column's knowable-at, raw read-only, the one command
                 from raw to report, the ledger and who writes it, the model card and its bias audit,
@@ -33,6 +34,9 @@ Finding = namedtuple("Finding", "name ids state text fix")  # state: pass | warn
 PASS, WARN, NONE, FAIL = "pass", "warn", "none yet", "fail"
 WORST = {PASS: 0, NONE: 1, WARN: 2, FAIL: 3}
 LABEL_RE = re.compile(r"This copy is\s+from\s+\*\*(v\d+\.\d+)\*\*")
+# The SE1 release a DM1 copy was written against: the link to SE1's AGENTS.md its header carries.
+EXTENDS_RE = re.compile(r"software-engineering/blob/(v\d+\.\d+(?:\.\d+)?)/AGENTS\.md")
+DM_NAME, SE_NAME = "AGENTS-DM.md", "AGENTS.md"  # the guide's names for the two copies; any name is accepted
 ID_RE = re.compile(r"\*\*([A-Z]{2,}-\d+)\*\*\s*\*\(since v(\d+)\)\*")
 PLACEHOLDER_RE = re.compile(r"_(…|\.\.\.|path|command|name|date|yyyy-mm-dd|who|whom|what)[^_\n]{0,40}_|^_[^_\n]+_$|^\s*$")
 CODE_SUFFIXES = {".py", ".r", ".jl", ".js", ".ts", ".sh", ".sql", ".ipynb", ".mk", ".ps1", ""}
@@ -202,7 +206,7 @@ def find_se(repo):
 
 def find_copies(repo):
     """(dm_path, dm_label, se_path, se_label): the DM1 and SE1 working agreements, wherever they are and whatever
-    they are called, told apart by which guide they link to. The guide does not yet say what to call them."""
+    they are called, told apart by which guide they link to (the guide's names: AGENTS.md for SE1's, AGENTS-DM.md)."""
     repo = Path(repo)
     cands = [p for pat in ("AGENTS*.md", "docs/AGENTS*.md", ".claude/AGENTS*.md") for p in sorted(repo.glob(pat))]
     cands += claude_imports(repo / "CLAUDE.md")
@@ -231,7 +235,7 @@ def check_agreements(repo):
     name, ids = "data working agreement", "DM1/A1, SE1/A11"
     if not dm:
         return Finding(name, ids, FAIL, "no copy of the data-mining AGENTS.md: none at the root, in docs/, or imported by CLAUDE.md",
-                       f"copy it from the guide ({GUIDE_REPO}) beside SE1's, and import both from CLAUDE.md")
+                       f"copy it from the guide ({GUIDE_REPO}) as {DM_NAME} beside SE1's {SE_NAME}, and import both from CLAUDE.md")
     if not dm_label:
         return Finding(name, ids, FAIL, f"{rel(repo, dm)} carries no release label",
                        "re-copy it from a release: a copy that cannot say which release it is cannot say it is behind")
@@ -245,13 +249,37 @@ def check_agreements(repo):
         if missing:
             return Finding(name, ids, FAIL, f"CLAUDE.md does not import {', '.join(missing)}",
                            "a CLAUDE.md switches off Claude Code's own AGENTS.md read; import both copies from inside the working directory")
+        names = "" if (dm.name, se.name) == (DM_NAME, SE_NAME) else f" (the guide's names are {SE_NAME} for SE1's and {DM_NAME} for this one)"
         return Finding(name, ids, PASS, f"[Claude Code configuration] {rel(repo, dm)} ({dm_label}) and {rel(repo, se)} "
                        f"({se_label or 'no label'}), both imported by CLAUDE.md from inside the working directory; observed "
-                       "loading: a fresh session can quote a line of each", "")
+                       f"loading: a fresh session can quote a line of each{names}", "")
     loaded = [p for p in (dm, se) if p.resolve() == (repo / "AGENTS.md").resolve()]
     other = [rel(repo, p) for p in (dm, se) if p not in loaded]
     return Finding(name, ids, FAIL, f"[Claude Code configuration] no CLAUDE.md: AGENTS.md is read by itself and nothing loads {', '.join(other)}",
                    "add a CLAUDE.md that imports both copies by name")
+
+
+def check_extends(repo):
+    """The DM1 copy says which SE1 release it was written against; the SE1 copy here says which it is."""
+    repo = Path(repo).resolve()
+    dm, dm_label, se, se_label = find_copies(repo)
+    name, ids = "extends", "SE1/U7, SE1/U9"
+    if not dm or not se:
+        return Finding(name, ids, NONE, "needs both copies to compare", "")
+    m = EXTENDS_RE.search(read(dm))
+    if not m:
+        return Finding(name, ids, WARN, f"{rel(repo, dm)} does not say which SE1 release it extends", "re-copy it from a release whose header links SE1's AGENTS.md at a tag")
+    pin = m.group(1)
+    if not se_label:
+        return Finding(name, ids, WARN, f"{rel(repo, dm)} extends SE1 {pin}; {rel(repo, se)} carries no label to compare", "re-copy SE1's AGENTS.md from a release")
+    minor = lambda v: tuple(int(x) for x in v[1:].split(".")[:2])
+    if minor(se_label) > minor(pin):
+        return Finding(name, ids, WARN, f"{rel(repo, dm)} ({dm_label}) extends SE1 {pin}; the SE1 copy here is {se_label}: what changed between them, this guide has not reviewed",
+                       f"read SE1's CHANGELOG from {pin}; the guide's next release says what it reframed, declined, or confirmed")
+    if minor(se_label) < minor(pin):
+        return Finding(name, ids, FAIL, f"{rel(repo, se)} is SE1 {se_label}, older than the {pin} this guide's copy extends: rules it leans on are missing",
+                       f"re-copy SE1's AGENTS.md at {pin} or newer")
+    return Finding(name, ids, PASS, f"{rel(repo, dm)} ({dm_label}) extends SE1 {pin}; the SE1 copy here is {se_label}", "")
 
 
 def check_question(repo):
@@ -576,7 +604,7 @@ def check_citations(repo, q, version, ids):
 
 def dm_rows(repo):
     repo = Path(repo).resolve()
-    out = [check_agreements(repo)]
+    out = [check_agreements(repo), check_extends(repo)]
     qf, q, version, ids = check_question(repo)
     out.append(qf)
     out.append(check_plan(repo, q is not None))

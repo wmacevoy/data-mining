@@ -130,7 +130,7 @@ class Fixture(unittest.TestCase):
         return files
 
 
-DM_ROWS = ("data working agreement", "question", "plan", "holdout", "datasheets", "raw is read-only",
+DM_ROWS = ("data working agreement", "extends", "question", "plan", "holdout", "datasheets", "raw is read-only",
            "raw to report", "ledger", "model card", "environment", "question citations")
 
 
@@ -168,6 +168,30 @@ class TestAgreements(Fixture):
         f = self.doctor(self.changed(**{"CLAUDE.md": "@AGENTS.md\n"}))
         self.assertEqual(finding(f, "data working agreement").state, dm.FAIL)
         self.assertIn("does not import AGENTS-DM.md", finding(f, "data working agreement").text)
+
+    def test_other_names_pass_and_are_told_the_guides_names(self):
+        f = self.doctor(self.changed(**{"AGENTS-DM.md": None, "docs/AGENTS-DATA.md": DM_AGENTS, "CLAUDE.md": "@AGENTS.md\n@docs/AGENTS-DATA.md\n"}))
+        self.assertEqual(finding(f, "data working agreement").state, dm.PASS)
+        self.assertIn("AGENTS-DM.md", finding(f, "data working agreement").text)
+
+    def test_extends_the_se1_copy_present(self):
+        f = self.doctor()
+        self.assertEqual(finding(f, "extends").state, dm.PASS)
+        self.assertIn("extends SE1 v1.3", finding(f, "extends").text)
+
+    def test_extends_an_older_se1_than_the_copy_here(self):
+        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("v1.3", "v1.4")}))
+        self.assertEqual(finding(f, "extends").state, dm.WARN)
+        self.assertIn("not reviewed", finding(f, "extends").text)
+
+    def test_extends_a_newer_se1_than_the_copy_here(self):
+        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("v1.3", "v1.2")}))
+        self.assertEqual(finding(f, "extends").state, dm.FAIL)
+        self.assertIn("older", finding(f, "extends").text)
+
+    def test_extends_needs_a_labeled_se1_copy(self):
+        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("This copy is from **v1.3**", "no label")}))
+        self.assertEqual(finding(f, "extends").state, dm.WARN)
 
     def test_no_claude_md_loads_only_the_root_file(self):
         f = self.doctor(self.changed(**{"CLAUDE.md": None}))
