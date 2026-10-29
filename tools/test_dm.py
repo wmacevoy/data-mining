@@ -271,6 +271,14 @@ class TestHoldout(Fixture):
         self.assertEqual(finding(f, "holdout").state, dm.FAIL)
         self.assertIn("tracked", finding(f, "holdout").text)
 
+    def test_none_is_a_true_answer(self):
+        # first field report: the names on a line saying there is no holdout were read as its paths
+        c = GOOD["CONTRIBUTING.md"].replace("lives in `../holdout/`; Ann may read it; spent only at a decision.",
+                                            "none, in any project. `src` scores every run on its test split.")
+        f = self.doctor(self.changed(**{"docs/PLAN_v1.md": None, "CONTRIBUTING.md": c, "src/split.py": "TEST = 0.2\n"}))
+        self.assertEqual(finding(f, "holdout").state, dm.NONE)
+        self.assertIn("none", finding(f, "holdout").text)
+
     def test_named_without_a_path(self):
         p = GOOD["docs/PLAN_v1.md"].replace("`../holdout/` — kept by Ann", "kept by Ann")
         c = GOOD["CONTRIBUTING.md"].replace("lives in `../holdout/`", "Ann has it")

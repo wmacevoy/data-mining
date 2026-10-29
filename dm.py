@@ -380,6 +380,10 @@ def check_holdout(repo):
     if not sources:
         if not named:
             return Finding(name, ids, NONE, "no plan or CONTRIBUTING line says where the holdout lives", "")
+    said_none = [src for src, line in sources if re.match(r"\s*none\b", line, re.I)]  # a statement, and its backticks are not paths
+    sources = [(src, line) for src, line in sources if src not in said_none]
+    if said_none and not sources and not named:
+        return Finding(name, ids, NONE, f"{said_none[0]} says there is none", "")
     paths = [(src, p) for src, line in sources for p in backtick_paths(line)]
     if sources and not paths and not any(placeholder(line) for _, line in sources):
         states.append(WARN)
