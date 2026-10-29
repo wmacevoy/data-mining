@@ -172,10 +172,11 @@ def find_docs(repo, patterns):
 
 
 def rel(repo, path):
+    """A path as the report prints it: relative to the repository, forward slashes on every platform."""
     try:
-        return str(Path(path).resolve().relative_to(Path(repo).resolve()))
+        return Path(path).resolve().relative_to(Path(repo).resolve()).as_posix()
     except ValueError:
-        return str(path)
+        return Path(path).as_posix()
 
 
 def worst(states):
