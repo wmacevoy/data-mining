@@ -40,6 +40,6 @@ Keep it short and true: a change that makes a line here untrue updates it in the
 
 - **Working set:** `docs/` — `QUESTION_vN`, `PLAN_vN`, datasheets, model cards, the ledger, `QUEUE`,
   `FINDINGS` ([DM1/W6](https://github.com/wmacevoy/data-mining/blob/main/guide/08-work.md#w6))
-- **Agents:** read `AGENTS.md` (copied from the [data mining guide](https://github.com/wmacevoy/data-mining/blob/main/AGENTS.md))
-  and the SE1 `AGENTS.md` it extends, and this file, before acting. `dm`, `dm.ps1`, and `dm.py`
-  sit beside SE1's `se.py`.
+- **Agents:** read `AGENTS-DM.md` (copied from the [data mining guide](https://github.com/wmacevoy/data-mining/blob/main/AGENTS.md))
+  and the SE1 `AGENTS.md` it extends, both imported from `CLAUDE.md`, and this file, before acting.
+  `dm`, `dm.ps1`, and `dm.py` sit beside SE1's `se.py`.

@@ -69,10 +69,12 @@ built to pass it.
 
 Two things it exposed while being written:
 
-- **The two AGENTS.md copies have no names.** AGENTS.md says *copy this beside SE1's AGENTS.md*,
-  and both are called AGENTS.md. The doctor tells them apart by which guide they link to and accepts
-  any file name; the guide should say what to call them, or that CLAUDE.md imports both by whatever
-  name they have.
+- **The two AGENTS.md copies had no names.** Closed 2026-10-29: SE1's stays `AGENTS.md` at the root,
+  where SE1's doctor and Claude Code's own read look for it, and this guide's is `AGENTS-DM.md`
+  beside it, both imported from `CLAUDE.md` (AGENTS.md's header, the README, the CONTRIBUTING
+  template). The doctor still tells them apart by which guide they link to, so a project that chose
+  other names is told the guide's, not failed. Whether two files loaded from one CLAUDE.md behave
+  as one agreement is untested, like the rest.
 - **"Readable from the working directory" has no definition** ([DM1/A4](guide/10-agents.md#a4)).
   The doctor treats a path outside the repository, or inside it but absent and git-ignored, as out
   of reach, and a tracked or present file as in reach. An agent with a shell can read any path the

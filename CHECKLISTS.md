@@ -135,8 +135,9 @@ to the pipeline as software; these are the ones data work adds.
 
 **Handing an agent data work**
 
-- [ ] Both AGENTS.md files are loaded at every start from copies inside the working directory, not
-      left in files to be opened, and a fresh session has been seen to quote a line of each.
+- [ ] `AGENTS.md` (SE1's) and `AGENTS-DM.md` (this guide's) are loaded at every start from copies
+      inside the working directory, not left in files to be opened, and a fresh session has been
+      seen to quote a line of each.
       ([AGENTS.md](AGENTS.md), [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a11))
 - [ ] The checks it is asked for are in the pipeline and CI, where they run on the work without it
       choosing to. ([DM1/A2](guide/10-agents.md#a2))

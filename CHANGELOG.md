@@ -101,9 +101,14 @@ signs the release (SE1/U9).
   project (GAPS 7). CI runs the checker and the tests on Linux, macOS, and Windows, on Python 3.9
   and the newest; `.gitattributes` keeps line endings LF. MODEL_CARD's bias row cites `Q1/BIAS-1`,
   versioned, as the question template asks (SE1/R10).
+- The two copies have names: SE1's stays `AGENTS.md` at the root, where SE1's doctor and Claude
+  Code's own read look for it, and this guide's is `AGENTS-DM.md` beside it, both imported from
+  `CLAUDE.md`. The doctor's *extends* row compares the SE1 release this guide's copy was written
+  against with the SE1 copy present, and says when what lies between them has not been reviewed.
+  The release check for this guide's own copy waits for the v1.0 tag.
 
-**For copies:** copy AGENTS.md beside SE1's AGENTS.md, inside the working directory; import both at
-every start, and check that they loaded (SE1/A11).
+**For copies:** copy this guide's AGENTS.md as `AGENTS-DM.md` beside SE1's `AGENTS.md`, inside the
+working directory; import both from `CLAUDE.md` at every start, and check that they loaded (SE1/A11).
 
 ### New
 

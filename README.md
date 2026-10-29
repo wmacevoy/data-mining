@@ -56,9 +56,9 @@ before acting in a repository that follows this guide. Then read the chapter tha
 (the question → 4, pipelines and models → 5, evaluation → 3 and 6, production → 7). Cite principles
 by ID when you raise a concern or explain a choice.
 
-**Teams adopting it:** copy both AGENTS.md files into your repository and import them from your
-agent's instruction file, and start your working set from the templates listed under
-[Contents](#contents). Copy `dm`, `dm.ps1`, and `dm.py` beside SE1's `se.py` and run `./dm --doctor`:
+**Teams adopting it:** copy SE1's AGENTS.md to your repository's root as `AGENTS.md` and this guide's
+beside it as `AGENTS-DM.md`, import both from `CLAUDE.md`, and start your working set from the
+templates listed under [Contents](#contents). Copy `dm`, `dm.ps1`, and `dm.py` beside SE1's `se.py` and run `./dm --doctor`:
 it says what the data working set lacks, and *none yet* is a true answer.
 
 ## Contents

@@ -24,9 +24,10 @@ teaching, marked here once rather than on every line (SE1/W12). The first field 
 expected from the fall 2026 course projects. An agent or a person who finds a rule wrong for their
 case should say so and propose the change, with what was observed.
 
-**Load both files at every start, from copies kept inside the working directory**, for example by
-importing both from `CLAUDE.md`; an import from outside the working directory may load nothing and
-say nothing. Then check that they loaded: a fresh session, asked without opening any file, can
+**Load both files at every start, from copies kept inside the working directory**: SE1's as
+`AGENTS.md` at the root, where SE1's doctor and Claude Code's own read look for it, and this one as
+`AGENTS-DM.md` beside it, both imported by name from `CLAUDE.md`; an import from outside the working
+directory may load nothing and say nothing. Then check that they loaded: a fresh session, asked without opening any file, can
 quote a line of each. A rule in a file you would have to open is a rule you will not follow, and
 in SE1's trials a rule that was loaded was still not applied unless a check ran on the work
 (SE1/A11). So the checks this file asks for belong in the pipeline and in CI, not only here.
