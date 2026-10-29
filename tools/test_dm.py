@@ -308,6 +308,13 @@ class TestDataAndPipeline(Fixture):
         f = self.doctor(self.changed(**{"data/raw/a.csv": None}))
         self.assertEqual(finding(f, "raw is read-only").state, dm.NONE)
 
+    def test_raw_path_on_a_wrapped_line(self):
+        # first field report: the path on the template's second, indented line was never read
+        c = GOOD["CONTRIBUTING.md"].replace("lives in `data/raw`, read-only;", "the only raw data, in\n  `data/raw`, read-only;")
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": c}), read_only=())
+        self.assertEqual(finding(f, "raw is read-only").state, dm.FAIL)
+        self.assertIn("writable", finding(f, "raw is read-only").text)
+
     def test_raw_to_report_placeholder(self):
         c = GOOD["CONTRIBUTING.md"].replace("`make report`", "`_command_`")
         f = self.doctor(self.changed(**{"CONTRIBUTING.md": c}))

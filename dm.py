@@ -118,7 +118,7 @@ def field(text, name):
     m = re.search(rf"\*\*{re.escape(name)}:?\*\*:?\s*(.*)", text, re.I)
     if not m:
         return None
-    value, lines = m.group(1), text[m.end():].splitlines()
+    value, lines = m.group(1), text[m.end():].splitlines()[1:]  # [0] is the rest of the matched line: empty
     for line in lines:
         if line.startswith("  ") and not line.lstrip().startswith(("-", "*", "|")):
             value += " " + line.strip()
