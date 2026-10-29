@@ -5,7 +5,8 @@
 > after each. What was reframed, declined, confirmed, and not reviewed is in
 > [CHANGELOG.md](CHANGELOG.md) under v1.0, by SE1 ID. Step 7, `archive/`, waits for the first review
 > or checked source; the GitHub remote was created later that day and CI passed on six platform and
-> Python combinations; the three `se` defects below are still SE1's to fix. The note is kept as written, with its SE1 links pinned to v1.3 like the rest.
+> Python combinations; the three `se` defects below were fixed in SE1 v1.3.1 (2026-10-28), each seen
+> red on a fixture there. The note is kept as written, with its SE1 links pinned to v1.3 like the rest.
 
 Written 2026-10-28 by Claude Fable 5.1, from a read-only survey made from the SE1 checkout beside
 this directory; nothing here was changed. **This is a handoff note, so everything in it is recalled,
