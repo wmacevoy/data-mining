@@ -351,6 +351,14 @@ class TestLedgerCardEnvironment(Fixture):
         self.assertEqual(finding(f, "model card").state, dm.FAIL)
         self.assertIn("bias audit empty", finding(f, "model card").text)
 
+    def test_installed_packages_and_dot_directories_are_not_the_project(self):
+        f = self.doctor(self.changed(**{".pixi/envs/x/lib/site-packages/lib/model_card_template.md": "# Model card\n\n- **Data version:** _…_\n",
+                                        "node_modules/x/DATASHEET.md": "# Datasheet\n", ".venv/ledger.csv": "a\n1\n"}))
+        self.assertEqual(finding(f, "model card").state, dm.PASS)
+        self.assertIn("1 card(s)", finding(f, "model card").text)
+        self.assertIn("1 datasheet(s)", finding(f, "datasheets").text)
+        self.assertIn("docs/ledger.jsonl", finding(f, "ledger").text)
+
     def test_model_card_nobody_signed(self):
         c = GOOD["docs/model_cards/lot_fill.md"].replace("- **This card:**", "- **Card:**")
         f = self.doctor(self.changed(**{"docs/model_cards/lot_fill.md": c}))

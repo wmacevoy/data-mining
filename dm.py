@@ -155,13 +155,18 @@ def latest_doc(repo, stem):
     return p, v
 
 
+SKIP_DIRS = {"templates", "node_modules", "site-packages"}  # the guide's own templates; other people's files
+
+
 def find_docs(repo, patterns):
-    """Project documents matching the glob patterns, excluding the guide's own templates/ directory."""
+    """Project documents matching the glob patterns. Dot-directories (.pixi, .venv, .git) and installed
+    packages are not the project: the first real repository offered a library's model_card_template.md."""
     repo = Path(repo)
     out = []
     for pat in patterns:
         for p in sorted(repo.glob(pat)):
-            if p.is_file() and "templates" not in p.relative_to(repo).parts and ".git" not in p.parts and p not in out:
+            parts = p.relative_to(repo).parts[:-1]
+            if p.is_file() and p not in out and not any(d.startswith(".") or d in SKIP_DIRS for d in parts):
                 out.append(p)
     return out
 
