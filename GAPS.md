@@ -4,9 +4,42 @@ Where the guide falls short. In SE1 this file holds field reports — what happe
 a real project — and each entry is closed by changing the guide, or by a sentence saying why not
 ([SE1/P4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/01-purpose.md#p4)).
 
-**There are no field reports yet.** DM1 has not been applied to a project in its current form; the
-first reports are expected from the fall 2026 course projects. Until then, this file lists where the
-guide is known to be thin, so that nobody mistakes silence for coverage.
+**There is one field report**, below, from a project unlike the guide's running example. The course projects are still
+expected to give the first reports on prediction. The rest of this file lists where the guide is known to be thin, so that
+nobody mistakes silence for coverage.
+
+## Field report: a confidential document review, 2026-11-01
+
+One person preparing a decision on dozens of confidential cases about people, from thousands of pages of PDFs: retrieval,
+extraction, and a brief per case, written by a language model, with each quotation checked against its page. Nothing is trained,
+and nothing is predicted. The project is private, so this report gives kinds and counts only. Each principle's verdict, and
+exact proposals, are in [REVIEW-v1.md](REVIEW-v1.md). Ordered by what each cost:
+
+1. **A limit on length cost evidence, and every check still passed.** Briefs dropped evidence of several kinds to fit a cap, against the written procedure. Citations stayed exact, because a citation check can't see an
+   omission. Comparing drafts with finals by script led to 37 audits, restoring from 0 to about 70 items per brief. Two authors'
+   own accounts of their cuts had understated them. The limit was the agent's own idea. **Proposal:** a new principle on what
+   a summary drops, and "a limit is a target too" in [DM1/F9](guide/03-feedback.md#f9).
+2. **Absences were reported that weren't so.** A required document, reported missing across one group of cases, sat on the last
+   page of another file. A scan for printed identifiers reported nothing because it had found nothing to search for, and a
+   form's layout then hid another. **Proposal:** a new principle, that "none found" is a claim about the search.
+3. **The claim wasn't a prediction.** [DM1/R2](guide/04-requirements.md#r2) has no outcome or prediction point to fix here, and the
+   doctor gave 8 of 23 rows as *none yet*, with no way to say they don't apply. **Proposal:** a new principle naming the kind of
+   claim, and a *not applicable* in the doctor.
+4. **Identifiers reached derived data.** Identifiers printed on old forms went into a text cache and a search index, and
+   deleted rows stayed in the store's old versions until purged. **Proposal:** extend [DM1/O8](guide/07-operating.md#o8).
+5. **One read isn't enough.** Independent rewrites of two early briefs each found about ten missed points, and claims the page didn't
+   support. **Proposal:** extend [DM1/A9](guide/10-agents.md#a9).
+6. **Agents had to read the data.** [DM1/A8](guide/10-agents.md#a8) doesn't cover the case where reading is the task. **Proposal:**
+   a new principle on what then has to be true.
+
+**What held:** [DM1/U2](guide/02-unknowing.md#u2) named the pattern behind several faults before they were understood.
+[DM1/F6](guide/03-feedback.md#f6) logs caught unread pages. [DM1/T1](guide/06-testing.md#t1) and
+[DM1/D8](guide/05-design.md#d8) exposed that hybrid search has never been compared with keyword search, which is still open.
+[DM1/A2](guide/10-agents.md#a2) described exactly what happened: a rule in the procedure was read and broken, and a script
+changed the work.
+
+**What this says nothing about:** trained models, holdouts spent at a decision, or anything in production. 27 of the 93 principles
+didn't reach this project, and 20 more fit by argument only. **Open:** the owner's decision on each proposal.
 
 ## Known thin places
 
@@ -82,4 +115,5 @@ Two things it exposed while being written:
   not something a doctor can see from the repository.
 
 **Wrong if** the first course project runs it and every row that failed was one the owner already
-knew about, or a row that passed hid the thing that went wrong. **Open:** the first field report.
+knew about, or a row that passed hid the thing that went wrong. The first field report found the second: `raw to report` passed on a
+command that doesn't make the project's main product. **Open:** a project that trains a model.
