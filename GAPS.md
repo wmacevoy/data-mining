@@ -27,8 +27,11 @@ exact proposals, are in [REVIEW-v1.md](REVIEW-v1.md). Ordered by what each cost:
    claim, and a *not applicable* in the doctor.
 4. **Identifiers reached derived data.** Identifiers printed on old forms went into a text cache and a search index, and
    deleted rows stayed in the store's old versions until purged. **Proposal:** extend [DM1/O8](guide/07-operating.md#o8).
-5. **One read isn't enough.** Independent rewrites of two early briefs each found about ten missed points, and claims the page didn't
-   support. **Proposal:** extend [DM1/A9](guide/10-agents.md#a9).
+5. **One read isn't enough.** Ten cases were read twice by independent readers, who saw no earlier brief until their own passed its check: two early
+   briefs, then five chosen as highest priority and three at random, with a bar fixed before any result. Both bars were met. Every read missed something the
+   other caught, and second reads missed as much as first ones. In the eight measured, the reads agreed on the main facts, and none reversed a finding. The
+   clearest catch was a pair of marks on a table row, visible only on the page image, one of which would have changed what the row meant. Both reads
+   are one model under one procedure, so a shared blind spot wouldn't show. **Proposal:** extend [DM1/A9](guide/10-agents.md#a9).
 6. **Agents had to read the data.** [DM1/A8](guide/10-agents.md#a8) doesn't cover the case where reading is the task. **Proposal:**
    a new principle on what then has to be true.
 

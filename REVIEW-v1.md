@@ -108,7 +108,7 @@ Any limit on length is a filter on the data, chosen by nobody and applied differ
 author is a poor witness to its own cuts: ask, and you get what it remembers.
 
 So keep the drafts, and compare a draft with its final by script. Ask a second reader, with no sight of the first, to read a
-sample of cases whole, and count what each found that the other missed. Name what may never be cut for length, in advance. When
+sample of cases whole, and count what each found that the other missed. Include a random sample, and expect misses in both directions. Name what may never be cut for length, in advance. When
 a limit and the evidence conflict, the limit gives way.
 
 > **Ask:** "What did this summary drop, how do we know, and who decided?"
@@ -155,7 +155,7 @@ written down before the first session:
 | **DM1/F9** | Add: "A limit is a target too." | *Observed:* with a cap on length, 13 of 30 briefs landed within about 35 words of the same point. When the count's rule changed, they moved to the new cap, and 6 sat at 2,450 to 2,500. An agent told the cap gave way to evidence still stopped 2 words under it. |
 | **DM1/O8** | Name the copies people forget: agent transcripts and tool output, and old versions inside a store. Add: "A scrub lasts only if it sits where the data is derived, or a rebuild brings it back. Run a check that shows it searched for something." | *Observed:* identifiers printed on old forms reached the text cache and the index. Deleted rows stayed in the store's old versions until those were purged. A first scan reported nothing because it had nothing to search for. |
 | **DM1/U7** | Extend to documents: "For a document, the text layer is a summary of the page. Look at the page." | *Observed:* OCR garbled handwriting that turned out to matter. Text extraction collapsed a table's empty columns, so a figure landed in the wrong column. Shortening a command's output hid the ends of pages, and the owner caught that by asking. |
-| **DM1/A9** | Keep it, and move retrieval and extraction out to T12 and F10. Add a sample of two independent reads as the prose form of "score several samples". | *Observed:* independent rewrites of two early briefs, by authors who didn't see the first until done, each found about ten points the first had missed, and each found claims the page didn't support, including reasoning built on a misattributed document. Two pairs, both of early briefs, so the rate for later ones is unknown. |
+| **DM1/A9** | Keep it, and move retrieval and extraction out to T12 and F10. Add a sample of two independent reads as the prose form of "score several samples". | *Observed:* 10 cases were read twice, by readers who didn't see the first brief until theirs passed its check. The first two were early briefs. Then, with a bar fixed beforehand, 5 high-priority and 3 random: the first read had a decision-affecting miss in 5 of 5 and 2 of 3, on a definition readers called broad. Second reads missed as many as first reads or more. The reads agreed on the main facts, and none reversed a finding. Two reads by one model share any blind spot. |
 
 Smaller wording, each one sentence: **DM1/F5** and **DM1/A4**, name "a person keeps it, on paper or elsewhere" as the plain answer to
 what `GAPS.md` item 7 leaves open. **DM1/R2**, point to R12 for claims with no outcome. **DM1/O2**, say what stands in for CI on a
