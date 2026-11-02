@@ -30,6 +30,7 @@ GOOD = {
     "CONTRIBUTING.md": (
         "# Contributing\n\n## Run it\n\n"
         "- **Raw to report:** `make report` — every reported number, about four minutes\n"
+        "- **Main product:** `reports/report.md` — the report the client reads\n"
         "- **Fetch / refresh raw data:** `make fetch`\n\n## Check it\n\n"
         "- **The full check:** `python -m unittest` — the same one CI runs\n- **Success prints:** `OK`\n\n"
         "## Data rules for this repository\n\n"
@@ -347,6 +348,28 @@ class TestDataAndPipeline(Fixture):
         c = GOOD["CONTRIBUTING.md"].replace("`make report`", "`_command_`")
         f = self.doctor(self.changed(**{"CONTRIBUTING.md": c}))
         self.assertEqual(finding(f, "raw to report").state, dm.FAIL)
+
+    def test_raw_to_report_says_it_was_not_run(self):
+        # course field report: the row passed a command that could not run, because it only reads the line
+        text = finding(self.doctor(), "raw to report").text
+        self.assertIn("configured", text)
+        self.assertIn("not run", text)
+
+    def test_raw_to_report_says_what_it_makes(self):
+        self.assertIn("`reports/report.md`", finding(self.doctor(), "raw to report").text)
+
+    def test_raw_to_report_without_a_main_product_warns(self):
+        # first field report: it passed a command that does not make the project's main product
+        c = GOOD["CONTRIBUTING.md"].replace("- **Main product:** `reports/report.md` — the report the client reads\n", "")
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": c}))
+        self.assertEqual(finding(f, "raw to report").state, dm.WARN)
+        self.assertIn("main product", finding(f, "raw to report").text)
+
+    def test_raw_to_report_none_is_a_true_answer(self):
+        # course field report: a line with no backtick could only fail as a placeholder
+        c = GOOD["CONTRIBUTING.md"].replace("`make report` — every reported number, about four minutes", "none yet; the project starts next week")
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": c}))
+        self.assertEqual(finding(f, "raw to report").state, dm.NONE)
 
     def test_raw_to_report_missing(self):
         c = GOOD["CONTRIBUTING.md"].replace("- **Raw to report:** `make report` — every reported number, about four minutes\n", "")

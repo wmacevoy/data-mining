@@ -500,11 +500,17 @@ def check_raw_to_report(repo):
     line = field(text, "Raw to report")
     if line is None:
         return Finding(name, ids, NONE, "CONTRIBUTING.md names no command from raw to report", "you cannot check a number you cannot regenerate")
+    if re.match(r"\s*none\b", line, re.I):
+        return Finding(name, ids, NONE, "CONTRIBUTING.md says there is none yet", "you cannot check a number you cannot regenerate")
     cmds = backtick_paths(line)
     if not cmds:
         return Finding(name, ids, FAIL, "CONTRIBUTING.md's *Raw to report* line still holds the template's placeholder",
                        "name the one command, and about how long it takes at full size")
-    return Finding(name, ids, PASS, f"`{cmds[0]}`", "")
+    made = backtick_paths(field(text, "Main product"))
+    if not made:
+        return Finding(name, ids, WARN, f"`{cmds[0]}`: configured, not run here, and nothing says it makes the main product",
+                       "add a *Main product* line naming what the project delivers; this row cannot tell whether the command makes it")
+    return Finding(name, ids, PASS, f"`{cmds[0]}` makes `{made[0]}`: configured, not run by this doctor, which has only read the line", "")
 
 
 def ledger_rows(path):
