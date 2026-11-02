@@ -490,11 +490,20 @@ class TestDataAndPipeline(Fixture):
         f = self.doctor(self.changed(**{"CONTRIBUTING.md": c, "inputs/a.zip": "z"}), read_only=())
         self.assertEqual(finding(f, "raw is read-only").state, dm.FAIL)
 
-    def test_raw_every_path_named_is_checked_and_a_command_is_not(self):
-        c = GOOD["CONTRIBUTING.md"].replace("lives in `data/raw`, read-only;", "lives in `data/raw` and `inputs`, from `make fetch`, read-only;")
-        f = self.doctor(self.changed(**{"CONTRIBUTING.md": c, "inputs/b.csv": "z\n"}))  # data/raw is read-only; inputs is not
-        self.assertEqual(finding(f, "raw is read-only").state, dm.FAIL)
-        self.assertIn("inputs/b.csv", finding(f, "raw is read-only").text)
+    def test_raw_is_the_first_path_and_the_rest_of_the_line_is_said_not_read(self):
+        # the course repository, run after this row checked every backtick: its line names three projects that are
+        # NOT raw, and the row counted their files, 303 where the truth is 80. No fixture had a line like that.
+        c = GOOD["CONTRIBUTING.md"].replace("lives in `data/raw`, read-only;", "lives in `data/raw`; `other` keeps a cache, which is not raw;")
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": c, "other/b.csv": "z\n"}))
+        self.assertEqual(finding(f, "raw is read-only").state, dm.PASS, finding(f, "raw is read-only").text)
+        self.assertIn("1 file(s) under data/raw", finding(f, "raw is read-only").text)
+        self.assertIn("not checked: other", finding(f, "raw is read-only").text)
+
+    def test_raw_a_command_on_the_line_is_not_the_first_path(self):
+        c = GOOD["CONTRIBUTING.md"].replace("lives in `data/raw`, read-only;", "pulled by `make fetch` into `data/raw`, read-only;")
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": c}))
+        self.assertEqual(finding(f, "raw is read-only").state, dm.PASS, finding(f, "raw is read-only").text)
+        self.assertNotIn("make fetch", finding(f, "raw is read-only").text)
 
     def test_raw_to_report_placeholder(self):
         c = GOOD["CONTRIBUTING.md"].replace("`make report`", "`_command_`")

@@ -533,21 +533,19 @@ def check_raw(repo):
     paths = named_paths(repo, line)
     if not paths:
         return Finding(name, ids, NONE, "CONTRIBUTING.md's *Raw data* line names no path", "fill in the template's placeholder")
-    held = {p: expand(repo, p) for p in paths}
-    found = [p for p in paths if held[p]]
-    if not found:
-        return Finding(name, ids, NONE, f"raw ({paths[0]}) is not present here", "fetched on demand? then the fetch records when and from where (DM1/D2)")
-    files = [f for p in found for x in held[p] for f in (x.rglob("*") if x.is_dir() else [x]) if f.is_file()]
-    where = ", ".join(found)
+    p, others = paths[0], paths[1:]  # a line also names what is not raw: the first path is the claim, the rest are said
+    also = f"; also on the line, not checked: {', '.join(others)}" if others else ""
+    held = expand(repo, p)
+    if not held:
+        return Finding(name, ids, NONE, f"raw ({p}) is not present here{also}", "fetched on demand? then the fetch records when and from where (DM1/D2)")
+    files = [f for x in held for f in (x.rglob("*") if x.is_dir() else [x]) if f.is_file()]
     if not files:
-        return Finding(name, ids, NONE, f"raw ({where}) is empty", "")
-    absent = [p for p in paths if not held[p]]
-    also = f"; named, and not here: {', '.join(absent)}" if absent else ""
+        return Finding(name, ids, NONE, f"raw ({p}) is empty{also}", "")
     writable = [f for f in files if os.access(f, os.W_OK)]
     if writable:
-        return Finding(name, ids, FAIL, f"{len(writable)} of {len(files)} files under {where} are writable ({rel(repo, writable[0])} ...){also}",
-                       f"chmod a-w what it names ({where}), or keep raw in a store the pipeline cannot write; derived data is rebuilt, never hand-edited")
-    return Finding(name, ids, PASS, f"{len(files)} file(s) under {where}, none writable{also}", "")
+        return Finding(name, ids, FAIL, f"{len(writable)} of {len(files)} files under {p} are writable ({rel(repo, writable[0])} ...){also}",
+                       f"chmod a-w what it names ({p}), or keep raw in a store the pipeline cannot write; derived data is rebuilt, never hand-edited")
+    return Finding(name, ids, PASS, f"{len(files)} file(s) under {p}, none writable{also}", "")
 
 
 def check_raw_to_report(repo):
