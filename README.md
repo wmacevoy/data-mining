@@ -85,7 +85,7 @@ it says what the data working set lacks, and *none yet* is a true answer.
 | [CHANGELOG.md](CHANGELOG.md)       | what changed in each release, by principle ID                   |
 | `templates/`                       | starting points: [QUESTION](templates/QUESTION_v1.md), [PLAN](templates/PLAN_v1.md), [DATASHEET](templates/DATASHEET.md), [MODEL_CARD](templates/MODEL_CARD.md), [LEDGER](templates/LEDGER.md), [CONTRIBUTING](templates/CONTRIBUTING.md) — and SE1's [DESIGN](https://github.com/wmacevoy/software-engineering/blob/v1.3/templates/DESIGN_v1.md), [QUEUE](https://github.com/wmacevoy/software-engineering/blob/v1.3/templates/QUEUE.md), and [FINDINGS](https://github.com/wmacevoy/software-engineering/blob/v1.3/templates/FINDINGS.md), unchanged |
 | [GAPS.md](GAPS.md)                 | where the guide falls short, and what is not yet tested         |
-| `dm`, `dm.py`                      | the data project's doctor: SE1's rows plus this guide's, run in a repository that follows both (`./dm --doctor`); untried on a real project ([GAPS 7](GAPS.md#7-the-doctor-has-met-two-projects)) |
+| `dm`, `dm.py`                      | the data project's doctor: SE1's rows plus this guide's, run in a repository that follows both (`./dm --doctor`); met two real projects, neither with a model ([GAPS 7](GAPS.md#7-the-doctor-has-met-two-projects)) |
 
 ## The running example
 

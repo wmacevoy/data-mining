@@ -1,8 +1,31 @@
 # Review of DM1, toward v1.0
 
 A review of all 93 principles against the first real project they have met, with what to change before tagging v1.0.
-Written 2026-11-01 by Claude Opus 5.5 (`claude-opus-5-5`) for Warren MacEvoy, who decides and signs. **This is a proposal:
-no principle has been changed.** The field report it rests on is in [GAPS.md](GAPS.md).
+Written 2026-11-01 by Claude Opus 5.5 (`claude-opus-5-5`) for Warren MacEvoy, who decides and signs. The field report it rests on
+is in [GAPS.md](GAPS.md). What follows *Status* is kept as written, when it was a proposal and no principle had been changed.
+
+## Status
+
+Addressed the same day, by another session of the same model, on the branch `field-report-1`. That session read this review, not the
+project, so nothing here has been checked against the project itself. Not yet read by the owner, and not pushed.
+
+| Proposed | What happened |
+| -------- | ------------- |
+| Five principles | All in the guide: R12, U10, F10, T12, A10. |
+| Seven changes | All in: D6, W7, R10, F9, O8, U7, A9. O8 and U7 use general examples, not the project's. |
+| Smaller wording | All in: F5, A4, R2, O2, R8, W5. R8 omits the token figures. F6 and the templates take the ledger's reads and searches. |
+| Doctor and templates | All in. `raw to report` can only ask and say, so it remains unable to see what this review caught: a project can answer it falsely. |
+| Day of the tag, 2, 3, 6 | Done: what was tested is said, what's unproven is in `CHANGELOG.md` by chapter, and the handoff is in `archive/`. |
+| **Day of the tag, 1, 4, 5, and the tag** | **Not done: the owner's.** Merges, the SE1 pin, moving links at the tag, and whether to tag at all. |
+
+Corrections to this review, found while applying it:
+
+- **"All have exact text or a named change" was not so.** P5, R3, D13, and A6 are marked *Extend* with no text anywhere below. Each now has a
+  sentence, written while applying this, so those four are not what the review proposed.
+- **T1, T3, and A8 had only a "see".** Each now points to the new principle.
+- **T12's basis.** SE1/T8 isn't about baselines. The reframing runs through DM1/T1, and now says so. U10's basis in SE1/T3 is good: that text names
+  "a tool that exits zero because it found nothing to check".
+- **The tally reproduces:** 26, 14, 6, 20, 27, and each chapter's row, recounted by script from the table below. That checks the arithmetic, not the verdicts.
 
 ## The recommendation
 
