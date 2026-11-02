@@ -85,7 +85,7 @@ it says what the data working set lacks, and *none yet* is a true answer.
 | [CHANGELOG.md](CHANGELOG.md)       | what changed in each release, by principle ID                   |
 | `templates/`                       | starting points: [QUESTION](templates/QUESTION_v1.md), [PLAN](templates/PLAN_v1.md), [DATASHEET](templates/DATASHEET.md), [MODEL_CARD](templates/MODEL_CARD.md), [LEDGER](templates/LEDGER.md), [CONTRIBUTING](templates/CONTRIBUTING.md) — and SE1's [DESIGN](https://github.com/wmacevoy/software-engineering/blob/v1.3/templates/DESIGN_v1.md), [QUEUE](https://github.com/wmacevoy/software-engineering/blob/v1.3/templates/QUEUE.md), and [FINDINGS](https://github.com/wmacevoy/software-engineering/blob/v1.3/templates/FINDINGS.md), unchanged |
 | [GAPS.md](GAPS.md)                 | where the guide falls short, and what is not yet tested         |
-| `dm`, `dm.py`                      | the data project's doctor: SE1's rows plus this guide's, run in a repository that follows both (`./dm --doctor`); untried on a real project ([GAPS 7](GAPS.md#7-the-doctor-has-never-met-a-project)) |
+| `dm`, `dm.py`                      | the data project's doctor: SE1's rows plus this guide's, run in a repository that follows both (`./dm --doctor`); untried on a real project ([GAPS 7](GAPS.md#7-the-doctor-has-met-two-projects)) |
 
 ## The running example
 
@@ -383,17 +383,26 @@ asks of any rule.
   one was not recorded), and the review against SE1 v1.3 on 2026-10-28 (Claude Fable 5.1). Every
   commit since the repository was initialized that day carries the agent's trailer, and AGENTS.md
   says so in its header.
-- **What it rests on.** A course document, the author's teaching, and SE1's trials and field reports
-  by reference. Nothing of its own: no field report, no trial, and no review by anyone, of any model
-  family, has yet tested a principle here ([GAPS.md](GAPS.md)). The reframings were written against
-  one SE1 commit and re-read against v1.3 only where SE1 changed; the other 73 were not re-read.
+- **What it rests on.** A course document, the author's teaching, SE1's trials and field reports by
+  reference, and two field reports of its own ([GAPS.md](GAPS.md)). The first, one private document
+  review with nothing trained and nothing predicted, went through the 93 principles of that date: by
+  one model's judgment, 26 held, 20 needed extending or changing, 20 fit by argument only, and 27
+  didn't reach it ([REVIEW-v1.md](REVIEW-v1.md)). Five principles came out of it, and rest on that one
+  project. The second is the course's migration, still under way, with one of its five projects done. Nothing
+  has tested a principle on a trained model, a spent holdout, or production, and no person and no
+  other model family has reviewed them. The reframings were written against one SE1 commit and re-read
+  against v1.3 only where SE1 changed; the other 73 were not re-read.
 - **What has been seen to fail.** `tools/check.js`, on three planted breakages: SE1 pinned to a
   release that lacks three cited principles, a copy of SE1 with no tag to read, and an AGENTS.md
   citing an ID its release does not define. A check never seen red proves nothing
   ([SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t3)), so these were.
+  `dm --doctor`, on each real project it has met: each found bugs in it that its fixtures had not, one
+  of them a fix for such a bug that repeated it ([GAPS.md](GAPS.md#7-the-doctor-has-met-two-projects)).
 - **What has not.** Whether a reader who has not read SE1 can follow a *Reframes* link and come away
   with the idea. Whether an agent given AGENTS.md here works differently from one given SE1's
-  alone. Every checklist, every template, and every *Ask*.
+  alone. Most checklists, the model card, and most *Asks*. The question, plan, and datasheet templates
+  have been filled in on one descriptive project and found to fit badly, which R12 answers; that
+  answer is itself untried.
 - **What would show it wrong.** A course project where following a principle here made the analysis
   worse, or cost more than it caught. A holdout an agent reached despite
   [DM1/A4](guide/10-agents.md#a4). A reframing that contradicts its SE1 source about software, which

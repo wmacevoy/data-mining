@@ -13,7 +13,7 @@
                 "n/a" is a row the question sets aside, with a reason, for its kind of claim (DM1/R12).
 
 Standard library only, Python 3.9 or later. This copy is from the guide release named in RELEASE.
-Every threshold and heuristic here is invented and has not yet met a real project (GAPS.md, 7).
+Every threshold and heuristic here is invented. It has met two real projects and neither trained a model (GAPS.md, 7).
 """
 import argparse
 import csv

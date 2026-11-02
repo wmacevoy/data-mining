@@ -17,15 +17,16 @@ from **v1.0**; what changed since, by ID, is in the guide's
 Drafted 2026-10-27 by a Claude model with Warren MacEvoy, refactoring the course document
 `DATA-SCIENCE.md` (drafted 2026-08-27 with Claude Opus 5); which model did the refactoring was not
 recorded. Revised with Claude Fable 5.1 on 2026-10-28 against SE1 v1.3; the human signs each
-release. Revised on 2026-11-01 with Claude Opus 5.5, from the field reports below. These are rules an agent
-wrote for agents (SE1/U9), and **most of them are untried**. One field report (`GAPS.md`) met the 93
-principles of that date with a private document review, and by that one model's judgment 46 reached
-real work, 20 fit only by argument, and 27 did not reach it; five of today's principles come from it
-and rest on that one project. A second report, partial, is the fall 2026 course's migration. Nothing
-has yet tested a rule here on a trained model, a spent holdout, or production, and no person and no
-other model family has reviewed them. The rest are inferences from SE1's trials and from the author's
-teaching, marked here once rather than on every line (SE1/W12). An agent or a person who finds a rule wrong for their
-case should say so and propose the change, with what was observed.
+release. Revised on 2026-11-01 with Claude Opus 5.5, from the field reports below. These are rules
+an agent wrote for agents (SE1/U9), and **most of them are untried**. One field report (`GAPS.md`)
+met the 93 principles of that date with a private document review, and by that one model's judgment
+46 reached real work, 20 fit only by argument, and 27 did not reach it; five of today's principles
+come from it and rest on that one project. A second report, partial, is the fall 2026 course's
+migration. Nothing has yet tested a rule here on a trained model, a spent holdout, or production,
+and no person and no other model family has reviewed them. The rest are inferences from SE1's trials
+and from the author's teaching, marked here once rather than on every line (SE1/W12). An agent or a
+person who finds a rule wrong for their case should say so and propose the change, with what was
+observed.
 
 **Load both files at every start, from copies kept inside the working directory**: SE1's as
 `AGENTS.md` at the root, where SE1's doctor and Claude Code's own read look for it, and this one as
