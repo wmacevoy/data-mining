@@ -201,6 +201,7 @@ these.)
 - [**DM1/T9**](guide/06-testing.md#t9) Evaluate by slice; the aggregate hides the subgroup that fails
 - [**DM1/T10**](guide/06-testing.md#t10) When someone else owns "correct," compare against their implementation
 - [**DM1/T11**](guide/06-testing.md#t11) Unsupervised results have no answer key: test their stability
+- [**DM1/T12**](guide/06-testing.md#t12) For retrieval and extraction, a full reading of some cases is the baseline
 
 **[7. Operating](guide/07-operating.md)**
 
@@ -295,7 +296,7 @@ software applies to it.
 - [SE1/T4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t4) → [DM1/T4](guide/06-testing.md#t4)
 - [SE1/T5](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t5) → [DM1/T5](guide/06-testing.md#t5)
 - [SE1/T6](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t6) → [DM1/T6](guide/06-testing.md#t6)
-- [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t8) → [DM1/T1](guide/06-testing.md#t1)
+- [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t8) → [DM1/T1](guide/06-testing.md#t1), [DM1/T12](guide/06-testing.md#t12)
 - [SE1/T9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t9) → [DM1/T5](guide/06-testing.md#t5)
 - [SE1/T10](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t10) → [DM1/T8](guide/06-testing.md#t8)
 - [SE1/T11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t11) → [DM1/T10](guide/06-testing.md#t10)

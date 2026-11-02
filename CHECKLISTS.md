@@ -113,6 +113,13 @@ to the pipeline as software; these are the ones data work adds.
       ([DM1/T11](guide/06-testing.md#t11))
 - [ ] A domain expert has seen members, not centroids. ([DM1/H1](guide/09-people.md#h1))
 
+**Before trusting a search**
+
+- [ ] A sample read whole, and what the search missed reported by how each page was read.
+      ([DM1/T12](guide/06-testing.md#t12))
+- [ ] Compared with keyword search, or `grep`, and worth what it costs. ([DM1/D8](guide/05-design.md#d8))
+- [ ] Its test questions held apart from whoever tunes it. ([DM1/F5](guide/03-feedback.md#f5))
+
 ## Deploying
 
 **Before a model decides anything**

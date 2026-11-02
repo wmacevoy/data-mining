@@ -125,7 +125,7 @@ data, and never need more of it than the task does.
 *New.*
 
 When a pipeline uses a language model — to label, extract, classify, embed, retrieve, or judge — every
-principle in this guide applies to it, and three need restating:
+principle in this guide applies to it, and four need restating:
 
 - **The prompt and the model version are the model.** A prompt edit or a provider's model update is a
   retrain ([DM1/O6](07-operating.md#o6)): rerun the evaluation, and record both with every result
@@ -133,6 +133,10 @@ principle in this guide applies to it, and three need restating:
 - **Its output is a distribution.** Score several samples, not one, and report the spread
   ([DM1/F7](03-feedback.md#f7)). A judge model is an instrument: see it disagree with a wrong answer
   before trusting its agreement ([DM1/T3](06-testing.md#t3)).
+- **Its misses do not show in its citations.** For prose, the form of "score several samples" is two
+  independent reads of a sample of cases, neither seeing the other until both are done, with what
+  each missed counted ([DM1/F10](03-feedback.md#f10)). Two reads by one model share any blind spot.
+  For retrieval, the baseline is a full reading ([DM1/T12](06-testing.md#t12)).
 - **Your test set may be in its training data.** A public benchmark, a well-known dataset, or a
   document that has been online for years may have been seen in pretraining: leakage at the scale of
   the internet ([DM1/U3](02-unknowing.md#u3)). Evaluate on questions written after the model's

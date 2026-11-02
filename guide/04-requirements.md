@@ -57,6 +57,8 @@ season we have not looked at" can be — and getting it rejected in week one is 
 
 Write the bar before seeing results, for the same reason SE1/R2 asks for numbers before nouns: a bar
 set after seeing the score is set to the score. Mark guesses *(invented)* and get them objected to.
+A retrieval system needs a bar too: how much of what a full reading finds must it find
+([DM1/T12](06-testing.md#t12))?
 
 > **Ask:** "Could the client read this sentence and say 'no, that's not good enough'?"
 
