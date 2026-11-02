@@ -158,6 +158,8 @@ adds resources that are finite and usually unwritten:
   the project.
 - **Inference:** latency and cost per prediction, especially when the model is an API you pay for
   per call.
+- **Reading:** tokens per document, when a model reads the corpus. A budget like compute, and it can
+  be the largest line.
 - **Freshness:** how stale the model may get before it must be retrained, and who decides.
 
 > **Ask:** "How many events — not rows — do we have, and how many runs can we afford?"

@@ -64,8 +64,9 @@ eventually be read — not out of malice, but because evaluating on it is one ob
 work," and every check it reacts to spends the holdout ([DM1/F5](03-feedback.md#f5)).
 
 Make it mechanical, not a matter of instruction: keep the holdout outside the agent's working
-directory or behind a permission it does not have, and spend it yourself, at a decision. The same goes
-for the labels of any evaluation set, and for the answer key of an assignment.
+directory or behind a permission it does not have, and spend it yourself, at a decision. The plainest
+answer is a person who keeps it off the machine: test questions on paper can't be read by a shell. The
+same goes for the labels of any evaluation set, and for the answer key of an assignment.
 
 > **Ask:** "Could the agent read the holdout if it decided to?"
 
@@ -91,7 +92,8 @@ rarely wrong in an interesting way. A wrong `how=` in a merge, a `fillna(0)` on 
 means something, or a split done before grouping is one line and changes every number.
 
 Ask the agent for the diff in the numbers as well as the diff in the code ([DM1/T7](06-testing.md#t7)),
-and read the data handling line by line.
+and read the data handling line by line. In extraction, K3 is in what was read and dropped: point
+review there ([DM1/F10](03-feedback.md#f10)).
 
 > **Ask:** "Did the review read the joins and the split, or the model?"
 

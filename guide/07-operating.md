@@ -38,6 +38,10 @@ What CI should not do is touch the holdout or the full data. It tests that the m
 correct on known cases; whether the method is *good* is a decision made deliberately, and spent
 ([DM1/F5](03-feedback.md#f5)).
 
+A repository that may not have a remote, because its data may not leave, can still have one script
+that every change passes through. Call it what it is: a gate you can skip, with no machine but yours
+to say it ran.
+
 > **Ask:** "Does CI run every stage, from raw to the final number, on every change?"
 
 ### <a id="o3"></a>O3. A model in production needs signals that do not wait for labels

@@ -32,7 +32,7 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Full reading**        | A person or model reading a whole document: the baseline for retrieval and extraction ([DM1/T12](guide/06-testing.md#t12)). |
 | **Label**               | The target value a supervised model learns to predict: an opinion with a timestamp ([DM1/R7](guide/04-requirements.md#r7)). |
 | **Leakage**             | Information about the outcome reaching the model in training that will not be available at prediction time ([DM1/U3](guide/02-unknowing.md#u3)). |
-| **Ledger**              | A machine-appended log of every configuration scored ([DM1/F6](guide/03-feedback.md#f6), [template](templates/LEDGER.md)). |
+| **Ledger**              | A machine-appended log of every configuration scored, or every search run and page read ([DM1/F6](guide/03-feedback.md#f6), [template](templates/LEDGER.md)). |
 | **Look**                | One examination of an outcome that could influence what you do next. Counted in the ledger. |
 | **Membership inference** | An attack that determines whether a particular record was in a model's training data. |
 | **Missing at random**   | Missingness unrelated to the missing value itself, given what is observed. Usually a K4 ([DM1/U4](guide/02-unknowing.md#u4)). |

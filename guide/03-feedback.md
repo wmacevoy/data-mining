@@ -109,7 +109,7 @@ nearly every other test is free, spent by a mechanism — your own updated belie
 trace in git. So:
 
 - Split it off first, before exploring, and keep it where casual code cannot reach it — a separate
-  file, or a separate person ([DM1/A4](10-agents.md#a4)).
+  file, or a separate person, on paper or elsewhere ([DM1/A4](10-agents.md#a4)).
 - Develop on a validation split or cross-validation; spend the holdout at a decision.
 - When it is spent, say so, and get a fresh one: a later period, a new season, a new site.
 
@@ -124,7 +124,8 @@ is almost never reported. The number of things tried is part of the result ([DM1
 record it mechanically, not from memory:
 
 - **A ledger**: one line appended by the code each time anything is scored — what was tried, on
-  which split, with which seed, and the result ([LEDGER template](../templates/LEDGER.md)).
+  which split, with which seed, and the result ([LEDGER template](../templates/LEDGER.md)). In
+  retrieval and extraction, the looks are the searches run and the pages read: log those.
 - **An analysis plan written before the outcome is examined**: not as ceremony, as a record of how
   many degrees of freedom you had ([PLAN template](../templates/PLAN_v1.md)). Departing from it is
   normal. Departing from it silently is the problem.
