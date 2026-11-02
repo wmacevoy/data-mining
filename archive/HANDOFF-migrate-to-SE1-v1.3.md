@@ -3,7 +3,7 @@
 > **Done 2026-10-28**, steps 0 to 6, by Claude Fable 5.1 with Warren MacEvoy: git initialized with
 > the pre-migration state as its first commit; one commit per step or SE1 change, the checker green
 > after each. What was reframed, declined, confirmed, and not reviewed is in
-> [CHANGELOG.md](CHANGELOG.md) under v1.0, by SE1 ID. Step 7, `archive/`, waits for the first review
+> [CHANGELOG.md](../CHANGELOG.md) under v1.0, by SE1 ID. Step 7, `archive/`, waits for the first review
 > or checked source; the GitHub remote was created later that day and CI passed on six platform and
 > Python combinations; the three `se` defects below were fixed in SE1 v1.3.1 (2026-10-28), each seen
 > red on a fixture there. The note is kept as written, with its SE1 links pinned to v1.3 like the rest.
