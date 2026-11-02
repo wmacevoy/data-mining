@@ -106,6 +106,12 @@ environment.** Record all four with every trained artifact. A model you cannot r
 an orphan, and the first time it misbehaves you will not be able to tell whether the data, the code,
 or the luck changed.
 
+Sometimes raw isn't yours and can change: the source keeps only its current copy, or its owner
+replaces a file. Then immutable is out of your hands, so hash each file on arrival and keep the hashes
+tracked. That gives detection rather than prevention, and it is what you can have. The record of
+arrival and any replaced copies are state ([DM1/D1](#d1)), since a reset that rebuilds from raw loses
+them. A record *about* raw may sit beside it as a sidecar; say which files count as raw.
+
 > **Ask:** "If I delete everything but raw, what command brings this number back — and does it
 > come back the same?"
 
