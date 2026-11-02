@@ -623,6 +623,64 @@ class TestCitations(Fixture):
         self.assertIn("stale", finding(f, "question citations").text)
 
 
+class TestOneProjectPerRun(Fixture):
+    """Course field report: one repository, several projects. One run per project, and the agreements are looked for
+    upward, as far as the repository's root and no further."""
+
+    def several(self):
+        files = {k: v for k, v in GOOD.items() if k in ("AGENTS.md", "AGENTS-DM.md", "CLAUDE.md", ".gitignore", ".github/workflows/check.yml")}
+        files.update({"river/" + k: v for k, v in GOOD.items() if k.startswith(("docs/", "src/", "data/", "tests/", "CONTRIBUTING"))})
+        return files
+
+    def test_a_project_finds_the_agreements_at_the_root(self):
+        repo = make_repo(self.tmp.name, self.several(), ("river/data/raw/a.csv",))
+        f = dm.dm_rows(repo / "river")
+        self.assertEqual(finding(f, "data working agreement").state, dm.PASS, finding(f, "data working agreement").text)
+        self.assertEqual(finding(f, "extends").state, dm.PASS, finding(f, "extends").text)
+        self.assertEqual(finding(f, "question").state, dm.PASS, finding(f, "question").text)
+        self.assertEqual(finding(f, "raw is read-only").state, dm.PASS, finding(f, "raw is read-only").text)
+
+    def test_it_says_it_was_not_seen_from_inside_the_project(self):
+        # an import can stop at the working directory (SE1/A11), so the row must not sound as if a session started there is covered
+        repo = make_repo(self.tmp.name, self.several(), ("river/data/raw/a.csv",))
+        text = finding(dm.dm_rows(repo / "river"), "data working agreement").text
+        self.assertIn("a session started at the root", text)
+        self.assertNotIn("a session started at the root", finding(self.doctor(), "data working agreement").text)
+
+    def test_it_stops_at_the_repositorys_root(self):
+        above, inner = Path(self.tmp.name), Path(self.tmp.name) / "repo"
+        (above / "AGENTS-DM.md").write_text(DM_AGENTS, encoding="utf8")
+        (above / "AGENTS.md").write_text(SE_AGENTS, encoding="utf8")
+        (above / "CLAUDE.md").write_text("@AGENTS.md\n@AGENTS-DM.md\n", encoding="utf8")
+        inner.mkdir()
+        repo = make_repo(inner, {"README.md": "# x\n"}, ())
+        self.assertEqual(finding(dm.dm_rows(repo), "data working agreement").state, dm.FAIL)
+
+    def test_a_run_at_the_root_points_at_the_projects(self):
+        # the course's K2: from the root the doctor said none yet, truly and unhelpfully, about a project that had a question
+        repo = make_repo(self.tmp.name, self.several(), ())
+        f = finding(dm.dm_rows(repo), "question")
+        self.assertEqual(f.state, dm.NONE)
+        self.assertIn("--repo river", f.text)
+
+    def test_se1s_rows_are_about_the_repository(self):
+        # run on the course's project, SE1's rows failed twice, falsely, looking for agreements in the subdirectory
+        repo = make_repo(self.tmp.name, self.several(), ("river/data/raw/a.csv",))
+        seen = []
+
+        class Stub:
+            @staticmethod
+            def doctor(path, online=True, cache_dir=None, today=None):
+                seen.append(Path(path).resolve())
+                return []
+        dm.doctor(repo / "river", online=False, se=Stub)
+        self.assertEqual(seen, [repo.resolve()])
+
+    def test_the_guide_says_so(self):
+        self.assertIn("--repo", (GUIDE / "AGENTS.md").read_text(encoding="utf8"))
+        self.assertIn("--repo", (GUIDE / "templates" / "CONTRIBUTING.md").read_text(encoding="utf8"))
+
+
 class TestWithSe(unittest.TestCase):
     def test_se_rows_run_when_se_py_is_found(self):
         se, path = dm.find_se(GUIDE)

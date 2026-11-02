@@ -11,6 +11,8 @@
                 the recorded environment, and citations of the question. Read-only.
                 "none yet" is a true answer: a guide, or a project on day one, has none of these.
                 "n/a" is a row the question sets aside, with a reason, for its kind of claim (DM1/R12).
+                One run is one project: in a repository of several, --repo <project>, and the agreements
+                are looked for upward, as far as the repository's root, where SE1's rows run.
 
 Standard library only, Python 3.9 or later. This copy is from the guide release named in RELEASE.
 Every threshold and heuristic here is invented. It has met two real projects and neither trained a model (GAPS.md, 7).
@@ -259,8 +261,26 @@ def find_copies(repo):
     return dm + se
 
 
-def check_agreements(repo):
+def agreements_home(repo):
+    """Where the working agreements are for this run: here, or above, as far as the repository's root and no further.
+    One run is one project (GAPS.md), and a repository of several keeps one pair of agreements at its root."""
     repo = Path(repo).resolve()
+    rc, out = run(["git", "rev-parse", "--show-toplevel"], cwd=repo)
+    top = Path(out.strip()).resolve() if rc == 0 and out.strip() else repo
+    chain = [repo, *repo.parents]
+    if top not in chain:
+        return repo
+    for d in chain[: chain.index(top) + 1]:
+        if find_copies(d)[0]:
+            return d
+    return repo
+
+
+def check_agreements(repo):
+    project = Path(repo).resolve()
+    repo = agreements_home(project)
+    above = "" if repo == project else ("; this is for a session started at the root, and one started in "
+                                        f"{project.name} has not been observed")
     dm, dm_label, se, se_label = find_copies(repo)
     name, ids = "data working agreement", "DM1/A1, SE1/A11"
     if not dm:
@@ -282,7 +302,7 @@ def check_agreements(repo):
         names = "" if (dm.name, se.name) == (DM_NAME, SE_NAME) else f" (the guide's names are {SE_NAME} for SE1's and {DM_NAME} for this one)"
         return Finding(name, ids, PASS, f"[Claude Code configuration] {rel(repo, dm)} ({dm_label}) and {rel(repo, se)} "
                        f"({se_label or 'no label'}), both imported by CLAUDE.md from inside the working directory: configured, "
-                       f"not observed; the phrase test is how loading is observed{names}", "")
+                       f"not observed; the phrase test is how loading is observed{names}{above}", "")
     loaded = [p for p in (dm, se) if p.resolve() == (repo / "AGENTS.md").resolve()]
     other = [rel(repo, p) for p in (dm, se) if p not in loaded]
     return Finding(name, ids, FAIL, f"[Claude Code configuration] no CLAUDE.md: AGENTS.md is read by itself and nothing loads {', '.join(other)}",
@@ -291,7 +311,7 @@ def check_agreements(repo):
 
 def check_extends(repo):
     """The DM1 copy says which SE1 release it was written against; the SE1 copy here says which it is."""
-    repo = Path(repo).resolve()
+    repo = agreements_home(repo)
     dm, dm_label, se, se_label = find_copies(repo)
     name, ids = "extends", "SE1/U7, SE1/U9"
     if not dm or not se:
@@ -355,7 +375,9 @@ def check_question(repo):
     q, v = latest_doc(repo, "QUESTION")
     name = "question"
     if not q:
-        return Finding(name, "DM1/R1, DM1/R2, DM1/W6", NONE, "no docs/QUESTION_vN.md",
+        here = sorted({p.parent.parent.name for p in Path(repo).glob("*/docs/QUESTION_v*.md") if not p.parent.parent.name.startswith(".")})
+        also = f"; {', '.join(here)} has one: one run is one project, so run with --repo {here[0]}" if here else ""
+        return Finding(name, "DM1/R1, DM1/R2, DM1/W6", NONE, f"no docs/QUESTION_vN.md{also}",
                        "treat the task's text as the question, marked (inferred); the decision and the kind of claim come first"), None, 0, {}
     text = read(q)
     ids = {m.group(1): int(m.group(2)) for m in ID_RE.finditer(text)}
@@ -725,7 +747,7 @@ def doctor(repo, online=True, cache_dir=None, se=None, today=None):
     repo = Path(repo).resolve()
     out = []
     if se is not None:
-        out += se.doctor(repo, online=online, cache_dir=cache_dir, today=today)
+        out += se.doctor(agreements_home(repo), online=online, cache_dir=cache_dir, today=today)  # SE1's rows are about the repository
     else:
         out.append(Finding("SE1 doctor", "SE1/U7", NONE, "se.py not found: SE1's rows did not run",
                            "copy se.py from the SE1 guide beside dm.py, or set SE_GUIDE to a checkout of it"))
@@ -741,7 +763,7 @@ def python_kind():
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="dm", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--doctor", action="store_true", help="check the data project (the default)")
-    ap.add_argument("--repo", default=".", help="the repository to check (default: here)")
+    ap.add_argument("--repo", default=".", help="the repository, or one project in it, to check (default: here)")
     ap.add_argument("--offline", action="store_true", help="do not try the network for SE1's release check")
     ap.add_argument("--dm-only", action="store_true", help="only DM1's rows, even if se.py is at hand")
     ap.add_argument("--json", action="store_true", help="machine-readable output")

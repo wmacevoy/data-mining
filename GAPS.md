@@ -64,10 +64,11 @@ report by ID (its `QUEUE.md`, N6). What it had asked of this guide so far:
 4. **`field()` read only a field's first line.** **Closed:** `d0cd786`.
 5. **The templates are shaped for a prediction.** About half the question and plan said *not applicable*. **Closed 2026-11-01:**
    [DM1/R12](guide/04-requirements.md#r12), a second project for the same finding, and the plan row takes a baseline that says so.
-6. **One repository, five projects, and `docs/` is the published site.** The doctor reads the root, the CONTRIBUTING template has
-   one *Raw to report*, and a working set in `<project>/docs/` is invisible unless `--repo` points there, where the agreement rows
-   then fail. **Open: the owner's decision.** Either the doctor learns `<project>/docs/`, or the guide says one project per run and
-   the agreement rows look upward. The second is smaller, and is the proposal.
+6. **One repository, five projects, and `docs/` is the published site.** The doctor read the root, the CONTRIBUTING template has
+   one *Raw to report*, and a working set in `<project>/docs/` was invisible unless `--repo` pointed there, where the agreement rows
+   then failed. **Closed 2026-11-02, the owner's decision:** one run is one project. The agreement rows look upward to the repository's root,
+   a run at the root points at any project with a question, and each project keeps its own `CONTRIBUTING.md` and `docs/`. A session started
+   inside a project has not been observed loading the agreements, and the row says so.
 7. **This guide adds nothing at session start.** `dm.py` has no `--post` or `--hook`. **Open,** and possibly a null: whether
    `AGENTS-DM.md` loaded at start is enough.
 

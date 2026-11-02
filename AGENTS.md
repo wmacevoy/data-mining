@@ -55,7 +55,8 @@ the design. A task that contradicts either is a question for the human, not a ta
 
 ## Before you start
 
-- **If the repository has `./dm`, run `./dm --doctor` once.** It is SE1's doctor plus this guide's
+- **If the repository has `./dm`, run `./dm --doctor` once**, and in a repository of several projects
+  once for each you touch, with `--repo <project>`. It is SE1's doctor plus this guide's
   rows: both working agreements loaded, the question's one-way doors, the plan, where the holdout
   lives and whether it is in reach, every column's knowable-at, raw read-only, the ledger's writer.
   Work by what it finds; a *none yet* row is reported once, not invented to satisfy a rule. A row

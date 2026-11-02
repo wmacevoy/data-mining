@@ -132,7 +132,8 @@ Written 2026-11-01 by Claude Opus 5.5, from [REVIEW-v1.md](REVIEW-v1.md) and the
   [DM1/A6](guide/10-agents.md#a6), [DM1/A8](guide/10-agents.md#a8), [DM1/A9](guide/10-agents.md#a9). No ID moved.
 - **The doctor:** KIND-n and *n/a* with a required reason, which never quiets a failure; `raw to report` and `data working
   agreement` say what they did not do; a project names what counts as raw and which logs are its ledger; a command on a line
-  is not a path. `QUESTION`, `PLAN`, `DATASHEET`, `LEDGER`, and `CONTRIBUTING` follow.
+  is not a path; one run is one project, with `--repo <project>`, and the agreements are found upward as far as the repository's
+  root. `QUESTION`, `PLAN`, `DATASHEET`, `LEDGER`, and `CONTRIBUTING` follow.
 - **Still unproven, by chapter:** of the 93, those that fit by argument only or didn't reach the first report, from its verdict
   table. 1 Purpose 2 of 5; 2 Unknowing 5 of 9; 3 Feedback 4 of 9; 4 Requirements 3 of 11; 5 Design 7 of 13; 6 Testing 8 of 11;
   **7 Operating 8 of 11**, and the other 3 met a project with nothing in production; 8 Work 3 of 7; 9 People 6 of 8; 10 Agents 1
