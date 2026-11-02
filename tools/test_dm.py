@@ -344,6 +344,26 @@ class TestDataAndPipeline(Fixture):
         self.assertEqual(finding(f, "raw is read-only").state, dm.FAIL)
         self.assertIn("writable", finding(f, "raw is read-only").text)
 
+    GLOB = "lives in `inputs/*.zip`, read-only;"
+
+    def test_raw_named_by_a_pattern_leaves_sidecars_alone(self):
+        # first field report: reports the owner asked for, beside the raw files, failed the row
+        c = GOOD["CONTRIBUTING.md"].replace("lives in `data/raw`, read-only;", self.GLOB)
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": c, "inputs/a.zip": "z", "inputs/a-report.md": "a sidecar\n"}), read_only=("inputs/a.zip",))
+        self.assertEqual(finding(f, "raw is read-only").state, dm.PASS, finding(f, "raw is read-only").text)
+        self.assertIn("1 file", finding(f, "raw is read-only").text)
+
+    def test_raw_named_by_a_pattern_still_fails_on_what_it_names(self):
+        c = GOOD["CONTRIBUTING.md"].replace("lives in `data/raw`, read-only;", self.GLOB)
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": c, "inputs/a.zip": "z"}), read_only=())
+        self.assertEqual(finding(f, "raw is read-only").state, dm.FAIL)
+
+    def test_raw_every_path_named_is_checked_and_a_command_is_not(self):
+        c = GOOD["CONTRIBUTING.md"].replace("lives in `data/raw`, read-only;", "lives in `data/raw` and `inputs`, from `make fetch`, read-only;")
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": c, "inputs/b.csv": "z\n"}))  # data/raw is read-only; inputs is not
+        self.assertEqual(finding(f, "raw is read-only").state, dm.FAIL)
+        self.assertIn("inputs/b.csv", finding(f, "raw is read-only").text)
+
     def test_raw_to_report_placeholder(self):
         c = GOOD["CONTRIBUTING.md"].replace("`make report`", "`_command_`")
         f = self.doctor(self.changed(**{"CONTRIBUTING.md": c}))
