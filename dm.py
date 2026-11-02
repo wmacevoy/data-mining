@@ -257,8 +257,8 @@ def check_agreements(repo):
                            "a CLAUDE.md switches off Claude Code's own AGENTS.md read; import both copies from inside the working directory")
         names = "" if (dm.name, se.name) == (DM_NAME, SE_NAME) else f" (the guide's names are {SE_NAME} for SE1's and {DM_NAME} for this one)"
         return Finding(name, ids, PASS, f"[Claude Code configuration] {rel(repo, dm)} ({dm_label}) and {rel(repo, se)} "
-                       f"({se_label or 'no label'}), both imported by CLAUDE.md from inside the working directory; observed "
-                       f"loading: a fresh session can quote a line of each{names}", "")
+                       f"({se_label or 'no label'}), both imported by CLAUDE.md from inside the working directory: configured, "
+                       f"not observed; the phrase test is how loading is observed{names}", "")
     loaded = [p for p in (dm, se) if p.resolve() == (repo / "AGENTS.md").resolve()]
     other = [rel(repo, p) for p in (dm, se) if p not in loaded]
     return Finding(name, ids, FAIL, f"[Claude Code configuration] no CLAUDE.md: AGENTS.md is read by itself and nothing loads {', '.join(other)}",

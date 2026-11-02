@@ -193,6 +193,13 @@ class TestAgreements(Fixture):
         f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("This copy is from **v1.3**", "no label")}))
         self.assertEqual(finding(f, "extends").state, dm.WARN)
 
+    def test_agreement_row_says_configured_not_observed(self):
+        # course field report: the row said "observed loading" having only read the imports
+        text = finding(self.doctor(), "data working agreement").text
+        self.assertIn("configured", text)
+        self.assertIn("phrase test", text)
+        self.assertNotIn("observed loading", text)
+
     def test_no_claude_md_loads_only_the_root_file(self):
         f = self.doctor(self.changed(**{"CLAUDE.md": None}))
         self.assertEqual(finding(f, "data working agreement").state, dm.FAIL)
