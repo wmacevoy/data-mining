@@ -210,6 +210,7 @@ It enters at every stage:
 | **Aggregation**                | one model for groups whose relationship differs; small groups pooled toward large ([DM1/U8](02-unknowing.md#u8)) | "Does one model fit all of them?" |
 | **Evaluation**                 | the test set under-represents the groups that matter ([DM1/T9](06-testing.md#t9)) | "Is each group in the test set, with enough *n* to judge?" |
 | **Deployment**                 | used on a population or for a purpose it was not built for ([DM1/R11](#r11)), or changing its own data ([DM1/O11](07-operating.md#o11)) | "Who will this actually be used on?" |
+| **Unequal treatment**          | different cases get different readings: more evidence kept for one, a word limit biting harder on another | "Did each case get the same reading?" |
 
 The requirements say which groups matter — to the client and to the people in the data — which gap
 is unacceptable, measured how (error rate, calibration, or selection rate, per group), and who decided.
@@ -217,6 +218,9 @@ Those measures conflict: when base rates differ between groups, a score generall
 calibrated for every group *and* have equal error rates for every group. Choosing between them is not
 a technical decision. It belongs to the client, with the affected people represented, and is written
 down like a price ([DM1/R4](#r4)).
+
+The groups may not be demographic. When collecting characteristics would itself do harm, slice by how
+the evidence was read and who produced it, and say how you decided.
 
 Bias is not only about people. A forecast that is good for the big lots and systematically late for
 the small ones is biased against the small lots, and the attendants working them pay for it.

@@ -41,6 +41,7 @@ A requirement like any other, decided with the client
 | Aggregation | |
 | Evaluation | |
 | Deployment | |
+| Unequal treatment | |
 
 ## Definitions
 
