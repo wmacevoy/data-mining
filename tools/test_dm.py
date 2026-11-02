@@ -286,6 +286,19 @@ class TestHoldout(Fixture):
         self.assertEqual(finding(f, "holdout").state, dm.NONE)
         self.assertIn("none", finding(f, "holdout").text)
 
+    def test_a_command_on_the_line_is_not_a_path(self):
+        # course field report (N5): `make split` beside the real path was read as a second path, and warned
+        c = GOOD["CONTRIBUTING.md"].replace("spent only at a decision.", "made by `make split`; spent only at a decision.")
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": c}))
+        self.assertEqual(finding(f, "holdout").state, dm.PASS, finding(f, "holdout").text)
+        self.assertNotIn("make split", finding(f, "holdout").text)
+
+    def test_a_path_with_a_space_that_exists_is_still_a_path(self):
+        c = GOOD["CONTRIBUTING.md"].replace("`../holdout/`", "`my holdout/x.csv`")
+        p = GOOD["docs/PLAN_v1.md"].replace("`../holdout/`", "`my holdout/x.csv`")
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": c, "docs/PLAN_v1.md": p, "my holdout/x.csv": "a\n"}))
+        self.assertEqual(finding(f, "holdout").state, dm.FAIL)
+
     def test_named_without_a_path(self):
         p = GOOD["docs/PLAN_v1.md"].replace("`../holdout/` — kept by Ann", "kept by Ann")
         c = GOOD["CONTRIBUTING.md"].replace("lives in `../holdout/`", "Ann has it")

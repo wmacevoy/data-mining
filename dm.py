@@ -16,6 +16,7 @@ Every threshold and heuristic here is invented and has not yet met a real projec
 """
 import argparse
 import csv
+import glob
 import importlib.util
 import io
 import json
@@ -129,6 +130,21 @@ def field(text, name):
 
 def backtick_paths(value):
     return [p for p in re.findall(r"`([^`]+)`", value or "") if not placeholder(p)]
+
+
+def named_paths(repo, value):
+    """The backticks on a line that name paths. One with a space that is not there is a command (`make split`):
+    a bare-word command still reads as a path, and is reported as one that is not here."""
+    return [p for p in backtick_paths(value) if not re.search(r"\s", p.strip()) or (Path(repo) / os.path.expanduser(p)).exists()]
+
+
+def expand(repo, name):
+    """What a named path or pattern (`inputs/*.zip`) holds here: the paths that exist."""
+    path = Path(os.path.expanduser(name))
+    path = path if path.is_absolute() else Path(repo) / path
+    if re.search(r"[*?\[]", name):
+        return [Path(g) for g in sorted(glob.glob(str(path), recursive=True))]
+    return [path] if path.exists() else []
 
 
 def claude_imports(claude_md):
@@ -384,7 +400,7 @@ def check_holdout(repo):
     sources = [(src, line) for src, line in sources if src not in said_none]
     if said_none and not sources and not named:
         return Finding(name, ids, NONE, f"{said_none[0]} says there is none", "")
-    paths = [(src, p) for src, line in sources for p in backtick_paths(line)]
+    paths = [(src, p) for src, line in sources for p in named_paths(repo, line)]
     if sources and not paths and not any(placeholder(line) for _, line in sources):
         states.append(WARN)
         texts.append(f"{sources[0][0]} names the holdout without a path: {sources[0][1][:60]!r}")
