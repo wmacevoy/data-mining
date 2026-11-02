@@ -417,6 +417,21 @@ class TestLedgerCardEnvironment(Fixture):
         self.assertEqual(finding(f, "ledger").state, dm.NONE)
         self.assertIn("empty", finding(f, "ledger").text)
 
+    def test_a_named_log_of_reads_is_a_ledger(self):
+        # first field report: the row said none yet with logs of every search and page read in place
+        c = GOOD["CONTRIBUTING.md"] + "- **The ledger:** `logs/reads.log` and `logs/searches.jsonl`\n"
+        f = self.doctor(self.changed(**{"docs/ledger.jsonl": None, "CONTRIBUTING.md": c, "logs/reads.log": "p1\np2\n\n",
+                                        "logs/searches.jsonl": '{"q": "x"}\n', "src/score.py": "LOG = 'reads.log'\n"}))
+        self.assertEqual(finding(f, "ledger").state, dm.PASS, finding(f, "ledger").text)
+        self.assertIn("3 rows", finding(f, "ledger").text)
+        self.assertIn("logs/reads.log", finding(f, "ledger").text)
+
+    def test_a_named_ledger_that_is_not_there_warns(self):
+        c = GOOD["CONTRIBUTING.md"] + "- **The ledger:** `logs/reads.log`\n"
+        f = self.doctor(self.changed(**{"docs/ledger.jsonl": None, "CONTRIBUTING.md": c}))
+        self.assertEqual(finding(f, "ledger").state, dm.WARN)
+        self.assertIn("not here", finding(f, "ledger").text)
+
     def test_model_card_identity_placeholder(self):
         c = GOOD["docs/model_cards/lot_fill.md"].replace("**Seed(s):** 1, 2, 3", "**Seed(s):** _…_")
         f = self.doctor(self.changed(**{"docs/model_cards/lot_fill.md": c}))

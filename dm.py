@@ -528,10 +528,14 @@ def ledger_rows(path):
         return rows
     if path.suffix.lower() == ".csv":
         return list(csv.DictReader(io.StringIO(text)))
+    if path.suffix.lower() in (".log", ".txt"):
+        return [line for line in text.splitlines() if line.strip()]
     return [r for t in parse_tables(text) for r in real_rows(t)]
 
 
 def spent(row):
+    if not isinstance(row, dict):  # a line of a plain log of reads or searches: no split to spend
+        return False
     for k, v in row.items():
         v = str(v).strip().lower()
         if "holdout" in str(k).lower() and v and v not in ("no", "false", "0", "n", "—", "-", ""):
@@ -543,16 +547,24 @@ def spent(row):
 
 def check_ledger(repo):
     name, ids = "ledger", "DM1/F6, DM1/A3"
-    files = find_docs(repo, ("docs/ledger.*", "docs/LEDGER*", "ledger.*", "LEDGER*", "**/ledger.jsonl", "**/ledger.csv"))
-    if not files:
-        return Finding(name, ids, NONE, "no ledger", "one line appended by the code each time anything is scored; the count is part of every result")
-    machine = [f for f in files if f.suffix.lower() in (".jsonl", ".csv")]
-    ledger = machine[0] if machine else files[0]
-    rows = ledger_rows(ledger)
+    guide = read(Path(repo) / "CONTRIBUTING.md")
+    line = field(guide, "The ledger") or field(guide, "Ledger")  # a project's own logs of reads and searches count
+    named = named_paths(repo, line)
+    ledgers = [f for p in named for f in expand(repo, p) if f.is_file()]
+    if named and not ledgers:
+        return Finding(name, ids, WARN, f"CONTRIBUTING.md names {named[0]} as the ledger, and it is not here", "a count that is not written down is a claim")
+    if not ledgers:
+        files = find_docs(repo, ("docs/ledger.*", "docs/LEDGER*", "ledger.*", "LEDGER*", "**/ledger.jsonl", "**/ledger.csv"))
+        if not files:
+            return Finding(name, ids, NONE, "no ledger", "one line appended by the code each time anything is scored; the count is part of every result")
+        machine = [f for f in files if f.suffix.lower() in (".jsonl", ".csv")]
+        ledgers = [machine[0] if machine else files[0]]
+    rows = [r for ledger in ledgers for r in ledger_rows(ledger)]
+    own = {f.resolve() for f in ledgers}
     writers = [rel(repo, f) for f in tracked_files(repo)
-               if f.suffix.lower() in CODE_SUFFIXES and f.resolve() != ledger.resolve() and ledger.name in read(f)]
+               if f.suffix.lower() in CODE_SUFFIXES and f.resolve() not in own and any(ledger.name in read(f) for ledger in ledgers)]
     n_spent = sum(1 for r in rows if spent(r))
-    where = rel(repo, ledger)
+    where = ", ".join(rel(repo, ledger) for ledger in ledgers)
     if not rows:
         return Finding(name, ids, NONE, f"{where}: empty" + (f"; written by {writers[0]}" if writers else ""), "")
     if not writers:
