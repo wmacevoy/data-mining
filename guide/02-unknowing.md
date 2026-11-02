@@ -145,6 +145,10 @@ nothing alike.
 Checking from outside, here, means a plot and a handful of raw rows — chosen at random, and then
 chosen at the extremes. Before you trust a summary, look at the rows that most disagree with it.
 
+For a document, the text layer is a summary of the page. Look at the page: recognition garbles
+handwriting, extraction collapses a table's empty columns so a figure lands in the wrong one, and a
+shortened command's output hides the end of every page.
+
 SE1/A11's later trials add a second injury, and it is this guide's problem in one sentence: a rule
 freshly read was still left out of the work, and the only thing that got it in was a check that ran
 on the work without the agent choosing to run it. *Look at the rows* is such a rule. Left as a

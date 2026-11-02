@@ -215,7 +215,8 @@ A number with no lineage is a rumor. The question SE1/D13 asks — *who said thi
 later without asking them again?* — has the same answer at four layers:
 
 - **A value:** measured, imputed, or defaulted? Once all three live in one column they are the same
-  value forever. Keep a flag.
+  value forever. Keep a flag. From a document, also how it was read: by text layer, by recognition,
+  or by eye.
 - **A dataset:** collected by whom, of whom, under what consent, and what was excluded before it
   reached you? The exclusions are invisible in the file and usually the most important thing in it.
 - **A label:** applied by whom, under which instructions, with what agreement rate
