@@ -7,7 +7,8 @@ is in [GAPS.md](GAPS.md). What follows *Status* is kept as written, when it was 
 ## Status
 
 Addressed the same day, by another session of the same model, on the branch `field-report-1`. That session read this review, not the
-project, so nothing here has been checked against the project itself. Not yet read by the owner, and not pushed.
+project, so nothing here has been checked against the project itself. Before this was pushed, on the owner's decision, this file and
+`GAPS.md` were made more general about the project, so some evidence below is vaguer than what was observed.
 
 | Proposed | What happened |
 | -------- | ------------- |
@@ -16,7 +17,9 @@ project, so nothing here has been checked against the project itself. Not yet re
 | Smaller wording | All in: F5, A4, R2, O2, R8, W5. R8 omits the token figures. F6 and the templates take the ledger's reads and searches. |
 | Doctor and templates | All in. `raw to report` can only ask and say, so it remains unable to see what this review caught: a project can answer it falsely. |
 | Day of the tag, 2, 3, 6 | Done: what was tested is said, what's unproven is in `CHANGELOG.md` by chapter, and the handoff is in `archive/`. |
-| **Day of the tag, 1, 4, 5, and the tag** | **Not done: the owner's.** Merges, the SE1 pin, moving links at the tag, and whether to tag at all. |
+| **The tag** | **The owner, 2026-11-02: no, not now.** So this review's recommendation was not taken, and links stay on `main` (item 4). No principle was merged (item 1). |
+| **The SE1 pin** | **The owner, 2026-11-02: stays at v1.3** (item 5). |
+| The course's open item, one repository of several projects | **The owner, 2026-11-02:** one run is one project. In the doctor and `GAPS.md`. |
 
 Corrections to this review, found while applying it:
 
