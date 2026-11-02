@@ -171,6 +171,7 @@ these.)
 - [**DM1/R9**](guide/04-requirements.md#r9) Ethics, law, and security are requirements, and the people in the data never filed one
 - [**DM1/R10**](guide/04-requirements.md#r10) Bias is always a requirement, alongside ethics, law, and security
 - [**DM1/R11**](guide/04-requirements.md#r11) Write down who the model is not for
+- [**DM1/R12**](guide/04-requirements.md#r12) Name the kind of claim first: predicted, described, explained, or extracted
 
 **[5. Design](guide/05-design.md)**
 

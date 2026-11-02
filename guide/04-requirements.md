@@ -45,6 +45,9 @@ Three definitions decide everything downstream, and each costs a re-analysis to 
 These are the data equivalent of a schema with data under it (SE1/F1): cheap to decide carefully now,
 expensive to change once features, labels, and splits are built on them.
 
+A claim with no outcome to wait for has no prediction point to fix: name its kind first, and fix what
+stands in for them ([DM1/R12](#r12)).
+
 > **Ask:** "What is one row, what exactly is the outcome, and when is the prediction made?"
 
 ### <a id="r3"></a>R3. Specific and wrong: name the metric, the baseline, and the bar before you look
@@ -235,6 +238,28 @@ Written down, they become the "out of scope" section of the model card
 they are discovered by whoever uses the model for them.
 
 > **Ask:** "Where would this model still give an answer that we would not stand behind?"
+
+### <a id="r12"></a>R12. Name the kind of claim first: predicted, described, explained, or extracted
+
+*New.*
+
+Every principle in this guide was written with the first kind in mind, and not all of them bind the
+others. Say which kind of claim the work makes before anything else, because that decides what you
+can score against.
+
+| Kind      | Example                                         | Scored against                                   | What stands in for the prediction point            |
+| --------- | ----------------------------------------------- | ------------------------------------------------ | -------------------------------------------------- |
+| Predicted | which lots fill tonight                         | an outcome that arrives later                    | the moment of prediction                           |
+| Described | how occupancy varies across lots                | a held-out period or sample                      | the period it describes                            |
+| Explained | if we open lot C earlier, does the queue shrink | an experiment, or a stated causal design         | the intervention ([GAPS.md](../GAPS.md#1-causal-claims)) |
+| Extracted | what this document says about X                 | the document itself: a person can check the page | the date of the document, and the unit of citation |
+
+An extracted claim has an unusual gift: each one can be checked against its source. And an unusual
+hazard: the check can't see what was left out ([DM1/F10](03-feedback.md#f10)). Where a principle
+doesn't apply to your kind of claim, say so and say why, rather than filling in its template with
+something invented.
+
+> **Ask:** "Which kind of claim is this, and what would it be checked against?"
 
 ---
 

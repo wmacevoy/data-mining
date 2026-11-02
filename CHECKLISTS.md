@@ -12,6 +12,8 @@ to the pipeline as software; these are the ones data work adds.
 
 - [ ] The decision before the technique: who decides what, when, and what a wrong call costs.
       ([DM1/R1](guide/04-requirements.md#r1))
+- [ ] Which kind of claim: predicted, described, explained, or extracted, and what it will be checked
+      against. ([DM1/R12](guide/04-requirements.md#r12))
 - [ ] What would they do if the answer came out the other way? If nothing, stop.
       ([DM1/R1](guide/04-requirements.md#r1))
 - [ ] Whose rows are these, what were they collected for, and is this that?

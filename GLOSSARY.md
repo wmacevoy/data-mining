@@ -27,7 +27,9 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Golden output**       | The fixture's full output, committed, so a change's effect on the numbers is a reviewable diff ([DM1/T7](guide/06-testing.md#t7)). |
 | **Holdout**             | Data set aside before exploration and used only at a decision, to estimate how a final choice performs on data it never influenced. Consumed by being looked at *and reacted to* ([DM1/F5](guide/03-feedback.md#f5)). |
 | **Interval**            | The range a reported number would plausibly take under resampling, reseeding, or resplitting ([DM1/F7](guide/03-feedback.md#f7)). |
+| **Kind of claim**       | Predicted, described, explained, or extracted: what decides what a claim can be scored against ([DM1/R12](guide/04-requirements.md#r12)). |
 | **Knowable at**         | When a value became available to someone who could have acted on it ([DM1/R6](guide/04-requirements.md#r6)). |
+| **Full reading**        | A person or model reading a whole document: the baseline for retrieval and extraction ([DM1/T12](guide/06-testing.md#t12)). |
 | **Label**               | The target value a supervised model learns to predict: an opinion with a timestamp ([DM1/R7](guide/04-requirements.md#r7)). |
 | **Leakage**             | Information about the outcome reaching the model in training that will not be available at prediction time ([DM1/U3](guide/02-unknowing.md#u3)). |
 | **Ledger**              | A machine-appended log of every configuration scored ([DM1/F6](guide/03-feedback.md#f6), [template](templates/LEDGER.md)). |
@@ -50,6 +52,7 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Slice**               | A subgroup the model is evaluated on separately, chosen before results ([DM1/T9](guide/06-testing.md#t9)). |
 | **Split**               | The division of rows into training, validation, and holdout. Grouped so related rows stay together; time-ordered when time matters. |
 | **Train/serve skew**    | A feature computed differently in training than where predictions are served ([DM1/D9](guide/05-design.md#d9)). |
+| **Text layer**          | The machine-readable text in a PDF, which is a summary of the page and may be missing or wrong ([DM1/U7](guide/02-unknowing.md#u7)). |
 | **Unit of analysis**    | What one row is ([DM1/R2](guide/04-requirements.md#r2)).                                             |
 | **Validation set**      | Development data used to choose among models; reused freely, and so not an unbiased estimate.        |
 | **Whitespace**          | Time with no agenda, in SE1/U8's sense. Free when spent on the inputs; a look, counted in the ledger, when spent on the outcome ([DM1/U9](guide/02-unknowing.md#u9)). |
