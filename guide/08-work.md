@@ -143,6 +143,10 @@ it* is:
 - a reviewer who read the *data handling* — the joins, filters, splits, and fills — not only the model
   code ([DM1/A6](10-agents.md#a6)).
 
+For an extracted claim ([DM1/R12](04-requirements.md#r12)), *regenerate* means a script re-finds each
+quotation on its cited page, and a second reader reads a sample whole. Prose can be re-checked, not
+re-derived. That checks words and pages, not numbers or omissions ([DM1/F10](03-feedback.md#f10)).
+
 > **Ask:** "Has anyone but the author regenerated this from raw?"
 
 ---
