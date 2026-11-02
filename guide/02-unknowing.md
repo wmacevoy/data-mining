@@ -217,6 +217,25 @@ not.
 > **Ask:** "When did someone last look at the raw rows with no question in hand, and did they look
 > at the outcome while they were there?"
 
+### <a id="u10"></a>U10. "None found" is a claim about the search
+
+*Reframes [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t3).*
+
+SE1/T3 warns of a tool that exits zero because it found nothing to check. In data work that tool is
+any search for an absence. An absence is the cheapest K3 there is: it takes no evidence to report,
+and it looks like diligence. A search that could not have found the thing returns the same answer as
+a search that found nothing.
+
+So every "none" carries how it was looked for, and what it would have looked like if it were there.
+See the search find a planted case first ([DM1/T3](06-testing.md#t3)). Say what was not searched. A
+"none found" in text means less on a page with no text layer, so report absences by how the page was
+read ([DM1/T9](06-testing.md#t9)).
+
+Before reporting that something is missing across many cases, open one by hand.
+
+> **Ask:** "What would this search have returned if the thing were there, and have we seen it do
+> that?"
+
 ---
 
 Next: [3. Feedback](03-feedback.md) — what evidence costs, and why searching for it changes it.

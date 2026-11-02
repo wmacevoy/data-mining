@@ -79,6 +79,8 @@ to the pipeline as software; these are the ones data work adds.
 - [ ] The bias measures the requirements chose, per group, with intervals; each source of bias
       (historical, selection, measurement, aggregation, evaluation, deployment) checked or named as
       unchecked. ([DM1/R10](guide/04-requirements.md#r10))
+- [ ] Every "none found" says how it was looked for, and the search has been seen to find a planted
+      case. ([DM1/U10](guide/02-unknowing.md#u10))
 - [ ] The reference class is stated with any number about an individual case.
       ([DM1/U8](guide/02-unknowing.md#u8))
 - [ ] Who is missing from the rows is said out loud. ([DM1/F8](guide/03-feedback.md#f8))

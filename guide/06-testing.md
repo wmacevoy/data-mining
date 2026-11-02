@@ -58,7 +58,8 @@ the same length compares 1 to 1, and the estimator under test never ran. Make ea
 enough to exercise every branch, and assert on values you worked out by hand.
 
 The same rule covers every instrument that judges a result — a metric script, a labeler, an LLM used
-as a judge. Each must be seen to disagree with a bad answer before its agreement means anything.
+as a judge. Each must be seen to disagree with a bad answer before its agreement means anything. A
+search that reports an absence is one of these instruments ([DM1/U10](02-unknowing.md#u10)).
 
 > **Ask:** "What wrong output would this test still pass — and have I seen it fail?"
 

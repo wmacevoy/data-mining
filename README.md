@@ -143,6 +143,7 @@ these.)
 - [**DM1/U7**](guide/02-unknowing.md#u7) A summary statistic is a concussion: look at the rows
 - [**DM1/U8**](guide/02-unknowing.md#u8) People ask Prob(result | me); the data holds Prob(result | the rows it counts as like me)
 - [**DM1/U9**](guide/02-unknowing.md#u9) Whitespace is free on the inputs and spent on the outcome
+- [**DM1/U10**](guide/02-unknowing.md#u10) "None found" is a claim about the search
 
 **[3. Feedback](guide/03-feedback.md)**
 
@@ -289,7 +290,7 @@ software applies to it.
 - [SE1/D12](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/05-design.md#d12) → [DM1/D12](guide/05-design.md#d12)
 - [SE1/D13](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/05-design.md#d13) → [DM1/D13](guide/05-design.md#d13)
 - [SE1/T2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t2) → [DM1/T2](guide/06-testing.md#t2)
-- [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t3) → [DM1/T3](guide/06-testing.md#t3)
+- [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t3) → [DM1/U10](guide/02-unknowing.md#u10), [DM1/T3](guide/06-testing.md#t3)
 - [SE1/T4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t4) → [DM1/T4](guide/06-testing.md#t4)
 - [SE1/T5](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t5) → [DM1/T5](guide/06-testing.md#t5)
 - [SE1/T6](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t6) → [DM1/T6](guide/06-testing.md#t6)

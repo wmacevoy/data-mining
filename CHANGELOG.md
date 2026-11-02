@@ -17,9 +17,9 @@ yours.
 
 ## v1.0 — unreleased
 
-· 93 principles
+· 94 principles
 
-The first release: 75 principles that reframe SE1 principles for data work, and 18 new ones that
+The first release: 76 principles that reframe SE1 principles for data work, and 18 new ones that
 SE1 has no counterpart for. Refactored from the course document `DATA-SCIENCE.md`, reorganized into
 SE1's ten chapters. Bias is treated as SE1 treats security: a permanent requirement
 ([DM1/R10](guide/04-requirements.md#r10)), an audit before and after deploy
