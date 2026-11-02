@@ -4,7 +4,8 @@ What we will do, and how we will judge it, written **before the outcome is exami
 it will be right, but as a dated record of how many choices were open
 ([DM1/F6](https://github.com/wmacevoy/data-mining/blob/main/guide/03-feedback.md#f6)). Departing from
 it is normal; departing silently is the problem — add a dated line under *Departures*. A substantial
-change is a new version.
+change is a new version. Where a section does not bind this kind of claim, say *not applicable* and
+why ([DM1/R12](https://github.com/wmacevoy/data-mining/blob/main/guide/04-requirements.md#r12)).
 
 Question: `QUESTION_v1` · Written: _yyyy-mm-dd_ · Outcome examined yet? _no_
 
@@ -25,7 +26,9 @@ How rows are divided, and why that matches how the model will be used
 - **Primary metric:** _…_, because _…_ (tie to the price of errors in the question)
 - **Second metric**, the one the search is not told about
   ([DM1/F9](https://github.com/wmacevoy/data-mining/blob/main/guide/03-feedback.md#f9)): _…_
-- **Baseline:** _the dumbest reasonable method_ — scored on _yyyy-mm-dd_: _…_
+- **Baseline:** _the dumbest reasonable method_ — scored on _yyyy-mm-dd_: _…_ (for retrieval or
+  extraction, a full reading of some cases:
+  [DM1/T12](https://github.com/wmacevoy/data-mining/blob/main/guide/06-testing.md#t12))
 - **Interval:** _bootstrap / analytic; seeds per configuration_
 
 ## Slices

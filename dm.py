@@ -10,6 +10,7 @@
                 from raw to report, the ledger and who writes it, the model card and its bias audit,
                 the recorded environment, and citations of the question. Read-only.
                 "none yet" is a true answer: a guide, or a project on day one, has none of these.
+                "n/a" is a row the question sets aside, with a reason, for its kind of claim (DM1/R12).
 
 Standard library only, Python 3.9 or later. This copy is from the guide release named in RELEASE.
 Every threshold and heuristic here is invented and has not yet met a real project (GAPS.md, 7).
@@ -31,9 +32,16 @@ RELEASE = "v1.0"
 GUIDE_REPO = "wmacevoy/data-mining"
 SE_REPO = "wmacevoy/software-engineering"
 
-Finding = namedtuple("Finding", "name ids state text fix")  # state: pass | warn | none yet | fail
-PASS, WARN, NONE, FAIL = "pass", "warn", "none yet", "fail"
-WORST = {PASS: 0, NONE: 1, WARN: 2, FAIL: 3}
+Finding = namedtuple("Finding", "name ids state text fix")  # state: pass | n/a | warn | none yet | fail
+PASS, NA, WARN, NONE, FAIL = "pass", "n/a", "warn", "none yet", "fail"
+WORST = {PASS: 0, NA: 0, NONE: 1, WARN: 2, FAIL: 3}
+# DM1/R12. What a kind of claim must fix, and the rows it may set aside with a reason. The rest always bind: the
+# datasheet above all, which the first field report wished it had written. Invented, like every threshold (GAPS.md, 7).
+KINDS = ("predicted", "described", "explained", "extracted")
+DOORS = {"UNIT": "the unit", "OUT": "the outcome", "PRED": "the prediction point"}
+KIND_DOORS = {"predicted": ("UNIT", "OUT", "PRED"), "explained": ("UNIT", "OUT"), "described": ("UNIT",), "extracted": ("UNIT",)}
+SET_ASIDE = {"predicted": (), "explained": ("holdout", "model card"),
+             "described": ("plan", "holdout", "ledger", "model card"), "extracted": ("plan", "holdout", "ledger", "model card")}
 LABEL_RE = re.compile(r"This copy is\s+from\s+\*\*(v\d+\.\d+)\*\*")
 # The SE1 release a DM1 copy was written against: the link to SE1's AGENTS.md its header carries.
 EXTENDS_RE = re.compile(r"software-engineering/blob/(v\d+\.\d+(?:\.\d+)?)/AGENTS\.md")
@@ -304,16 +312,56 @@ def check_extends(repo):
     return Finding(name, ids, PASS, f"{rel(repo, dm)} ({dm_label}) extends SE1 {pin}; the SE1 copy here is {se_label}", "")
 
 
+def question_kind(text):
+    """(kind, written): what KIND-n says, or None if it names none of them. A question with no KIND-n is read as
+    predicted, which is what the guide assumed of every question before DM1/R12."""
+    m = re.search(r"\*\*KIND-\d+\*\*(?:\s*\*\(since v\d+\)\*)?([^\n]*)", text or "")
+    if not m:
+        return "predicted", False
+    said = m.group(1).split(":", 1)[-1]
+    named = re.search(r"\b(" + "|".join(KINDS) + r")\b", said, re.I)
+    return (named.group(1).lower() if named else None), True
+
+
+def not_applicable(text):
+    """{row: why} from the question's *Not applicable* table; the template's italic row sets nothing aside."""
+    rows = [r for t in parse_tables(section(text or "", "Not applicable") or "") for r in real_rows(t)]
+    return {list(r.values())[0].strip().lower(): (list(r.values())[1].strip() if len(r) > 1 else "") for r in rows if r}
+
+
+def set_aside(findings, text):
+    """Apply the question's *Not applicable* table to the rows. It can quiet a row that has nothing to report, never a
+    failure, and only for a kind of claim that allows it, so a table cannot be how a project stops being checked."""
+    kind, _ = question_kind(text)
+    kind = kind or "predicted"
+    waived = not_applicable(text)
+    out = []
+    for f in findings:
+        why = waived.get(f.name)
+        if why is None:
+            out.append(f)
+        elif not why or placeholder(why):
+            out.append(f._replace(state=worst([f.state, WARN]), text=f"{f.text}; the question says not applicable, and gives no reason"))
+        elif f.name not in SET_ASIDE[kind]:
+            out.append(f._replace(state=worst([f.state, WARN]), text=f"{f.text}; the question says not applicable, and a {kind} claim cannot set this row aside (DM1/R12)"))
+        elif f.state in (FAIL, PASS):
+            out.append(f._replace(text=f"{f.text}; the question says not applicable ({why}), and this is here"))
+        else:
+            out.append(f._replace(state=NA, text=why, fix=""))
+    return out
+
+
 def check_question(repo):
     q, v = latest_doc(repo, "QUESTION")
     name = "question"
     if not q:
         return Finding(name, "DM1/R1, DM1/R2, DM1/W6", NONE, "no docs/QUESTION_vN.md",
-                       "treat the task's text as the question, marked (inferred); the decision, the unit, the outcome, and the prediction point come first"), None, 0, {}
+                       "treat the task's text as the question, marked (inferred); the decision and the kind of claim come first"), None, 0, {}
     text = read(q)
     ids = {m.group(1): int(m.group(2)) for m in ID_RE.finditer(text)}
-    doors = {"UNIT": "the unit", "OUT": "the outcome", "PRED": "the prediction point"}
-    unset = [f"{p}-n ({what})" for p, what in doors.items() if not any(i.startswith(p + "-") for i in ids)]
+    kind, written = question_kind(text)
+    doors = KIND_DOORS.get(kind, KIND_DOORS["predicted"])
+    unset = [f"{p}-n ({DOORS[p]})" for p in doors if not any(i.startswith(p + "-") for i in ids)]
     blank = []
     for m in ID_RE.finditer(text):
         line = text[m.start(): text.find("\n", m.end()) if text.find("\n", m.end()) != -1 else len(text)]
@@ -321,10 +369,13 @@ def check_question(repo):
             blank.append(m.group(1))
     if unset:
         return Finding(name, "DM1/R2", FAIL, f"QUESTION_v{v} leaves a one-way door unset: {', '.join(unset)}",
-                       "fix the unit, the outcome, and the prediction point before anything else"), q, v, ids
+                       "fix these before anything else; a claim with no outcome names its kind (DM1/R12)"), q, v, ids
     if blank:
         return Finding(name, "DM1/R2, DM1/R3", FAIL, f"QUESTION_v{v}: {', '.join(blank[:4])} still carry the template's placeholder",
                        "a definition that is not written is decided privately by whoever writes the first join"), q, v, ids
+    if kind is None:
+        return Finding(name, "DM1/R12", FAIL, f"QUESTION_v{v}: KIND-n names none of {', '.join(KINDS)}",
+                       "the kind decides what the claim can be checked against"), q, v, ids
     if not any(i.startswith("BAR-") for i in ids):
         return Finding(name, "DM1/R3", FAIL, f"QUESTION_v{v} sets no bar (BAR-n) before results are seen",
                        "write the metric, the split, and the number that would count as failure, now"), q, v, ids
@@ -334,11 +385,15 @@ def check_question(repo):
     if section(text, "Not for") is None:
         return Finding(name, "DM1/R11", WARN, f"QUESTION_v{v} has no *Not for* section",
                        "say what the model is not for; it will still answer there"), q, v, ids
-    return Finding(name, "DM1/R2, DM1/R3, DM1/R10", PASS,
-                   f"QUESTION_v{v}: {len(ids)} IDs; unit, outcome, prediction point, bar, and bias measure set; Not for present", ""), q, v, ids
+    if not written:
+        return Finding(name, "DM1/R12", WARN, f"QUESTION_v{v} does not name its kind of claim (KIND-n), so it is read as predicted",
+                       "predicted, described, explained, or extracted: the kind decides what it can be checked against"), q, v, ids
+    fixed = ", ".join(DOORS[p] for p in doors)
+    return Finding(name, "DM1/R2, DM1/R3, DM1/R10, DM1/R12", PASS,
+                   f"QUESTION_v{v}: {len(ids)} IDs; a {kind} claim; {fixed}, bar, and bias measure set; Not for present", ""), q, v, ids
 
 
-def check_plan(repo, have_question):
+def check_plan(repo, have_question, kind="predicted"):
     p, v = latest_doc(repo, "PLAN")
     name = "plan"
     if not p:
@@ -355,7 +410,8 @@ def check_plan(repo, have_question):
                        "say where it is kept, who may read it, and when it will be spent")
     baseline = field(text, "Baseline")
     notes = []
-    if baseline is None or placeholder(baseline) or not re.search(r"\d{4}-\d{2}-\d{2}", baseline):
+    says_none = kind != "predicted" and baseline is not None and re.match(r"\s*(none|not applicable)\b", baseline, re.I)
+    if not says_none and (baseline is None or placeholder(baseline) or not re.search(r"\d{4}-\d{2}-\d{2}", baseline)):
         notes.append("baseline not yet scored on a date")
     slices = section(text, "Slices") or ""
     n_slices = sum(len(real_rows(t)) for t in parse_tables(slices))
@@ -453,7 +509,7 @@ def check_datasheets(repo):
             continue
         for row in real_rows(tables[0]):
             cols += 1
-            col = next((v for k, v in row.items() if k == "column"), "?")
+            col = next(iter(row.values()), "?")  # the first cell names it: a column, or a part of a document
             know = next((v for k, v in row.items() if "knowable" in k), "")
             if placeholder(know):
                 bad.append(f"{rel(repo, s)}: column {col} does not say when it becomes knowable")
@@ -652,17 +708,18 @@ def dm_rows(repo):
     repo = Path(repo).resolve()
     out = [check_agreements(repo), check_extends(repo)]
     qf, q, version, ids = check_question(repo)
+    question_text = read(q) if q else ""
     out.append(qf)
-    out.append(check_plan(repo, q is not None))
+    out.append(check_plan(repo, q is not None, question_kind(question_text)[0] or "predicted"))
     out.append(check_holdout(repo))
     out.append(check_datasheets(repo))
     out.append(check_raw(repo))
     out.append(check_raw_to_report(repo))
     out.append(check_ledger(repo))
-    out.append(check_model_cards(repo, read(q) if q else ""))
+    out.append(check_model_cards(repo, question_text))
     out.append(check_environment(repo))
     out.append(check_citations(repo, q, version, ids) if q else Finding("question citations", "DM1/R2, SE1/R10", NONE, "no question", ""))
-    return out
+    return set_aside(out, question_text)
 
 
 def doctor(repo, online=True, cache_dir=None, se=None, today=None):

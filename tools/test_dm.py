@@ -4,7 +4,9 @@ SE1/T3), and a fixture built to pass passes every row. Run: python3 -I tools/tes
 library only; no network, no wall clock, no shared state: every fixture is a fresh git repository in a
 temporary directory. SE1's own rows are se.py's to test; here they are only seen to run when se.py is
 found (SE_GUIDE, .se1/, or ../software-engineering/)."""
+import contextlib
 import importlib.util
+import io
 import json
 import os
 import stat
@@ -40,7 +42,8 @@ GOOD = {
         "# Question — v1\n\nClient: Ann · Date sent: 2026-10-20\n\n## The decision\n\n- **Decision:** open lot C early or not\n\n"
         "## Bias\n\n- **Groups that matter:** students and staff — the client\n"
         "- **BIAS-1** *(since v1)* Error rate per group, gap at most 5 points; Ann chose it.\n\n"
-        "## Definitions\n\n- **UNIT-1** *(since v1)* One row is: one lot on one event night.\n"
+        "## Definitions\n\n- **KIND-1** *(since v1)* The kind of claim, one of predicted, described, explained, extracted: predicted.\n"
+        "- **UNIT-1** *(since v1)* One row is: one lot on one event night.\n"
         "- **OUT-1** *(since v1)* The outcome: lot full by 18:40 local.\n"
         "- **PRED-1** *(since v1)* The prediction point: 17:00 local on the event day.\n\n"
         "## The bar\n\n- **BAR-1** *(since v1)* MAE minutes on the 2026 holdout, at most 15, against same-as-last-event at 19.2, with the interval.\n\n"
@@ -256,6 +259,126 @@ class TestQuestionAndPlan(Fixture):
         self.assertIn("baseline", finding(f, "plan").text)
 
 
+class TestKindOfClaim(Fixture):
+    KIND = "extracted: predicted."
+    OUT = "- **OUT-1** *(since v1)* The outcome: lot full by 18:40 local.\n"
+    PRED = "- **PRED-1** *(since v1)* The prediction point: 17:00 local on the event day.\n"
+
+    def question(self, kind, *drop, waive=""):
+        q = GOOD["docs/QUESTION_v1.md"].replace(self.KIND, f"extracted: {kind}.")
+        for line in drop:
+            q = q.replace(line, "")
+        return q + (f"\n## Not applicable\n\n| Row | Why |\n| --- | --- |\n{waive}" if waive else "")
+
+    def files(self, q, **more):
+        return self.changed(**{"docs/QUESTION_v1.md": q, "tests/test_pipeline.py": "# Q1/BAR-1 is asserted here\n", **more})
+
+    def test_no_kind_warns_and_is_read_as_predicted(self):
+        q = GOOD["docs/QUESTION_v1.md"].replace("- **KIND-1** *(since v1)* The kind of claim, one of predicted, described, explained, extracted: predicted.\n", "")
+        f = self.doctor(self.changed(**{"docs/QUESTION_v1.md": q}))
+        self.assertEqual(finding(f, "question").state, dm.WARN)
+        self.assertIn("kind of claim", finding(f, "question").text)
+
+    def test_a_kind_it_does_not_know_fails(self):
+        f = self.doctor(self.files(self.question("a hunch")))
+        self.assertEqual(finding(f, "question").state, dm.FAIL)
+        self.assertIn("KIND-n", finding(f, "question").text)
+
+    def test_the_kinds_on_the_label_are_not_the_answer(self):
+        f = self.doctor(self.files(self.question("_…_")))
+        self.assertEqual(finding(f, "question").state, dm.FAIL)
+
+    def test_extracted_and_described_need_no_outcome_or_prediction_point(self):
+        for kind in ("extracted", "described"):
+            with self.subTest(kind):
+                f = dm.dm_rows(make_repo(tempfile.mkdtemp(dir=self.tmp.name), self.files(self.question(kind, self.OUT, self.PRED))))
+                self.assertEqual(finding(f, "question").state, dm.PASS, finding(f, "question").text)
+                self.assertIn(kind, finding(f, "question").text)
+
+    def test_explained_needs_an_outcome_and_no_prediction_point(self):
+        f = dm.dm_rows(make_repo(tempfile.mkdtemp(dir=self.tmp.name), self.files(self.question("explained", self.PRED))))
+        self.assertEqual(finding(f, "question").state, dm.PASS, finding(f, "question").text)
+        f = dm.dm_rows(make_repo(tempfile.mkdtemp(dir=self.tmp.name), self.files(self.question("explained", self.OUT))))
+        self.assertEqual(finding(f, "question").state, dm.FAIL)
+        self.assertIn("OUT", finding(f, "question").text)
+
+    def test_predicted_still_needs_both(self):
+        f = self.doctor(self.files(self.question("predicted", self.OUT)))
+        self.assertEqual(finding(f, "question").state, dm.FAIL)
+
+    def test_not_applicable_needs_a_kind_that_allows_it_and_a_reason(self):
+        q = self.question("extracted", self.OUT, self.PRED, waive="| ledger | nothing is scored |\n| model card | no model |\n")
+        f = self.doctor(self.files(q, **{"docs/ledger.jsonl": None, "docs/model_cards/lot_fill.md": None}))
+        self.assertEqual(finding(f, "ledger").state, dm.NA)
+        self.assertEqual(finding(f, "ledger").text, "nothing is scored")
+        self.assertEqual(finding(f, "model card").state, dm.NA)
+
+    def test_not_applicable_without_a_reason_warns(self):
+        q = self.question("extracted", self.OUT, self.PRED, waive="| ledger | |\n")
+        f = self.doctor(self.files(q, **{"docs/ledger.jsonl": None}))
+        self.assertEqual(finding(f, "ledger").state, dm.WARN)
+        self.assertIn("no reason", finding(f, "ledger").text)
+
+    def test_a_predicted_claim_cannot_set_a_row_aside(self):
+        f = self.doctor(self.files(self.question("predicted", waive="| ledger | we would rather not |\n"), **{"docs/ledger.jsonl": None}))
+        self.assertEqual(finding(f, "ledger").state, dm.WARN)
+        self.assertIn("predicted", finding(f, "ledger").text)
+
+    def test_no_kind_cannot_set_a_row_aside(self):
+        q = GOOD["docs/QUESTION_v1.md"].replace("- **KIND-1** *(since v1)* The kind of claim, one of predicted, described, explained, extracted: predicted.\n", "")
+        q += "\n## Not applicable\n\n| Row | Why |\n| --- | --- |\n| ledger | we would rather not |\n"
+        f = self.doctor(self.changed(**{"docs/QUESTION_v1.md": q, "docs/ledger.jsonl": None}))
+        self.assertEqual(finding(f, "ledger").state, dm.WARN)
+
+    def test_no_kind_can_set_aside_a_datasheet(self):
+        # the first field report: the datasheet is the row that should have survived
+        for kind in ("described", "extracted", "explained"):
+            with self.subTest(kind):
+                q = self.question(kind, self.PRED, waive="| datasheets | documents, not columns |\n")
+                f = dm.dm_rows(make_repo(tempfile.mkdtemp(dir=self.tmp.name), self.files(q, **{"docs/datasheets/gate.md": None})))
+                self.assertEqual(finding(f, "datasheets").state, dm.WARN)
+
+    def test_a_row_set_aside_that_fails_still_fails(self):
+        q = self.question("extracted", self.OUT, self.PRED, waive="| holdout | no holdout here |\n")
+        f = self.doctor(self.files(q, **{"data/holdout.csv": "a\n"}))
+        self.assertEqual(finding(f, "holdout").state, dm.FAIL)
+        self.assertIn("not applicable", finding(f, "holdout").text)
+
+    def test_a_row_set_aside_whose_thing_is_here_says_so(self):
+        q = self.question("extracted", self.OUT, self.PRED, waive="| ledger | nothing is scored |\n")
+        f = self.doctor(self.files(q))
+        self.assertEqual(finding(f, "ledger").state, dm.PASS)
+        self.assertIn("not applicable", finding(f, "ledger").text)
+
+    def test_the_templates_example_row_sets_nothing_aside(self):
+        q = self.question("extracted", self.OUT, self.PRED, waive="| _row_ | _why, in a sentence_ |\n")
+        f = self.doctor(self.files(q, **{"docs/ledger.jsonl": None}))
+        self.assertEqual(finding(f, "ledger").state, dm.NONE)
+
+    def test_a_baseline_that_says_not_applicable(self):
+        # course field report: the plan warned "baseline not yet scored" on a plan that says nothing is scored
+        p = GOOD["docs/PLAN_v1.md"].replace("same as last comparable event — scored on 2026-10-21: MAE 19.2", "not applicable: nothing is scored")
+        f = self.doctor(self.files(self.question("described", self.OUT, self.PRED), **{"docs/PLAN_v1.md": p}))
+        self.assertEqual(finding(f, "plan").state, dm.PASS, finding(f, "plan").text)
+        f = dm.dm_rows(make_repo(tempfile.mkdtemp(dir=self.tmp.name), self.changed(**{"docs/PLAN_v1.md": p})))
+        self.assertEqual(finding(f, "plan").state, dm.WARN)  # a predicted claim has a baseline
+
+    def test_main_prints_it_and_does_not_fail_on_it(self):
+        q = self.question("extracted", self.OUT, self.PRED, waive="| ledger | nothing is scored |\n")
+        repo = make_repo(self.tmp.name, self.files(q, **{"docs/ledger.jsonl": None}))
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            rc = dm.main(["--doctor", "--repo", str(repo), "--dm-only", "--offline"])
+        self.assertEqual(rc, 0, out.getvalue())
+        self.assertIn("[     n/a] ledger", out.getvalue())
+
+    def test_the_question_template_is_read_as_unfilled(self):
+        q = (GUIDE / "templates" / "QUESTION_v1.md").read_text(encoding="utf8")
+        f = self.doctor(self.changed(**{"docs/QUESTION_v1.md": q}))
+        self.assertEqual(finding(f, "question").state, dm.FAIL)
+        self.assertEqual(finding(f, "ledger").state, dm.PASS)  # its Not applicable table waives nothing
+
+
 class TestHoldout(Fixture):
     def inside(self, text):
         return self.changed(**{"docs/PLAN_v1.md": GOOD["docs/PLAN_v1.md"].replace("`../holdout/`", "`data/holdout/`"),
@@ -327,6 +450,15 @@ class TestDataAndPipeline(Fixture):
         d = GOOD["docs/datasheets/gate.md"].replace("- **This sheet:**", "- **Sheet:**")
         f = self.doctor(self.changed(**{"docs/datasheets/gate.md": d}))
         self.assertEqual(finding(f, "datasheets").state, dm.WARN)
+
+    def test_a_datasheet_for_documents(self):
+        # first field report: a document set has parts, not columns, and the row should survive for it
+        d = ("# Datasheet — case files\n\n- **This sheet:** written by Ann on 2026-10-21; measured.\n\n## Documents\n\n"
+             "| Part | How each page was made | Text layer? | Identifiers printed | Knowable at | Absent / late / wrong / lying |\n"
+             "| - | - | - | - | - | - |\n| letter | scanned | none: OCR | a signature | its date | late |\n| form | typed | yes | none seen | |  |\n")
+        f = self.doctor(self.changed(**{"docs/datasheets/gate.md": d}))
+        self.assertEqual(finding(f, "datasheets").state, dm.FAIL)
+        self.assertIn("form", finding(f, "datasheets").text)
 
     def test_raw_writable(self):
         f = self.doctor(read_only=())

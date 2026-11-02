@@ -10,6 +10,8 @@ Keep it short and true: a change that makes a line here untrue updates it in the
 - **Raw to report:** `_command_` — _every reported number, from raw data; about how long it takes at
   full size_ ([DM1/D6](https://github.com/wmacevoy/data-mining/blob/main/guide/05-design.md#d6),
   [DM1/O10](https://github.com/wmacevoy/data-mining/blob/main/guide/07-operating.md#o10))
+- **Main product:** `_path_` — _what this project delivers; the command above makes it, and if it does
+  not, say what does_ ([DM1/W7](https://github.com/wmacevoy/data-mining/blob/main/guide/08-work.md#w7))
 - **Fetch / refresh raw data:** `_command_` — _what it contacts, what it records about the pull_
 - **Reset derived data:** `_command_` — _what it deletes; raw is never deleted_
 
@@ -28,7 +30,10 @@ Keep it short and true: a change that makes a line here untrue updates it in the
 
 ## Data rules for this repository
 
-- **Raw data:** lives in `_path_`, read-only; never hand-edited.
+- **Raw data:** lives in `_path_`, or the pattern naming it (`inputs/*.zip`), read-only; never
+  hand-edited ([DM1/D6](https://github.com/wmacevoy/data-mining/blob/main/guide/05-design.md#d6)).
+- **The ledger:** `_path_` — _what each line records: configurations scored, or searches run and pages
+  read_ ([DM1/F6](https://github.com/wmacevoy/data-mining/blob/main/guide/03-feedback.md#f6)).
 - **The holdout:** lives in `_path_`; _who_ may read it; spent only at a decision, and logged in the
   ledger ([DM1/F5](https://github.com/wmacevoy/data-mining/blob/main/guide/03-feedback.md#f5)).
 - **Data about people:** _what is collected, what may leave this machine, and what agents may see_

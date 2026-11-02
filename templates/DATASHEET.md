@@ -31,6 +31,16 @@ prevents leakage ([DM1/R6](https://github.com/wmacevoy/data-mining/blob/main/gui
 | ------ | ------- | ------------- | ---------------------- | ----------- | ----------------------------- |
 | _ts_ | _reading time_ | _UTC_ | _none_ | _ts + upload lag (up to …)_ | _…_ |
 
+## Documents
+
+For a source made of documents, in place of *Columns*: one row per kind of document in it. What each file holds, how each page was made, and what might be printed on it
+([DM1/U7](https://github.com/wmacevoy/data-mining/blob/main/guide/02-unknowing.md#u7),
+[DM1/O8](https://github.com/wmacevoy/data-mining/blob/main/guide/07-operating.md#o8)).
+
+| Part | How each page was made | Text layer? | Identifiers printed | Knowable at | Absent / late / wrong / lying |
+| ---- | ---------------------- | ----------- | ------------------- | ----------- | ----------------------------- |
+| _a letter_ | _scanned_ | _none: recognition_ | _a signature_ | _its date_ | _…_ |
+
 ## Labels
 
 If this source supplies a target ([DM1/R7](https://github.com/wmacevoy/data-mining/blob/main/guide/04-requirements.md#r7)):
