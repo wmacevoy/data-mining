@@ -163,6 +163,9 @@ to the pipeline as software; these are the ones data work adds.
 - [ ] It cannot read the holdout. ([DM1/A4](guide/10-agents.md#a4))
 - [ ] It sees the schema and a fixture, not rows about people, unless decided otherwise.
       ([DM1/A8](guide/10-agents.md#a8))
+- [ ] If reading the data is the task: who decided, which service sees it, every copy including the
+      agent's own, and when it all gets removed, written before the first session.
+      ([DM1/A10](guide/10-agents.md#a10))
 - [ ] Its scoring appends to the ledger. ([DM1/A3](guide/10-agents.md#a3))
 
 **Reviewing what it produced**

@@ -249,6 +249,7 @@ these.)
 - [**DM1/A7**](guide/10-agents.md#a7) You present it, so you own it
 - [**DM1/A8**](guide/10-agents.md#a8) Data sent to an agent has left the room
 - [**DM1/A9**](guide/10-agents.md#a9) A language model in the pipeline is a model: version it, sample it, and check its test set was not in its training
+- [**DM1/A10**](guide/10-agents.md#a10) When reading the data is the task, the agent must read it: say what then has to be true
 
 ## Reading SE1 as a data miner
 

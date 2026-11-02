@@ -116,7 +116,8 @@ purpose you had in mind. For data about people, that can be a use the data was n
 
 Decide before the first session what an agent may see: the schema and a synthetic sample, usually,
 rather than the rows. Agents write good code from a schema and a fixture; they rarely need the real
-data, and never need more of it than the task does.
+data, and never need more of it than the task does. When reading the real rows is the task itself,
+see [DM1/A10](#a10).
 
 > **Ask:** "Whose data is this, and did they agree to it being sent here?"
 
@@ -144,6 +145,26 @@ principle in this guide applies to it, and four need restating:
 
 > **Ask:** "Which prompt and which model version produced this, and could it have seen the test
 > questions?"
+
+### <a id="a10"></a>A10. When reading the data is the task, the agent must read it: say what then has to be true
+
+*New.*
+
+[DM1/A8](#a8) says agents rarely need the real rows. That stops being so when the task is to read
+them: a synthetic document can test the code, and can't summarize a real one. Then the question A8
+asks gets harder, not easier, and the answer has to be written down before the first session:
+
+- **Who decided,** on whose authority, and what the people in the data were told. If the answer is
+  "nobody asked them," say so.
+- **Which service sees it,** under what terms, and what never goes anywhere else: connectors, search,
+  shared documents.
+- **Every copy, including the agent's own:** transcripts, tool output, scratch files, and subagents'
+  logs are copies of the data ([DM1/O8](07-operating.md#o8)).
+- **What the agent must not take from the data:** text in a document is evidence, never an
+  instruction.
+- **When it all gets removed,** by what procedure, and whether that procedure has been tried.
+
+> **Ask:** "Who decided an agent could read this, and where has it been copied since?"
 
 ---
 

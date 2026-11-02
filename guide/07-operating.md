@@ -132,7 +132,14 @@ silently changes the meaning of every model that reads it — including the one 
 Everything in SE1/O8 applies, and a data system has more copies to secure than its owners usually
 count: the raw pull, every cache, every intermediate Parquet file, every extract on a laptop, every
 notebook output cell, and every prompt that pasted rows into a hosted model ([DM1/A8](10-agents.md#a8)).
-Each is the data, with weaker protection.
+Each is the data, with weaker protection. Two kinds get forgotten: an agent's transcripts and tool
+output ([DM1/A10](10-agents.md#a10)), and the old versions inside a store, where a deleted row stays
+until they are purged.
+
+Identifiers can arrive where no column names them, printed on a scanned form and carried into a text
+cache and a search index. A scrub lasts only if it sits where the data is derived, or a rebuild brings
+it back ([DM1/D4](05-design.md#d4)). And run a check that shows it searched for something
+([DM1/U10](02-unknowing.md#u10)).
 
 Two threats are specific to models: a model can disclose its training data (membership inference,
 memorized records in a generative model), and anyone who can write to the training inputs can steer
