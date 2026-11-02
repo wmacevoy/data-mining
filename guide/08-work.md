@@ -95,6 +95,9 @@ rule that helps, the sanity plot skipped, the null quietly not mentioned. **The 
 something** is this field's characteristic deadline pathology, and it never feels like cheating
 while it is happening. It feels like trying harder.
 
+When the deliverable is a summary, there is a second pathology: the pressure is to be concise, and
+what it costs is omission ([DM1/F10](03-feedback.md#f10)). That also feels like doing the job well.
+
 Change the terrain:
 
 - **Make re-running cheap.** If raw to report is one command and a few minutes, "don't touch it, it

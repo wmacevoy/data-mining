@@ -184,8 +184,32 @@ The defense is the one SE1/F5 gives — keep the reason attached — plus one mo
 one metric**, including the one the search was not told about, and look at a sample of individual
 predictions.
 
+A limit is a target too. Cap a summary's length and the summaries crowd just under the cap, whatever
+the evidence needs; move the cap and they move with it. Telling the writer that the cap gives way to
+evidence is a rule read and not followed ([DM1/A2](10-agents.md#a2)). Comparing the drafts by script
+is what changes the work ([DM1/F10](#f10)).
+
 > **Ask:** "If the search could cheat on this metric, how would it — and what second number would
 > catch it?"
+
+### <a id="f10"></a>F10. A faithful summary can still lose the finding: check what left, not only what stayed
+
+*New.*
+
+A citation check holds what a summary says to its source. It cannot see what the summary stopped
+saying. Every quotation can be exact, every page right, and the most important sentence in the
+source gone. Fidelity is precision. Nothing about it measures recall.
+
+Any limit on length is a filter on the data, chosen by nobody and applied differently per case
+([DM1/F9](#f9)). And a summary's author is a poor witness to its own cuts: ask, and you get what it
+remembers.
+
+So keep the drafts, and compare a draft with its final by script. Ask a second reader, with no sight
+of the first, to read a sample of cases whole, and count what each found that the other missed.
+Include a random sample, and expect misses in both directions. Name what may never be cut for
+length, in advance. When a limit and the evidence conflict, the limit gives way.
+
+> **Ask:** "What did this summary drop, how do we know, and who decided?"
 
 ---
 

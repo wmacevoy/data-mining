@@ -156,6 +156,7 @@ these.)
 - [**DM1/F7**](guide/03-feedback.md#f7) A point estimate is half a result
 - [**DM1/F8**](guide/03-feedback.md#f8) A large sample does not rescue a biased one; it disguises it
 - [**DM1/F9**](guide/03-feedback.md#f9) When a metric becomes a target, it stops measuring — and the search is the hardest optimizer you will meet
+- [**DM1/F10**](guide/03-feedback.md#f10) A faithful summary can still lose the finding: check what left, not only what stayed
 
 **[4. Requirements](guide/04-requirements.md)**
 

@@ -92,6 +92,14 @@ to the pipeline as software; these are the ones data work adds.
       ([DM1/U4](guide/02-unknowing.md#u4), [DM1/H2](guide/09-people.md#h2))
 - [ ] Someone other than the author regenerated it from raw. ([DM1/W7](guide/08-work.md#w7))
 
+**Before trusting a summary or an extraction**
+
+- [ ] Each quotation re-found on its cited page by a script. ([DM1/W7](guide/08-work.md#w7))
+- [ ] What was dropped: drafts kept and compared with finals by script; what may never be cut for
+      length named in advance. ([DM1/F10](guide/03-feedback.md#f10))
+- [ ] A sample, some of it random, read whole by a second reader with no sight of the first, and what
+      each missed is counted. ([DM1/F10](guide/03-feedback.md#f10), [DM1/A9](guide/10-agents.md#a9))
+
 **Before spending the holdout**
 
 - [ ] There is a decision it serves, written in the ledger. ([DM1/F5](guide/03-feedback.md#f5))
