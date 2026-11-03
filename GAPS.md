@@ -45,7 +45,7 @@ redacted review stays in git history. Ordered by what each cost:
 changed the work.
 
 **What this says nothing about:** trained models, holdouts spent at a decision, or anything in production. 27 of the 93 principles
-didn't reach this project, and 20 more fit by argument only. **Closed:** each proposal is in the guide, on the branch `field-report-1`, pending the owner's read. Its status, by
+didn't reach this project, and 20 more fit by argument only. **Closed:** each proposal is in the guide, pending the owner's read. Its status, by
 item, was at the top of that review, and CHANGELOG lists it. **Still open:** hybrid search against keyword search, in that project.
 
 ## Field report: the course's migration, 2026-10-29, partial
@@ -69,9 +69,9 @@ report by ID (its `QUEUE.md`, N6). What it had asked of this guide so far:
    [DM1/R12](guide/04-requirements.md#r12), a second project for the same finding, and the plan row takes a baseline that says so.
 6. **One repository, five projects, and `docs/` is the published site.** The doctor read the root, the CONTRIBUTING template has
    one *Raw to report*, and a working set in `<project>/docs/` was invisible unless `--repo` pointed there, where the agreement rows
-   then failed. **Closed 2026-11-02, the owner's decision:** one run is one project. The agreement rows look upward to the repository's root,
-   a run at the root points at any project with a question, and each project keeps its own `CONTRIBUTING.md` and `docs/`. A session started
-   inside a project has not been observed loading the agreements, and the row says so.
+   then failed. **Closed 2026-11-03, the owner's word:** a run of the work is one experiment on one question ([DM1/T13](guide/06-testing.md#t13)), and *project* is no longer a term here. A doctor check reads one question's directory. This line had named as the owner's decision, on 2026-11-02, "one run is one project", which the owner did not remember, and no transcript here records. The agreement rows look upward to the repository's root,
+   a check at the root points at any directory with a question, and each keeps its own `CONTRIBUTING.md` and `docs/`. A session started
+   inside one has not been observed loading the agreements, and the row says so.
 7. **This guide adds nothing at session start.** `dm.py` has no `--post` or `--hook`. **Open,** and possibly a null: whether
    `AGENTS-DM.md` loaded at start is enough.
 
@@ -127,10 +127,10 @@ differently across students' machines.
 
 **Open:** whether that is a gap in SE1/O2, or a local exception that should be written down as one.
 
-### 7. The doctor has met two projects
+### 7. The doctor has met two repositories
 
-`dm --doctor` (`dm.py`, beside SE1's `se.py` in a project) was written on 2026-10-28 from the
-principles, not from a project, and has since met the two above; neither trained a model. Every row is something this guide says must be mechanical rather
+`dm --doctor` (`dm.py`, beside SE1's `se.py`) was written on 2026-10-28 from the
+principles, not from real work, and has since met the two above; neither trained a model. Every row is something this guide says must be mechanical rather
 than told ([DM1/A4](guide/10-agents.md#a4), [DM1/D6](guide/05-design.md#d6),
 [DM1/F6](guide/03-feedback.md#f6), [DM1/R6](guide/04-requirements.md#r6)), and every threshold and
 heuristic in it is invented: which files count as the ledger, what a placeholder looks like, what
@@ -144,7 +144,7 @@ Two things it exposed while being written:
 - **The two AGENTS.md copies had no names.** Closed 2026-10-29: SE1's stays `AGENTS.md` at the root,
   where SE1's doctor and Claude Code's own read look for it, and this guide's is `AGENTS-DM.md`
   beside it, both imported from `CLAUDE.md` (AGENTS.md's header, the README, the CONTRIBUTING
-  template). The doctor still tells them apart by which guide they link to, so a project that chose
+  template). The doctor still tells them apart by which guide they link to, so a repository that chose
   other names is told the guide's, not failed. Whether two files loaded from one CLAUDE.md behave
   as one agreement is untested, like the rest.
 - **"Readable from the working directory" has no definition** ([DM1/A4](guide/10-agents.md#a4)).
@@ -156,7 +156,7 @@ Two things it exposed while being written:
 **Wrong if** the first course project runs it and every row that failed was one the owner already
 knew about, or a row that passed hid the thing that went wrong. The first field report found the second: `raw to report` passed on a
 command that doesn't make the project's main product. The row now asks what the command makes and says it didn't run it, which a
-project can answer falsely. **Open:** a project that trains a model.
+project can answer falsely. **Open:** work that trains a model.
 
 ### 8. Essential K1 in data work is a draft of a decision without a trial
 
@@ -164,5 +164,5 @@ project can answer falsely. **Open:** a project that trains a model.
 over from SE1 v1.4 on 2026-11-03, where they are the author's decision with no trial of their own. Here they
 are one step further from evidence: nobody has yet asked a client for a verdict under this rule, and
 `dm --doctor` does not read one. The first field report comes near it: a passing citation check retired no fear about
-omission. **Wrong if** the first projects record verdicts that only repeat the
-bar, or that nobody can name a judge for. **Open:** a project that records a verdict.
+omission. **Wrong if** the first verdicts recorded that only repeat the
+bar, or nobody can name a judge. **Open:** a question with a recorded verdict.

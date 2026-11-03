@@ -1,7 +1,7 @@
 # Checklists
 
-Every checklist in the guide, in the order a project meets them. Each item cites the principle that
-explains it; if an item retires no fear on your project, drop it and say why
+Every checklist in the guide, in the order the work meets them. Each item cites the principle that
+explains it; if an item retires no fear in your work, drop it and say why
 ([DM1/P4](guide/01-purpose.md#p4)). SE1's
 [checklists](https://github.com/wmacevoy/software-engineering/blob/v1.4/CHECKLISTS.md) still apply
 to the pipeline as software; these are the ones data work adds.
@@ -71,6 +71,11 @@ to the pipeline as software; these are the ones data work adds.
 - [ ] Run once at full size, and timed. ([DM1/O10](guide/07-operating.md#o10))
 
 ## Claiming
+
+**Before committing to a large run**
+
+- [ ] It says what result would count against the claim, a smaller run has had the chance to say no, and what
+      will be kept is in proportion to the cost of running it again. ([DM1/T13](guide/06-testing.md#t13))
 
 **Before presenting a number**
 

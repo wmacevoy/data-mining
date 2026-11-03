@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """dm: the data-mining guide's command-line companion, beside se.py in a repository that follows both.
 
-  dm --doctor   Is the data project sound? Runs SE1's doctor (se.py, found beside this file, or by
+  dm --doctor   Is the data work here sound? Runs SE1's doctor (se.py, found beside this file, or by
                 SE_PY, SE_GUIDE, .se1/, or ../software-engineering/) and adds the rows DM1 asks to be
                 mechanical rather than told: both working agreements loaded and the SE1 release the data
                 one extends against the SE1 copy present, the question and its
@@ -9,13 +9,13 @@
                 datasheet per source with every column's knowable-at, raw read-only, the one command
                 from raw to report, the ledger and who writes it, the model card and its bias audit,
                 the recorded environment, and citations of the question. Read-only.
-                "none yet" is a true answer: a guide, or a project on day one, has none of these.
+                "none yet" is a true answer: a guide, or work on day one, has none of these.
                 "n/a" is a row the question sets aside, with a reason, for its kind of claim (DM1/R12).
-                One run is one project: in a repository of several, --repo <project>, and the agreements
+                One check reads one question's directory: in a repository of several, --repo <directory>, and the agreements
                 are looked for upward, as far as the repository's root, where SE1's rows run.
 
 Standard library only, Python 3.9 or later. This copy is from the guide release named in RELEASE.
-Every threshold and heuristic here is invented. It has met two real projects and neither trained a model (GAPS.md, 7).
+Every threshold and heuristic here is invented. It has met two real repositories and neither trained a model (GAPS.md, 7).
 """
 import argparse
 import csv
@@ -185,8 +185,8 @@ SKIP_DIRS = {"templates", "node_modules", "site-packages"}  # the guide's own te
 
 
 def find_docs(repo, patterns):
-    """Project documents matching the glob patterns. Dot-directories (.pixi, .venv, .git) and installed
-    packages are not the project: the first real repository offered a library's model_card_template.md."""
+    """Working-set documents matching the glob patterns. Dot-directories (.pixi, .venv, .git) and installed
+    packages are not the work: the first real repository offered a library's model_card_template.md."""
     repo = Path(repo)
     out = []
     for pat in patterns:
@@ -263,7 +263,7 @@ def find_copies(repo):
 
 def agreements_home(repo):
     """Where the working agreements are for this run: here, or above, as far as the repository's root and no further.
-    One run is one project (GAPS.md), and a repository of several keeps one pair of agreements at its root."""
+    One check reads one directory (GAPS.md), and a repository of several questions keeps one pair of agreements at its root."""
     repo = Path(repo).resolve()
     rc, out = run(["git", "rev-parse", "--show-toplevel"], cwd=repo)
     top = Path(out.strip()).resolve() if rc == 0 and out.strip() else repo
@@ -277,10 +277,10 @@ def agreements_home(repo):
 
 
 def check_agreements(repo):
-    project = Path(repo).resolve()
-    repo = agreements_home(project)
-    above = "" if repo == project else ("; this is for a session started at the root, and one started in "
-                                        f"{project.name} has not been observed")
+    checked = Path(repo).resolve()
+    repo = agreements_home(checked)
+    above = "" if repo == checked else ("; this is for a session started at the root, and one started in "
+                                        f"{checked.name} has not been observed")
     dm, dm_label, se, se_label = find_copies(repo)
     name, ids = "data working agreement", "DM1/A1, SE1/A11"
     if not dm:
@@ -351,7 +351,7 @@ def not_applicable(text):
 
 def set_aside(findings, text):
     """Apply the question's *Not applicable* table to the rows. It can quiet a row that has nothing to report, never a
-    failure, and only for a kind of claim that allows it, so a table cannot be how a project stops being checked."""
+    failure, and only for a kind of claim that allows it, so a table cannot be how work stops being checked."""
     kind, _ = question_kind(text)
     kind = kind or "predicted"
     waived = not_applicable(text)
@@ -376,7 +376,7 @@ def check_question(repo):
     name = "question"
     if not q:
         here = sorted({p.parent.parent.name for p in Path(repo).glob("*/docs/QUESTION_v*.md") if not p.parent.parent.name.startswith(".")})
-        also = f"; {', '.join(here)} has one: one run is one project, so run with --repo {here[0]}" if here else ""
+        also = f"; {', '.join(here)} has one: one check reads one question's directory, so run with --repo {here[0]}" if here else ""
         return Finding(name, "DM1/R1, DM1/R2, DM1/W6", NONE, f"no docs/QUESTION_vN.md{also}",
                        "treat the task's text as the question, marked (inferred); the decision and the kind of claim come first"), None, 0, {}
     text = read(q)
@@ -593,7 +593,7 @@ def check_raw_to_report(repo):
     made = backtick_paths(field(text, "Main product"))
     if not made:
         return Finding(name, ids, WARN, f"`{cmds[0]}`: configured, not run here, and nothing says it makes the main product",
-                       "add a *Main product* line naming what the project delivers; this row cannot tell whether the command makes it")
+                       "add a *Main product* line naming what this work delivers; this row cannot tell whether the command makes it")
     return Finding(name, ids, PASS, f"`{cmds[0]}` makes `{made[0]}`: configured, not run by this doctor, which has only read the line", "")
 
 
@@ -630,7 +630,7 @@ def spent(row):
 def check_ledger(repo):
     name, ids = "ledger", "DM1/F6, DM1/A3"
     guide = read(Path(repo) / "CONTRIBUTING.md")
-    line = field(guide, "The ledger") or field(guide, "Ledger")  # a project's own logs of reads and searches count
+    line = field(guide, "The ledger") or field(guide, "Ledger")  # the work's own logs of reads and searches count
     named = named_paths(repo, line)
     ledgers = [f for p in named for f in expand(repo, p) if f.is_file()]
     if named and not ledgers:
@@ -769,8 +769,8 @@ def python_kind():
 
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="dm", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--doctor", action="store_true", help="check the data project (the default)")
-    ap.add_argument("--repo", default=".", help="the repository, or one project in it, to check (default: here)")
+    ap.add_argument("--doctor", action="store_true", help="check the data work here (the default)")
+    ap.add_argument("--repo", default=".", help="the repository, or a directory in it that holds a question, to check (default: here)")
     ap.add_argument("--offline", action="store_true", help="do not try the network for SE1's release check")
     ap.add_argument("--dm-only", action="store_true", help="only DM1's rows, even if se.py is at hand")
     ap.add_argument("--json", action="store_true", help="machine-readable output")

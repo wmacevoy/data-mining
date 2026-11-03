@@ -10,7 +10,7 @@ Keep it short and true: a change that makes a line here untrue updates it in the
 - **Raw to report:** `_command_` — _every reported number, from raw data; about how long it takes at
   full size_ ([DM1/D6](https://github.com/wmacevoy/data-mining/blob/main/guide/05-design.md#d6),
   [DM1/O10](https://github.com/wmacevoy/data-mining/blob/main/guide/07-operating.md#o10))
-- **Main product:** `_path_` — _what this project delivers; the command above makes it, and if it does
+- **Main product:** `_path_` — _what this work delivers; the command above makes it, and if it does
   not, say what does_ ([DM1/W7](https://github.com/wmacevoy/data-mining/blob/main/guide/08-work.md#w7))
 - **Fetch / refresh raw data:** `_command_` — _what it contacts, what it records about the pull_
 - **Reset derived data:** `_command_` — _what it deletes; raw is never deleted_
@@ -23,8 +23,8 @@ Keep it short and true: a change that makes a line here untrue updates it in the
 - **Success prints:** `_the line that means it passed_`
 - **The doctor:** `./dm --doctor` — SE1's rows and this guide's: both agreements loaded, the
   question's one-way doors, the holdout's reach, every column's knowable-at, raw read-only, the
-  ledger's writer; *none yet* is a true answer. One run is one project: in a repository of several,
-  `./dm --doctor --repo <project>`, with that project's own `CONTRIBUTING.md` and `docs/`
+  ledger's writer; *none yet* is a true answer. One check reads one question's directory: in a repository of several,
+  `./dm --doctor --repo <directory>`, with that directory's own `CONTRIBUTING.md` and `docs/`
   ([DM1/A2](https://github.com/wmacevoy/data-mining/blob/main/guide/10-agents.md#a2))
 - **Golden output:** `_path_` — regenerate with `_command_` and review the diff
   ([DM1/T7](https://github.com/wmacevoy/data-mining/blob/main/guide/06-testing.md#t7))
@@ -44,7 +44,7 @@ Keep it short and true: a change that makes a line here untrue updates it in the
 
 ## Where things are
 
-- **Working set:** `docs/`, or `<project>/docs/` in a repository of several projects or one whose
+- **Working set:** `docs/`, or `<directory>/docs/` in a repository of several questions or one whose
   `docs/` is a published site — `QUESTION_vN`, `PLAN_vN`, datasheets, model cards, the ledger, `QUEUE`,
   `FINDINGS` ([DM1/W6](https://github.com/wmacevoy/data-mining/blob/main/guide/08-work.md#w6))
 - **Agents:** read `AGENTS-DM.md` (copied from the [data mining guide](https://github.com/wmacevoy/data-mining/blob/main/AGENTS.md))

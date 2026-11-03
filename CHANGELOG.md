@@ -17,9 +17,9 @@ yours.
 
 ## v1.0 — unreleased
 
-· 99 principles
+· 100 principles
 
-The first release: 78 principles that reframe SE1 principles for data work, and 21 new ones that
+The first release: 78 principles that reframe SE1 principles for data work, and 22 new ones that
 SE1 has no counterpart for. Refactored from the course document `DATA-SCIENCE.md`, reorganized into
 SE1's ten chapters. Bias is treated as SE1 treats security: a permanent requirement
 ([DM1/R10](guide/04-requirements.md#r10)), an audit before and after deploy
@@ -78,7 +78,12 @@ MacEvoy, who signs the release (SE1/U9); every wording below is a draft until th
   and [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t8) changed only their markers. Two IDs were written
   as U10 at once, neither released: the field report's keeps it, since it came first and rests on a project,
   and this review's is [DM1/U11](guide/02-unknowing.md#u11). The owner's pin of 2026-11-02, v1.3, was replaced on 2026-11-03 by v1.4;
-  no tag, and one run is one project, stand, so ADOPT.md vendors once at the root. `REVIEW-v1.md` is removed, now that it is incorporated; it had been redacted for confidentiality before it was pushed ([GAPS.md](GAPS.md)).
+  no tag stands, as recorded and not yet confirmed. ADOPT.md vendors once at the root. `REVIEW-v1.md` is removed, now that it is incorporated; it had been redacted for confidentiality before it was pushed ([GAPS.md](GAPS.md)).
+- [DM1/T13](guide/06-testing.md#t13) is new, Warren MacEvoy's decision of 2026-11-03: a run is one experiment on one question, tested
+  small before large, with evidence kept in proportion to the cost of running it again. *Project* stops being a term here: it hid
+  the repository, the question, and the experiment, and "one run is one project", recorded as the owner's on 2026-11-02, is
+  withdrawn, since the owner did not remember it. It stays as plain English in the field reports and for the course's projects. `--repo` takes
+  a directory that holds a question. `LEDGER` gains *Would count against it* and *Cost to run again*. W3, O10, CHECKLISTS, AGENTS.md, and ADOPT.md follow.
 - This repository now follows SE1 as a project, not only by citation (ADOPT.md): SE1's agreement copied
   unedited to `docs/SE1-AGENTS.md`, since the root `AGENTS.md` here is the file this guide publishes;
   `se`, `se.ps1`, and `se.py` copied from v1.4; both agreements imported from a new `CLAUDE.md`; the
@@ -200,6 +205,7 @@ Written 2026-11-01 by Claude Opus 5.5, from `REVIEW-v1.md` and the course's `FIN
 The principles with no SE1 counterpart:
 
 - [DM1/U3](guide/02-unknowing.md#u3) Leakage is the canonical K3: it feels like a good result.
+- [DM1/T13](guide/06-testing.md#t13) A run is an experiment. Added 2026-11-03.
 - [DM1/U8](guide/02-unknowing.md#u8) People ask Prob(result | me); the data holds Prob(result |
   the rows it counts as like me).
 - [DM1/F4](guide/03-feedback.md#f4) The search is part of the result.

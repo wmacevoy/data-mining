@@ -1,6 +1,6 @@
 # Adopting the guide
 
-How to make a data project one that follows this guide, whether it is starting today or already has
+How to make a repository doing data work follow this guide, whether the work starts today or already has
 results. This file extends
 [SE1's ADOPT.md](https://github.com/wmacevoy/software-engineering/blob/v1.4/ADOPT.md), which governs
 everything about the code: the repository guide, the queue, findings, definition of done, CI. It adds
@@ -14,20 +14,22 @@ in [GAPS.md](GAPS.md), neither of which followed it. Step 2's commands ran on a 
 [fall 2026 course repository](https://github.com/wmacevoy/data-mining-wmacevoy-fall-2026) and on an empty one, and
 `ml/`, in that repository's `main`, is the example below, from reading its code without running it. The course's own
 migration is on its `adopt-se1-dm1` branch, and was not read for this.
-Everything past step 3 is a design that no project has followed yet. Wrong if a project that
+Everything past step 3 is a design that nobody has followed yet. Wrong if a repository that
 followed it still reports a number whose looks nobody can count, or spends more on this file than it
 catches.
 
-## For the owner, both kinds of project
+## For the owner, new work or old
 
-1. **Protect the evidence before any agent starts.** A session can read whatever the user can, from its
+1. **Say which questions this repository serves, then protect the evidence before any agent starts.** A question
+   is one decision and the evidence spent on it, and each run of the work is one experiment on it
+   ([DM1/T13](guide/06-testing.md#t13)). Two questions that share data share a holdout's looks, or split them in advance. A session can read whatever the user can, from its
    first command. Move the holdout out of the working directory or behind a permission the agent lacks,
    and decide whether rows about people may go to a hosted model
    ([DM1/A4](guide/10-agents.md#a4), [DM1/A8](guide/10-agents.md#a8)). If there is no holdout yet, decide
    where it will live before anyone splits anything; a person keeping it elsewhere is a plain answer. If
    reading the data is the task, write down what [DM1/A10](guide/10-agents.md#a10) asks before the first session.
 
-2. **Vendor both guides, and check that they load.** From the project's directory, with clones of both
+2. **Vendor both guides, and check that they load.** From the repository's root, with clones of both
    guides beside it:
 
    ```sh
@@ -49,19 +51,19 @@ catches.
    quote a line of each file without opening them, and look for `se --post`'s report
    ([SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/10-agents.md#a11)).
 
-   **Several projects in one repository:** one run is one project, the owner's decision of 2026-11-02
-   ([GAPS.md](GAPS.md)). Vendor once at the repository's root, give each project its own `CONTRIBUTING.md` and
-   `docs/`, and run `./dm --doctor --repo <project>` for each; the agreements are found upward as far as the root.
-   Start sessions at the root: the hook's `python3 se.py --post` cannot find `se.py` from a project's directory,
-   and a session started inside a project has not been seen loading the agreements.
+   **Several questions in one repository:** the agreements and CI belong to the repository, and the rest to the
+   question. Vendor once at the root, give each question a directory with its own `CONTRIBUTING.md` and `docs/`, and
+   run `./dm --doctor --repo <directory>` for each; the agreements are found upward as far as the root.
+   Start sessions at the root: the hook's `python3 se.py --post` cannot find `se.py` from a subdirectory,
+   and a session started inside one has not been seen loading the agreements.
 
 3. **Add a template when you reach its stage, not all at once.** A model card with no model is a failure
    the doctor will report, and it should. *None yet* is a true answer on day one, so **0 failed means
    nothing is wrong, not that you have adopted**; the checklist at the end is what says that. A row your kind of
    claim sets aside is *n/a*, with a reason in the question ([DM1/R12](guide/04-requirements.md#r12)).
 
-A project that is only analysis lets the question and the plan stand in for SE1's requirements and
-design, and SE1's *working set* row stays *none yet*; `QUEUE` and `FINDINGS` are still kept. A project
+Work that is only analysis lets the question and the plan stand in for SE1's requirements and
+design, and SE1's *working set* row stays *none yet*; `QUEUE` and `FINDINGS` are still kept. Work
 that also ships software (a dashboard, an API) keeps `REQUIREMENTS_vN` as well, and its mission points
 at the question's `Q1/DECISION-1` rather than saying it a second time.
 
@@ -74,7 +76,7 @@ quotation on its page ([DM1/W7](guide/08-work.md#w7)), and the baseline is a ful
 ([DM1/T12](guide/06-testing.md#t12)). Keep the datasheet for every kind. Where a step does not bind, say so and why, and
 do not invent the field.
 
-## Starting a new project
+## Starting new work
 
 In order, each from its template in [templates/](templates/):
 
@@ -89,10 +91,11 @@ In order, each from its template in [templates/](templates/):
    ([DM1/T1](guide/06-testing.md#t1), [DM1/T9](guide/06-testing.md#t9)).
 7. **One command from raw to report, and the ledger,** appended by the code that scores
    ([DM1/D6](guide/05-design.md#d6), [DM1/F6](guide/03-feedback.md#f6)). Both exist before there is
-   anything worth reporting, when they are cheapest.
+   anything worth reporting, when they are cheapest. From here each run is an experiment: small before large, and kept
+   in proportion to the cost of running it again ([DM1/T13](guide/06-testing.md#t13)).
 8. **The model last,** with a model card once it decides anything ([DM1/D10](guide/05-design.md#d10)).
 
-## Refactoring a project that already has results
+## Refactoring work that already has results
 
 Each step keeps what is known from being overstated. In this order, because each one changes what the
 next can claim:
@@ -130,13 +133,13 @@ report of having done them.
   compares variants on them, so the test set is in front of whoever chooses between models. The count is recoverable only
   from `runs/*/status.json` wherever runs still exist, and they are git-ignored, so it is a minimum.
 - **No fence is possible (step 4).** MNIST's test set is public, and `mnist_data.py` caches it in one file
-  with the training set, inside the project. The honest plan says there is no true holdout. The change that
+  with the training set, inside the working directory. The honest plan says there is no true holdout. The change that
   helps is in the code: score validation on every run, and make the test set a separate command that
   appends to the ledger.
 - **A pass that expires (step 2).** The doctor said `data/mnist.npz: not here, and git-ignored` and passed,
   until the first download made it `present and readable` and failed. Run the doctor after data is fetched.
 
-## For the agent, in a project that is only partly adopted
+## For the agent, in a repository that is only partly adopted
 
 SE1's section holds, and where one of these is missing, this replaces the rule that assumed it. Say each
 absence once.

@@ -56,11 +56,11 @@ the design. A task that contradicts either is a question for the human, not a ta
 
 ## Before you start
 
-- **Where the project is only partly adopted,** the guide's
+- **Where the repository is only partly adopted,** the guide's
   [ADOPT.md](https://github.com/wmacevoy/data-mining/blob/main/ADOPT.md) says what to do for each missing
   thing: say so once, and do not invent it. (SE1/W12)
-- **If the repository has `./dm`, run `./dm --doctor` once**, and in a repository of several projects
-  once for each you touch, with `--repo <project>`. It is SE1's doctor plus this guide's
+- **If the repository has `./dm`, run `./dm --doctor` once**, and in a repository of several questions
+  once for each you touch, with `--repo <directory>`. It is SE1's doctor plus this guide's
   rows: both working agreements loaded, the question's one-way doors, the plan, where the holdout
   lives and whether it is in reach, every column's knowable-at, raw read-only, the ledger's writer.
   Work by what it finds; a *none yet* row is reported once, not invented to satisfy a rule. A row
@@ -149,6 +149,9 @@ SE1's *Verify* holds — run it, watch the test fail, never weaken an assertion.
   one. (DM1/U11, SE1/W11)
 - **Name what the change must not break**, by ID and its words: `Q1/PRED-1`, the split, the holdout.
   (DM1/W7, SE1/W11)
+- **Treat a run as an experiment.** Say before it what result would count against the claim, start small, and keep
+  what it would cost to lose: every run gets a ledger line, and what is attached scales with the cost of running it
+  again. A holdout look cannot be repeated, so everything is kept. (DM1/T13)
 - **Compare against the baseline** on the same split, every time a model is reported. (DM1/T1)
 - **Give an interval, and the seed spread** for anything trained. A difference inside the noise is
   not a result. (DM1/F7)

@@ -56,7 +56,7 @@ before acting in a repository that follows this guide. Then read the chapter tha
 (the question → 4, pipelines and models → 5, evaluation → 3 and 6, production → 7). Cite principles
 by ID when you raise a concern or explain a choice.
 
-**Teams adopting it:** follow [ADOPT.md](ADOPT.md), for a new project or one that already has results.
+**Teams adopting it:** follow [ADOPT.md](ADOPT.md), for new work or a repository that already has results.
 It protects the evidence first, then vendors both guides: SE1's AGENTS.md as `AGENTS.md`, this guide's beside it
 as `AGENTS-DM.md`, both imported from `CLAUDE.md`, with `dm`, `dm.ps1`, and `dm.py` beside SE1's `se`, `se.ps1`,
 and `se.py`. `./dm --doctor` says what the data working set lacks, and *none yet* is a true answer.
@@ -79,13 +79,13 @@ and `se.py`. `./dm --doctor` says what the data working set lacks, and *none yet
 | Reference                          | For                                                             |
 | ---------------------------------- | --------------------------------------------------------------- |
 | [AGENTS.md](AGENTS.md)             | the working agreement for agents doing data work, portable to any repository |
-| [CHECKLISTS.md](CHECKLISTS.md)     | every checklist, in the order a project meets them              |
+| [CHECKLISTS.md](CHECKLISTS.md)     | every checklist, in the order the work meets them              |
 | [GLOSSARY.md](GLOSSARY.md)         | the terms used precisely (SE1's glossary covers the rest)       |
 | [READING.md](READING.md)           | the longer arguments, one line each                             |
 | [CHANGELOG.md](CHANGELOG.md)       | what changed in each release, by principle ID                   |
 | `templates/`                       | starting points: [QUESTION](templates/QUESTION_v1.md), [PLAN](templates/PLAN_v1.md), [DATASHEET](templates/DATASHEET.md), [MODEL_CARD](templates/MODEL_CARD.md), [LEDGER](templates/LEDGER.md), [CONTRIBUTING](templates/CONTRIBUTING.md) — and SE1's [DESIGN](https://github.com/wmacevoy/software-engineering/blob/v1.4/templates/DESIGN_v1.md), [QUEUE](https://github.com/wmacevoy/software-engineering/blob/v1.4/templates/QUEUE.md), and [FINDINGS](https://github.com/wmacevoy/software-engineering/blob/v1.4/templates/FINDINGS.md), unchanged |
 | [GAPS.md](GAPS.md)                 | where the guide falls short, and what is not yet tested         |
-| `dm`, `dm.py`                      | the data project's doctor: SE1's rows plus this guide's, run in a repository that follows both (`./dm --doctor`); met two real projects, neither with a model ([GAPS 7](GAPS.md#7-the-doctor-has-met-two-projects)) |
+| `dm`, `dm.py`                      | the doctor for data work: SE1's rows plus this guide's, run in a repository that follows both (`./dm --doctor`); met two real projects, neither with a model ([GAPS 7](GAPS.md#7-the-doctor-has-met-two-repositories)) |
 
 ## The running example
 
@@ -121,7 +121,7 @@ may be reworded, but its ID never moves to a different idea; a retired principle
 note saying where its content went, and new principles take the next number in their chapter. The
 letters are the chapters, as in SE1: **P**urpose, **U**nknowing, **F**eedback, **R**equirements,
 **D**esign, **T**esting, **O**perating, **W**ork, **H**umans (people), **A**gents. (Requirement IDs
-in your own project should use a different form, such as `Q2/OUT-1`, so they are never confused with
+in your own repository should use a different form, such as `Q2/OUT-1`, so they are never confused with
 these.)
 
 **[1. Purpose](guide/01-purpose.md)**
@@ -204,6 +204,7 @@ these.)
 - [**DM1/T10**](guide/06-testing.md#t10) When someone else owns "correct," compare against their implementation
 - [**DM1/T11**](guide/06-testing.md#t11) Unsupervised results have no answer key: test their stability
 - [**DM1/T12**](guide/06-testing.md#t12) For retrieval and extraction, a full reading of some cases is the baseline
+- [**DM1/T13**](guide/06-testing.md#t13) A run is an experiment: say what would count against the claim, start small, and record in proportion to the cost of running it again
 
 **[7. Operating](guide/07-operating.md)**
 
@@ -401,12 +402,12 @@ asks of any rule.
   (`tools/test_check.py`), including SE1 pinned wrongly, a copy of SE1 with no tag to read, and an AGENTS.md
   citing an ID its release does not define. A check never seen red proves nothing
   ([SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t3)), so these were.
-  `dm --doctor`, on each real project it has met: each found bugs in it that its fixtures had not, one
-  of them a fix for such a bug that repeated it ([GAPS.md](GAPS.md#7-the-doctor-has-met-two-projects)).
+  `dm --doctor`, on each real repository it has met: each found bugs in it that its fixtures had not, one
+  of them a fix for such a bug that repeated it ([GAPS.md](GAPS.md#7-the-doctor-has-met-two-repositories)).
 - **What has not.** Whether a reader who has not read SE1 can follow a *Reframes* link and come away
   with the idea. Whether an agent given AGENTS.md here works differently from one given SE1's
   alone. Most checklists, the model card, and most *Asks*. The question, plan, and datasheet templates
-  have been filled in on one descriptive project and found to fit badly, which R12 answers; that
+  have been filled in on one descriptive question and found to fit badly, which R12 answers; that
   answer is itself untried.
 - **What would show it wrong.** A course project where following a principle here made the analysis
   worse, or cost more than it caught. A holdout an agent reached despite

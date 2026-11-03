@@ -74,7 +74,7 @@ same goes for the labels of any evaluation set, and for the answer key of an ass
 
 *Reframes [SE1/A5](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/10-agents.md#a5).*
 
-The work agents do best and humans skip most is exactly the work that multiplies in a data project:
+The work agents do best and humans skip most is exactly the work that multiplies in data work:
 the hand-computed fixture ([DM1/T6](06-testing.md#t6)), the row-count and uniqueness assertions
 around every join ([DM1/T2](06-testing.md#t2)), the property tests ([DM1/T8](06-testing.md#t8)), the
 golden output ([DM1/T7](06-testing.md#t7)), the datasheet's first draft. More models do not multiply.

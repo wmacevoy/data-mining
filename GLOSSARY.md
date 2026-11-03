@@ -22,6 +22,7 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Essential K1**        | A known unknown no amount of looking settles, because the answer is a judgment someone makes on meeting the thing ([DM1/U11](guide/02-unknowing.md#u11)). |
 | **Event (the unit)**    | In the running example, one game or concert. Often the number that limits you, as opposed to rows ([DM1/R8](guide/04-requirements.md#r8)). |
 | **Feedback loop**       | A deployed model changing the data its successors are trained on ([DM1/O11](guide/07-operating.md#o11)). |
+| **Experiment**          | One run of the work: one data point for one question, with what would count against the claim said first ([DM1/T13](guide/06-testing.md#t13)). |
 | **Fence**               | Something proved at the end of a time box — a baseline scored, an expert's objection, a cold run from raw — as opposed to something attended ([DM1/W4](guide/08-work.md#w4)). |
 | **Fixture**             | A small dataset committed with the repository, with expected outputs worked out by hand ([DM1/T6](guide/06-testing.md#t6)). |
 | **Forking paths**       | The choices an analysis could have made differently; each one taken in response to the data spends evidence, even if only one analysis was run ([DM1/F4](guide/03-feedback.md#f4)). |
@@ -38,12 +39,13 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Look**                | One examination of an outcome that could influence what you do next. Counted in the ledger. |
 | **Membership inference** | An attack that determines whether a particular record was in a model's training data. |
 | **Missing at random**   | Missingness unrelated to the missing value itself, given what is observed. Usually a K4 ([DM1/U4](guide/02-unknowing.md#u4)). |
-| **Mission**             | The intentions a project is aimed at, stated broadly; in a data project, the decision it serves. Only the client can change it ([DM1/D9](guide/05-design.md#d9)). |
+| **Mission**             | The intentions the work is aimed at, stated broadly; in data work, the decision it serves. Only the client can change it ([DM1/D9](guide/05-design.md#d9)). |
 | **Model card**          | A model's contract ([DM1/D10](guide/05-design.md#d10), [template](templates/MODEL_CARD.md)).       |
 | **Null result**         | A finding that the effect or improvement is not there, at this sample size. A result, not a failure ([DM1/H3](guide/09-people.md#h3)). |
 | **Out of envelope**     | An input outside the ranges or categories seen in training ([DM1/U6](guide/02-unknowing.md#u6)).    |
 | **Outcome**             | What is being predicted, written so it could be a query ([DM1/R2](guide/04-requirements.md#r2)).     |
 | **Prediction point**    | The moment a prediction is made, which decides what may be used to make it ([DM1/R2](guide/04-requirements.md#r2)). |
+| **Project**             | Not a term here. It hid three things: the repository (code, commits, CI, agreements), the question (a decision and its evidence), and the experiment (one run). |
 | **Prior (label) shift** | A change in how common each outcome is ([DM1/O4](guide/07-operating.md#o4)).                         |
 | **Proxy**               | A measured quantity standing in for the one you care about. Detaches when optimized ([DM1/F9](guide/03-feedback.md#f9)). |
 | **Raw**                 | Data exactly as it arrived from its source, immutable; the authority everything else is derived from ([DM1/D6](guide/05-design.md#d6)). |

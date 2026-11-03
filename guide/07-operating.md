@@ -183,7 +183,8 @@ from.
 A pipeline developed on a sample meets three problems only at full size: memory (a frame that fit
 becomes one that doesn't), joins (a key that was unique in the sample isn't across all seasons, and a
 join multiplies), and time (a stage that took seconds takes hours, so nobody re-runs it). Run the full
-pipeline at the real size early — once, timed — and keep the time in the repository guide.
+pipeline at the real size early — once, timed — and keep the time in the repository guide. It is also the cost of
+running it again, which decides how much of each run to keep ([DM1/T13](06-testing.md#t13)).
 
 Measure before optimizing (SE1/O10). The slow stage is rarely the model.
 

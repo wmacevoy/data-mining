@@ -215,6 +215,40 @@ has become a training set.
 
 > **Ask:** "What did a full reading find that this search did not?"
 
+### <a id="t13"></a>T13. A run is an experiment: say what would count against the claim, start small, and record in proportion to the cost of running it again
+
+*New.*
+
+One run of the work is one data point for one question, which makes it a test of a claim, and a test
+that cannot fail proves nothing ([DM1/T3](#t3)). So write down, before the run, what result would count
+against the claim. A run with nothing at stake is a look: it still counts ([DM1/F6](03-feedback.md#f6)), and
+it tests nothing. For an extracted claim, what can fail is the citations, and a second reader finding
+something missing.
+
+**Start small.** One lot, one case, one configuration, a thin slice before a thick one
+([DM1/W3](08-work.md#w3)), so that a large run is committed to only after a small one has had the chance to say
+no. A small test can clear the next size, and cannot stand in for it: a sample hides what the full table does
+([DM1/O10](07-operating.md#o10)), and a fixture has to fail the way real data fails ([DM1/T6](#t6)). One run at
+full size, early, is also how you learn what a run costs.
+
+**Record in proportion to the cost of running it again.** Cost is more than compute:
+
+| Cost to run again | For example | Keep |
+| ----------------- | ----------- | ---- |
+| Almost nothing | a deterministic script on a fixed file | commit, data version, seed, result |
+| Some time or money | a training run | those, and the configuration and metrics |
+| A lot | days of training, or a language model reading every case | those, and the model or drafts, and the logs |
+| Cannot be repeated | a holdout look, a source that has since changed, a person's judgment | everything, since the record is all there will ever be |
+
+The count is not proportional. Every run gets its line in the ledger, whatever it cost, because the search
+that is cheapest to run is the one nobody counts. Only what is attached to the line scales with the cost.
+
+Warren MacEvoy's decision, 2026-11-03, drafted by Claude Opus 5.5, and untried. Wrong if records kept this way
+leave a question unable to explain a result it needed, or if starting small repeatedly hides what only the large run
+could show.
+
+> **Ask:** "What would this run have to show for us to stop, and what would it cost to run it again?"
+
 ---
 
 Next: [7. Operating](07-operating.md) — what happens to a model after it leaves your machine.

@@ -150,15 +150,15 @@ be yours. Before it becomes the target, find out:
 
 *Reframes [SE1/R7](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/04-requirements.md#r7).*
 
-SE1/R7 asks for scale, speed, recovery, and availability with numbers and horizons. A data project
+SE1/R7 asks for scale, speed, recovery, and availability with numbers and horizons. Data work
 adds resources that are finite and usually unwritten:
 
 - **Data:** how many rows, of which periods, and how many *events* — the unit that limits you is
   usually the rare one. Five seasons of readings may be eighty events.
 - **Labels:** how many can be had, at what cost per label, by when.
 - **Compute:** training time and cost per run, and how many runs the plan assumes.
-- **Expert time:** hours of someone who knows the domain, which is often the scarcest resource on
-  the project.
+- **Expert time:** hours of someone who knows the domain, which is often the scarcest resource of
+  all.
 - **Inference:** latency and cost per prediction, especially when the model is an API you pay for
   per call.
 - **Reading:** tokens per document, when a model reads the corpus. A budget like compute, and it can

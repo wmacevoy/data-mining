@@ -245,7 +245,7 @@ Before reporting that something is missing across many cases, open one by hand.
 *Reframes [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u10).*
 
 SE1/U10 says some K1 no spike finishes: the answer is a judgment someone makes on meeting the thing.
-Software meets this at "usable." Data work meets it on nearly every project, because its work product
+Software meets this at "usable." Data work meets it nearly every time, because its work product
 is usually a number, and a number reads like the answer. An AUC of 0.91 is K0. That this model is good enough to
 change what the gate supervisor does on Saturday is not, and no further analysis settles it. Say
 "the model passes" and the question stops being asked, with nobody dishonest and no search involved.
@@ -266,7 +266,7 @@ page, and the brief can still fail the person deciding ([DM1/F10](03-feedback.md
   agent records a verdict and never gives one.
 
 Drafted 2026-11-03 by Claude Opus 5.5 from SE1/U10, itself the author's decision without a trial of
-its own, and untried here. Wrong if, across projects, no result that cleared its bar with room to
+its own, and untried here. Wrong if, across repositories and clients, no result that cleared its bar with room to
 spare is ever turned down by the person who has to act on it.
 
 > **Ask:** "When this score is perfect, what could still be wrong, and who would tell us?"

@@ -136,7 +136,7 @@ labels" is a K4 about to become a K3 ([DM1/U4](02-unknowing.md#u4)). "The effect
 changed the window" is a null being negotiated with ([DM1/W5](08-work.md#w5)). Each is cheaper to
 say in week two than to find in week eleven, and none of them shows up in a metric.
 
-So the stand-up for a data project asks, per person: done, next, blocked, and *what about the
+So the stand-up in data work asks, per person: done, next, blocked, and *what about the
 current number do you not believe?* One sentence. Noticing without a reason is still data, and a
 disbelief nobody can name yet goes in FINDINGS as a question, not in a drawer.
 

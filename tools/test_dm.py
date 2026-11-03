@@ -660,8 +660,8 @@ class TestCitations(Fixture):
         self.assertIn("stale", finding(f, "question citations").text)
 
 
-class TestOneProjectPerRun(Fixture):
-    """Course field report: one repository, several projects. One run per project, and the agreements are looked for
+class TestOneQuestionPerCheck(Fixture):
+    """Course field report: one repository, several questions. One check per question's directory, and the agreements are looked for
     upward, as far as the repository's root and no further."""
 
     def several(self):

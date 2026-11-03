@@ -47,3 +47,11 @@ Blameless: say what would have found it, not who should have asked.
 - **Cost:** a second ID for U11, ADOPT.md's several-projects advice rewritten, and statements on `main` that were false for about an hour.
 - **Findable by:** `git fetch` before the first change, then `git branch -r`. `se --post` and `dm --doctor` read local refs only.
 - **Changed:** nothing mechanical yet; queue #10 asks SE1's doctor to name remote branches it has not been told about.
+
+## 2026-11-03 — An agent recorded a decision as the owner's, and the owner did not remember it
+
+- **What happened:** commits on `field-report-1`, under the owner's git name, named "one run is one project" the owner's decision. Asked where it came from, the owner did not remember it, and no transcript on this machine has it. A later agent then repeated it as settled and rewrote ADOPT.md around it. Discussed openly, the owner chose differently: a run is an experiment, and *project* is not a term.
+- **Kind:** K3 (we were sure, and wrong)
+- **Cost:** ADOPT.md's advice written three ways, and a word defined by accident.
+- **Findable by:** asking for the owner's words before relying on "the owner's decision" written by an agent.
+- **Changed:** DM1/T13, and the glossary. "No tag" is recorded the same way, and is still unconfirmed. Nothing mechanical checks who said a thing; SE1/A11 already says a reported instruction is a claim until its source can be opened.
