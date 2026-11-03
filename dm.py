@@ -381,9 +381,10 @@ def check_holdout(repo):
         if not named:
             return Finding(name, ids, NONE, "no plan or CONTRIBUTING line says where the holdout lives", "")
     paths = [(src, p) for src, line in sources for p in backtick_paths(line)]
-    if sources and not paths and not any(placeholder(line) for _, line in sources):
+    filled = [(src, line) for src, line in sources if not placeholder(line)]
+    if filled and not paths:
         states.append(WARN)
-        texts.append(f"{sources[0][0]} names the holdout without a path: {sources[0][1][:60]!r}")
+        texts.append(f"{filled[0][0]} names the holdout without a path: {filled[0][1][:60]!r}")
     for src, p in paths:
         path = Path(os.path.expanduser(p))
         path = path if path.is_absolute() else repo / path
@@ -414,6 +415,8 @@ def check_holdout(repo):
             else:
                 states.append(WARN)
                 texts.append(f"{p}: not here, and not git-ignored: if it appears it will be tracked")
+    if not states:  # every line that could say is still the template's: an empty list is not a pass
+        return Finding(name, ids, NONE, f"{sources[0][0]}'s holdout line is still the template's placeholder: nobody has said where it lives", "")
     state = worst(states)
     fix = "" if state == PASS else "keep it outside the working directory, or behind a permission the agent lacks; spend it yourself, at a decision"
     return Finding(name, ids, state, "; ".join(texts), fix)
@@ -431,7 +434,10 @@ def check_datasheets(repo):
         if not tables:
             bad.append(f"{rel(repo, s)}: no Columns table with a *Knowable at* column")
             continue
-        for row in real_rows(tables[0]):
+        rows = real_rows(tables[0])
+        if not rows:  # zero columns would otherwise all "say when they become knowable"
+            bad.append(f"{rel(repo, s)}: no columns listed, only the template's example")
+        for row in rows:
             cols += 1
             col = next((v for k, v in row.items() if k == "column"), "?")
             know = next((v for k, v in row.items() if "knowable" in k), "")
@@ -522,7 +528,8 @@ def check_ledger(repo):
     ledger = machine[0] if machine else files[0]
     rows = ledger_rows(ledger)
     writers = [rel(repo, f) for f in tracked_files(repo)
-               if f.suffix.lower() in CODE_SUFFIXES and f.resolve() != ledger.resolve() and ledger.name in read(f)]
+               if f.suffix.lower() in CODE_SUFFIXES and f.resolve() != ledger.resolve() and ledger.name in read(f)
+               and f.name not in ("dm.py", "se.py")]  # the doctors name the ledger; they do not write it
     n_spent = sum(1 for r in rows if spent(r))
     where = rel(repo, ledger)
     if not rows:

@@ -15,7 +15,7 @@ How rows are divided, and why that matches how the model will be used
 
 - **Grouping:** rows sharing _…_ stay on one side.
 - **Time:** train on _period_, validate on _period_, hold out _period_.
-- **Holdout:** where it is kept, who may read it, and when it will be spent
+- **Holdout:** _where it is kept, who may read it, and when it will be spent_
   ([DM1/F5](https://github.com/wmacevoy/data-mining/blob/main/guide/03-feedback.md#f5)): _…_
 
 ## Metric and baseline

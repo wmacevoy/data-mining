@@ -279,6 +279,42 @@ class TestHoldout(Fixture):
 
 
 class TestDataAndPipeline(Fixture):
+    def test_holdout_only_in_unfilled_templates_is_not_a_pass(self):
+        # REQ1/DOC-1. Both lines as the templates ship them: nobody has said where the holdout lives.
+        p = GOOD["docs/PLAN_v1.md"].replace("`../holdout/` — kept by Ann outside the repository; spent once, at the final decision.",
+                                            "_where it is kept, who may read it, and when it will be spent_")
+        c = GOOD["CONTRIBUTING.md"].replace("lives in `../holdout/`; Ann may read it", "lives in `_path_`; _who_ may read it")
+        f = self.doctor(self.changed(**{"docs/PLAN_v1.md": p, "CONTRIBUTING.md": c}))
+        self.assertEqual(finding(f, "holdout").state, dm.NONE)
+        self.assertIn("template", finding(f, "holdout").text)
+
+    def test_holdout_named_in_prose_beside_an_unfilled_template_warns(self):
+        # REQ1/DOC-1. One real line without a path is still a holdout somebody must check by hand.
+        p = GOOD["docs/PLAN_v1.md"].replace("`../holdout/` — kept by Ann", "kept by Ann")
+        c = GOOD["CONTRIBUTING.md"].replace("lives in `../holdout/`; Ann may read it", "lives in `_path_`; _who_ may read it")
+        f = self.doctor(self.changed(**{"docs/PLAN_v1.md": p, "CONTRIBUTING.md": c}))
+        self.assertEqual(finding(f, "holdout").state, dm.WARN)
+
+    def test_plan_template_unfilled_says_the_holdout_has_no_home(self):
+        # REQ1/DOC-1. The published template, copied as is.
+        p = (GUIDE / "templates" / "PLAN_v1.md").read_text(encoding="utf8")
+        f = self.doctor(self.changed(**{"docs/PLAN_v1.md": p}))
+        self.assertEqual(finding(f, "plan").state, dm.FAIL)
+        self.assertIn("holdout", finding(f, "plan").text)
+
+    def test_datasheet_template_unfilled_is_not_a_pass(self):
+        # REQ1/DOC-1. The published template, copied as is: zero columns cannot all say anything.
+        d = (GUIDE / "templates" / "DATASHEET.md").read_text(encoding="utf8")
+        f = self.doctor(self.changed(**{"docs/datasheets/gate.md": d}))
+        self.assertEqual(finding(f, "datasheets").state, dm.FAIL)
+        self.assertIn("no columns", finding(f, "datasheets").text)
+
+    def test_the_vendored_doctor_is_not_the_ledgers_writer(self):
+        # REQ1/DOC-1. Seen on a real adoption: dm.py names ledger.jsonl in its own source and read as the writer.
+        f = self.doctor(self.changed(**{"src/score.py": None, "dm.py": "LEDGER = 'ledger.jsonl'\n", "se.py": "# ledger.jsonl\n"}))
+        self.assertEqual(finding(f, "ledger").state, dm.WARN)
+        self.assertIn("no code references it", finding(f, "ledger").text)
+
     def test_no_datasheet(self):
         f = self.doctor(self.changed(**{"docs/datasheets/gate.md": None}))
         self.assertEqual(finding(f, "datasheets").state, dm.NONE)
