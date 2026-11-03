@@ -57,7 +57,7 @@ catches.
 
 A project that is only analysis lets the question and the plan stand in for SE1's requirements and
 design, and SE1's *working set* row stays *none yet*; `QUEUE` and `FINDINGS` are still kept. A project
-that also ships software (a dashboard, an API) keeps `REQUIREMENTS_vN` as well, and its `MISSION-1` points
+that also ships software (a dashboard, an API) keeps `REQUIREMENTS_vN` as well, and its mission points
 at the question's `Q1/DECISION-1` rather than saying it a second time.
 
 ## Starting a new project
