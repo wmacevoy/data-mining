@@ -21,9 +21,10 @@ No principle, AGENTS.md, or template changed; copies at v1.0 are current.
 
 ### Also changed
 
-- `se.py` is re-copied from SE1 v1.4.3, which needs no `du`, reads the battery on Windows, and advises by
-  platform. SE1 links stay at v1.4: v1.4.3 changed no principle, and SE1's AGENTS.md is the same. `ADOPT.md`
-  copies `se`, `se.ps1`, and `se.py` from v1.4.3.
+- `se.py` is re-copied from SE1 v1.4.4. v1.4.3 needs no `du`, reads the battery on Windows, and advises by
+  platform; v1.4.4 leaves a top-level `vendor/` out of its doctor's citations, tests, and verdicts. SE1 links
+  stay at v1.4: neither changed a principle or SE1's AGENTS.md. `ADOPT.md` copies `se`, `se.ps1`, and `se.py`
+  from v1.4.4.
 
 ## v1.0 — 2026-11-03
 
