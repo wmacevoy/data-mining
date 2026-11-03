@@ -2,7 +2,7 @@
 
 What must be observably true of this guide, and what it is not. Reconstructed from the repository on
 2026-11-03 by Claude Opus 5.5 ([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w12)),
-so **all of it is *(inferred)* until the client confirms it**. A change in meaning is a new version.
+so **all of it is *(inferred)* until the client confirms it**, except where a line says it is the owner's. A change in meaning is a new version.
 
 Client: Warren MacEvoy · Proxy for the users: the fall 2026 course projects, the first field reports
 · Date sent: not yet sent · *Tell us what is wrong with it.*
@@ -50,6 +50,10 @@ people whose rows those projects mine, who are never in the room.
 - **DOC-1** *(since v1)* *(inferred)* `./dm --doctor` reports each mechanical thing the guide asks for in a
   data project as pass, warn, fail, or *none yet*, standard library only, on Python 3.9 or later, on
   Linux, macOS, and Windows.
+- **PORT-1** *(since v1)* Developing this guide works on Windows, macOS, and Linux: the full check in
+  `CONTRIBUTING.md`, `dm`, and their tests run natively on each with Python 3.9 or later and git, and CI shows
+  it on all three. The owner's requirement, 2026-11-03. It binds work on this repository, not a project
+  that vendors it.
 - **AGR-1** *(since v1)* *(inferred)* `AGENTS.md` extends SE1's agreement at a named release, and each rule
   cites its principle by versioned ID.
 

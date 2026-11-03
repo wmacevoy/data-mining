@@ -17,6 +17,7 @@ the template this guide publishes for data projects; this file is about the guid
 ## Check it
 
 - **The full check:** `python3 -I tools/check.py && python3 -I tools/test_check.py && python3 -I tools/test_dm.py`, the same commands CI runs
+- **On Windows,** where an installer may give `python` and not `python3`, use `python` in the same commands.
 - **Success prints:** `0 problems` from the checker, then `OK` from each set of tests
 - **Instruments:** the checker and the tests. The doctor's rows were each seen red on a fixture, and
   `tools/test_check.py` plants a breakage per checker rule in a copy of this repository.

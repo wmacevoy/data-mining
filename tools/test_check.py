@@ -271,5 +271,28 @@ class TestPatchRelease(Repo):
             self.git("tag", "v1.0")
 
 
+class TestPortability(unittest.TestCase):
+    """REQ1/PORT-1: developing this guide works on Windows, macOS, and Linux with Python and git alone."""
+
+    def read(self, name):
+        with open(os.path.join(GUIDE, name), encoding="utf-8") as fh:
+            return fh.read()
+
+    def test_ci_runs_every_part_of_the_full_check_on_all_three(self):
+        workflow = self.read(".github/workflows/check.yml")
+        for runner in ("ubuntu-latest", "macos-latest", "windows-latest"):
+            self.assertIn(runner, workflow)
+        full_check = re.search(r"\*\*The full check:\*\* `([^`]+)`", self.read("CONTRIBUTING.md")).group(1)
+        parts = [part.strip() for part in full_check.split("&&")]
+        self.assertGreater(len(parts), 1)
+        for part in parts:
+            self.assertIn(f"run: {part}", workflow)
+
+    def test_the_tools_start_no_program_but_git(self):
+        for name in ("dm.py", "tools/check.py", "tools/test_check.py", "tools/test_dm.py"):
+            programs = set(re.findall(r"""\.?run\(\[\s*"([^"]+)\"""", self.read(name)))
+            self.assertLessEqual(programs, {"git"}, name)
+
+
 if __name__ == "__main__":
     unittest.main()
