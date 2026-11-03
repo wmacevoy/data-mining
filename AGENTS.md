@@ -51,6 +51,9 @@ the design. A task that contradicts either is a question for the human, not a ta
 
 ## Before you start
 
+- **Where the project is only partly adopted,** the guide's
+  [ADOPT.md](https://github.com/wmacevoy/data-mining/blob/main/ADOPT.md) says what to do for each missing
+  thing: say so once, and do not invent it. (SE1/W12)
 - **If the repository has `./dm`, run `./dm --doctor` once.** It is SE1's doctor plus this guide's
   rows: both working agreements loaded, the question's one-way doors, the plan, where the holdout
   lives and whether it is in reach, every column's knowable-at, raw read-only, the ledger's writer.

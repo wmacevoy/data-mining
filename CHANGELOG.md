@@ -58,6 +58,14 @@ MacEvoy, who signs the release (SE1/U9); every wording below is a draft until th
 - Not done: `dm --doctor` does not yet read *(judged)* in a question or report a verdict, as SE1's
   trace row does in requirements (queue #4).
 - Not reviewed: whether the reframings of SE1 principles v1.4 left unchanged still read true, as before.
+- [ADOPT.md](ADOPT.md) is new: vendoring both guides, for a project starting today or one with results, and
+  what an agent does where adoption is partial. It protects the evidence first, since a question rebuilt
+  from results is chosen by them. Its vendoring commands ran on a copy of the course repository; the
+  steps after that have not been followed by any project.
+- `dm --doctor`, four false passes found while trying that, each seen red first: a holdout line still the
+  template's read as a pass with no text; a datasheet with zero columns read as every column saying when it
+  is knowable; the plan template's *Holdout* line read as filled in, now marked as a placeholder; and
+  `dm.py`, vendored, read as the ledger's writer because its source names the file.
 - This repository now follows SE1 as a project, not only by citation (ADOPT.md): SE1's agreement copied
   unedited to `docs/SE1-AGENTS.md`, since the root `AGENTS.md` here is the file this guide publishes;
   `se`, `se.ps1`, and `se.py` copied from v1.4; both agreements imported from a new `CLAUDE.md`; the

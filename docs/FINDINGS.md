@@ -24,3 +24,15 @@ Blameless: say what would have found it, not who should have asked.
   same need at v1.4.
 - **Findable by:** a fresh checkout on a machine with only Python.
 - **Changed:** CONTRIBUTING names the prerequisite, and queue #3 asks whether to port it.
+
+## 2026-11-03 — The doctor's first real repository found four false passes
+
+- **What happened:** trying ADOPT.md on unfilled templates and a copy of the course repository, the doctor passed
+  a holdout nobody had named, a datasheet with no columns, an unfilled plan, and a ledger "written by dm.py".
+  An empty list of problems read as success, and the vendored doctor read as the project's own code.
+- **Kind:** K3 (we were sure, and wrong): every row had been seen red, on fixtures built with the same assumptions.
+- **Cost:** none yet, since no project relied on them; they would have told an adopter that the holdout was safe.
+- **Findable by:** running the published templates through the doctor unfilled, and running it on any repository not
+  written to pass it.
+- **Changed:** `dm.py`, `templates/PLAN_v1.md`, and tests that read the real templates and name a vendored doctor.
+  Still open: an absent, git-ignored holdout passes until the first download; ADOPT.md says so, and no check does.

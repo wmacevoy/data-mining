@@ -64,8 +64,9 @@ than told ([DM1/A4](guide/10-agents.md#a4), [DM1/D6](guide/05-design.md#d6),
 [DM1/F6](guide/03-feedback.md#f6), [DM1/R6](guide/04-requirements.md#r6)), and every threshold and
 heuristic in it is invented: which files count as the ledger, what a placeholder looks like, what
 *readable* means for a holdout. Its tests are fixtures written beside it, which is the guard tested
-against its own stub that SE1's GAPS warns about. It has not been run on a repository that was not
-built to pass it.
+against its own stub that SE1's GAPS warns about. On 2026-11-03 it met its first repository not built to
+pass it, a copy of the course repository, and in that one sitting four passes turned out to be false
+(CHANGELOG). None of those was a data project's owner reading it in earnest; that is still open.
 
 Two things it exposed while being written:
 

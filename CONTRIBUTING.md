@@ -33,6 +33,7 @@ the template this guide publishes for data projects; this file is about the guid
 ## Where things are
 
 - **Working set:** `docs/`: `REQUIREMENTS_vN`, `DESIGN_vN`, `QUEUE`, `FINDINGS`.
+- **How a data project adopts this guide:** `ADOPT.md`, whose vendoring commands should be re-run when they change.
 - **Agents:** `CLAUDE.md` imports both agreements; read this file before acting.
 
 ## AGENTS.md's nouns, here
