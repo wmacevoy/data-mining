@@ -1,0 +1,275 @@
+#!/usr/bin/env python3
+"""Tests for tools/check.py (REQ1/CHK-1, REQ1/PIN-1): each breakage is planted in a copy of this repository
+and must turn the checker red with its own message (SE1/T3). Needs a clone of SE1 with its tags, by SE_GUIDE
+or at ../software-engineering, as the checker itself does. Python 3.9 or later and git; standard library
+only. Run: python3 -I tools/test_check.py"""
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+import unittest
+
+GUIDE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SE_GUIDE = os.path.abspath(os.environ.get("SE_GUIDE") or os.path.join(GUIDE, "..", "software-engineering"))
+HAVE_SE = os.path.isfile(os.path.join(SE_GUIDE, "README.md"))
+SE_BLOB = "https://github.com/wmacevoy/software-engineering/blob/"
+
+
+def replace_once(old, new):
+    def edit(text):
+        if old not in text:
+            raise AssertionError(f"nothing to plant: {old!r} is not in the file")
+        return text.replace(old, new, 1)
+    return edit
+
+
+def sub_once(pattern, new):
+    def edit(text):
+        out, n = re.subn(pattern, new, text, count=1)
+        if not n:
+            raise AssertionError(f"nothing to plant: {pattern!r} matched nothing")
+        return out
+    return edit
+
+
+class Repo(unittest.TestCase):
+    """A copy of this repository to plant breakages in, each undone after its test."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.mkdtemp()
+        cls.repo = os.path.join(cls.tmp, "repo")
+        shutil.copytree(GUIDE, cls.repo, ignore=shutil.ignore_patterns(".git", ".se1", "__pycache__"))
+
+    @classmethod
+    def tearDownClass(cls):
+        shutil.rmtree(cls.tmp, ignore_errors=True)
+
+    def setUp(self):
+        self.saved = {}
+
+    def tearDown(self):
+        for name, text in self.saved.items():
+            self.write(name, text)
+
+    def read(self, name):
+        with open(os.path.join(self.repo, name), encoding="utf-8", newline="") as fh:
+            return fh.read()
+
+    def write(self, name, text):
+        with open(os.path.join(self.repo, name), "w", encoding="utf-8", newline="") as fh:
+            fh.write(text)
+
+    def plant(self, name, edit):
+        text = self.read(name)
+        self.saved.setdefault(name, text)
+        self.write(name, edit(text))
+
+    def check(self, se_guide=SE_GUIDE, *args):
+        env = {**os.environ, "SE_GUIDE": se_guide}
+        return subprocess.run([sys.executable, "-I", os.path.join(self.repo, "tools", "check.py"), *args], cwd=self.repo,
+                              env=env, capture_output=True, encoding="utf-8")
+
+    def red(self, message):
+        r = self.check()
+        self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+        self.assertIn(message, r.stdout)
+
+
+@unittest.skipUnless(HAVE_SE, "needs a clone of SE1: set SE_GUIDE")
+class TestChecker(Repo):
+    def test_the_repository_as_it_stands_passes(self):
+        r = self.check()
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertRegex(r.stdout, r", 0 problems\n$")
+
+    def test_missing_file(self):
+        self.plant("README.md", replace_once("(CHECKLISTS.md)", "(NOPE.md)"))
+        self.red("missing file   README.md")
+
+    def test_missing_anchor(self):
+        self.plant("README.md", replace_once("guide/01-purpose.md#p1)", "guide/01-purpose.md#zz)"))
+        self.red("missing anchor README.md")
+
+    def test_unversioned_link(self):
+        self.plant("CHECKLISTS.md", replace_once("[DM1/R1]", "[R1]"))
+        self.red("unversioned    CHECKLISTS.md")
+
+    def test_unversioned_bare_citation(self):
+        self.plant("AGENTS.md", replace_once("(DM1/F5, DM1/A4)", "(F5, DM1/A4)"))
+        self.red("unversioned    AGENTS.md")
+
+    def test_wrong_version(self):
+        self.plant("CHECKLISTS.md", replace_once("[DM1/R1]", "[DM2/R1]"))
+        self.red("wrong version  CHECKLISTS.md")
+
+    def test_unknown_dm1_id(self):
+        self.plant("CHECKLISTS.md", replace_once("[DM1/R1]", "[DM1/R99]"))
+        self.red("unknown ID     CHECKLISTS.md")
+
+    def test_citation_pointing_at_the_wrong_file(self):
+        self.plant("CHECKLISTS.md", replace_once("[DM1/R1](guide/04-requirements.md#r1)", "[DM1/R1](guide/05-design.md#d1)"))
+        self.red("wrong file     CHECKLISTS.md")
+
+    def test_unknown_ref_of_this_guide(self):
+        self.plant("README.md", replace_once("## Contents", "[x](https://github.com/wmacevoy/data-mining/blob/nope/README.md)\n\n## Contents"))
+        self.red("unknown ref    README.md")
+
+    def test_principle_with_no_basis(self):
+        self.plant("guide/01-purpose.md", sub_once(r"\n\*(New|Reframes [^\n]*)\.\*\n", "\n\n"))
+        self.red("no basis       guide/01-purpose.md")
+
+    def test_reframes_with_no_link(self):
+        self.plant("guide/02-unknowing.md", sub_once(r"\*Reframes [^\n]*\.\*", "*Reframes nothing.*"))
+        self.red("no SE1 link    guide/02-unknowing.md")
+
+    def test_anchor_that_disagrees_with_its_id(self):
+        self.plant("guide/01-purpose.md", replace_once('<a id="p1">', '<a id="p01">'))
+        self.red("anchor         guide/01-purpose.md")
+
+    def test_id_defined_twice(self):
+        self.plant("guide/01-purpose.md", replace_once("</a>P2.", "</a>P1."))
+        self.red("P1 defined twice")
+
+    def test_se1_link_at_another_release(self):
+        # REQ1/PIN-1
+        self.plant("guide/01-purpose.md", sub_once(r"(\[SE1/[A-Z]\d+\]\([^)]*blob/)v\d+\.\d+/", r"\1v1.0/"))
+        self.red("SE1 link       guide/01-purpose.md")
+
+    def test_unknown_se1_id(self):
+        self.plant("guide/01-purpose.md", sub_once(r"\[SE1/([A-Z])\d+\]", r"[SE1/\g<1>99]"))
+        self.red("unknown SE1 ID guide/01-purpose.md")
+
+    def test_unknown_se1_id_in_a_bare_citation(self):
+        self.plant("AGENTS.md", replace_once("(SE1/W12)", "(SE1/W99)"))
+        self.red("unknown SE1 ID AGENTS.md")
+
+    def test_readme_index_out_of_date(self):
+        self.plant("README.md", replace_once("[**DM1/U10**](guide/02-unknowing.md#u10) Whether", "[**DM1/U10**](guide/02-unknowing.md#u10) If"))
+        self.red("README index out of date")
+
+    def test_readme_map_out_of_date(self):
+        self.plant("README.md", sub_once(r"- \[SE1/W13\][^\n]*\n", ""))
+        self.red("README SE1 map out of date")
+
+    def test_title_number(self):
+        self.plant("guide/01-purpose.md", replace_once("# 1. ", "# 3. "))
+        self.red("title number   guide/01-purpose.md")
+
+    def test_chapter_label(self):
+        self.plant("guide/02-unknowing.md", replace_once("[3. Feedback]", "[3. Feedbacks]"))
+        self.red("chapter label  guide/02-unknowing.md")
+
+    def test_llms_missing_file(self):
+        self.plant("llms.txt", replace_once("main/ADOPT.md", "main/NOPE.md"))
+        self.red("missing file   llms.txt")
+
+    def test_llms_se1_not_pinned(self):
+        # REQ1/PIN-1
+        self.plant("llms.txt", sub_once(r"software-engineering/v\d+\.\d+/", "software-engineering/main/"))
+        self.red("SE1 not pinned llms.txt")
+
+    def test_llms_not_a_raw_link(self):
+        self.plant("llms.txt", replace_once("https://raw.githubusercontent.com/wmacevoy/data-mining/main/ADOPT.md", "https://example.com/x"))
+        self.red("not a raw link llms.txt")
+
+    def test_principle_count(self):
+        self.plant("CHANGELOG.md", sub_once(r"· (\d+) principles", "· 1 principles"))
+        self.red("principle count CHANGELOG.md says 1")
+
+    def test_changelog_without_a_release_is_reported_not_a_crash(self):
+        self.plant("CHANGELOG.md", sub_once(r"(?m)^## v\d+\.\d+ — unreleased$", "## soon"))
+        self.red('CHANGELOG.md has no "## vX.Y')
+
+    def test_agents_label_behind_the_newest_release(self):
+        self.plant("AGENTS.md", replace_once("from **v1.0**", "from **v0.9**"))
+        self.red("stale release  AGENTS.md: says it is from v0.9")
+
+    def test_copy_linking_to_another_ref(self):
+        self.plant("AGENTS.md", replace_once("data-mining/blob/main/CHANGELOG.md", "data-mining/blob/v9/CHANGELOG.md"))
+        self.red("stale release  AGENTS.md: links to v9")
+
+    def test_copy_citing_an_id_its_release_lacks(self):
+        self.plant("AGENTS.md", replace_once("(SE1/W12)", "(DM1/U99)"))
+        self.red("ahead of label AGENTS.md: cites DM1/U99")
+
+    def test_a_handoff_note_keeps_its_links(self):
+        # REQ1/PIN-1: a finished note names the release it was written against, on purpose.
+        self.plant("HANDOFF-migrate-to-SE1-v1.3.md", replace_once("# Handoff", f"[SE1/U7]({SE_BLOB}v1.0/guide/02-unknowing.md#u7)\n\n# Handoff"))
+        self.assertEqual(self.check().returncode, 0)
+
+    def test_print_gives_what_readme_must_contain(self):
+        r = self.check(SE_GUIDE, "--print")
+        self.assertIn("- [**DM1/U10**](guide/02-unknowing.md#u10)", r.stdout)
+        self.assertIn("- [SE1/W13](", r.stdout)
+
+
+class TestWithoutTheSe1Tag(Repo):
+    def test_no_clone_says_so(self):
+        r = self.check(os.path.join(self.tmp, "nope"))
+        self.assertIn("NOT checked (no local SE1 guide; set SE_GUIDE)", r.stdout)
+
+    def test_a_clone_without_the_tag_is_a_problem(self):
+        # REQ1/PIN-1: passing at another ref says nothing about the pinned release.
+        plain = os.path.join(self.tmp, "plain")
+        os.makedirs(plain, exist_ok=True)
+        with open(os.path.join(plain, "README.md"), "w", encoding="utf-8") as fh:
+            fh.write("[**SE1/U7**](guide/02-unknowing.md#u7)\n")
+        r = self.check(plain)
+        self.assertEqual(r.returncode, 1)
+        self.assertIn("SE1 clone ", r.stdout)
+        self.assertIn("NOT tag", r.stdout)
+
+
+@unittest.skipUnless(HAVE_SE, "needs a clone of SE1: set SE_GUIDE")
+class TestPatchRelease(Repo):
+    """The rules that read this repository's own tags: v1.0 tagged, then v1.0.1 on top."""
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.git("init", "-q")
+        for name in ["AGENTS.md"] + ["templates/" + t for t in os.listdir(os.path.join(cls.repo, "templates"))]:
+            path = os.path.join(cls.repo, name)
+            with open(path, encoding="utf-8", newline="") as fh:
+                text = fh.read()
+            with open(path, "w", encoding="utf-8", newline="") as fh:
+                fh.write(re.sub(r"(wmacevoy/data-mining/(?:blob|tree))/main", r"\1/v1.0", text))
+        path = os.path.join(cls.repo, "CHANGELOG.md")
+        with open(path, encoding="utf-8", newline="") as fh:
+            text = fh.read()
+        with open(path, "w", encoding="utf-8", newline="") as fh:
+            fh.write(re.sub(r"(?m)^## v1\.0 — unreleased$", "## v1.0.1 — 2026-11-04\n\n## v1.0 — 2026-11-03", text))
+        cls.git("add", "-A")
+        cls.git("commit", "-qm", "v1.0")
+        cls.git("tag", "v1.0")
+
+    @classmethod
+    def git(cls, *args):
+        subprocess.run(["git", "-c", "user.email=t@example.invalid", "-c", "user.name=t", "-c", "commit.gpgsign=false",
+                        "-C", cls.repo, *args], capture_output=True, check=True)
+
+    def test_a_patch_that_changes_nothing_guarded_passes(self):
+        r = self.check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+
+    def test_a_patch_may_not_change_a_principle(self):
+        self.plant("guide/01-purpose.md", replace_once("\n> **Ask:**", "\nChanged.\n\n> **Ask:**"))
+        self.red("patch release  v1.0.1 changed P")
+
+    def test_a_patch_may_not_change_a_copy(self):
+        self.plant("AGENTS.md", lambda t: t + "\nA new rule.\n")
+        self.red("patch release  v1.0.1 changed AGENTS.md")
+
+    def test_a_patch_needs_its_minors_tag(self):
+        self.git("tag", "-d", "v1.0")
+        try:
+            self.red("patch release  v1.0.1 needs its minor's tag v1.0")
+        finally:
+            self.git("tag", "v1.0")
+
+
+if __name__ == "__main__":
+    unittest.main()

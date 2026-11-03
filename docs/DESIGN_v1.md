@@ -9,7 +9,7 @@ the owner confirms it ([SE1/W12](https://github.com/wmacevoy/software-engineerin
 | --------- | ------------------- | ------------ |
 | `guide/`, `README.md`, the root documents | the principles, their index, and the map to SE1 | the text |
 | `AGENTS.md`, `templates/` | what adopters copy; they name a release | the text |
-| `tools/check.js` | the documents agree with each other and with SE1 at `SE_RELEASE`; REQ1/CHK-1, REQ1/PIN-1 | none |
+| `tools/check.py` | the documents agree with each other and with SE1 at `SE_RELEASE`; REQ1/CHK-1, REQ1/PIN-1 | none |
 | `dm`, `dm.ps1`, `dm.py` | SE1's doctor plus the data rows; REQ1/DOC-1 | none |
 | `se`, `se.ps1`, `se.py`, `docs/SE1-AGENTS.md` | unedited copies from SE1 v1.4 | none |
 | `.claude/settings.json` | runs `se --post` at startup, resume, and compaction | none |

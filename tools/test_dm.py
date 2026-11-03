@@ -175,6 +175,7 @@ class TestAgreements(Fixture):
         self.assertIn("AGENTS-DM.md", finding(f, "data working agreement").text)
 
     def test_extends_the_se1_copy_present(self):
+        # REQ1/AGR-1: this guide's agreement extends SE1's at a named release.
         f = self.doctor()
         self.assertEqual(finding(f, "extends").state, dm.PASS)
         self.assertIn("extends SE1 v1.4", finding(f, "extends").text)

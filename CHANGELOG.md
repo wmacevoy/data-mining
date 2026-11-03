@@ -8,7 +8,7 @@ came from.
 Within DM1, a minor release may add principles, reword them, or extend what they ask; it never moves
 an ID ([principle index](README.md#principle-index)). Work toward a release goes under
 `## vX.Y — unreleased`; give it a date when you tag it. Until v1.0 is tagged, copies link to `main`;
-after, `tools/check.js` requires them to link to the newest dated release. Links to SE1 never name
+after, `tools/check.py` requires them to link to the newest dated release. Links to SE1 never name
 `main`: they name the SE1 release this guide was last reviewed against, which each release below
 states.
 
@@ -66,11 +66,17 @@ MacEvoy, who signs the release (SE1/U9); every wording below is a draft until th
   template's read as a pass with no text; a datasheet with zero columns read as every column saying when it
   is knowable; the plan template's *Holdout* line read as filled in, now marked as a placeholder; and
   `dm.py`, vendored, read as the ledger's writer because its source names the file.
+- `tools/check.py` replaces `tools/check.js`, so contributing needs Python 3.9 or later and git, and not Node:
+  the owner's decision, 2026-11-03, as SE1 did at v1.4. Before the JavaScript was removed, the two ran on 352
+  cases, 52 planted and 300 seeded random edits, 67 of them red, and agreed on 351. The one difference is a
+  fix: a CHANGELOG with no release heading crashed the JavaScript, and the Python reports it.
+  `tools/test_check.py` is new, a breakage per rule in a copy of this repository. Earlier entries below that
+  name `tools/check.js` are kept as written.
 - This repository now follows SE1 as a project, not only by citation (ADOPT.md): SE1's agreement copied
   unedited to `docs/SE1-AGENTS.md`, since the root `AGENTS.md` here is the file this guide publishes;
   `se`, `se.ps1`, and `se.py` copied from v1.4; both agreements imported from a new `CLAUDE.md`; the
   self test as a `SessionStart` hook in `.claude/settings.json`; `CONTRIBUTING.md` and a working set in
-  `docs/`, reconstructed and marked *(inferred)*. `tools/check.js` leaves `HANDOFF-*` notes alone: a
+  `docs/`, reconstructed and marked *(inferred)*. the checker leaves `HANDOFF-*` notes alone: a
   finished note keeps the links it was written with.
 
 ### SE1 v1.2 to v1.3, reviewed

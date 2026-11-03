@@ -7,7 +7,7 @@ the template this guide publishes for data projects; this file is about the guid
 
 ## Run it
 
-- **Prerequisites:** Node 24, Python 3.9 or later, git, and a clone of SE1 with its tags at
+- **Prerequisites:** Python 3.9 or later, git, and a clone of SE1 with its tags at
   `../software-engineering` (or `SE_GUIDE=path`). Nothing to install.
 - **Build:** none; the repository is Markdown and scripts.
 - **Run:** `./dm --doctor` for this repository's state; on a guide, the data rows say *none yet*, which
@@ -16,10 +16,10 @@ the template this guide publishes for data projects; this file is about the guid
 
 ## Check it
 
-- **The full check:** `node tools/check.js && python3 -I tools/test_dm.py`, the same commands CI runs
-- **Success prints:** `0 problems` from the checker, then `OK` from the tests
-- **Instruments:** the checker and the tests. The doctor's rows were each seen red on a fixture; the
-  checker on planted breakages (CHANGELOG).
+- **The full check:** `python3 -I tools/check.py && python3 -I tools/test_check.py && python3 -I tools/test_dm.py`, the same commands CI runs
+- **Success prints:** `0 problems` from the checker, then `OK` from each set of tests
+- **Instruments:** the checker and the tests. The doctor's rows were each seen red on a fixture, and
+  `tools/test_check.py` plants a breakage per checker rule in a copy of this repository.
 
 ## Rules for this repository
 
@@ -28,6 +28,8 @@ the template this guide publishes for data projects; this file is about the guid
   re-copying from a release.
 - Bumping SE1 follows *Changing this guide* in the README: one constant, the links, CI, the copies here,
   and a CHANGELOG entry by ID. `HANDOFF-*` notes keep the links they were written with.
+- Python 3.9 or later and git are the only dependencies, for contributors and adopters alike: no Node, no
+  third-party package, nothing that needs installing. The owner's decision, 2026-11-03.
 - A change in a requirement's meaning is a new version.
 
 ## Where things are

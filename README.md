@@ -353,18 +353,19 @@ If you remember nothing else, each of these can be asked out loud, and each has 
 
 ## Changing this guide
 
-The guide follows its own advice. Run `node tools/check.js` before committing: it fails if a link or
+The guide follows its own advice. Run `python3 -I tools/check.py` before committing: it fails if a link or
 anchor is broken, a principle has no *New* or *Reframes* line, an SE1 citation points at the wrong
 place, or the index or the SE1 map above no longer matches the chapters. With a clone of SE1 beside
 this repository (`../software-engineering`, or `SE_GUIDE=path`), it also checks that every SE1 ID and
 anchor exists at the SE1 release this guide is pinned to, read from that tag; a clone without the tag
-is a problem it names, and without a clone it says so. `node tools/check.js --print` prints the index
+is a problem it names, and without a clone it says so. `python3 -I tools/check.py --print` prints the index
 and the SE1 map as they should read, to paste in after adding or rewording a principle. Reword
-freely; never reuse an ID for a different idea. `python3 -I tools/test_dm.py` runs the doctor's
-tests, every row seen red on a fixture built to fail it; CI runs the checker and the tests on three
-platforms and two Pythons.
+freely; never reuse an ID for a different idea. `python3 -I tools/test_check.py` plants a breakage per rule in
+a copy of this repository, and `python3 -I tools/test_dm.py` runs the doctor's tests, every row seen red on a
+fixture built to fail it. CI runs all three on three platforms and two Pythons. Python 3.9 or later and git
+are all any of it needs.
 
-**This guide is pinned to one SE1 release**, named once, by `SE_RELEASE` in `tools/check.js`, and
+**This guide is pinned to one SE1 release**, named once, by `SE_RELEASE` in `tools/check.py`, and
 every SE1 link, llms.txt, and CI name it: a reader lands on the text that was read, not on whatever
 SE1's `main` says now. Bumping it is that one edit, a rewrite of the links, a walk through SE1's
 CHANGELOG for every ID this guide reframes, and a CHANGELOG entry here saying what was reframed,
@@ -386,8 +387,8 @@ asks of any rule.
   by reference. Nothing of its own: no field report, no trial, and no review by anyone, of any model
   family, has yet tested a principle here ([GAPS.md](GAPS.md)). The reframings were written against
   one SE1 commit and re-read against v1.3 and v1.4 only where SE1 changed; the rest were not re-read.
-- **What has been seen to fail.** `tools/check.js`, on three planted breakages: SE1 pinned to a
-  release that lacks three cited principles, a copy of SE1 with no tag to read, and an AGENTS.md
+- **What has been seen to fail.** `tools/check.py`, on a breakage planted per rule
+  (`tools/test_check.py`), including SE1 pinned wrongly, a copy of SE1 with no tag to read, and an AGENTS.md
   citing an ID its release does not define. A check never seen red proves nothing
   ([SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t3)), so these were.
 - **What has not.** Whether a reader who has not read SE1 can follow a *Reframes* link and come away
@@ -398,7 +399,7 @@ asks of any rule.
   [DM1/A4](guide/10-agents.md#a4). A reframing that contradicts its SE1 source about software, which
   by the section below is a bug here. An agent of another family for which the working agreement
   makes the work worse.
-- **How to check it yourself.** `node tools/check.js` with a clone of SE1 beside this one; the SE1
+- **How to check it yourself.** `python3 -I tools/check.py` with a clone of SE1 beside this one; the SE1
   map above, read against SE1's text at v1.4; and [CHANGELOG.md](CHANGELOG.md), which says by ID
   what was reframed, declined, confirmed, and not reviewed.
 

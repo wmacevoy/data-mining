@@ -23,7 +23,8 @@ Blameless: say what would have found it, not who should have asked.
 - **Cost:** a check that a contributor here cannot run without installing something first; SE1 removed the
   same need at v1.4.
 - **Findable by:** a fresh checkout on a machine with only Python.
-- **Changed:** CONTRIBUTING names the prerequisite, and queue #3 asks whether to port it.
+- **Changed:** the checker is now Python (`tools/check.py`), the owner's decision, and CI no longer installs
+  Node, so a machine with only Python and git can run the check.
 
 ## 2026-11-03 — The doctor's first real repository found four false passes
 

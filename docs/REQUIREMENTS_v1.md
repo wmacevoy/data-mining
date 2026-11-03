@@ -29,8 +29,7 @@ Held by: Warren MacEvoy *(inferred)*
   restated. Judge: the holder, at each release.
 - **Says no to:** a principle that applies to data unchanged from SE1 (it stays off the map, per the
   README); a tool with a dependency outside the standard library.
-- **Exceptions:** `tools/check.js` needs Node, though `dm.py` and SE1's own checkers need only Python
-  (queue #3).
+- **Exceptions:** none yet.
 
 ## The pain
 
@@ -44,7 +43,7 @@ people whose rows those projects mine, who are never in the room.
 
 ## Requirements
 
-- **CHK-1** *(since v1)* *(inferred)* `tools/check.js` exits nonzero when a link, anchor, DM1 or SE1
+- **CHK-1** *(since v1)* *(inferred)* `tools/check.py` exits nonzero when a link, anchor, DM1 or SE1
   citation, basis line, README index or map, or release label is wrong.
 - **PIN-1** *(since v1)* *(inferred)* Every SE1 link, llms.txt, and CI name one SE1 release, and each bump
   is recorded in CHANGELOG by SE1 ID as reframed, declined, or confirmed.
@@ -62,6 +61,8 @@ people whose rows those projects mine, who are never in the room.
 
 ## Scope decisions
 
+- 2026-11-03, the owner's decision: Python 3.9 or later and git are the only dependencies of the check and the
+  tools. A clone of SE1 is a source to check against, not a dependency to install.
 - 2026-11-03 *(inferred)*: SE1's copy lives at `docs/SE1-AGENTS.md` here, because the root `AGENTS.md` is
   what this guide publishes. Reversible by renaming, at the price of the published URLs.
 - 2026-11-03: the SE1 files are vendored as ADOPT.md says (the agreement and `se`), not the whole SE1
