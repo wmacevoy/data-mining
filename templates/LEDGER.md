@@ -1,11 +1,13 @@
 # Ledger
 
-Every configuration scored, appended **by the code that scored it**, never from memory. The count of
-lines is part of every result reported from this project
+Every configuration scored, and in retrieval or extraction every search run and page read, appended
+**by the code that did it**, never from memory. The count of lines is part of every result reported
+from this project
 ([DM1/F6](https://github.com/wmacevoy/data-mining/blob/main/guide/03-feedback.md#f6),
 [DM1/A3](https://github.com/wmacevoy/data-mining/blob/main/guide/10-agents.md#a3)).
 Keep it as a machine-written file (`ledger.jsonl` or `ledger.csv`) beside this description; a
-Markdown table is fine for a small project.
+Markdown table is fine for a small project. Logs of reads and searches count; name them on the *The
+ledger* line of `CONTRIBUTING.md` so the doctor can find them.
 
 A holdout row is a spending event: say what decision it served
 ([DM1/F5](https://github.com/wmacevoy/data-mining/blob/main/guide/03-feedback.md#f5)).

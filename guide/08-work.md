@@ -95,6 +95,9 @@ rule that helps, the sanity plot skipped, the null quietly not mentioned. **The 
 something** is this field's characteristic deadline pathology, and it never feels like cheating
 while it is happening. It feels like trying harder.
 
+When the deliverable is a summary, there is a second pathology: the pressure is to be concise, and
+what it costs is omission ([DM1/F10](03-feedback.md#f10)). That also feels like doing the job well.
+
 Change the terrain:
 
 - **Make re-running cheap.** If raw to report is one command and a few minutes, "don't touch it, it
@@ -144,9 +147,13 @@ it* is:
   code ([DM1/A6](10-agents.md#a6));
 - for what the question marks *(judged)*, the named judge's verdict on this version, recorded on one
   line with the versioned ID, `verdict: pass` or `verdict: fail`, `by` the judge, and the date
-  ([DM1/U10](02-unknowing.md#u10));
+  ([DM1/U11](02-unknowing.md#u11));
 - a description naming what the change must not break, by ID and its words (`Q1/PRED-1`, the split,
   the holdout), so the reviewer can ask about each.
+
+For an extracted claim ([DM1/R12](04-requirements.md#r12)), *regenerate* means a script re-finds each
+quotation on its cited page, and a second reader reads a sample whole. Prose can be re-checked, not
+re-derived. That checks words and pages, not numbers or omissions ([DM1/F10](03-feedback.md#f10)).
 
 > **Ask:** "Has anyone but the author regenerated this from raw?"
 

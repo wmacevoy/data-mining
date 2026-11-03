@@ -23,6 +23,8 @@ week*, *same as the last comparable event*. Three things follow:
   done sentence.
 - Sometimes the baseline wins. That is a finding, and an inexpensive one.
 
+For retrieval and extraction, the baseline is a full reading of some cases ([DM1/T12](#t12)).
+
 > **Ask:** "What does the dumbest reasonable method score on this — and have we run it?"
 
 ### <a id="t2"></a>T2. A reliable pipeline checks itself: assert what joins and filters break
@@ -58,7 +60,8 @@ the same length compares 1 to 1, and the estimator under test never ran. Make ea
 enough to exercise every branch, and assert on values you worked out by hand.
 
 The same rule covers every instrument that judges a result — a metric script, a labeler, an LLM used
-as a judge. Each must be seen to disagree with a bad answer before its agreement means anything.
+as a judge. Each must be seen to disagree with a bad answer before its agreement means anything. A
+search that reports an absence is one of these instruments ([DM1/U10](02-unknowing.md#u10)).
 
 > **Ask:** "What wrong output would this test still pass — and have I seen it fail?"
 
@@ -194,6 +197,23 @@ And because the search was large, apply [DM1/F4](03-feedback.md#f4): a rule that
 thousands is expected to exist by chance.
 
 > **Ask:** "If we ran this again on a different month, would we find the same thing?"
+
+### <a id="t12"></a>T12. For retrieval and extraction, a full reading of some cases is the baseline
+
+*Reframes [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t8).*
+
+SE1/T8 asks what test would pass if this worked, and [DM1/T1](#t1) answers with a dumb baseline. The
+dumb baseline for a search system isn't another search. It's a person, or a model, reading the whole
+document. Run it on a sample before trusting any retrieval, and report what the search missed, by how
+each page was read ([DM1/T9](#t9)). Equal treatment is not adequate recall: the same fixed searches
+for every case are fair, and can miss the same thing in every case.
+
+Then compare against the simple method too: is hybrid search better than keyword search, or than
+`grep`, by more than its complexity costs ([DM1/D8](05-design.md#d8))? Hold the questions apart from
+whoever tunes the search ([DM1/F5](03-feedback.md#f5)), since a retrieval test used to fix retrieval
+has become a training set.
+
+> **Ask:** "What did a full reading find that this search did not?"
 
 ---
 

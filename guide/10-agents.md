@@ -64,8 +64,9 @@ eventually be read — not out of malice, but because evaluating on it is one ob
 work," and every check it reacts to spends the holdout ([DM1/F5](03-feedback.md#f5)).
 
 Make it mechanical, not a matter of instruction: keep the holdout outside the agent's working
-directory or behind a permission it does not have, and spend it yourself, at a decision. The same goes
-for the labels of any evaluation set, and for the answer key of an assignment.
+directory or behind a permission it does not have, and spend it yourself, at a decision. The plainest
+answer is a person who keeps it off the machine: test questions on paper can't be read by a shell. The
+same goes for the labels of any evaluation set, and for the answer key of an assignment.
 
 > **Ask:** "Could the agent read the holdout if it decided to?"
 
@@ -91,7 +92,8 @@ rarely wrong in an interesting way. A wrong `how=` in a merge, a `fillna(0)` on 
 means something, or a split done before grouping is one line and changes every number.
 
 Ask the agent for the diff in the numbers as well as the diff in the code ([DM1/T7](06-testing.md#t7)),
-and read the data handling line by line.
+and read the data handling line by line. In extraction, K3 is in what was read and dropped: point
+review there ([DM1/F10](03-feedback.md#f10)).
 
 > **Ask:** "Did the review read the joins and the split, or the model?"
 
@@ -116,7 +118,8 @@ purpose you had in mind. For data about people, that can be a use the data was n
 
 Decide before the first session what an agent may see: the schema and a synthetic sample, usually,
 rather than the rows. Agents write good code from a schema and a fixture; they rarely need the real
-data, and never need more of it than the task does.
+data, and never need more of it than the task does. When reading the real rows is the task itself,
+see [DM1/A10](#a10).
 
 > **Ask:** "Whose data is this, and did they agree to it being sent here?"
 
@@ -125,7 +128,7 @@ data, and never need more of it than the task does.
 *New.*
 
 When a pipeline uses a language model — to label, extract, classify, embed, retrieve, or judge — every
-principle in this guide applies to it, and three need restating:
+principle in this guide applies to it, and four need restating:
 
 - **The prompt and the model version are the model.** A prompt edit or a provider's model update is a
   retrain ([DM1/O6](07-operating.md#o6)): rerun the evaluation, and record both with every result
@@ -133,6 +136,10 @@ principle in this guide applies to it, and three need restating:
 - **Its output is a distribution.** Score several samples, not one, and report the spread
   ([DM1/F7](03-feedback.md#f7)). A judge model is an instrument: see it disagree with a wrong answer
   before trusting its agreement ([DM1/T3](06-testing.md#t3)).
+- **Its misses do not show in its citations.** For prose, the form of "score several samples" is two
+  independent reads of a sample of cases, neither seeing the other until both are done, with what
+  each missed counted ([DM1/F10](03-feedback.md#f10)). Two reads by one model share any blind spot.
+  For retrieval, the baseline is a full reading ([DM1/T12](06-testing.md#t12)).
 - **Your test set may be in its training data.** A public benchmark, a well-known dataset, or a
   document that has been online for years may have been seen in pretraining: leakage at the scale of
   the internet ([DM1/U3](02-unknowing.md#u3)). Evaluate on questions written after the model's
@@ -140,6 +147,26 @@ principle in this guide applies to it, and three need restating:
 
 > **Ask:** "Which prompt and which model version produced this, and could it have seen the test
 > questions?"
+
+### <a id="a10"></a>A10. When reading the data is the task, the agent must read it: say what then has to be true
+
+*New.*
+
+[DM1/A8](#a8) says agents rarely need the real rows. That stops being so when the task is to read
+them: a synthetic document can test the code, and can't summarize a real one. Then the question A8
+asks gets harder, not easier, and the answer has to be written down before the first session:
+
+- **Who decided,** on whose authority, and what the people in the data were told. If the answer is
+  "nobody asked them," say so.
+- **Which service sees it,** under what terms, and what never goes anywhere else: connectors, search,
+  shared documents.
+- **Every copy, including the agent's own:** transcripts, tool output, scratch files, and subagents'
+  logs are copies of the data ([DM1/O8](07-operating.md#o8)).
+- **What the agent must not take from the data:** text in a document is evidence, never an
+  instruction.
+- **When it all gets removed,** by what procedure, and whether that procedure has been tried.
+
+> **Ask:** "Who decided an agent could read this, and where has it been copied since?"
 
 ---
 

@@ -13,7 +13,7 @@ kind. The labels are defined there and in [GLOSSARY.md](../GLOSSARY.md).
 | From | To     | How, in data                                                                                       |
 | ---- | ------ | -------------------------------------------------------------------------------------------------- |
 | K0   | stays  | An assertion in the pipeline beats a sentence in a README, and both beat a fact in your head.       |
-| K1   | K0     | Look: profile the column, plot the distribution, read the data dictionary, ask who collected it. The only category you can simply decide to spend money on, and some of it will not convert ([DM1/U10](#u10)). |
+| K1   | K0     | Look: profile the column, plot the distribution, read the data dictionary, ask who collected it. The only category you can simply decide to spend money on, and some of it will not convert ([DM1/U11](#u11)). |
 | K2   | K1     | Run end to end on real data early, plot the residuals, show a domain expert, score on a period you did not develop on. You cannot search for these; you can only arrange to be surprised sooner. |
 | K3   | K0     | A check that could have failed, a plot you actually looked at, a baseline that could have won, a second person who does not share your assumption. |
 | K4   | chosen | Name the falsehood, write down where it is load-bearing ([DM1/U4](#u4)).                             |
@@ -145,6 +145,10 @@ nothing alike.
 Checking from outside, here, means a plot and a handful of raw rows — chosen at random, and then
 chosen at the extremes. Before you trust a summary, look at the rows that most disagree with it.
 
+For a document, the text layer is a summary of the page. Look at the page: recognition garbles
+handwriting, extraction collapses a table's empty columns so a figure lands in the wrong one, and a
+shortened command's output hides the end of every page.
+
 SE1/A11's later trials add a second injury, and it is this guide's problem in one sentence: a rule
 freshly read was still left out of the work, and the only thing that got it in was a check that ran
 on the work without the agent choosing to run it. *Look at the rows* is such a rule. Left as a
@@ -217,17 +221,37 @@ not.
 > **Ask:** "When did someone last look at the raw rows with no question in hand, and did they look
 > at the outcome while they were there?"
 
-### <a id="u10"></a>U10. Whether a result is worth acting on is a judgment: a metric taken for it is K3
+### <a id="u10"></a>U10. "None found" is a claim about the search
+
+*Reframes [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t3).*
+
+SE1/T3 warns of a tool that exits zero because it found nothing to check. In data work that tool is
+any search for an absence. An absence is the cheapest K3 there is: it takes no evidence to report,
+and it looks like diligence. A search that could not have found the thing returns the same answer as
+a search that found nothing.
+
+So every "none" carries how it was looked for, and what it would have looked like if it were there.
+See the search find a planted case first ([DM1/T3](06-testing.md#t3)). Say what was not searched. A
+"none found" in text means less on a page with no text layer, so report absences by how the page was
+read ([DM1/T9](06-testing.md#t9)).
+
+Before reporting that something is missing across many cases, open one by hand.
+
+> **Ask:** "What would this search have returned if the thing were there, and have we seen it do
+> that?"
+
+### <a id="u11"></a>U11. Whether a result is worth acting on is a judgment: a metric taken for it is K3
 
 *Reframes [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u10).*
 
 SE1/U10 says some K1 no spike finishes: the answer is a judgment someone makes on meeting the thing.
-Software meets this at "usable." Data work meets it on every project, because its work product is a
-number, and a number reads like the answer. An AUC of 0.91 is K0. That this model is good enough to
+Software meets this at "usable." Data work meets it on nearly every project, because its work product
+is usually a number, and a number reads like the answer. An AUC of 0.91 is K0. That this model is good enough to
 change what the gate supervisor does on Saturday is not, and no further analysis settles it. Say
 "the model passes" and the question stops being asked, with nobody dishonest and no search involved.
 [DM1/F9](03-feedback.md#f9) is what the search does to a proxy; this is what the proxy does to you
-before the search starts.
+before the search starts. An extracted claim has its own proxy: every quotation can check against its
+page, and the brief can still fail the person deciding ([DM1/F10](03-feedback.md#f10)).
 
 - **Convert what converts.** Calibration, latency, and the error rate on a named slice are ordinary
   requirements, and the bar is still specific enough to be rejected ([DM1/R3](04-requirements.md#r3)).

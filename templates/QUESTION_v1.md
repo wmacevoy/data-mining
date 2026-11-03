@@ -4,7 +4,7 @@ The decision this work serves, and exactly what is being predicted, described, o
 equivalent of requirements: changes only with the client, and a change in meaning is a new version
 (`QUESTION_v2.md`); a spelling or lint fix is not, and is named in the commit
 ([SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/04-requirements.md#r10)). See
-[DM1/R1–R10](https://github.com/wmacevoy/data-mining/blob/main/guide/04-requirements.md).
+[DM1/R1–R12](https://github.com/wmacevoy/data-mining/blob/main/guide/04-requirements.md).
 
 Client (the one voice who can decide): _name_ · Date sent: _yyyy-mm-dd_ · *Tell us what is wrong
 with it.*
@@ -18,7 +18,7 @@ Who decides what, when, with what in front of them today — and what it costs w
 - **What we would do if the answer came out the other way:** _…_ (If "nothing," stop here.)
 - **DECISION-1** *(since v1)* *(judged)* _The decision this work serves, stated broadly._ Judge: _who_,
   on _what_, at _when_. Veto: _what would stop the work_
-  ([DM1/U10](https://github.com/wmacevoy/data-mining/blob/main/guide/02-unknowing.md#u10)).
+  ([DM1/U11](https://github.com/wmacevoy/data-mining/blob/main/guide/02-unknowing.md#u11)).
 
 ## Shape
 
@@ -56,6 +56,7 @@ A requirement like any other, decided with the client
 | Aggregation | |
 | Evaluation | |
 | Deployment | |
+| Unequal treatment | |
 
 ## Definitions
 
@@ -64,10 +65,13 @@ One-way doors: each costs a re-analysis to change
 by area (`OUT-1`, `UNIT-1`, …), mark each with the version that last changed it, and cite them as
 `Q1/OUT-1`.
 
+- **KIND-1** *(since v1)* The kind of claim, one of predicted, described, explained, extracted: _…_
+  ([DM1/R12](https://github.com/wmacevoy/data-mining/blob/main/guide/04-requirements.md#r12))
 - **UNIT-1** *(since v1)* One row is: _…_
-- **OUT-1** *(since v1)* The outcome, written so it could be a query: _…_
+- **OUT-1** *(since v1)* The outcome, written so it could be a query: _…_ (A predicted or explained
+  claim has one. Otherwise, what the claim is checked against, or delete this line.)
 - **PRED-1** *(since v1)* The prediction point — when the prediction is made, and so what may be
-  known: _…_
+  known: _…_ (A predicted claim has one. Otherwise, what stands in for it, or delete this line.)
 
 ## The bar
 
@@ -77,7 +81,7 @@ guesses *(invented)*.
 
 - **BAR-1** *(since v1)* Metric _…_, on _which split / period_, at least _…_, against the baseline
   _…_ which scores _…_, with the interval reported. The bar can veto; it does not pass DECISION-1
-  ([DM1/U10](https://github.com/wmacevoy/data-mining/blob/main/guide/02-unknowing.md#u10)).
+  ([DM1/U11](https://github.com/wmacevoy/data-mining/blob/main/guide/02-unknowing.md#u11)).
 
 ## The price of each error
 
@@ -111,6 +115,18 @@ Populations, conditions, and uses this work will still produce an answer for, an
 stand behind ([DM1/R11](https://github.com/wmacevoy/data-mining/blob/main/guide/04-requirements.md#r11)).
 
 - _…_ — _reason_
+
+## Not applicable
+
+What in this guide does not bind this kind of claim, and why, rather than a template filled in with
+something invented ([DM1/R12](https://github.com/wmacevoy/data-mining/blob/main/guide/04-requirements.md#r12)).
+`./dm --doctor` reads this table. *Row* is one of its rows: `plan`, `holdout`, `ledger`, or
+`model card`; a predicted claim sets none aside, and an explained claim only the holdout and the model
+card. Nothing sets aside a datasheet, or a row that is failing.
+
+| Row | Why |
+| --- | --- |
+| _row_ | _why, in a sentence_ |
 
 ## Not yet answered
 

@@ -9,9 +9,11 @@ which is safe. Rebuilding a question from results is not**, because the results 
 ([DM1/F4](guide/03-feedback.md#f4)). So evidence is protected first, and anything written after the
 outcome was seen says so.
 
-**Not yet tried in full.** Written 2026-11-03 by Claude Opus 5.5 with Warren MacEvoy. Step 2's commands ran
-on a copy of the [fall 2026 course repository](https://github.com/wmacevoy/data-mining-wmacevoy-fall-2026)
-and on an empty one, and its `ml/` project is the example below, from reading its code without running it.
+**Not yet tried in full.** Written 2026-11-03 by Claude Opus 5.5 with Warren MacEvoy, after the two field reports
+in [GAPS.md](GAPS.md), neither of which followed it. Step 2's commands ran on a copy of the
+[fall 2026 course repository](https://github.com/wmacevoy/data-mining-wmacevoy-fall-2026) and on an empty one, and
+`ml/`, in that repository's `main`, is the example below, from reading its code without running it. The course's own
+migration is on its `adopt-se1-dm1` branch, and was not read for this.
 Everything past step 3 is a design that no project has followed yet. Wrong if a project that
 followed it still reports a number whose looks nobody can count, or spends more on this file than it
 catches.
@@ -22,7 +24,8 @@ catches.
    first command. Move the holdout out of the working directory or behind a permission the agent lacks,
    and decide whether rows about people may go to a hosted model
    ([DM1/A4](guide/10-agents.md#a4), [DM1/A8](guide/10-agents.md#a8)). If there is no holdout yet, decide
-   where it will live before anyone splits anything.
+   where it will live before anyone splits anything; a person keeping it elsewhere is a plain answer. If
+   reading the data is the task, write down what [DM1/A10](guide/10-agents.md#a10) asks before the first session.
 
 2. **Vendor both guides, and check that they load.** From the project's directory, with clones of both
    guides beside it:
@@ -46,28 +49,39 @@ catches.
    quote a line of each file without opening them, and look for `se --post`'s report
    ([SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/10-agents.md#a11)).
 
-   **Several projects in one repository:** vendor into each project's directory and start sessions
-   there. With the copies only at the root, `--repo` on a project fails its agreement rows, and the hook's
-   `python3 se.py --post` cannot find `se.py` from a project's directory.
-   The doctor's CI row then says *none yet*, since the workflow is at the root; that row is yours to read.
+   **Several projects in one repository:** one run is one project, the owner's decision of 2026-11-02
+   ([GAPS.md](GAPS.md)). Vendor once at the repository's root, give each project its own `CONTRIBUTING.md` and
+   `docs/`, and run `./dm --doctor --repo <project>` for each; the agreements are found upward as far as the root.
+   Start sessions at the root: the hook's `python3 se.py --post` cannot find `se.py` from a project's directory,
+   and a session started inside a project has not been seen loading the agreements.
 
 3. **Add a template when you reach its stage, not all at once.** A model card with no model is a failure
    the doctor will report, and it should. *None yet* is a true answer on day one, so **0 failed means
-   nothing is wrong, not that you have adopted**; the checklist at the end is what says that.
+   nothing is wrong, not that you have adopted**; the checklist at the end is what says that. A row your kind of
+   claim sets aside is *n/a*, with a reason in the question ([DM1/R12](guide/04-requirements.md#r12)).
 
 A project that is only analysis lets the question and the plan stand in for SE1's requirements and
 design, and SE1's *working set* row stays *none yet*; `QUEUE` and `FINDINGS` are still kept. A project
 that also ships software (a dashboard, an API) keeps `REQUIREMENTS_vN` as well, and its mission points
 at the question's `Q1/DECISION-1` rather than saying it a second time.
 
+## The kind of claim decides what applies
+
+Steps below are written for a prediction, the guide's commonest case. Name the kind of claim first: predicted,
+described, explained, or extracted ([DM1/R12](guide/04-requirements.md#r12)). An extracted claim has no outcome,
+holdout, or score: its question names the document and the unit of citation, *regenerate* means a script re-finds each
+quotation on its page ([DM1/W7](guide/08-work.md#w7)), and the baseline is a full reading of some cases
+([DM1/T12](guide/06-testing.md#t12)). Keep the datasheet for every kind. Where a step does not bind, say so and why, and
+do not invent the field.
+
 ## Starting a new project
 
 In order, each from its template in [templates/](templates/):
 
-4. **The question,** before looking at the outcome: the decision, the unit, the outcome, the prediction
-   point, the bar, and who judges what the bar cannot ([DM1/R1](guide/04-requirements.md#r1),
+4. **The question,** before looking at the outcome: the kind of claim, the decision, the unit, the outcome, the
+   prediction point, the bar, and who judges what the bar cannot ([DM1/R1](guide/04-requirements.md#r1),
    [DM1/R2](guide/04-requirements.md#r2), [DM1/R3](guide/04-requirements.md#r3),
-   [DM1/U10](guide/02-unknowing.md#u10)). If the answer would change nothing, stop here.
+   [DM1/U11](guide/02-unknowing.md#u11)). If the answer would change nothing, stop here.
 5. **A datasheet per source,** with when each column becomes knowable
    ([DM1/R6](guide/04-requirements.md#r6), [DM1/D13](guide/05-design.md#d13)). Look at the inputs freely;
    that is free ([DM1/U9](guide/02-unknowing.md#u9)).
@@ -109,7 +123,7 @@ arrived is worth more than one that looks tidy.
 
 ### What this looks like: `ml/` in the course repository
 
-An MNIST pipeline with a dashboard, read on 2026-11-03. This is what the steps would ask of it, not a
+An MNIST pipeline with a dashboard, read on 2026-11-03 in the course's `main`. This is what the steps would ask of it, not a
 report of having done them.
 
 - **Spent (step 4).** `train.py` scores the 10,000 test images when every run ends, and the dashboard
@@ -146,8 +160,8 @@ absence once.
       a line of each. ([SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/10-agents.md#a11))
 - [ ] `se --post` ran at the start of a real session, and `./dm --doctor` reports no failure, after the
       data has been fetched. ([SE1/T2](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t2))
-- [ ] The question has a judge, and whatever was written after the outcome was seen says so.
-      ([DM1/U10](guide/02-unknowing.md#u10))
+- [ ] The question names its kind of claim and a judge, and whatever was written after the outcome was seen says so.
+      ([DM1/U11](guide/02-unknowing.md#u11))
 - [ ] The plan names the split, the baseline, and the slices. ([DM1/T1](guide/06-testing.md#t1))
 - [ ] Every source has a datasheet with no column missing *Knowable at*. ([DM1/R6](guide/04-requirements.md#r6))
 - [ ] One documented command goes from raw to every reported number, and CI runs the checks.

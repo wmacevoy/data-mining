@@ -89,9 +89,9 @@ files = []
 for folder, dirs, names in os.walk(root):
     # Dot-directories include .git and CI's checkout of the SE1 guide (.se1).
     dirs[:] = sorted(d for d in dirs if not d.startswith("."))
-    # A HANDOFF note is finished history: it keeps the SE1 links it was written with.
+    # A HANDOFF note and a REVIEW are records: they keep the SE1 links they were written with.
     files += [os.path.join(folder, n) for n in sorted(names)
-              if n.endswith(".md") and not n.startswith((".", "HANDOFF-"))]
+              if n.endswith(".md") and not n.startswith((".", "HANDOFF-", "REVIEW-"))]
 
 
 def in_dir(path, name):

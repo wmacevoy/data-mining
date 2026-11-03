@@ -85,7 +85,7 @@ and `se.py`. `./dm --doctor` says what the data working set lacks, and *none yet
 | [CHANGELOG.md](CHANGELOG.md)       | what changed in each release, by principle ID                   |
 | `templates/`                       | starting points: [QUESTION](templates/QUESTION_v1.md), [PLAN](templates/PLAN_v1.md), [DATASHEET](templates/DATASHEET.md), [MODEL_CARD](templates/MODEL_CARD.md), [LEDGER](templates/LEDGER.md), [CONTRIBUTING](templates/CONTRIBUTING.md) — and SE1's [DESIGN](https://github.com/wmacevoy/software-engineering/blob/v1.4/templates/DESIGN_v1.md), [QUEUE](https://github.com/wmacevoy/software-engineering/blob/v1.4/templates/QUEUE.md), and [FINDINGS](https://github.com/wmacevoy/software-engineering/blob/v1.4/templates/FINDINGS.md), unchanged |
 | [GAPS.md](GAPS.md)                 | where the guide falls short, and what is not yet tested         |
-| `dm`, `dm.py`                      | the data project's doctor: SE1's rows plus this guide's, run in a repository that follows both (`./dm --doctor`); untried on a real project ([GAPS 7](GAPS.md#7-the-doctor-has-never-met-a-project)) |
+| `dm`, `dm.py`                      | the data project's doctor: SE1's rows plus this guide's, run in a repository that follows both (`./dm --doctor`); met two real projects, neither with a model ([GAPS 7](GAPS.md#7-the-doctor-has-met-two-projects)) |
 
 ## The running example
 
@@ -143,7 +143,8 @@ these.)
 - [**DM1/U7**](guide/02-unknowing.md#u7) A summary statistic is a concussion: look at the rows
 - [**DM1/U8**](guide/02-unknowing.md#u8) People ask Prob(result | me); the data holds Prob(result | the rows it counts as like me)
 - [**DM1/U9**](guide/02-unknowing.md#u9) Whitespace is free on the inputs and spent on the outcome
-- [**DM1/U10**](guide/02-unknowing.md#u10) Whether a result is worth acting on is a judgment: a metric taken for it is K3
+- [**DM1/U10**](guide/02-unknowing.md#u10) "None found" is a claim about the search
+- [**DM1/U11**](guide/02-unknowing.md#u11) Whether a result is worth acting on is a judgment: a metric taken for it is K3
 
 **[3. Feedback](guide/03-feedback.md)**
 
@@ -156,6 +157,7 @@ these.)
 - [**DM1/F7**](guide/03-feedback.md#f7) A point estimate is half a result
 - [**DM1/F8**](guide/03-feedback.md#f8) A large sample does not rescue a biased one; it disguises it
 - [**DM1/F9**](guide/03-feedback.md#f9) When a metric becomes a target, it stops measuring — and the search is the hardest optimizer you will meet
+- [**DM1/F10**](guide/03-feedback.md#f10) A faithful summary can still lose the finding: check what left, not only what stayed
 
 **[4. Requirements](guide/04-requirements.md)**
 
@@ -170,6 +172,7 @@ these.)
 - [**DM1/R9**](guide/04-requirements.md#r9) Ethics, law, and security are requirements, and the people in the data never filed one
 - [**DM1/R10**](guide/04-requirements.md#r10) Bias is always a requirement, alongside ethics, law, and security
 - [**DM1/R11**](guide/04-requirements.md#r11) Write down who the model is not for
+- [**DM1/R12**](guide/04-requirements.md#r12) Name the kind of claim first: predicted, described, explained, or extracted
 
 **[5. Design](guide/05-design.md)**
 
@@ -200,6 +203,7 @@ these.)
 - [**DM1/T9**](guide/06-testing.md#t9) Evaluate by slice; the aggregate hides the subgroup that fails
 - [**DM1/T10**](guide/06-testing.md#t10) When someone else owns "correct," compare against their implementation
 - [**DM1/T11**](guide/06-testing.md#t11) Unsupervised results have no answer key: test their stability
+- [**DM1/T12**](guide/06-testing.md#t12) For retrieval and extraction, a full reading of some cases is the baseline
 
 **[7. Operating](guide/07-operating.md)**
 
@@ -247,6 +251,7 @@ these.)
 - [**DM1/A7**](guide/10-agents.md#a7) You present it, so you own it
 - [**DM1/A8**](guide/10-agents.md#a8) Data sent to an agent has left the room
 - [**DM1/A9**](guide/10-agents.md#a9) A language model in the pipeline is a model: version it, sample it, and check its test set was not in its training
+- [**DM1/A10**](guide/10-agents.md#a10) When reading the data is the task, the agent must read it: say what then has to be true
 
 ## Reading SE1 as a data miner
 
@@ -265,7 +270,7 @@ software applies to it.
 - [SE1/U5](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u5) → [DM1/U5](guide/02-unknowing.md#u5)
 - [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u7) → [DM1/U2](guide/02-unknowing.md#u2), [DM1/U6](guide/02-unknowing.md#u6)
 - [SE1/U8](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u8) → [DM1/U9](guide/02-unknowing.md#u9)
-- [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u10) → [DM1/U10](guide/02-unknowing.md#u10)
+- [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u10) → [DM1/U11](guide/02-unknowing.md#u11)
 - [SE1/F1](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/03-feedback.md#f1) → [DM1/F1](guide/03-feedback.md#f1)
 - [SE1/F2](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/03-feedback.md#f2) → [DM1/F2](guide/03-feedback.md#f2)
 - [SE1/F3](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/03-feedback.md#f3) → [DM1/F3](guide/03-feedback.md#f3)
@@ -291,11 +296,11 @@ software applies to it.
 - [SE1/D12](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/05-design.md#d12) → [DM1/D12](guide/05-design.md#d12)
 - [SE1/D13](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/05-design.md#d13) → [DM1/D13](guide/05-design.md#d13)
 - [SE1/T2](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t2) → [DM1/T2](guide/06-testing.md#t2)
-- [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t3) → [DM1/T3](guide/06-testing.md#t3)
+- [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t3) → [DM1/U10](guide/02-unknowing.md#u10), [DM1/T3](guide/06-testing.md#t3)
 - [SE1/T4](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t4) → [DM1/T4](guide/06-testing.md#t4)
 - [SE1/T5](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t5) → [DM1/T5](guide/06-testing.md#t5)
 - [SE1/T6](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t6) → [DM1/T6](guide/06-testing.md#t6)
-- [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t8) → [DM1/T1](guide/06-testing.md#t1)
+- [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t8) → [DM1/T1](guide/06-testing.md#t1), [DM1/T12](guide/06-testing.md#t12)
 - [SE1/T9](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t9) → [DM1/T5](guide/06-testing.md#t5)
 - [SE1/T10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t10) → [DM1/T8](guide/06-testing.md#t8)
 - [SE1/T11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t11) → [DM1/T10](guide/06-testing.md#t10)
@@ -383,17 +388,26 @@ asks of any rule.
   2026-11-03 (Claude Opus 5.5). Every
   commit since the repository was initialized that day carries the agent's trailer, and AGENTS.md
   says so in its header.
-- **What it rests on.** A course document, the author's teaching, and SE1's trials and field reports
-  by reference. Nothing of its own: no field report, no trial, and no review by anyone, of any model
-  family, has yet tested a principle here ([GAPS.md](GAPS.md)). The reframings were written against
-  one SE1 commit and re-read against v1.3 and v1.4 only where SE1 changed; the rest were not re-read.
+- **What it rests on.** A course document, the author's teaching, SE1's trials and field reports by
+  reference, and two field reports of its own ([GAPS.md](GAPS.md)). The first, one private document
+  review with nothing trained and nothing predicted, went through the 93 principles of that date: by
+  one model's judgment, 26 held, 20 needed extending or changing, 20 fit by argument only, and 27
+  didn't reach it ([REVIEW-v1.md](REVIEW-v1.md)). Five principles came out of it, and rest on that one
+  project. The second is the course's migration, still under way, with one of its five projects done. Nothing
+  has tested a principle on a trained model, a spent holdout, or production, and no person and no
+  other model family has reviewed them. The reframings were written against one SE1 commit and re-read
+  against v1.3 and v1.4 only where SE1 changed; the rest were not re-read.
 - **What has been seen to fail.** `tools/check.py`, on a breakage planted per rule
   (`tools/test_check.py`), including SE1 pinned wrongly, a copy of SE1 with no tag to read, and an AGENTS.md
   citing an ID its release does not define. A check never seen red proves nothing
   ([SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t3)), so these were.
+  `dm --doctor`, on each real project it has met: each found bugs in it that its fixtures had not, one
+  of them a fix for such a bug that repeated it ([GAPS.md](GAPS.md#7-the-doctor-has-met-two-projects)).
 - **What has not.** Whether a reader who has not read SE1 can follow a *Reframes* link and come away
   with the idea. Whether an agent given AGENTS.md here works differently from one given SE1's
-  alone. Every checklist, every template, and every *Ask*.
+  alone. Most checklists, the model card, and most *Asks*. The question, plan, and datasheet templates
+  have been filled in on one descriptive project and found to fit badly, which R12 answers; that
+  answer is itself untried.
 - **What would show it wrong.** A course project where following a principle here made the analysis
   worse, or cost more than it caught. A holdout an agent reached despite
   [DM1/A4](guide/10-agents.md#a4). A reframing that contradicts its SE1 source about software, which

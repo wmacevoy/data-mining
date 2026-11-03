@@ -102,7 +102,8 @@ update it next quarter. "It ran in a kernel I have since restarted" is a claim a
 
 A notebook is an excellent instrument and a poor artifact: it records the cells, not the order you
 ran them in, and the order is the program. Keep notebooks for looking; keep the method in code a
-command can run from raw data ([DM1/D6](05-design.md#d6), [DM1/D7](05-design.md#d7)).
+command can run from raw data ([DM1/D6](05-design.md#d6), [DM1/D7](05-design.md#d7)). Where the claim
+is prose, the means is a check instead of a re-derivation ([DM1/W7](08-work.md#w7)).
 
 > **Ask:** "Could someone who has never met me regenerate this number from raw data, and say why it
 > is what it is?"

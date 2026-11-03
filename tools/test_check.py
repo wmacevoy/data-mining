@@ -147,7 +147,7 @@ class TestChecker(Repo):
         self.red("unknown SE1 ID AGENTS.md")
 
     def test_readme_index_out_of_date(self):
-        self.plant("README.md", replace_once("[**DM1/U10**](guide/02-unknowing.md#u10) Whether", "[**DM1/U10**](guide/02-unknowing.md#u10) If"))
+        self.plant("README.md", replace_once("[**DM1/U11**](guide/02-unknowing.md#u11) Whether", "[**DM1/U11**](guide/02-unknowing.md#u11) If"))
         self.red("README index out of date")
 
     def test_readme_map_out_of_date(self):
@@ -197,7 +197,12 @@ class TestChecker(Repo):
 
     def test_a_handoff_note_keeps_its_links(self):
         # REQ1/PIN-1: a finished note names the release it was written against, on purpose.
-        self.plant("HANDOFF-migrate-to-SE1-v1.3.md", replace_once("# Handoff", f"[SE1/U7]({SE_BLOB}v1.0/guide/02-unknowing.md#u7)\n\n# Handoff"))
+        self.plant("archive/HANDOFF-migrate-to-SE1-v1.3.md", replace_once("# Handoff", f"[SE1/U7]({SE_BLOB}v1.0/guide/02-unknowing.md#u7)\n\n# Handoff"))
+        self.assertEqual(self.check().returncode, 0)
+
+    def test_a_review_keeps_its_links(self):
+        # REQ1/PIN-1: a review names the release it read.
+        self.assertIn("blob/v1.3/", self.read("REVIEW-v1.md"))
         self.assertEqual(self.check().returncode, 0)
 
     def test_print_gives_what_readme_must_contain(self):

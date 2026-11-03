@@ -10,12 +10,16 @@
                 from raw to report, the ledger and who writes it, the model card and its bias audit,
                 the recorded environment, and citations of the question. Read-only.
                 "none yet" is a true answer: a guide, or a project on day one, has none of these.
+                "n/a" is a row the question sets aside, with a reason, for its kind of claim (DM1/R12).
+                One run is one project: in a repository of several, --repo <project>, and the agreements
+                are looked for upward, as far as the repository's root, where SE1's rows run.
 
 Standard library only, Python 3.9 or later. This copy is from the guide release named in RELEASE.
-Every threshold and heuristic here is invented and has not yet met a real project (GAPS.md, 7).
+Every threshold and heuristic here is invented. It has met two real projects and neither trained a model (GAPS.md, 7).
 """
 import argparse
 import csv
+import glob
 import importlib.util
 import io
 import json
@@ -30,9 +34,16 @@ RELEASE = "v1.0"
 GUIDE_REPO = "wmacevoy/data-mining"
 SE_REPO = "wmacevoy/software-engineering"
 
-Finding = namedtuple("Finding", "name ids state text fix")  # state: pass | warn | none yet | fail
-PASS, WARN, NONE, FAIL = "pass", "warn", "none yet", "fail"
-WORST = {PASS: 0, NONE: 1, WARN: 2, FAIL: 3}
+Finding = namedtuple("Finding", "name ids state text fix")  # state: pass | n/a | warn | none yet | fail
+PASS, NA, WARN, NONE, FAIL = "pass", "n/a", "warn", "none yet", "fail"
+WORST = {PASS: 0, NA: 0, NONE: 1, WARN: 2, FAIL: 3}
+# DM1/R12. What a kind of claim must fix, and the rows it may set aside with a reason. The rest always bind: the
+# datasheet above all, which the first field report wished it had written. Invented, like every threshold (GAPS.md, 7).
+KINDS = ("predicted", "described", "explained", "extracted")
+DOORS = {"UNIT": "the unit", "OUT": "the outcome", "PRED": "the prediction point"}
+KIND_DOORS = {"predicted": ("UNIT", "OUT", "PRED"), "explained": ("UNIT", "OUT"), "described": ("UNIT",), "extracted": ("UNIT",)}
+SET_ASIDE = {"predicted": (), "explained": ("holdout", "model card"),
+             "described": ("plan", "holdout", "ledger", "model card"), "extracted": ("plan", "holdout", "ledger", "model card")}
 LABEL_RE = re.compile(r"This copy is\s+from\s+\*\*(v\d+\.\d+)\*\*")
 # The SE1 release a DM1 copy was written against: the link to SE1's AGENTS.md its header carries.
 EXTENDS_RE = re.compile(r"software-engineering/blob/(v\d+\.\d+(?:\.\d+)?)/AGENTS\.md")
@@ -118,7 +129,7 @@ def field(text, name):
     m = re.search(rf"\*\*{re.escape(name)}:?\*\*:?\s*(.*)", text, re.I)
     if not m:
         return None
-    value, lines = m.group(1), text[m.end():].splitlines()
+    value, lines = m.group(1), text[m.end():].splitlines()[1:]  # [0] is the rest of the matched line: empty
     for line in lines:
         if line.startswith("  ") and not line.lstrip().startswith(("-", "*", "|")):
             value += " " + line.strip()
@@ -129,6 +140,21 @@ def field(text, name):
 
 def backtick_paths(value):
     return [p for p in re.findall(r"`([^`]+)`", value or "") if not placeholder(p)]
+
+
+def named_paths(repo, value):
+    """The backticks on a line that name paths. One with a space that is not there is a command (`make split`):
+    a bare-word command still reads as a path, and is reported as one that is not here."""
+    return [p for p in backtick_paths(value) if not re.search(r"\s", p.strip()) or (Path(repo) / os.path.expanduser(p)).exists()]
+
+
+def expand(repo, name):
+    """What a named path or pattern (`inputs/*.zip`) holds here: the paths that exist."""
+    path = Path(os.path.expanduser(name))
+    path = path if path.is_absolute() else Path(repo) / path
+    if re.search(r"[*?\[]", name):
+        return [Path(g) for g in sorted(glob.glob(str(path), recursive=True))]
+    return [path] if path.exists() else []
 
 
 def claude_imports(claude_md):
@@ -235,8 +261,26 @@ def find_copies(repo):
     return dm + se
 
 
-def check_agreements(repo):
+def agreements_home(repo):
+    """Where the working agreements are for this run: here, or above, as far as the repository's root and no further.
+    One run is one project (GAPS.md), and a repository of several keeps one pair of agreements at its root."""
     repo = Path(repo).resolve()
+    rc, out = run(["git", "rev-parse", "--show-toplevel"], cwd=repo)
+    top = Path(out.strip()).resolve() if rc == 0 and out.strip() else repo
+    chain = [repo, *repo.parents]
+    if top not in chain:
+        return repo
+    for d in chain[: chain.index(top) + 1]:
+        if find_copies(d)[0]:
+            return d
+    return repo
+
+
+def check_agreements(repo):
+    project = Path(repo).resolve()
+    repo = agreements_home(project)
+    above = "" if repo == project else ("; this is for a session started at the root, and one started in "
+                                        f"{project.name} has not been observed")
     dm, dm_label, se, se_label = find_copies(repo)
     name, ids = "data working agreement", "DM1/A1, SE1/A11"
     if not dm:
@@ -257,8 +301,8 @@ def check_agreements(repo):
                            "a CLAUDE.md switches off Claude Code's own AGENTS.md read; import both copies from inside the working directory")
         names = "" if (dm.name, se.name) == (DM_NAME, SE_NAME) else f" (the guide's names are {SE_NAME} for SE1's and {DM_NAME} for this one)"
         return Finding(name, ids, PASS, f"[Claude Code configuration] {rel(repo, dm)} ({dm_label}) and {rel(repo, se)} "
-                       f"({se_label or 'no label'}), both imported by CLAUDE.md from inside the working directory; observed "
-                       f"loading: a fresh session can quote a line of each{names}", "")
+                       f"({se_label or 'no label'}), both imported by CLAUDE.md from inside the working directory: configured, "
+                       f"not observed; the phrase test is how loading is observed{names}{above}", "")
     loaded = [p for p in (dm, se) if p.resolve() == (repo / "AGENTS.md").resolve()]
     other = [rel(repo, p) for p in (dm, se) if p not in loaded]
     return Finding(name, ids, FAIL, f"[Claude Code configuration] no CLAUDE.md: AGENTS.md is read by itself and nothing loads {', '.join(other)}",
@@ -267,7 +311,7 @@ def check_agreements(repo):
 
 def check_extends(repo):
     """The DM1 copy says which SE1 release it was written against; the SE1 copy here says which it is."""
-    repo = Path(repo).resolve()
+    repo = agreements_home(repo)
     dm, dm_label, se, se_label = find_copies(repo)
     name, ids = "extends", "SE1/U7, SE1/U9"
     if not dm or not se:
@@ -288,16 +332,58 @@ def check_extends(repo):
     return Finding(name, ids, PASS, f"{rel(repo, dm)} ({dm_label}) extends SE1 {pin}; the SE1 copy here is {se_label}", "")
 
 
+def question_kind(text):
+    """(kind, written): what KIND-n says, or None if it names none of them. A question with no KIND-n is read as
+    predicted, which is what the guide assumed of every question before DM1/R12."""
+    m = re.search(r"\*\*KIND-\d+\*\*(?:\s*\*\(since v\d+\)\*)?([^\n]*)", text or "")
+    if not m:
+        return "predicted", False
+    said = m.group(1).split(":", 1)[-1]
+    named = re.search(r"\b(" + "|".join(KINDS) + r")\b", said, re.I)
+    return (named.group(1).lower() if named else None), True
+
+
+def not_applicable(text):
+    """{row: why} from the question's *Not applicable* table; the template's italic row sets nothing aside."""
+    rows = [r for t in parse_tables(section(text or "", "Not applicable") or "") for r in real_rows(t)]
+    return {list(r.values())[0].strip().lower(): (list(r.values())[1].strip() if len(r) > 1 else "") for r in rows if r}
+
+
+def set_aside(findings, text):
+    """Apply the question's *Not applicable* table to the rows. It can quiet a row that has nothing to report, never a
+    failure, and only for a kind of claim that allows it, so a table cannot be how a project stops being checked."""
+    kind, _ = question_kind(text)
+    kind = kind or "predicted"
+    waived = not_applicable(text)
+    out = []
+    for f in findings:
+        why = waived.get(f.name)
+        if why is None:
+            out.append(f)
+        elif not why or placeholder(why):
+            out.append(f._replace(state=worst([f.state, WARN]), text=f"{f.text}; the question says not applicable, and gives no reason"))
+        elif f.name not in SET_ASIDE[kind]:
+            out.append(f._replace(state=worst([f.state, WARN]), text=f"{f.text}; the question says not applicable, and a {kind} claim cannot set this row aside (DM1/R12)"))
+        elif f.state in (FAIL, PASS):
+            out.append(f._replace(text=f"{f.text}; the question says not applicable ({why}), and this is here"))
+        else:
+            out.append(f._replace(state=NA, text=why, fix=""))
+    return out
+
+
 def check_question(repo):
     q, v = latest_doc(repo, "QUESTION")
     name = "question"
     if not q:
-        return Finding(name, "DM1/R1, DM1/R2, DM1/W6", NONE, "no docs/QUESTION_vN.md",
-                       "treat the task's text as the question, marked (inferred); the decision, the unit, the outcome, and the prediction point come first"), None, 0, {}
+        here = sorted({p.parent.parent.name for p in Path(repo).glob("*/docs/QUESTION_v*.md") if not p.parent.parent.name.startswith(".")})
+        also = f"; {', '.join(here)} has one: one run is one project, so run with --repo {here[0]}" if here else ""
+        return Finding(name, "DM1/R1, DM1/R2, DM1/W6", NONE, f"no docs/QUESTION_vN.md{also}",
+                       "treat the task's text as the question, marked (inferred); the decision and the kind of claim come first"), None, 0, {}
     text = read(q)
     ids = {m.group(1): int(m.group(2)) for m in ID_RE.finditer(text)}
-    doors = {"UNIT": "the unit", "OUT": "the outcome", "PRED": "the prediction point"}
-    unset = [f"{p}-n ({what})" for p, what in doors.items() if not any(i.startswith(p + "-") for i in ids)]
+    kind, written = question_kind(text)
+    doors = KIND_DOORS.get(kind, KIND_DOORS["predicted"])
+    unset = [f"{p}-n ({DOORS[p]})" for p in doors if not any(i.startswith(p + "-") for i in ids)]
     blank = []
     for m in ID_RE.finditer(text):
         line = text[m.start(): text.find("\n", m.end()) if text.find("\n", m.end()) != -1 else len(text)]
@@ -305,10 +391,13 @@ def check_question(repo):
             blank.append(m.group(1))
     if unset:
         return Finding(name, "DM1/R2", FAIL, f"QUESTION_v{v} leaves a one-way door unset: {', '.join(unset)}",
-                       "fix the unit, the outcome, and the prediction point before anything else"), q, v, ids
+                       "fix these before anything else; a claim with no outcome names its kind (DM1/R12)"), q, v, ids
     if blank:
         return Finding(name, "DM1/R2, DM1/R3", FAIL, f"QUESTION_v{v}: {', '.join(blank[:4])} still carry the template's placeholder",
                        "a definition that is not written is decided privately by whoever writes the first join"), q, v, ids
+    if kind is None:
+        return Finding(name, "DM1/R12", FAIL, f"QUESTION_v{v}: KIND-n names none of {', '.join(KINDS)}",
+                       "the kind decides what the claim can be checked against"), q, v, ids
     if not any(i.startswith("BAR-") for i in ids):
         return Finding(name, "DM1/R3", FAIL, f"QUESTION_v{v} sets no bar (BAR-n) before results are seen",
                        "write the metric, the split, and the number that would count as failure, now"), q, v, ids
@@ -318,11 +407,15 @@ def check_question(repo):
     if section(text, "Not for") is None:
         return Finding(name, "DM1/R11", WARN, f"QUESTION_v{v} has no *Not for* section",
                        "say what the model is not for; it will still answer there"), q, v, ids
-    return Finding(name, "DM1/R2, DM1/R3, DM1/R10", PASS,
-                   f"QUESTION_v{v}: {len(ids)} IDs; unit, outcome, prediction point, bar, and bias measure set; Not for present", ""), q, v, ids
+    if not written:
+        return Finding(name, "DM1/R12", WARN, f"QUESTION_v{v} does not name its kind of claim (KIND-n), so it is read as predicted",
+                       "predicted, described, explained, or extracted: the kind decides what it can be checked against"), q, v, ids
+    fixed = ", ".join(DOORS[p] for p in doors)
+    return Finding(name, "DM1/R2, DM1/R3, DM1/R10, DM1/R12", PASS,
+                   f"QUESTION_v{v}: {len(ids)} IDs; a {kind} claim; {fixed}, bar, and bias measure set; Not for present", ""), q, v, ids
 
 
-def check_plan(repo, have_question):
+def check_plan(repo, have_question, kind="predicted"):
     p, v = latest_doc(repo, "PLAN")
     name = "plan"
     if not p:
@@ -339,7 +432,8 @@ def check_plan(repo, have_question):
                        "say where it is kept, who may read it, and when it will be spent")
     baseline = field(text, "Baseline")
     notes = []
-    if baseline is None or placeholder(baseline) or not re.search(r"\d{4}-\d{2}-\d{2}", baseline):
+    says_none = kind != "predicted" and baseline is not None and re.match(r"\s*(none|not applicable)\b", baseline, re.I)
+    if not says_none and (baseline is None or placeholder(baseline) or not re.search(r"\d{4}-\d{2}-\d{2}", baseline)):
         notes.append("baseline not yet scored on a date")
     slices = section(text, "Slices") or ""
     n_slices = sum(len(real_rows(t)) for t in parse_tables(slices))
@@ -380,7 +474,11 @@ def check_holdout(repo):
     if not sources:
         if not named:
             return Finding(name, ids, NONE, "no plan or CONTRIBUTING line says where the holdout lives", "")
-    paths = [(src, p) for src, line in sources for p in backtick_paths(line)]
+    said_none = [src for src, line in sources if re.match(r"\s*none\b", line, re.I)]  # a statement, and its backticks are not paths
+    sources = [(src, line) for src, line in sources if src not in said_none]
+    if said_none and not sources and not named:
+        return Finding(name, ids, NONE, f"{said_none[0]} says there is none", "")
+    paths = [(src, p) for src, line in sources for p in named_paths(repo, line)]
     filled = [(src, line) for src, line in sources if not placeholder(line)]
     if filled and not paths:
         states.append(WARN)
@@ -439,7 +537,7 @@ def check_datasheets(repo):
             bad.append(f"{rel(repo, s)}: no columns listed, only the template's example")
         for row in rows:
             cols += 1
-            col = next((v for k, v in row.items() if k == "column"), "?")
+            col = next(iter(row.values()), "?")  # the first cell names it: a column, or a part of a document
             know = next((v for k, v in row.items() if "knowable" in k), "")
             if placeholder(know):
                 bad.append(f"{rel(repo, s)}: column {col} does not say when it becomes knowable")
@@ -460,22 +558,22 @@ def check_raw(repo):
     line = field(read(repo / "CONTRIBUTING.md"), "Raw data")
     if line is None:
         return Finding(name, ids, NONE, "CONTRIBUTING.md has no *Raw data* line saying where raw lives", "templates/CONTRIBUTING.md, Data rules")
-    paths = backtick_paths(line)
+    paths = named_paths(repo, line)
     if not paths:
         return Finding(name, ids, NONE, "CONTRIBUTING.md's *Raw data* line names no path", "fill in the template's placeholder")
-    p = paths[0]
-    path = Path(os.path.expanduser(p))
-    path = path if path.is_absolute() else repo / path
-    if not path.exists():
-        return Finding(name, ids, NONE, f"raw ({p}) is not present here", "fetched on demand? then the fetch records when and from where (DM1/D2)")
-    files = [f for f in (path.rglob("*") if path.is_dir() else [path]) if f.is_file()]
+    p, others = paths[0], paths[1:]  # a line also names what is not raw: the first path is the claim, the rest are said
+    also = f"; also on the line, not checked: {', '.join(others)}" if others else ""
+    held = expand(repo, p)
+    if not held:
+        return Finding(name, ids, NONE, f"raw ({p}) is not present here{also}", "fetched on demand? then the fetch records when and from where (DM1/D2)")
+    files = [f for x in held for f in (x.rglob("*") if x.is_dir() else [x]) if f.is_file()]
     if not files:
-        return Finding(name, ids, NONE, f"raw ({p}) is empty", "")
+        return Finding(name, ids, NONE, f"raw ({p}) is empty{also}", "")
     writable = [f for f in files if os.access(f, os.W_OK)]
     if writable:
-        return Finding(name, ids, FAIL, f"{len(writable)} of {len(files)} files under {p} are writable ({rel(repo, writable[0])} ...)",
-                       f"chmod -R a-w {p}, or keep raw in a store the pipeline cannot write; derived data is rebuilt, never hand-edited")
-    return Finding(name, ids, PASS, f"{len(files)} files under {p}, none writable", "")
+        return Finding(name, ids, FAIL, f"{len(writable)} of {len(files)} files under {p} are writable ({rel(repo, writable[0])} ...){also}",
+                       f"chmod a-w what it names ({p}), or keep raw in a store the pipeline cannot write; derived data is rebuilt, never hand-edited")
+    return Finding(name, ids, PASS, f"{len(files)} file(s) under {p}, none writable{also}", "")
 
 
 def check_raw_to_report(repo):
@@ -486,11 +584,17 @@ def check_raw_to_report(repo):
     line = field(text, "Raw to report")
     if line is None:
         return Finding(name, ids, NONE, "CONTRIBUTING.md names no command from raw to report", "you cannot check a number you cannot regenerate")
+    if re.match(r"\s*none\b", line, re.I):
+        return Finding(name, ids, NONE, "CONTRIBUTING.md says there is none yet", "you cannot check a number you cannot regenerate")
     cmds = backtick_paths(line)
     if not cmds:
         return Finding(name, ids, FAIL, "CONTRIBUTING.md's *Raw to report* line still holds the template's placeholder",
                        "name the one command, and about how long it takes at full size")
-    return Finding(name, ids, PASS, f"`{cmds[0]}`", "")
+    made = backtick_paths(field(text, "Main product"))
+    if not made:
+        return Finding(name, ids, WARN, f"`{cmds[0]}`: configured, not run here, and nothing says it makes the main product",
+                       "add a *Main product* line naming what the project delivers; this row cannot tell whether the command makes it")
+    return Finding(name, ids, PASS, f"`{cmds[0]}` makes `{made[0]}`: configured, not run by this doctor, which has only read the line", "")
 
 
 def ledger_rows(path):
@@ -506,10 +610,14 @@ def ledger_rows(path):
         return rows
     if path.suffix.lower() == ".csv":
         return list(csv.DictReader(io.StringIO(text)))
+    if path.suffix.lower() in (".log", ".txt"):
+        return [line for line in text.splitlines() if line.strip()]
     return [r for t in parse_tables(text) for r in real_rows(t)]
 
 
 def spent(row):
+    if not isinstance(row, dict):  # a line of a plain log of reads or searches: no split to spend
+        return False
     for k, v in row.items():
         v = str(v).strip().lower()
         if "holdout" in str(k).lower() and v and v not in ("no", "false", "0", "n", "—", "-", ""):
@@ -521,17 +629,25 @@ def spent(row):
 
 def check_ledger(repo):
     name, ids = "ledger", "DM1/F6, DM1/A3"
-    files = find_docs(repo, ("docs/ledger.*", "docs/LEDGER*", "ledger.*", "LEDGER*", "**/ledger.jsonl", "**/ledger.csv"))
-    if not files:
-        return Finding(name, ids, NONE, "no ledger", "one line appended by the code each time anything is scored; the count is part of every result")
-    machine = [f for f in files if f.suffix.lower() in (".jsonl", ".csv")]
-    ledger = machine[0] if machine else files[0]
-    rows = ledger_rows(ledger)
+    guide = read(Path(repo) / "CONTRIBUTING.md")
+    line = field(guide, "The ledger") or field(guide, "Ledger")  # a project's own logs of reads and searches count
+    named = named_paths(repo, line)
+    ledgers = [f for p in named for f in expand(repo, p) if f.is_file()]
+    if named and not ledgers:
+        return Finding(name, ids, WARN, f"CONTRIBUTING.md names {named[0]} as the ledger, and it is not here", "a count that is not written down is a claim")
+    if not ledgers:
+        files = find_docs(repo, ("docs/ledger.*", "docs/LEDGER*", "ledger.*", "LEDGER*", "**/ledger.jsonl", "**/ledger.csv"))
+        if not files:
+            return Finding(name, ids, NONE, "no ledger", "one line appended by the code each time anything is scored; the count is part of every result")
+        machine = [f for f in files if f.suffix.lower() in (".jsonl", ".csv")]
+        ledgers = [machine[0] if machine else files[0]]
+    rows = [r for ledger in ledgers for r in ledger_rows(ledger)]
+    own = {f.resolve() for f in ledgers}
     writers = [rel(repo, f) for f in tracked_files(repo)
-               if f.suffix.lower() in CODE_SUFFIXES and f.resolve() != ledger.resolve() and ledger.name in read(f)
+               if f.suffix.lower() in CODE_SUFFIXES and f.resolve() not in own and any(ledger.name in read(f) for ledger in ledgers)
                and f.name not in ("dm.py", "se.py")]  # the doctors name the ledger; they do not write it
     n_spent = sum(1 for r in rows if spent(r))
-    where = rel(repo, ledger)
+    where = ", ".join(rel(repo, ledger) for ledger in ledgers)
     if not rows:
         return Finding(name, ids, NONE, f"{where}: empty" + (f"; written by {writers[0]}" if writers else ""), "")
     if not writers:
@@ -619,17 +735,18 @@ def dm_rows(repo):
     repo = Path(repo).resolve()
     out = [check_agreements(repo), check_extends(repo)]
     qf, q, version, ids = check_question(repo)
+    question_text = read(q) if q else ""
     out.append(qf)
-    out.append(check_plan(repo, q is not None))
+    out.append(check_plan(repo, q is not None, question_kind(question_text)[0] or "predicted"))
     out.append(check_holdout(repo))
     out.append(check_datasheets(repo))
     out.append(check_raw(repo))
     out.append(check_raw_to_report(repo))
     out.append(check_ledger(repo))
-    out.append(check_model_cards(repo, read(q) if q else ""))
+    out.append(check_model_cards(repo, question_text))
     out.append(check_environment(repo))
     out.append(check_citations(repo, q, version, ids) if q else Finding("question citations", "DM1/R2, SE1/R10", NONE, "no question", ""))
-    return out
+    return set_aside(out, question_text)
 
 
 def doctor(repo, online=True, cache_dir=None, se=None, today=None):
@@ -637,7 +754,7 @@ def doctor(repo, online=True, cache_dir=None, se=None, today=None):
     repo = Path(repo).resolve()
     out = []
     if se is not None:
-        out += se.doctor(repo, online=online, cache_dir=cache_dir, today=today)
+        out += se.doctor(agreements_home(repo), online=online, cache_dir=cache_dir, today=today)  # SE1's rows are about the repository
     else:
         out.append(Finding("SE1 doctor", "SE1/U7", NONE, "se.py not found: SE1's rows did not run",
                            "copy se.py from the SE1 guide beside dm.py, or set SE_GUIDE to a checkout of it"))
@@ -653,7 +770,7 @@ def python_kind():
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="dm", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--doctor", action="store_true", help="check the data project (the default)")
-    ap.add_argument("--repo", default=".", help="the repository to check (default: here)")
+    ap.add_argument("--repo", default=".", help="the repository, or one project in it, to check (default: here)")
     ap.add_argument("--offline", action="store_true", help="do not try the network for SE1's release check")
     ap.add_argument("--dm-only", action="store_true", help="only DM1's rows, even if se.py is at hand")
     ap.add_argument("--json", action="store_true", help="machine-readable output")

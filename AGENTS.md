@@ -16,13 +16,18 @@ from **v1.0**; what changed since, by ID, is in the guide's
 
 Drafted 2026-10-27 by a Claude model with Warren MacEvoy, refactoring the course document
 `DATA-SCIENCE.md` (drafted 2026-08-27 with Claude Opus 5); which model did the refactoring was not
-recorded. Revised with Claude Fable 5.1 on 2026-10-28 against SE1 v1.3, and with Claude Opus 5.5 on
-2026-11-03 against SE1 v1.4; the human signs each release. These are rules an agent wrote for agents (SE1/U9), and **none of them has been tried**:
-no field report, no trial, and no review by anyone, of any model family, has yet tested a rule in
-this file or in the guide behind it. Each is an inference from SE1's trials and from the author's
-teaching, marked here once rather than on every line (SE1/W12). The first field reports are
-expected from the fall 2026 course projects. An agent or a person who finds a rule wrong for their
-case should say so and propose the change, with what was observed.
+recorded. Revised with Claude Fable 5.1 on 2026-10-28 against SE1 v1.3; the human signs each
+release. Revised on 2026-11-01 with Claude Opus 5.5, from the field reports below, and on 2026-11-03 with the
+same model, against SE1 v1.4. These are rules
+an agent wrote for agents (SE1/U9), and **most of them are untried**. One field report (`GAPS.md`)
+met the 93 principles of that date with a private document review, and by that one model's judgment
+46 reached real work, 20 fit only by argument, and 27 did not reach it; five of today's principles
+come from it and rest on that one project. A second report, partial, is the fall 2026 course's
+migration. Nothing has yet tested a rule here on a trained model, a spent holdout, or production,
+and no person and no other model family has reviewed them. The rest are inferences from SE1's trials
+and from the author's teaching, marked here once rather than on every line (SE1/W12). An agent or a
+person who finds a rule wrong for their case should say so and propose the change, with what was
+observed.
 
 **Load both files at every start, from copies kept inside the working directory**: SE1's as
 `AGENTS.md` at the root, where SE1's doctor and Claude Code's own read look for it, and this one as
@@ -54,14 +59,19 @@ the design. A task that contradicts either is a question for the human, not a ta
 - **Where the project is only partly adopted,** the guide's
   [ADOPT.md](https://github.com/wmacevoy/data-mining/blob/main/ADOPT.md) says what to do for each missing
   thing: say so once, and do not invent it. (SE1/W12)
-- **If the repository has `./dm`, run `./dm --doctor` once.** It is SE1's doctor plus this guide's
+- **If the repository has `./dm`, run `./dm --doctor` once**, and in a repository of several projects
+  once for each you touch, with `--repo <project>`. It is SE1's doctor plus this guide's
   rows: both working agreements loaded, the question's one-way doors, the plan, where the holdout
   lives and whether it is in reach, every column's knowable-at, raw read-only, the ledger's writer.
-  Work by what it finds; a *none yet* row is reported once, not invented to satisfy a rule.
-  (SE1/T2, DM1/A2)
+  Work by what it finds; a *none yet* row is reported once, not invented to satisfy a rule. A row
+  that does not bind this kind of claim is set aside in the question, with a reason, and never by
+  leaving it to read as work to do. (SE1/T2, DM1/A2, DM1/R12)
+- **Name the kind of claim first**: predicted, described, explained, or extracted, and what it will
+  be checked against. If the question does not say, propose it. (DM1/R12)
 - **Read the datasheet for every source the task touches**, and in particular, per column: units,
   sentinels, and *when the value becomes knowable*. If there is no datasheet, say so; draft one as a
-  proposal rather than guess. (DM1/R5, DM1/R6)
+  proposal rather than guess, for every kind of claim: for documents, what each file holds, how each
+  page was made, and what might be printed on it. (DM1/R5, DM1/R6, DM1/U7)
 - **Find where the holdout is, and do not read it.** If it is reachable from your working
   directory, say so before doing anything else. (DM1/F5, DM1/A4)
 - **Find the command from raw to report.** If there isn't one, that is the first thing to raise:
@@ -88,7 +98,7 @@ have records to check against, and derived data is one of the things a gap tears
 Before doing any of the work, stop and ask when the task would:
 
 - **Read, evaluate on, or change the holdout**, or any evaluation set's labels. (DM1/F5, DM1/A4)
-- **Change the outcome definition, the unit of analysis, the prediction point, the split strategy,
+- **Change the kind of claim, the outcome definition, the unit of analysis, the prediction point, the split strategy,
   the labeling scheme, or the primary metric.** Each invalidates every result built on it.
   (DM1/R2, DM1/W2)
 - **Change a metric or feature definition someone already tracks or a model already reads.**
@@ -98,7 +108,9 @@ Before doing any of the work, stop and ask when the task would:
   and which kind, and why they are missing before how to fill them. (DM1/R5)
 - **Touch data about people**: add an identifier, join to one, widen what is kept, or send rows to a
   hosted model or service, including yourself. Work from the schema and a synthetic sample unless
-  told otherwise. (DM1/R9, DM1/A8)
+  told otherwise. If reading the real rows is the task itself, the answers DM1/A10 asks for are
+  written first: who decided, which service sees it, every copy including yours, and when it all
+  gets removed. (DM1/R9, DM1/A8, DM1/A10)
 - **Change the decision threshold.** It is a business decision with prices attached. (DM1/R4)
 - **Ship or retrain a model that scores people, or that the requirements name groups for, without
   the bias audit the requirements ask for** — or change which bias measure is used. Choosing between
@@ -134,7 +146,7 @@ SE1's *Verify* holds — run it, watch the test fail, never weaken an assertion.
 - **The bar can veto; it cannot say yes.** What the question marks *(judged)* is passed by its named
   judge on this version: a new extract or a retrain makes the verdict stale. Record it on one line
   with the versioned ID, `verdict: pass` or `verdict: fail`, `by` the judge, and the date; never give
-  one. (DM1/U10, SE1/W11)
+  one. (DM1/U11, SE1/W11)
 - **Name what the change must not break**, by ID and its words: `Q1/PRED-1`, the split, the holdout.
   (DM1/W7, SE1/W11)
 - **Compare against the baseline** on the same split, every time a model is reported. (DM1/T1)
@@ -144,7 +156,13 @@ SE1's *Verify* holds — run it, watch the test fail, never weaken an assertion.
   search from memory. (DM1/F6, DM1/A3)
 - **Record data version, code version, seed, and environment** with every artifact. (DM1/D6, DM1/O1)
 - **Look at the output**, not only its summary: a plot, and the rows that most disagree with the
-  number. (DM1/U7)
+  number. For a document, the page and not only its text layer. (DM1/U7)
+- **A "none found" says how it was looked for**, and the search has been seen to find a planted
+  case; open one by hand before reporting something missing across many. (DM1/U10)
+- **For a summary, check what left, not only what stayed**: keep the drafts, compare them with the
+  final by script, and report what a second, independent read found that the first did not. A limit
+  on length gives way to the evidence. (DM1/F10, DM1/F9)
+- **For retrieval, a full reading of some cases is the baseline.** (DM1/T12)
 
 ## Advising, additions
 
@@ -157,7 +175,8 @@ SE1's *Verify* holds — run it, watch the test fail, never weaken an assertion.
 
 ## Finishing, additions
 
-- **The number regenerates from raw** with the documented command, and you have run it. (DM1/W7)
+- **The number regenerates from raw** with the documented command, and you have run it. For an
+  extracted claim, a script re-finds each quotation on its cited page. (DM1/W7)
 - **Update the datasheet and model card** the change made untrue, in the same change. (DM1/D10)
 - **Write the dead ends** in FINDINGS: what was tried, what it cost, why it failed, and what it changed,
   or why it changed nothing. (DM1/W6, SE1/W13)

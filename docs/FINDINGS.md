@@ -26,7 +26,7 @@ Blameless: say what would have found it, not who should have asked.
 - **Changed:** the checker is now Python (`tools/check.py`), the owner's decision, and CI no longer installs
   Node, so a machine with only Python and git can run the check.
 
-## 2026-11-03 — The doctor's first real repository found four false passes
+## 2026-11-03 — Unfilled templates and a copy of the course repository found four false passes
 
 - **What happened:** trying ADOPT.md on unfilled templates and a copy of the course repository, the doctor passed
   a holdout nobody had named, a datasheet with no columns, an unfilled plan, and a ledger "written by dm.py".
@@ -34,6 +34,16 @@ Blameless: say what would have found it, not who should have asked.
 - **Kind:** K3 (we were sure, and wrong): every row had been seen red, on fixtures built with the same assumptions.
 - **Cost:** none yet, since no project relied on them; they would have told an adopter that the holdout was safe.
 - **Findable by:** running the published templates through the doctor unfilled, and running it on any repository not
-  written to pass it.
+  written to pass it. The real projects in GAPS.md had found others of the same kind, on a branch this work had not fetched.
 - **Changed:** `dm.py`, `templates/PLAN_v1.md`, and tests that read the real templates and name a vendored doctor.
   Still open: an absent, git-ignored holdout passes until the first download; ADOPT.md says so, and no check does.
+
+## 2026-11-03 — A migration ran for a session without seeing a branch of 27 commits
+
+- **What happened:** the SE1 v1.4 migration and ADOPT.md were written and merged to `main` without a `git fetch`. `field-report-1`,
+  on the remote since 2026-11-02, held the first field report, five principles, and the owner's decisions on the pin, the tag, and
+  several projects. So this work took an ID the branch had used, said no field report existed, and gave advice that decision had replaced.
+- **Kind:** K3 (we were sure, and wrong): the local repository read as the whole of it.
+- **Cost:** a second ID for U11, ADOPT.md's several-projects advice rewritten, and statements on `main` that were false for about an hour.
+- **Findable by:** `git fetch` before the first change, then `git branch -r`. `se --post` and `dm --doctor` read local refs only.
+- **Changed:** nothing mechanical yet; queue #10 asks SE1's doctor to name remote branches it has not been told about.

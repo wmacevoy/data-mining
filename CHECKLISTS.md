@@ -11,9 +11,11 @@ to the pipeline as software; these are the ones data work adds.
 **The first conversation with the client**
 
 - [ ] The mission and the shape are written, the mission has a judge, and the shape has a holder.
-      ([DM1/D9](guide/05-design.md#d9), [DM1/U10](guide/02-unknowing.md#u10))
+      ([DM1/D9](guide/05-design.md#d9), [DM1/U11](guide/02-unknowing.md#u11))
 - [ ] The decision before the technique: who decides what, when, and what a wrong call costs.
       ([DM1/R1](guide/04-requirements.md#r1))
+- [ ] Which kind of claim: predicted, described, explained, or extracted, and what it will be checked
+      against. ([DM1/R12](guide/04-requirements.md#r12))
 - [ ] What would they do if the answer came out the other way? If nothing, stop.
       ([DM1/R1](guide/04-requirements.md#r1))
 - [ ] Whose rows are these, what were they collected for, and is this that?
@@ -74,7 +76,7 @@ to the pipeline as software; these are the ones data work adds.
 
 - [ ] What the question marks *(judged)* has its judge's verdict on this version, recorded on one line
       with the versioned ID, `verdict: pass` or `verdict: fail`, `by` the judge, and the date; the bar
-      may veto but cannot pass it. ([DM1/U10](guide/02-unknowing.md#u10))
+      may veto but cannot pass it. ([DM1/U11](guide/02-unknowing.md#u11))
 - [ ] It beats the baseline by more than its interval and the seed spread.
       ([DM1/T1](guide/06-testing.md#t1), [DM1/F7](guide/03-feedback.md#f7))
 - [ ] The count of things tried is stated. ([DM1/F6](guide/03-feedback.md#f6))
@@ -84,6 +86,8 @@ to the pipeline as software; these are the ones data work adds.
 - [ ] The bias measures the requirements chose, per group, with intervals; each source of bias
       (historical, selection, measurement, aggregation, evaluation, deployment) checked or named as
       unchecked. ([DM1/R10](guide/04-requirements.md#r10))
+- [ ] Every "none found" says how it was looked for, and the search has been seen to find a planted
+      case. ([DM1/U10](guide/02-unknowing.md#u10))
 - [ ] The reference class is stated with any number about an individual case.
       ([DM1/U8](guide/02-unknowing.md#u8))
 - [ ] Who is missing from the rows is said out loud. ([DM1/F8](guide/03-feedback.md#f8))
@@ -94,6 +98,14 @@ to the pipeline as software; these are the ones data work adds.
 - [ ] The K4s it rests on are written and have been read to the client.
       ([DM1/U4](guide/02-unknowing.md#u4), [DM1/H2](guide/09-people.md#h2))
 - [ ] Someone other than the author regenerated it from raw. ([DM1/W7](guide/08-work.md#w7))
+
+**Before trusting a summary or an extraction**
+
+- [ ] Each quotation re-found on its cited page by a script. ([DM1/W7](guide/08-work.md#w7))
+- [ ] What was dropped: drafts kept and compared with finals by script; what may never be cut for
+      length named in advance. ([DM1/F10](guide/03-feedback.md#f10))
+- [ ] A sample, some of it random, read whole by a second reader with no sight of the first, and what
+      each missed is counted. ([DM1/F10](guide/03-feedback.md#f10), [DM1/A9](guide/10-agents.md#a9))
 
 **Before spending the holdout**
 
@@ -107,6 +119,13 @@ to the pipeline as software; these are the ones data work adds.
 - [ ] Survives resampling, another period, and the arbitrary settings.
       ([DM1/T11](guide/06-testing.md#t11))
 - [ ] A domain expert has seen members, not centroids. ([DM1/H1](guide/09-people.md#h1))
+
+**Before trusting a search**
+
+- [ ] A sample read whole, and what the search missed reported by how each page was read.
+      ([DM1/T12](guide/06-testing.md#t12))
+- [ ] Compared with keyword search, or `grep`, and worth what it costs. ([DM1/D8](guide/05-design.md#d8))
+- [ ] Its test questions held apart from whoever tunes it. ([DM1/F5](guide/03-feedback.md#f5))
 
 ## Deploying
 
@@ -151,6 +170,9 @@ to the pipeline as software; these are the ones data work adds.
 - [ ] It cannot read the holdout. ([DM1/A4](guide/10-agents.md#a4))
 - [ ] It sees the schema and a fixture, not rows about people, unless decided otherwise.
       ([DM1/A8](guide/10-agents.md#a8))
+- [ ] If reading the data is the task: who decided, which service sees it, every copy including the
+      agent's own, and when it all gets removed, written before the first session.
+      ([DM1/A10](guide/10-agents.md#a10))
 - [ ] Its scoring appends to the ledger. ([DM1/A3](guide/10-agents.md#a3))
 
 **Reviewing what it produced**
