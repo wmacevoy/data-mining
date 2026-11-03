@@ -110,7 +110,8 @@ that can be undone, and keep the old model loadable.
 
 A scheduled retrain is a deploy too, even though no code changed: new data, new weights, new
 behavior. It gets the same checks as a code change — the fixture, the properties, the comparison with
-the current model — before it serves anything.
+the current model — before it serves anything. A retrain inside a policy the judge approved keeps the
+judge's verdict; it does not skip these checks ([DM1/U11](02-unknowing.md#u11)).
 
 > **Ask:** "Has this model's prediction been compared with the current one's on live data — and can
 > we go back in a minute?"

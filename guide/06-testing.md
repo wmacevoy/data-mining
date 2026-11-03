@@ -220,7 +220,8 @@ has become a training set.
 *New.*
 
 One run of the work is one data point for one question, which makes it a test of a claim, and a test
-that cannot fail proves nothing ([DM1/T3](#t3)). So write down, before the run, what result would count
+that cannot fail proves nothing ([DM1/T3](#t3)). A run is anything whose result someone looked at or used; a
+crash with no result is not one. So write down, before the run, what result would count
 against the claim. A run with nothing at stake is a look: it still counts ([DM1/F6](03-feedback.md#f6)), and
 it tests nothing. For an extracted claim, what can fail is the citations, and a second reader finding
 something missing.
@@ -228,22 +229,27 @@ something missing.
 **Start small.** One lot, one case, one configuration, a thin slice before a thick one
 ([DM1/W3](08-work.md#w3)), so that a large run is committed to only after a small one has had the chance to say
 no. A small test can clear the next size, and cannot stand in for it: a sample hides what the full table does
-([DM1/O10](07-operating.md#o10)), and a fixture has to fail the way real data fails ([DM1/T6](#t6)). One run at
-full size, early, is also how you learn what a run costs.
+([DM1/O10](07-operating.md#o10)), and a fixture has to fail the way real data fails ([DM1/T6](#t6)).
 
 **Record in proportion to the cost of running it again.** Cost is more than compute:
 
 | Cost to run again | For example | Keep |
 | ----------------- | ----------- | ---- |
-| Almost nothing | a deterministic script on a fixed file | commit, data version, seed, result |
+| Almost nothing | a deterministic script on a fixed file | commit, data version, seed, environment, result |
 | Some time or money | a training run | those, and the configuration and metrics |
 | A lot | days of training, or a language model reading every case | those, and the model or drafts, and the logs |
-| Cannot be repeated | a holdout look, a source that has since changed, a person's judgment | everything, since the record is all there will ever be |
+| Cannot be repeated | a holdout look, a source that has since changed, a person's first read of a result | everything you may keep, since the record is all there will ever be |
 
 The count is not proportional. Every run gets its line in the ledger, whatever it cost, because the search
 that is cheapest to run is the one nobody counts. Only what is attached to the line scales with the cost.
 
-Warren MacEvoy's decision, 2026-11-03, drafted by Claude Opus 5.5, and untried. Wrong if records kept this way
+**What you may keep comes first.** Where data about people or a promise of confidentiality limits what is kept
+([DM1/R9](04-requirements.md#r9), [DM1/A10](10-agents.md#a10)), the limit wins: keep hashes, counts, and the
+command that made them, and say what was not kept and what can no longer be checked.
+
+Warren MacEvoy's model, 2026-11-03: a run is an experiment and a kind of test, small before large, and evidence
+in proportion to the cost of running it again; the same review decided that the limit on keeping comes first, and
+what counts as a run. The table and the other details were drafted by Claude Opus 5.5. Untried. Wrong if records kept this way
 leave a question unable to explain a result it needed, or if starting small repeatedly hides what only the large run
 could show.
 

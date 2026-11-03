@@ -245,7 +245,7 @@ Before reporting that something is missing across many cases, open one by hand.
 *Reframes [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u10).*
 
 SE1/U10 says some K1 no spike finishes: the answer is a judgment someone makes on meeting the thing.
-Software meets this at "usable." Data work meets it nearly every time, because its work product
+Software meets this at "usable." Data work meets it often, because its work product
 is usually a number, and a number reads like the answer. An AUC of 0.91 is K0. That this model is good enough to
 change what the gate supervisor does on Saturday is not, and no further analysis settles it. Say
 "the model passes" and the question stops being asked, with nobody dishonest and no search involved.
@@ -253,20 +253,23 @@ change what the gate supervisor does on Saturday is not, and no further analysis
 before the search starts. An extracted claim has its own proxy: every quotation can check against its
 page, and the brief can still fail the person deciding ([DM1/F10](03-feedback.md#f10)).
 
-- **Convert what converts.** Calibration, latency, and the error rate on a named slice are ordinary
-  requirements, and the bar is still specific enough to be rejected ([DM1/R3](04-requirements.md#r3)).
-  This is no license for "a good model."
-- **Name the judge and the occasion.** Who says yes, on what, and when: the client, on the output in
-  the decision's own terms ([DM1/H6](09-people.md#h6)), at the read-back. In the question it is marked
-  *(judged)*. If nobody can say no, it is a wish.
-- **The bar may veto; only the judge may pass.** Missing the bar stops the work. Clearing it earns a
-  look. A bias measure is a proxy too: meeting `BIAS-1` says the chosen gap is within the chosen limit,
-  and whether that is fair stays with people ([DM1/R10](04-requirements.md#r10)).
-- **A verdict belongs to a version.** A new extract, a retrain, or a moved threshold makes it stale. An
-  agent records a verdict and never gives one.
+SE1/U10's rules hold: convert what converts, name the judge and the occasion, and let a proxy veto while
+only the judge passes. In data work:
+
+- **What converts is ordinary.** Calibration, latency, and the error rate on a named slice are requirements,
+  and the bar is still specific enough to be rejected ([DM1/R3](04-requirements.md#r3)).
+- **The judge reads the output in the decision's own terms** ([DM1/H6](09-people.md#h6)), usually the client
+  at the read-back. In the question it is marked *(judged)*.
+- **A bias measure is a proxy too.** Meeting `BIAS-1` says the chosen gap is within the chosen limit, and
+  whether that is fair stays with people ([DM1/R10](04-requirements.md#r10)).
+- **A verdict belongs to a version.** A new extract, a retrain, or a moved threshold makes it stale, unless the
+  judge has approved a retrain policy in advance: which retrains, within what limits, and who is told. A retrain
+  inside those limits keeps the verdict and still gets its checks ([DM1/O6](07-operating.md#o6)). One outside
+  them makes it stale, and so does a moved threshold or a changed policy. An agent records a verdict and never
+  gives one.
 
 Drafted 2026-11-03 by Claude Opus 5.5 from SE1/U10, itself the author's decision without a trial of
-its own, and untried here. Wrong if, across repositories and clients, no result that cleared its bar with room to
+its own, and untried here. The retrain policy is Warren MacEvoy's decision, 2026-11-03. Wrong if, across repositories and clients, no result that cleared its bar with room to
 spare is ever turned down by the person who has to act on it.
 
 > **Ask:** "When this score is perfect, what could still be wrong, and who would tell us?"

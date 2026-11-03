@@ -15,6 +15,27 @@ states.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.1 — unreleased
+
+· 100 principles
+
+Warren MacEvoy's review of [DM1/U11](guide/02-unknowing.md#u11) and [DM1/T13](guide/06-testing.md#t13), 2026-11-03.
+No ID moved.
+
+**For copies:** `AGENTS.md`'s two rules on verdicts and experiments changed; `templates/LEDGER.md` gained an
+*Environment* column.
+
+### Changed principles
+
+- [DM1/U11](guide/02-unknowing.md#u11): a judge may approve a retrain policy in advance, and a retrain inside its
+  limits keeps the verdict and still gets its checks ([DM1/O6](guide/07-operating.md#o6)). What SE1/U10 already says
+  is cited and not restated. "Nearly every time" is now "often", since nothing supported it.
+- [DM1/T13](guide/06-testing.md#t13): a run is anything whose result someone looked at or used. A limit on keeping
+  data about people or a promise of confidentiality comes before "keep everything"
+  ([DM1/R9](guide/04-requirements.md#r9), [DM1/A10](guide/10-agents.md#a10)). The cheapest row records the environment,
+  as [DM1/O1](guide/07-operating.md#o1) asks. "One run at full size, early" is cut, since it contradicted starting
+  small. The attribution now separates the owner's model from what the agent drafted.
+
 ## v1.0.1 — 2026-11-03
 
 No principle, AGENTS.md, or template changed; copies at v1.0 are current.

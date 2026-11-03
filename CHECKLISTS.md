@@ -79,7 +79,7 @@ to the pipeline as software; these are the ones data work adds.
 
 **Before presenting a number**
 
-- [ ] What the question marks *(judged)* has its judge's verdict on this version, recorded on one line
+- [ ] What the question marks *(judged)* has its judge's verdict on this version, or a retrain policy the judge approved covers it, recorded on one line
       with the versioned ID, `verdict: pass` or `verdict: fail`, `by` the judge, and the date; the bar
       may veto but cannot pass it. ([DM1/U11](guide/02-unknowing.md#u11))
 - [ ] It beats the baseline by more than its interval and the seed spread.

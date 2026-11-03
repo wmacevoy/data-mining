@@ -11,7 +11,7 @@ overlap, the stricter rule wins. Each rule cites the principle behind it by vers
 The DM1 IDs are defined in the guide at https://github.com/wmacevoy/data-mining/tree/v1.0; its
 [principle index](https://github.com/wmacevoy/data-mining/blob/v1.0/README.md#principle-index) lists
 them all, and each has an anchor in its chapter (for example, `guide/03-feedback.md#f5`). This copy is
-from **v1.0**; what changed since, by ID, is in the guide's
+from **v1.1**; what changed since, by ID, is in the guide's
 [CHANGELOG](https://github.com/wmacevoy/data-mining/blob/v1.0/CHANGELOG.md).
 
 Drafted 2026-10-27 by a Claude model with Warren MacEvoy, refactoring the course document
@@ -144,14 +144,16 @@ SE1's *Verify* holds — run it, watch the test fail, never weaken an assertion.
 - **Report the diff in the numbers**, not only the diff in the code: regenerate the golden output
   and show what moved. "Shouldn't change anything" is a hypothesis; test it. (DM1/T7)
 - **The bar can veto; it cannot say yes.** What the question marks *(judged)* is passed by its named
-  judge on this version: a new extract or a retrain makes the verdict stale. Record it on one line
+  judge on this version: a new extract or a retrain makes the verdict stale, unless a retrain policy the
+  judge approved covers it. Record it on one line
   with the versioned ID, `verdict: pass` or `verdict: fail`, `by` the judge, and the date; never give
   one. (DM1/U11, SE1/W11)
 - **Name what the change must not break**, by ID and its words: `Q1/PRED-1`, the split, the holdout.
   (DM1/W7, SE1/W11)
 - **Treat a run as an experiment.** Say before it what result would count against the claim, start small, and keep
   what it would cost to lose: every run gets a ledger line, and what is attached scales with the cost of running it
-  again. A holdout look cannot be repeated, so everything is kept. (DM1/T13)
+  again. A holdout look cannot be repeated, so everything you may keep is kept; a limit on keeping data about
+  people comes first. (DM1/T13, DM1/R9, DM1/A10)
 - **Compare against the baseline** on the same split, every time a model is reported. (DM1/T1)
 - **Give an interval, and the seed spread** for anything trained. A difference inside the noise is
   not a result. (DM1/F7)

@@ -200,7 +200,7 @@ class TestChecker(Repo):
         self.red('CHANGELOG.md has no "## vX.Y')
 
     def test_agents_label_behind_the_newest_release(self):
-        self.plant("AGENTS.md", replace_once("from **v1.0**", "from **v0.9**"))
+        self.plant("AGENTS.md", sub_once(r"from \*\*v\d+\.\d+\*\*", "from **v0.9**"))
         self.red("stale release  AGENTS.md: says it is from v0.9")
 
     def test_copy_linking_to_another_ref(self):
@@ -251,7 +251,12 @@ class TestPatchRelease(Repo):
         with open(path, encoding="utf-8", newline="") as fh:
             text = fh.read()
         with open(path, "w", encoding="utf-8", newline="") as fh:
-            fh.write(re.sub(r"(?m)^## v1\.0 — 2026-11-03$", "## v1.0.1 — 2026-11-04\n\n## v1.0 — 2026-11-03", text))
+            fh.write(re.sub(r"(?ms)\A(.*?)^## v.*?(?=^## v1\.0 — 2026-11-03$)", r"\1## v1.0.1 — 2026-11-04\n\n", text))
+        path = os.path.join(cls.repo, "AGENTS.md")
+        with open(path, encoding="utf-8", newline="") as fh:
+            text = fh.read()
+        with open(path, "w", encoding="utf-8", newline="") as fh:
+            fh.write(re.sub(r"from \*\*v\d+\.\d+\*\*", "from **v1.0**", text, count=1))
         cls.git("add", "-A")
         cls.git("commit", "-qm", "v1.0")
         cls.git("tag", "v1.0")

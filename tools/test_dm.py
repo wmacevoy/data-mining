@@ -9,6 +9,7 @@ import importlib.util
 import io
 import json
 import os
+import re
 import stat
 import subprocess
 import sys
@@ -164,7 +165,7 @@ class TestAgreements(Fixture):
         self.assertIn("SE1 AGENTS.md", finding(f, "data working agreement").text)
 
     def test_unlabeled_dm_copy(self):
-        f = self.doctor(self.changed(**{"AGENTS-DM.md": DM_AGENTS.replace("**v1.0**", "v1.0")}))
+        f = self.doctor(self.changed(**{"AGENTS-DM.md": re.sub(r"\*\*(v\d+\.\d+)\*\*", r"\1", DM_AGENTS)}))
         self.assertEqual(finding(f, "data working agreement").state, dm.FAIL)
         self.assertIn("no release label", finding(f, "data working agreement").text)
 
