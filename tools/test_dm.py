@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for dm.py: every row of the data doctor is seen to fail on a fixture built to fail it (DM1/T3,
+"""Tests for dm.py (REQ1/DOC-1): every row of the data doctor is seen to fail on a fixture built to fail it (DM1/T3,
 SE1/T3), and a fixture built to pass passes every row. Run: python3 -I tools/test_dm.py. Standard
 library only; no network, no wall clock, no shared state: every fixture is a fresh git repository in a
 temporary directory. SE1's own rows are se.py's to test; here they are only seen to run when se.py is
