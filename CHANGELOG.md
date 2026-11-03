@@ -15,7 +15,7 @@ states.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.1 — unreleased
+## v1.1 — 2026-11-03
 
 · 100 principles
 

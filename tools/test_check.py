@@ -204,7 +204,7 @@ class TestChecker(Repo):
         self.red("stale release  AGENTS.md: says it is from v0.9")
 
     def test_copy_linking_to_another_ref(self):
-        self.plant("AGENTS.md", replace_once("data-mining/blob/v1.0/CHANGELOG.md", "data-mining/blob/v9/CHANGELOG.md"))
+        self.plant("AGENTS.md", sub_once(r"data-mining/blob/v\d+\.\d+/CHANGELOG\.md", "data-mining/blob/v9/CHANGELOG.md"))
         self.red("stale release  AGENTS.md: links to v9")
 
     def test_copy_citing_an_id_its_release_lacks(self):
@@ -252,11 +252,15 @@ class TestPatchRelease(Repo):
             text = fh.read()
         with open(path, "w", encoding="utf-8", newline="") as fh:
             fh.write(re.sub(r"(?ms)\A(.*?)^## v.*?(?=^## v1\.0 — 2026-11-03$)", r"\1## v1.0.1 — 2026-11-04\n\n", text))
-        path = os.path.join(cls.repo, "AGENTS.md")
-        with open(path, encoding="utf-8", newline="") as fh:
-            text = fh.read()
-        with open(path, "w", encoding="utf-8", newline="") as fh:
-            fh.write(re.sub(r"from \*\*v\d+\.\d+\*\*", "from **v1.0**", text, count=1))
+        # Whatever the guide's newest release is, this fixture is v1.0 with v1.0.1 on top.
+        for name in ["AGENTS.md"] + ["templates/" + t for t in os.listdir(os.path.join(cls.repo, "templates"))]:
+            path = os.path.join(cls.repo, name)
+            with open(path, encoding="utf-8", newline="") as fh:
+                text = fh.read()
+            text = re.sub(r"(wmacevoy/data-mining/(?:blob|tree))/v\d+\.\d+", r"\1/v1.0", text)
+            text = re.sub(r"from \*\*v\d+\.\d+\*\*", "from **v1.0**", text, count=1)
+            with open(path, "w", encoding="utf-8", newline="") as fh:
+                fh.write(text)
         cls.git("add", "-A")
         cls.git("commit", "-qm", "v1.0")
         cls.git("tag", "v1.0")
