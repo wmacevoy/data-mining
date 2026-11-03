@@ -200,11 +200,6 @@ class TestChecker(Repo):
         self.plant("archive/HANDOFF-migrate-to-SE1-v1.3.md", replace_once("# Handoff", f"[SE1/U7]({SE_BLOB}v1.0/guide/02-unknowing.md#u7)\n\n# Handoff"))
         self.assertEqual(self.check().returncode, 0)
 
-    def test_a_review_keeps_its_links(self):
-        # REQ1/PIN-1: a review names the release it read.
-        self.assertIn("blob/v1.3/", self.read("REVIEW-v1.md"))
-        self.assertEqual(self.check().returncode, 0)
-
     def test_print_gives_what_readme_must_contain(self):
         r = self.check(SE_GUIDE, "--print")
         self.assertIn("- [**DM1/U10**](guide/02-unknowing.md#u10)", r.stdout)

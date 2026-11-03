@@ -13,7 +13,10 @@ for coverage.
 One person preparing a decision on dozens of confidential cases about people, from thousands of pages of PDFs: retrieval,
 extraction, and a brief per case, written by a language model, with each quotation checked against its page. Nothing is trained,
 and nothing is predicted. The project is private, so this report gives kinds and counts only. Each principle's verdict, and
-exact proposals, are in [REVIEW-v1.md](REVIEW-v1.md). Ordered by what each cost:
+exact proposals, were in a review, `REVIEW-v1.md`, removed on 2026-11-03 now that this guide incorporates it. **Redacted for
+confidentiality:** before it was pushed, the review and this report were made more general about the project, so some evidence
+here is vaguer than what was observed, and nothing has been checked against the project by anyone without access to it. The
+redacted review stays in git history. Ordered by what each cost:
 
 1. **A limit on length cost evidence, and every check still passed.** Briefs dropped evidence of several kinds to fit a cap, against the written procedure. Citations stayed exact, because a citation check can't see an
    omission. Comparing drafts with finals by script led to 37 audits, restoring from 0 to about 70 items per brief. Two authors'
@@ -43,7 +46,7 @@ changed the work.
 
 **What this says nothing about:** trained models, holdouts spent at a decision, or anything in production. 27 of the 93 principles
 didn't reach this project, and 20 more fit by argument only. **Closed:** each proposal is in the guide, on the branch `field-report-1`, pending the owner's read. Its status, by
-item, is at the top of [REVIEW-v1.md](REVIEW-v1.md). **Still open:** hybrid search against keyword search, in that project.
+item, was at the top of that review, and CHANGELOG lists it. **Still open:** hybrid search against keyword search, in that project.
 
 ## Field report: the course's migration, 2026-10-29, partial
 
@@ -161,5 +164,5 @@ project can answer falsely. **Open:** a project that trains a model.
 over from SE1 v1.4 on 2026-11-03, where they are the author's decision with no trial of their own. Here they
 are one step further from evidence: nobody has yet asked a client for a verdict under this rule, and
 `dm --doctor` does not read one. The first field report comes near it: a passing citation check retired no fear about
-omission ([REVIEW-v1.md](REVIEW-v1.md), P4). **Wrong if** the first projects record verdicts that only repeat the
+omission. **Wrong if** the first projects record verdicts that only repeat the
 bar, or that nobody can name a judge for. **Open:** a project that records a verdict.

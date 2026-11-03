@@ -392,7 +392,7 @@ asks of any rule.
   reference, and two field reports of its own ([GAPS.md](GAPS.md)). The first, one private document
   review with nothing trained and nothing predicted, went through the 93 principles of that date: by
   one model's judgment, 26 held, 20 needed extending or changing, 20 fit by argument only, and 27
-  didn't reach it ([REVIEW-v1.md](REVIEW-v1.md)). Five principles came out of it, and rest on that one
+  didn't reach it (a review since incorporated and removed, and redacted for confidentiality: [GAPS.md](GAPS.md)). Five principles came out of it, and rest on that one
   project. The second is the course's migration, still under way, with one of its five projects done. Nothing
   has tested a principle on a trained model, a spent holdout, or production, and no person and no
   other model family has reviewed them. The reframings were written against one SE1 commit and re-read

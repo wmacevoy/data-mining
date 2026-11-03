@@ -78,7 +78,7 @@ MacEvoy, who signs the release (SE1/U9); every wording below is a draft until th
   and [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t8) changed only their markers. Two IDs were written
   as U10 at once, neither released: the field report's keeps it, since it came first and rests on a project,
   and this review's is [DM1/U11](guide/02-unknowing.md#u11). The owner's pin of 2026-11-02, v1.3, was replaced on 2026-11-03 by v1.4;
-  no tag, and one run is one project, stand, so ADOPT.md vendors once at the root. `REVIEW-*` keeps its links, like `HANDOFF-*`.
+  no tag, and one run is one project, stand, so ADOPT.md vendors once at the root. `REVIEW-v1.md` is removed, now that it is incorporated; it had been redacted for confidentiality before it was pushed ([GAPS.md](GAPS.md)).
 - This repository now follows SE1 as a project, not only by citation (ADOPT.md): SE1's agreement copied
   unedited to `docs/SE1-AGENTS.md`, since the root `AGENTS.md` here is the file this guide publishes;
   `se`, `se.ps1`, and `se.py` copied from v1.4; both agreements imported from a new `CLAUDE.md`; the
@@ -169,7 +169,7 @@ question gains KIND-1, and `CONTRIBUTING.md` *Main product*. Without them the do
 
 ### The first field reports, applied
 
-Written 2026-11-01 by Claude Opus 5.5, from [REVIEW-v1.md](REVIEW-v1.md) and the course's `FINDINGS.md`, both by way of
+Written 2026-11-01 by Claude Opus 5.5, from `REVIEW-v1.md` and the course's `FINDINGS.md`, both by way of
 [GAPS.md](GAPS.md).
 
 - **Five new principles:** [DM1/R12](guide/04-requirements.md#r12), the kind of claim;
