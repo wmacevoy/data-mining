@@ -152,6 +152,13 @@ The medicine is structural: one function, imported by both. The same holds for m
 outcome, and "day" ([DM1/D5](#d5)). Two people with two definitions of "occupancy" produce two
 dashboards that disagree, and the meeting about which is right is about vocabulary.
 
+Coherent around what? SE1/D9 answers: a written mission and, beside it, the shape. In a data project
+the mission is the decision the work serves ([DM1/R1](04-requirements.md#r1)), and only the client
+can change it. The shape is the few rules that let someone guess the next pipeline from the last, such
+as raw is read-only, one definition per feature, and every score goes in the ledger, with who holds
+them, what they say no to, and the exceptions. Both go at the top of the question
+([template](../templates/QUESTION_v1.md)).
+
 > **Ask:** "Is the feature the model sees in production computed by the same code it was trained
 > on?"
 

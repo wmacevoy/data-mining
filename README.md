@@ -58,7 +58,8 @@ by ID when you raise a concern or explain a choice.
 
 **Teams adopting it:** copy SE1's AGENTS.md to your repository's root as `AGENTS.md` and this guide's
 beside it as `AGENTS-DM.md`, import both from `CLAUDE.md`, and start your working set from the
-templates listed under [Contents](#contents). Copy `dm`, `dm.ps1`, and `dm.py` beside SE1's `se.py` and run `./dm --doctor`:
+templates listed under [Contents](#contents). Copy `dm`, `dm.ps1`, and `dm.py` beside SE1's `se`, `se.ps1`, and `se.py`, run `./se --hook --write`
+so the self test runs at every start, and run `./dm --doctor`:
 it says what the data working set lacks, and *none yet* is a true answer.
 
 ## Contents
@@ -143,6 +144,7 @@ these.)
 - [**DM1/U7**](guide/02-unknowing.md#u7) A summary statistic is a concussion: look at the rows
 - [**DM1/U8**](guide/02-unknowing.md#u8) People ask Prob(result | me); the data holds Prob(result | the rows it counts as like me)
 - [**DM1/U9**](guide/02-unknowing.md#u9) Whitespace is free on the inputs and spent on the outcome
+- [**DM1/U10**](guide/02-unknowing.md#u10) Whether a result is worth acting on is a judgment: a metric taken for it is K3
 
 **[3. Feedback](guide/03-feedback.md)**
 
@@ -264,6 +266,7 @@ software applies to it.
 - [SE1/U5](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u5) → [DM1/U5](guide/02-unknowing.md#u5)
 - [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u7) → [DM1/U2](guide/02-unknowing.md#u2), [DM1/U6](guide/02-unknowing.md#u6)
 - [SE1/U8](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u8) → [DM1/U9](guide/02-unknowing.md#u9)
+- [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u10) → [DM1/U10](guide/02-unknowing.md#u10)
 - [SE1/F1](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/03-feedback.md#f1) → [DM1/F1](guide/03-feedback.md#f1)
 - [SE1/F2](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/03-feedback.md#f2) → [DM1/F2](guide/03-feedback.md#f2)
 - [SE1/F3](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/03-feedback.md#f3) → [DM1/F3](guide/03-feedback.md#f3)
@@ -315,6 +318,7 @@ software applies to it.
 - [SE1/W9](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w9) → [DM1/W4](guide/08-work.md#w4)
 - [SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w10) → [DM1/W6](guide/08-work.md#w6)
 - [SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w11) → [DM1/W7](guide/08-work.md#w7)
+- [SE1/W13](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w13) → [DM1/W6](guide/08-work.md#w6)
 - [SE1/H1](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/09-people.md#h1) → [DM1/H5](guide/09-people.md#h5)
 - [SE1/H4](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/09-people.md#h4) → [DM1/H4](guide/09-people.md#h4), [DM1/H8](guide/09-people.md#h8)
 - [SE1/H5](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/09-people.md#h5) → [DM1/H1](guide/09-people.md#h1)
@@ -375,13 +379,14 @@ asks of any rule.
 
 - **Who, and when.** One author, teaching from it, with Claude models drafting: the course document
   in August 2026 (Claude Opus 5), the refactor into this guide on 2026-10-27 (a Claude model; which
-  one was not recorded), and the review against SE1 v1.3 on 2026-10-28 (Claude Fable 5.1). Every
+  one was not recorded), the review against SE1 v1.3 on 2026-10-28 (Claude Fable 5.1), and the review against SE1 v1.4 on
+  2026-11-03 (Claude Opus 5.5). Every
   commit since the repository was initialized that day carries the agent's trailer, and AGENTS.md
   says so in its header.
 - **What it rests on.** A course document, the author's teaching, and SE1's trials and field reports
   by reference. Nothing of its own: no field report, no trial, and no review by anyone, of any model
   family, has yet tested a principle here ([GAPS.md](GAPS.md)). The reframings were written against
-  one SE1 commit and re-read against v1.3 only where SE1 changed; the other 73 were not re-read.
+  one SE1 commit and re-read against v1.3 and v1.4 only where SE1 changed; the rest were not re-read.
 - **What has been seen to fail.** `tools/check.js`, on three planted breakages: SE1 pinned to a
   release that lacks three cited principles, a copy of SE1 with no tag to read, and an AGENTS.md
   citing an ID its release does not define. A check never seen red proves nothing
@@ -395,7 +400,7 @@ asks of any rule.
   by the section below is a bug here. An agent of another family for which the working agreement
   makes the work worse.
 - **How to check it yourself.** `node tools/check.js` with a clone of SE1 beside this one; the SE1
-  map above, read against SE1's text at v1.3; and [CHANGELOG.md](CHANGELOG.md), which says by ID
+  map above, read against SE1's text at v1.4; and [CHANGELOG.md](CHANGELOG.md), which says by ID
   what was reframed, declined, confirmed, and not reviewed.
 
 ## Where this came from

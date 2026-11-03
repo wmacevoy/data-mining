@@ -16,8 +16,8 @@ from **v1.0**; what changed since, by ID, is in the guide's
 
 Drafted 2026-10-27 by a Claude model with Warren MacEvoy, refactoring the course document
 `DATA-SCIENCE.md` (drafted 2026-08-27 with Claude Opus 5); which model did the refactoring was not
-recorded. Revised with Claude Fable 5.1 on 2026-10-28 against SE1 v1.3; the human signs each
-release. These are rules an agent wrote for agents (SE1/U9), and **none of them has been tried**:
+recorded. Revised with Claude Fable 5.1 on 2026-10-28 against SE1 v1.3, and with Claude Opus 5.5 on
+2026-11-03 against SE1 v1.4; the human signs each release. These are rules an agent wrote for agents (SE1/U9), and **none of them has been tried**:
 no field report, no trial, and no review by anyone, of any model family, has yet tested a rule in
 this file or in the guide behind it. Each is an inference from SE1's trials and from the author's
 teaching, marked here once rather than on every line (SE1/W12). The first field reports are
@@ -128,6 +128,12 @@ SE1's *Verify* holds — run it, watch the test fail, never weaken an assertion.
 - **Assert around every join and filter you write**: row counts, key uniqueness, ranges. (DM1/T2)
 - **Report the diff in the numbers**, not only the diff in the code: regenerate the golden output
   and show what moved. "Shouldn't change anything" is a hypothesis; test it. (DM1/T7)
+- **The bar can veto; it cannot say yes.** What the question marks *(judged)* is passed by its named
+  judge on this version: a new extract or a retrain makes the verdict stale. Record it on one line
+  with the versioned ID, `verdict: pass` or `verdict: fail`, `by` the judge, and the date; never give
+  one. (DM1/U10, SE1/W11)
+- **Name what the change must not break**, by ID and its words: `Q1/PRED-1`, the split, the holdout.
+  (DM1/W7, SE1/W11)
 - **Compare against the baseline** on the same split, every time a model is reported. (DM1/T1)
 - **Give an interval, and the seed spread** for anything trained. A difference inside the noise is
   not a result. (DM1/F7)
@@ -150,6 +156,7 @@ SE1's *Verify* holds — run it, watch the test fail, never weaken an assertion.
 
 - **The number regenerates from raw** with the documented command, and you have run it. (DM1/W7)
 - **Update the datasheet and model card** the change made untrue, in the same change. (DM1/D10)
-- **Write the dead ends** in FINDINGS: what was tried, what it cost, why it failed. (DM1/W6)
+- **Write the dead ends** in FINDINGS: what was tried, what it cost, why it failed, and what it changed,
+  or why it changed nothing. (DM1/W6, SE1/W13)
 - **Answer the retro questions** (SE1/A10), and add one: what did you have to assume about the data
   because nobody wrote it down?

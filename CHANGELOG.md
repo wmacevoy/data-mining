@@ -17,9 +17,9 @@ yours.
 
 ## v1.0 — unreleased
 
-· 93 principles
+· 94 principles
 
-The first release: 75 principles that reframe SE1 principles for data work, and 18 new ones that
+The first release: 76 principles that reframe SE1 principles for data work, and 18 new ones that
 SE1 has no counterpart for. Refactored from the course document `DATA-SCIENCE.md`, reorganized into
 SE1's ten chapters. Bias is treated as SE1 treats security: a permanent requirement
 ([DM1/R10](guide/04-requirements.md#r10)), an audit before and after deploy
@@ -29,7 +29,41 @@ Written on 2026-10-27 against SE1 at commit `d256d10`, between SE1 v1.1 and v1.2
 link naming `main`. On 2026-10-28 the links were pinned to **SE1 v1.3**: `tools/check.js` builds
 every SE1 link from one constant, `SE_RELEASE`, and CI checks SE1 IDs against that tag. A later SE1
 bump is that one edit, a rewrite of the links, and a walk through SE1's CHANGELOG for every ID this
-guide reframes, recorded here by ID.
+guide reframes, recorded here by ID. On 2026-11-03 the links moved to **SE1 v1.4**.
+
+### SE1 v1.3 to v1.4, reviewed
+
+Each SE1 principle that changed between v1.3 and v1.4 (v1.3.1, v1.3.2, v1.4.1, and v1.4.2 are patches
+and change none), and what this guide did about it. Reviewed 2026-11-03 by Claude Opus 5.5 with Warren
+MacEvoy, who signs the release (SE1/U9); every wording below is a draft until then.
+
+- [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u10), *essential K1*: reframed as a new [DM1/U10](guide/02-unknowing.md#u10). Data work sharpens it,
+  because the work product is a number that reads like the answer. The bar becomes a veto, and whether
+  the result is worth acting on goes to a named judge. GLOSSARY gains *essential K1* and *judged*.
+- [SE1/U2](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u2), some K1 will not convert: adopted into the K1 row of [DM1/U1](guide/02-unknowing.md#u1).
+- [SE1/R2](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/04-requirements.md#r2), where what matters is a judgment, write down who judges it: adopted into
+  [DM1/R3](guide/04-requirements.md#r3).
+- [SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/04-requirements.md#r10), a change in meaning is a new version and a spelling or lint fix is an edit named in the
+  commit: adopted into the QUESTION template. The guide had said it only there.
+- [SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/05-design.md#d9), coherence answers to a written mission and a shape: adopted into
+  [DM1/D9](guide/05-design.md#d9), where the mission is the decision the work serves. The QUESTION
+  template gains a *(judged)* `DECISION-1` and a *Shape* section (named apart from the requirements' IDs: where a project keeps both documents, SE1's doctor reads a shared ID in a question as a bare citation of its requirements), CHECKLISTS a line, GLOSSARY both words.
+- [SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w11), *(judged)* requirements and verdicts, and a change naming what it must not break: adopted into
+  [DM1/W7](guide/08-work.md#w7), AGENTS.md's *Verify*, and CHECKLISTS.
+- [SE1/W13](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w13), a finding closes with what it changed: reframed by [DM1/W6](guide/08-work.md#w6), and
+  AGENTS.md's *Finishing*.
+- SE1's change of *shape* to *contract* or *interface* where it meant what one part promises another
+  (SE1/H4, SE1/O7, SE1/W5): confirmed, no change. SE1 keeps *shape* in plain English elsewhere (the team's
+  shape, the shape of the work), and so do the places this guide uses it.
+- Not done: `dm --doctor` does not yet read *(judged)* in a question or report a verdict, as SE1's
+  trace row does in requirements (queue #4).
+- Not reviewed: whether the reframings of SE1 principles v1.4 left unchanged still read true, as before.
+- This repository now follows SE1 as a project, not only by citation (ADOPT.md): SE1's agreement copied
+  unedited to `docs/SE1-AGENTS.md`, since the root `AGENTS.md` here is the file this guide publishes;
+  `se`, `se.ps1`, and `se.py` copied from v1.4; both agreements imported from a new `CLAUDE.md`; the
+  self test as a `SessionStart` hook in `.claude/settings.json`; `CONTRIBUTING.md` and a working set in
+  `docs/`, reconstructed and marked *(inferred)*. `tools/check.js` leaves `HANDOFF-*` notes alone: a
+  finished note keeps the links it was written with.
 
 ### SE1 v1.2 to v1.3, reviewed
 
@@ -107,8 +141,9 @@ signs the release (SE1/U9).
   against with the SE1 copy present, and says when what lies between them has not been reviewed.
   The release check for this guide's own copy waits for the v1.0 tag.
 
-**For copies:** copy this guide's AGENTS.md as `AGENTS-DM.md` beside SE1's `AGENTS.md`, inside the
-working directory; import both from `CLAUDE.md` at every start, and check that they loaded (SE1/A11).
+**For copies:** copy this guide's AGENTS.md as `AGENTS-DM.md` beside SE1's `AGENTS.md` at v1.4, inside
+the working directory; import both from `CLAUDE.md` at every start, and check that they loaded
+(SE1/A11). Add a Mission and a Shape at your next question version.
 
 ### New
 

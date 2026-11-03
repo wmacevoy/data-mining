@@ -58,6 +58,9 @@ season we have not looked at" can be — and getting it rejected in week one is 
 Write the bar before seeing results, for the same reason SE1/R2 asks for numbers before nouns: a bar
 set after seeing the score is set to the score. Mark guesses *(invented)* and get them objected to.
 
+A bar can say no. It cannot say the result is worth acting on: that is a judgment, so write down who
+makes it, on what, and when ([DM1/U10](02-unknowing.md#u10)).
+
 > **Ask:** "Could the client read this sentence and say 'no, that's not good enough'?"
 
 ### <a id="r4"></a>R4. The confusion matrix has a price

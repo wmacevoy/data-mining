@@ -13,7 +13,7 @@ kind. The labels are defined there and in [GLOSSARY.md](../GLOSSARY.md).
 | From | To     | How, in data                                                                                       |
 | ---- | ------ | -------------------------------------------------------------------------------------------------- |
 | K0   | stays  | An assertion in the pipeline beats a sentence in a README, and both beat a fact in your head.       |
-| K1   | K0     | Look: profile the column, plot the distribution, read the data dictionary, ask who collected it. The only category you can simply decide to spend money on. |
+| K1   | K0     | Look: profile the column, plot the distribution, read the data dictionary, ask who collected it. The only category you can simply decide to spend money on, and some of it will not convert ([DM1/U10](#u10)). |
 | K2   | K1     | Run end to end on real data early, plot the residuals, show a domain expert, score on a period you did not develop on. You cannot search for these; you can only arrange to be surprised sooner. |
 | K3   | K0     | A check that could have failed, a plot you actually looked at, a baseline that could have won, a second person who does not share your assumption. |
 | K4   | chosen | Name the falsehood, write down where it is load-bearing ([DM1/U4](#u4)).                             |
@@ -216,6 +216,36 @@ not.
 
 > **Ask:** "When did someone last look at the raw rows with no question in hand, and did they look
 > at the outcome while they were there?"
+
+### <a id="u10"></a>U10. Whether a result is worth acting on is a judgment: a metric taken for it is K3
+
+*Reframes [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u10).*
+
+SE1/U10 says some K1 no spike finishes: the answer is a judgment someone makes on meeting the thing.
+Software meets this at "usable." Data work meets it on every project, because its work product is a
+number, and a number reads like the answer. An AUC of 0.91 is K0. That this model is good enough to
+change what the gate supervisor does on Saturday is not, and no further analysis settles it. Say
+"the model passes" and the question stops being asked, with nobody dishonest and no search involved.
+[DM1/F9](03-feedback.md#f9) is what the search does to a proxy; this is what the proxy does to you
+before the search starts.
+
+- **Convert what converts.** Calibration, latency, and the error rate on a named slice are ordinary
+  requirements, and the bar is still specific enough to be rejected ([DM1/R3](04-requirements.md#r3)).
+  This is no license for "a good model."
+- **Name the judge and the occasion.** Who says yes, on what, and when: the client, on the output in
+  the decision's own terms ([DM1/H6](09-people.md#h6)), at the read-back. In the question it is marked
+  *(judged)*. If nobody can say no, it is a wish.
+- **The bar may veto; only the judge may pass.** Missing the bar stops the work. Clearing it earns a
+  look. A bias measure is a proxy too: meeting `BIAS-1` says the chosen gap is within the chosen limit,
+  and whether that is fair stays with people ([DM1/R10](04-requirements.md#r10)).
+- **A verdict belongs to a version.** A new extract, a retrain, or a moved threshold makes it stale. An
+  agent records a verdict and never gives one.
+
+Drafted 2026-11-03 by Claude Opus 5.5 from SE1/U10, itself the author's decision without a trial of
+its own, and untried here. Wrong if, across projects, no result that cleared its bar with room to
+spare is ever turned down by the person who has to act on it.
+
+> **Ask:** "When this score is perfect, what could still be wrong, and who would tell us?"
 
 ---
 

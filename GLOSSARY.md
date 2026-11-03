@@ -19,6 +19,7 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Cross-validation**    | Repeatedly fitting on part of the development data and scoring on the rest. A development tool, not a substitute for a holdout. |
 | **Data version**        | An identifier — a hash, a dated snapshot, a tag — that names exactly which data a result was computed from ([DM1/O7](guide/07-operating.md#o7)). |
 | **Datasheet**           | The provenance record for one data source ([template](templates/DATASHEET.md)).                      |
+| **Essential K1**        | A known unknown no amount of looking settles, because the answer is a judgment someone makes on meeting the thing ([DM1/U10](guide/02-unknowing.md#u10)). |
 | **Event (the unit)**    | In the running example, one game or concert. Often the number that limits you, as opposed to rows ([DM1/R8](guide/04-requirements.md#r8)). |
 | **Feedback loop**       | A deployed model changing the data its successors are trained on ([DM1/O11](guide/07-operating.md#o11)). |
 | **Fence**               | Something proved at the end of a time box — a baseline scored, an expert's objection, a cold run from raw — as opposed to something attended ([DM1/W4](guide/08-work.md#w4)). |
@@ -27,6 +28,7 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Golden output**       | The fixture's full output, committed, so a change's effect on the numbers is a reviewable diff ([DM1/T7](guide/06-testing.md#t7)). |
 | **Holdout**             | Data set aside before exploration and used only at a decision, to estimate how a final choice performs on data it never influenced. Consumed by being looked at *and reacted to* ([DM1/F5](guide/03-feedback.md#f5)). |
 | **Interval**            | The range a reported number would plausibly take under resampling, reseeding, or resplitting ([DM1/F7](guide/03-feedback.md#f7)). |
+| **Judged**              | Said of a requirement: only a named person can pass it, on a stated occasion; the bar and the tests may veto it ([DM1/U10](guide/02-unknowing.md#u10)). |
 | **Knowable at**         | When a value became available to someone who could have acted on it ([DM1/R6](guide/04-requirements.md#r6)). |
 | **Label**               | The target value a supervised model learns to predict: an opinion with a timestamp ([DM1/R7](guide/04-requirements.md#r7)). |
 | **Leakage**             | Information about the outcome reaching the model in training that will not be available at prediction time ([DM1/U3](guide/02-unknowing.md#u3)). |
@@ -34,6 +36,7 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Look**                | One examination of an outcome that could influence what you do next. Counted in the ledger. |
 | **Membership inference** | An attack that determines whether a particular record was in a model's training data. |
 | **Missing at random**   | Missingness unrelated to the missing value itself, given what is observed. Usually a K4 ([DM1/U4](guide/02-unknowing.md#u4)). |
+| **Mission**             | The intentions a project is aimed at, stated broadly; in a data project, the decision it serves. Only the client can change it ([DM1/D9](guide/05-design.md#d9)). |
 | **Model card**          | A model's contract ([DM1/D10](guide/05-design.md#d10), [template](templates/MODEL_CARD.md)).       |
 | **Null result**         | A finding that the effect or improvement is not there, at this sample size. A result, not a failure ([DM1/H3](guide/09-people.md#h3)). |
 | **Out of envelope**     | An input outside the ranges or categories seen in training ([DM1/U6](guide/02-unknowing.md#u6)).    |
@@ -47,6 +50,7 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Selection bias**      | Who is in the rows differs from who the result will be applied to ([DM1/F8](guide/03-feedback.md#f8)). |
 | **Sentinel**            | A value that means "no value" — `-999`, `0`, `1970-01-01` — stored where a measurement would be.      |
 | **Shadow mode**         | Running a new model on live inputs and logging its predictions without letting it decide ([DM1/O6](guide/07-operating.md#o6)). |
+| **Shape**               | The few rules that let someone guess the next pipeline from the last, held by one named person ([DM1/D9](guide/05-design.md#d9)). |
 | **Slice**               | A subgroup the model is evaluated on separately, chosen before results ([DM1/T9](guide/06-testing.md#t9)). |
 | **Split**               | The division of rows into training, validation, and holdout. Grouped so related rows stay together; time-ordered when time matters. |
 | **Train/serve skew**    | A feature computed differently in training than where predictions are served ([DM1/D9](guide/05-design.md#d9)). |

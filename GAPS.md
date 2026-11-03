@@ -83,3 +83,11 @@ Two things it exposed while being written:
 
 **Wrong if** the first course project runs it and every row that failed was one the owner already
 knew about, or a row that passed hid the thing that went wrong. **Open:** the first field report.
+
+### 8. Essential K1 in data work is a draft of a decision without a trial
+
+[DM1/U10](guide/02-unknowing.md#u10), the *(judged)* mission in the question, and the verdict line came
+over from SE1 v1.4 on 2026-11-03, where they are the author's decision with no trial of their own. Here they
+are one step further from evidence: nobody has yet asked a client for a verdict on a model under this
+rule, and `dm --doctor` does not read one. **Wrong if** the first projects record verdicts that only
+repeat the bar, or that nobody can name a judge for. **Open:** the first field report.

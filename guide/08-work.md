@@ -110,7 +110,7 @@ Change the terrain:
 
 ### <a id="w6"></a>W6. Write down what you tried that did not work
 
-*Reframes [SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w10).*
+*Reframes [SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w10) and [SE1/W13](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w13).*
 
 SE1/W10 keeps the working set in the repository. A data project's working set adds three things:
 the question ([QUESTION template](../templates/QUESTION_v1.md)), the analysis plan
@@ -120,7 +120,10 @@ the question ([QUESTION template](../templates/QUESTION_v1.md)), the analysis pl
 The cheapest documentation in a data project, and the one nobody writes, is what did not work. Without
 it, the next person — often you, months later — re-runs the same dead end, and the count of things
 tried, which is part of the result ([DM1/F4](03-feedback.md#f4)), is lost with it. A dead end is a
-finding: write it in FINDINGS with what it cost and what would have found it sooner.
+finding: write it in FINDINGS with what it cost and what would have found it sooner, and close it
+with what it changed, or why it changed nothing. In data work the change that lasts is an assertion in
+the pipeline, a column note in the datasheet, or a line in the plan; a dead end remembered by the
+person who walked it leaves with them.
 
 > **Ask:** "If someone repeated this project from our repository, which dead ends would they walk
 > into again?"
@@ -138,7 +141,12 @@ it* is:
 - the datasheet and, for a model, the model card, updated;
 - the K4s written down, and read to the client ([DM1/H2](09-people.md#h2));
 - a reviewer who read the *data handling* — the joins, filters, splits, and fills — not only the model
-  code ([DM1/A6](10-agents.md#a6)).
+  code ([DM1/A6](10-agents.md#a6));
+- for what the question marks *(judged)*, the named judge's verdict on this version, recorded on one
+  line with the versioned ID, `verdict: pass` or `verdict: fail`, `by` the judge, and the date
+  ([DM1/U10](02-unknowing.md#u10));
+- a description naming what the change must not break, by ID and its words (`Q1/PRED-1`, the split,
+  the holdout), so the reviewer can ask about each.
 
 > **Ask:** "Has anyone but the author regenerated this from raw?"
 

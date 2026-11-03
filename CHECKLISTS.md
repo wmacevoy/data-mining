@@ -10,6 +10,8 @@ to the pipeline as software; these are the ones data work adds.
 
 **The first conversation with the client**
 
+- [ ] The mission and the shape are written, the mission has a judge, and the shape has a holder.
+      ([DM1/D9](guide/05-design.md#d9), [DM1/U10](guide/02-unknowing.md#u10))
 - [ ] The decision before the technique: who decides what, when, and what a wrong call costs.
       ([DM1/R1](guide/04-requirements.md#r1))
 - [ ] What would they do if the answer came out the other way? If nothing, stop.
@@ -70,6 +72,9 @@ to the pipeline as software; these are the ones data work adds.
 
 **Before presenting a number**
 
+- [ ] What the question marks *(judged)* has its judge's verdict on this version, recorded on one line
+      with the versioned ID, `verdict: pass` or `verdict: fail`, `by` the judge, and the date; the bar
+      may veto but cannot pass it. ([DM1/U10](guide/02-unknowing.md#u10))
 - [ ] It beats the baseline by more than its interval and the seed spread.
       ([DM1/T1](guide/06-testing.md#t1), [DM1/F7](guide/03-feedback.md#f7))
 - [ ] The count of things tried is stated. ([DM1/F6](guide/03-feedback.md#f6))
@@ -151,6 +156,8 @@ to the pipeline as software; these are the ones data work adds.
 **Reviewing what it produced**
 
 - [ ] The diff in the numbers, not only the code. ([DM1/T7](guide/06-testing.md#t7))
+- [ ] It named what the change must not break, and you asked about each by ID and its words.
+      ([DM1/W7](guide/08-work.md#w7))
 - [ ] The joins, filters, splits, and fills read line by line. ([DM1/A6](guide/10-agents.md#a6))
 - [ ] Its count of tries, and its holdout looks (should be zero). ([DM1/A3](guide/10-agents.md#a3))
 - [ ] You can explain the number without it. ([DM1/A7](guide/10-agents.md#a7))
