@@ -34,7 +34,7 @@ catches.
 
    ```sh
    SE=../software-engineering; DM=../data-mining
-   for f in se se.ps1 se.py; do git -C "$SE" show v1.4:"$f" > "$f"; done
+   for f in se se.ps1 se.py; do git -C "$SE" show v1.4.3:"$f" > "$f"; done
    git -C "$SE" show v1.4:AGENTS.md > AGENTS.md
    for f in dm dm.ps1 dm.py; do git -C "$DM" show v1.0:"$f" > "$f"; done
    git -C "$DM" show v1.0:AGENTS.md > AGENTS-DM.md

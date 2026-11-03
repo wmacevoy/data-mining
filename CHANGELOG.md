@@ -15,6 +15,16 @@ states.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.0.1 — unreleased
+
+No principle, AGENTS.md, or template changed; copies at v1.0 are current.
+
+### Also changed
+
+- `se.py` is re-copied from SE1 v1.4.3, which needs no `du`, reads the battery on Windows, and advises by
+  platform. SE1 links stay at v1.4: v1.4.3 changed no principle, and SE1's AGENTS.md is the same. `ADOPT.md`
+  copies `se`, `se.ps1`, and `se.py` from v1.4.3.
+
 ## v1.0 — 2026-11-03
 
 · 100 principles

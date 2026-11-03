@@ -180,7 +180,7 @@ class TestChecker(Repo):
         self.red("principle count CHANGELOG.md says 1")
 
     def test_changelog_without_a_release_is_reported_not_a_crash(self):
-        self.plant("CHANGELOG.md", sub_once(r"(?m)^## v\d+\.\d+ — (?:unreleased|\d{4}-\d{2}-\d{2})$", "## soon"))
+        self.plant("CHANGELOG.md", lambda text: re.sub(r"(?m)^## v\d+(?:\.\d+)+ — (?:unreleased|\d{4}-\d{2}-\d{2})$", "## soon", text))
         self.red('CHANGELOG.md has no "## vX.Y')
 
     def test_agents_label_behind_the_newest_release(self):
