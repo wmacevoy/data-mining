@@ -3,18 +3,18 @@
 Every configuration scored, and in retrieval or extraction every search run and page read, appended
 **by the code that did it**, never from memory. The count of lines is part of every result reported
 from this work
-([DM1/F6](https://github.com/wmacevoy/data-mining/blob/main/guide/03-feedback.md#f6),
-[DM1/A3](https://github.com/wmacevoy/data-mining/blob/main/guide/10-agents.md#a3)).
+([DM1/F6](https://github.com/wmacevoy/data-mining/blob/v1.0/guide/03-feedback.md#f6),
+[DM1/A3](https://github.com/wmacevoy/data-mining/blob/v1.0/guide/10-agents.md#a3)).
 Keep it as a machine-written file (`ledger.jsonl` or `ledger.csv`) beside this description; a
 Markdown table is fine for small work. Logs of reads and searches count; name them on the *The
 ledger* line of `CONTRIBUTING.md` so the doctor can find them.
 
 Each run is an experiment: say what would count against the claim, and how much it would cost to run it again,
 which decides what else to keep beside the line
-([DM1/T13](https://github.com/wmacevoy/data-mining/blob/main/guide/06-testing.md#t13)).
+([DM1/T13](https://github.com/wmacevoy/data-mining/blob/v1.0/guide/06-testing.md#t13)).
 
 A holdout row is a spending event: say what decision it served
-([DM1/F5](https://github.com/wmacevoy/data-mining/blob/main/guide/03-feedback.md#f5)).
+([DM1/F5](https://github.com/wmacevoy/data-mining/blob/v1.0/guide/03-feedback.md#f5)).
 
 | When (UTC) | Who / agent | Question | What was tried | Would count against it | Split | Seed | Data version | Commit | Metric(s) | Cost to run again | Holdout? why |
 | ---------- | ----------- | -------- | -------------- | ---------------------- | ----- | ---- | ------------ | ------ | --------- | ----------------- | ------------ |

@@ -180,7 +180,7 @@ class TestChecker(Repo):
         self.red("principle count CHANGELOG.md says 1")
 
     def test_changelog_without_a_release_is_reported_not_a_crash(self):
-        self.plant("CHANGELOG.md", sub_once(r"(?m)^## v\d+\.\d+ — unreleased$", "## soon"))
+        self.plant("CHANGELOG.md", sub_once(r"(?m)^## v\d+\.\d+ — (?:unreleased|\d{4}-\d{2}-\d{2})$", "## soon"))
         self.red('CHANGELOG.md has no "## vX.Y')
 
     def test_agents_label_behind_the_newest_release(self):
@@ -188,7 +188,7 @@ class TestChecker(Repo):
         self.red("stale release  AGENTS.md: says it is from v0.9")
 
     def test_copy_linking_to_another_ref(self):
-        self.plant("AGENTS.md", replace_once("data-mining/blob/main/CHANGELOG.md", "data-mining/blob/v9/CHANGELOG.md"))
+        self.plant("AGENTS.md", replace_once("data-mining/blob/v1.0/CHANGELOG.md", "data-mining/blob/v9/CHANGELOG.md"))
         self.red("stale release  AGENTS.md: links to v9")
 
     def test_copy_citing_an_id_its_release_lacks(self):
@@ -231,17 +231,11 @@ class TestPatchRelease(Repo):
     def setUpClass(cls):
         super().setUpClass()
         cls.git("init", "-q")
-        for name in ["AGENTS.md"] + ["templates/" + t for t in os.listdir(os.path.join(cls.repo, "templates"))]:
-            path = os.path.join(cls.repo, name)
-            with open(path, encoding="utf-8", newline="") as fh:
-                text = fh.read()
-            with open(path, "w", encoding="utf-8", newline="") as fh:
-                fh.write(re.sub(r"(wmacevoy/data-mining/(?:blob|tree))/main", r"\1/v1.0", text))
         path = os.path.join(cls.repo, "CHANGELOG.md")
         with open(path, encoding="utf-8", newline="") as fh:
             text = fh.read()
         with open(path, "w", encoding="utf-8", newline="") as fh:
-            fh.write(re.sub(r"(?m)^## v1\.0 — unreleased$", "## v1.0.1 — 2026-11-04\n\n## v1.0 — 2026-11-03", text))
+            fh.write(re.sub(r"(?m)^## v1\.0 — 2026-11-03$", "## v1.0.1 — 2026-11-04\n\n## v1.0 — 2026-11-03", text))
         cls.git("add", "-A")
         cls.git("commit", "-qm", "v1.0")
         cls.git("tag", "v1.0")

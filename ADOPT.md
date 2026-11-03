@@ -36,8 +36,8 @@ catches.
    SE=../software-engineering; DM=../data-mining
    for f in se se.ps1 se.py; do git -C "$SE" show v1.4:"$f" > "$f"; done
    git -C "$SE" show v1.4:AGENTS.md > AGENTS.md
-   cp "$DM/AGENTS.md" AGENTS-DM.md
-   cp "$DM/dm" "$DM/dm.ps1" "$DM/dm.py" .
+   for f in dm dm.ps1 dm.py; do git -C "$DM" show v1.0:"$f" > "$f"; done
+   git -C "$DM" show v1.0:AGENTS.md > AGENTS-DM.md
    chmod +x se dm
    printf '@AGENTS.md\n@AGENTS-DM.md\n' > CLAUDE.md
    ./se --hook --write
@@ -46,8 +46,8 @@ catches.
 
    An existing `AGENTS.md` or `CLAUDE.md` is not overwritten: keep SE1's copy under another name
    (`docs/SE1-AGENTS.md`), and add the two imports to the `CLAUDE.md` you have. Do not edit the copies.
-   DM1 has no tag yet, so until v1.0 is tagged, write the commit you copied from in the repository
-   guide; its copy says *v1.0* and cannot say it is behind. Then start a fresh session, and ask it to
+   Each copy says which release it came from; read *For copies* in the CHANGELOG before moving to a
+   newer one. Then start a fresh session, and ask it to
    quote a line of each file without opening them, and look for `se --post`'s report
    ([SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/10-agents.md#a11)).
 

@@ -7,15 +7,15 @@ came from.
 
 Within DM1, a minor release may add principles, reword them, or extend what they ask; it never moves
 an ID ([principle index](README.md#principle-index)). Work toward a release goes under
-`## vX.Y — unreleased`; give it a date when you tag it. Until v1.0 is tagged, copies link to `main`;
-after, `tools/check.py` requires them to link to the newest dated release. Links to SE1 never name
+`## vX.Y — unreleased`; give it a date when you tag it. `tools/check.py` requires copies to link to
+the newest dated release. Links to SE1 never name
 `main`: they name the SE1 release this guide was last reviewed against, which each release below
 states.
 
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.0 — unreleased
+## v1.0 — 2026-11-03
 
 · 100 principles
 
@@ -78,7 +78,7 @@ MacEvoy, who signs the release (SE1/U9); every wording below is a draft until th
   and [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t8) changed only their markers. Two IDs were written
   as U10 at once, neither released: the field report's keeps it, since it came first and rests on a project,
   and this review's is [DM1/U11](guide/02-unknowing.md#u11). The owner's pin of 2026-11-02, v1.3, was replaced on 2026-11-03 by v1.4;
-  no tag stands, as recorded and not yet confirmed. ADOPT.md vendors once at the root. `REVIEW-v1.md` is removed, now that it is incorporated; it had been redacted for confidentiality before it was pushed ([GAPS.md](GAPS.md)).
+  the owner tagged v1.0 the same day. ADOPT.md vendors once at the root. `REVIEW-v1.md` is removed, now that it is incorporated; it had been redacted for confidentiality before it was pushed ([GAPS.md](GAPS.md)).
 - [DM1/T13](guide/06-testing.md#t13) is new, Warren MacEvoy's decision of 2026-11-03: a run is one experiment on one question, tested
   small before large, with evidence kept in proportion to the cost of running it again. *Project* stops being a term here: it hid
   the repository, the question, and the experiment, and "one run is one project", recorded as the owner's on 2026-11-02, is

@@ -54,4 +54,4 @@ Blameless: say what would have found it, not who should have asked.
 - **Kind:** K3 (we were sure, and wrong)
 - **Cost:** ADOPT.md's advice written three ways, and a word defined by accident.
 - **Findable by:** asking for the owner's words before relying on "the owner's decision" written by an agent.
-- **Changed:** DM1/T13, and the glossary. "No tag" is recorded the same way, and is still unconfirmed. Nothing mechanical checks who said a thing; SE1/A11 already says a reported instruction is a claim until its source can be opened.
+- **Changed:** DM1/T13, and the glossary. "No tag" was recorded the same way; the owner chose to tag v1.0 on 2026-11-03. Nothing mechanical checks who said a thing; SE1/A11 already says a reported instruction is a claim until its source can be opened.

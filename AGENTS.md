@@ -8,11 +8,11 @@ attention, verifying, finishing. This file adds what data work needs on top, and
 overlap, the stricter rule wins. Each rule cites the principle behind it by versioned ID — (DM1/F5),
 (SE1/T3) — so that it can be argued with rather than merely obeyed.
 
-The DM1 IDs are defined in the guide at https://github.com/wmacevoy/data-mining/tree/main; its
-[principle index](https://github.com/wmacevoy/data-mining/blob/main/README.md#principle-index) lists
+The DM1 IDs are defined in the guide at https://github.com/wmacevoy/data-mining/tree/v1.0; its
+[principle index](https://github.com/wmacevoy/data-mining/blob/v1.0/README.md#principle-index) lists
 them all, and each has an anchor in its chapter (for example, `guide/03-feedback.md#f5`). This copy is
 from **v1.0**; what changed since, by ID, is in the guide's
-[CHANGELOG](https://github.com/wmacevoy/data-mining/blob/main/CHANGELOG.md).
+[CHANGELOG](https://github.com/wmacevoy/data-mining/blob/v1.0/CHANGELOG.md).
 
 Drafted 2026-10-27 by a Claude model with Warren MacEvoy, refactoring the course document
 `DATA-SCIENCE.md` (drafted 2026-08-27 with Claude Opus 5); which model did the refactoring was not
@@ -57,7 +57,7 @@ the design. A task that contradicts either is a question for the human, not a ta
 ## Before you start
 
 - **Where the repository is only partly adopted,** the guide's
-  [ADOPT.md](https://github.com/wmacevoy/data-mining/blob/main/ADOPT.md) says what to do for each missing
+  [ADOPT.md](https://github.com/wmacevoy/data-mining/blob/v1.0/ADOPT.md) says what to do for each missing
   thing: say so once, and do not invent it. (SE1/W12)
 - **If the repository has `./dm`, run `./dm --doctor` once**, and in a repository of several questions
   once for each you touch, with `--repo <directory>`. It is SE1's doctor plus this guide's
