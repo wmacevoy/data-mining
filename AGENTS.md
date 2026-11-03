@@ -2,8 +2,8 @@
 
 A working agreement for AI agents doing data work — analysis, pipelines, models, evaluation — in a
 repository that follows this guide. It **extends** the
-[SE1 working agreement](https://github.com/wmacevoy/software-engineering/blob/v1.3/AGENTS.md) at
-SE1 v1.3, which still governs everything about the code: ownership, authority, stop/ask/proceed, writing for human
+[SE1 working agreement](https://github.com/wmacevoy/software-engineering/blob/v1.4/AGENTS.md) at
+SE1 v1.4, which still governs everything about the code: ownership, authority, stop/ask/proceed, writing for human
 attention, verifying, finishing. This file adds what data work needs on top, and where the two
 overlap, the stricter rule wins. Each rule cites the principle behind it by versioned ID — (DM1/F5),
 (SE1/T3) — so that it can be argued with rather than merely obeyed.

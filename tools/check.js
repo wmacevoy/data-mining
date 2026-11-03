@@ -22,7 +22,7 @@ const SE = 'SE1';
 // The SE1 release this guide is written against. Every SE1 link names it, so a reader lands on the
 // text that was read, not on whatever main says now (SE1/R10, SE1/U9). Bumping it is one edit here
 // plus a rewrite of the links, and a walk through SE1's CHANGELOG for every ID this guide reframes.
-const SE_RELEASE = 'v1.3';
+const SE_RELEASE = 'v1.4';
 const SE_BLOB = `https://github.com/wmacevoy/software-engineering/blob/${SE_RELEASE}/`;
 const SE_CHAPTER = { P: '01-purpose', U: '02-unknowing', F: '03-feedback', R: '04-requirements', D: '05-design', T: '06-testing', O: '07-operating', W: '08-work', H: '09-people', A: '10-agents' };
 const HEADING = /^### <a id="([a-z0-9]+)"><\/a>([A-Z]\d+)\. (.*)$/;
@@ -48,7 +48,8 @@ const files = [];
 (function walk(dir) {
   for (const name of fs.readdirSync(dir)) {
     // Dot-directories include .git and CI's checkout of the SE1 guide (.se1).
-    if (name.startsWith('.') || name === 'node_modules') continue;
+    // A HANDOFF note is finished history: it keeps the SE1 links it was written with.
+    if (name.startsWith('.') || name === 'node_modules' || name.startsWith('HANDOFF-')) continue;
     const p = path.join(dir, name);
     if (fs.statSync(p).isDirectory()) walk(p);
     else if (p.endsWith('.md')) files.push(p);
@@ -70,7 +71,7 @@ function anchorsOfText(text) {
 
 // SE1 IDs, read from the SE1 guide at SE_RELEASE: from a local clone's tag when it has one, so the
 // check says what the pinned release defines and not what the clone's working tree happens to hold
-// (the clone passing at another ref says nothing about v1.3; SE1/U7). A clone without the tag is
+// (the clone passing at another ref says nothing about the pinned tag; SE1/U7). A clone without the tag is
 // checked as it stands and reported as a problem: fetch the tags. Without a clone, SE1 citations are
 // checked for form only, and the summary line says so (a check that cannot fail says so; SE1/T3).
 const seRoot = path.resolve(process.env.SE_GUIDE || path.join(root, '..', 'software-engineering'));

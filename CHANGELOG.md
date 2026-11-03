@@ -1,7 +1,7 @@
 # Changelog
 
 What changed between releases, by principle ID, newest first. A change you cannot spot is a K3
-factory ([SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u7)),
+factory ([SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u7)),
 so changes are listed here by ID, and copies of AGENTS.md and the templates say which release they
 came from.
 
@@ -37,44 +37,44 @@ Each SE1 principle that changed between the commit this guide was written agains
 what this guide did about it. Reviewed 2026-10-28 by Claude Fable 5.1 with Warren MacEvoy, who
 signs the release (SE1/U9).
 
-- [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u7) and
-  [SE1/R8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r8), *medicine* for
+- [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u7) and
+  [SE1/R8](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/04-requirements.md#r8), *medicine* for
   *cure*: adopted. The guide said *cure* in [DM1/U2](guide/02-unknowing.md#u2),
   [DM1/U6](guide/02-unknowing.md#u6), and [DM1/D9](guide/05-design.md#d9). A K3 factory is
   lessened, not fixed, and so is train/serve skew.
-- [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u7), *torn work*: adopted
+- [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u7), *torn work*: adopted
   into [DM1/U2](guide/02-unknowing.md#u2), which names its data shapes (a pipeline half-run, a
   model trained on a partial extract, a notebook run out of order) and the medicine (idempotent
   stages, the cold run from raw, and treating what you find on resuming as torn), and in one
   sentence into [DM1/U6](guide/02-unknowing.md#u6): an interrupted retrain's checkpoint answers.
-- [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a11), *knowing is not doing*:
+- [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/10-agents.md#a11), *knowing is not doing*:
   adopted into [DM1/U7](guide/02-unknowing.md#u7), where *look at the rows* becomes something the
   command does on every run, and [DM1/A2](guide/10-agents.md#a2): a leakage check the agent must
   choose to run will be read and not run, so the assertions go in the pipeline and CI. A11's
   other change, that the import boundary is the working directory, is in AGENTS.md.
-- [SE1/U8](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u8), *leave whitespace*:
+- [SE1/U8](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u8), *leave whitespace*:
   reframed as [DM1/U9](guide/02-unknowing.md#u9). It pulls against [DM1/F4](guide/03-feedback.md#f4)
   to [DM1/F6](guide/03-feedback.md#f6), where every look spends evidence; the resolution is what
   is looked at. Whitespace on the inputs is free and is where K2 lives; on the outcome it is a
   look, and goes in the ledger. GLOSSARY gains *whitespace*.
-- [SE1/H4](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/09-people.md#h4), the stand-up's fourth
+- [SE1/H4](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/09-people.md#h4), the stand-up's fourth
   question: reframed as [DM1/H8](guide/09-people.md#h8). The discomfort in data work has a short
   list of shapes, each an early sign of something this guide names, so the question becomes *what
   about the current number do you not believe?*
-- [SE1/U9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/02-unknowing.md#u9), *rules change*: not a
+- [SE1/U9](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/02-unknowing.md#u9), *rules change*: not a
   principle here. For labels, [DM1/R7](guide/04-requirements.md#r7) already asks who, when, and how
   often a second person disagrees; for definitions, [DM1/H5](guide/09-people.md#h5) asks who chose
   it. What the templates lacked was the falsifier: DATASHEET and MODEL_CARD now say who wrote them,
   when, and what would show them wrong.
-- [SE1/A3](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/10-agents.md#a3), an agent may ask, and a
+- [SE1/A3](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/10-agents.md#a3), an agent may ask, and a
   private agent memory is a head: confirmed, no change. This guide never said the client does not
   talk to the agent, and [DM1/A3](guide/10-agents.md#a3) already keeps the record of what was
   tried in the ledger, not in the agent's memory.
-- [SE1/W7](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/08-work.md#w7), Brown's experiment as he ran
+- [SE1/W7](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w7), Brown's experiment as he ran
   it: confirmed, no change. [DM1/W5](guide/08-work.md#w5) cites the gradient and does not restate
   the experiment.
-- [SE1/W2](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/08-work.md#w2) and
-  [SE1/T5](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/06-testing.md#t5), wording only: no DM1
+- [SE1/W2](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w2) and
+  [SE1/T5](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t5), wording only: no DM1
   principle quotes the changed words.
 - Not reviewed: whether the 73 reframings written against the earlier commit still read true
   against v1.3's unchanged principles. Their IDs resolve, which is all `tools/check.js` can say.

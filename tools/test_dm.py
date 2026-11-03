@@ -21,7 +21,7 @@ spec.loader.exec_module(dm)
 
 DM_AGENTS = (GUIDE / "AGENTS.md").read_text(encoding="utf8")
 SE_AGENTS = ("# AGENTS.md\n\nA working agreement. The IDs are defined in the guide at "
-             "https://github.com/wmacevoy/software-engineering/tree/v1.3; This copy is from **v1.3**.\n")
+             "https://github.com/wmacevoy/software-engineering/tree/v1.4; This copy is from **v1.4**.\n")
 
 GOOD = {
     "AGENTS.md": SE_AGENTS,
@@ -177,20 +177,20 @@ class TestAgreements(Fixture):
     def test_extends_the_se1_copy_present(self):
         f = self.doctor()
         self.assertEqual(finding(f, "extends").state, dm.PASS)
-        self.assertIn("extends SE1 v1.3", finding(f, "extends").text)
+        self.assertIn("extends SE1 v1.4", finding(f, "extends").text)
 
     def test_extends_an_older_se1_than_the_copy_here(self):
-        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("v1.3", "v1.4")}))
+        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("v1.4", "v1.5")}))
         self.assertEqual(finding(f, "extends").state, dm.WARN)
         self.assertIn("not reviewed", finding(f, "extends").text)
 
     def test_extends_a_newer_se1_than_the_copy_here(self):
-        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("v1.3", "v1.2")}))
+        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("v1.4", "v1.3")}))
         self.assertEqual(finding(f, "extends").state, dm.FAIL)
         self.assertIn("older", finding(f, "extends").text)
 
     def test_extends_needs_a_labeled_se1_copy(self):
-        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("This copy is from **v1.3**", "no label")}))
+        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("This copy is from **v1.4**", "no label")}))
         self.assertEqual(finding(f, "extends").state, dm.WARN)
 
     def test_no_claude_md_loads_only_the_root_file(self):
