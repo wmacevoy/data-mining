@@ -44,6 +44,11 @@ class Repo(unittest.TestCase):
         shutil.copytree(GUIDE, cls.repo, ignore=shutil.ignore_patterns(".git", ".se1", "__pycache__"))
 
     @classmethod
+    def git(cls, *args):
+        subprocess.run(["git", "-c", "user.email=t@example.invalid", "-c", "user.name=t", "-c", "commit.gpgsign=false",
+                        "-C", cls.repo, *args], capture_output=True, check=True)
+
+    @classmethod
     def tearDownClass(cls):
         shutil.rmtree(cls.tmp, ignore_errors=True)
 
@@ -80,6 +85,17 @@ class Repo(unittest.TestCase):
 
 @unittest.skipUnless(HAVE_SE, "needs a clone of SE1: set SE_GUIDE")
 class TestChecker(Repo):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        # A patch release's rule reads its minor's tag, so the copy needs a history with that tag.
+        with open(os.path.join(cls.repo, "CHANGELOG.md"), encoding="utf-8", newline="") as fh:
+            newest_minor = re.search(r"(?m)^## (v\d+\.\d+)", fh.read()).group(1)
+        cls.git("init", "-q")
+        cls.git("add", "-A")
+        cls.git("commit", "-qm", "base")
+        cls.git("tag", newest_minor)
+
     def test_the_repository_as_it_stands_passes(self):
         r = self.check()
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
@@ -239,11 +255,6 @@ class TestPatchRelease(Repo):
         cls.git("add", "-A")
         cls.git("commit", "-qm", "v1.0")
         cls.git("tag", "v1.0")
-
-    @classmethod
-    def git(cls, *args):
-        subprocess.run(["git", "-c", "user.email=t@example.invalid", "-c", "user.name=t", "-c", "commit.gpgsign=false",
-                        "-C", cls.repo, *args], capture_output=True, check=True)
 
     def test_a_patch_that_changes_nothing_guarded_passes(self):
         r = self.check()
