@@ -5,11 +5,11 @@ written to be copied into another repository as-is, or referenced from that repo
 file. Each rule cites the principle behind it by versioned ID — (SE1/A8), (SE1/D9) — so that a rule
 can be argued with rather than merely obeyed.
 
-The IDs are defined in the guide at https://github.com/wmacevoy/software-engineering/tree/v1.4;
+The IDs are defined in the guide at https://github.com/wmacevoy/software-engineering/tree/v1.5;
 `SE1` is its first major version, tagged `v1.x`, within which no ID moves. Its
-[principle index](https://github.com/wmacevoy/software-engineering/blob/v1.4/README.md#principle-index)
+[principle index](https://github.com/wmacevoy/software-engineering/blob/v1.5/README.md#principle-index)
 lists them all, and each has an anchor in its chapter (for example, `guide/10-agents.md#a8`).
-This copy is from **v1.4**; what changed since, by ID, is in the guide's
+This copy is from **v1.5**; what changed since, by ID, is in the guide's
 [CHANGELOG](https://github.com/wmacevoy/software-engineering/blob/main/CHANGELOG.md).
 The Markdown in that repository is the canonical text; the site at
 https://wmacevoy.github.io/software-engineering/ renders the latest version for human readers.
@@ -17,7 +17,7 @@ https://wmacevoy.github.io/software-engineering/ renders the latest version for 
 The repository's own guide (`CLAUDE.md`, `CONTRIBUTING.md`, or equivalent) wins over this file where
 they disagree. It knows the local mechanics; this file only knows the principles. How to adopt this
 file, and what an agent should do where the adoption is only partly done, is in the guide's
-[ADOPT.md](https://github.com/wmacevoy/software-engineering/blob/v1.4/ADOPT.md).
+[ADOPT.md](https://github.com/wmacevoy/software-engineering/blob/v1.5/ADOPT.md).
 
 Drafted by Claude Opus 5.5 with Warren MacEvoy, 2026-10-19 to 2026-10-27, and revised with Claude
 Fable 5.1 on 2026-10-28; the human signs each release. These are rules an agent wrote for agents
@@ -41,8 +41,8 @@ one concern at a time, nothing bundled in that wasn't asked for.
 
 ## Authority, in order
 
-When sources disagree, the higher one wins. A lower source that contradicts a higher one is a
-question for the human, not a task.
+When sources disagree, the earlier one on this list wins. A later source that contradicts an earlier
+one is a question for the human, not a task.
 
 1. **What the human says in this session** — after you have pointed out any conflict with the
    requirements once. If they still say proceed, proceed, and note the conflict in your report.
@@ -56,8 +56,8 @@ question for the human, not a task.
 
 ## Before you start
 
-- **If the repository has `./se`, look for its self test's report in your context** (a `SessionStart`
-  hook puts it there, where one is installed); if there is none, run `./se --post` once. It says
+- **If the repository has `./se` (`.\se.ps1` in PowerShell), look for its self test's report in your context** (a
+  `SessionStart` hook puts it there, where one is installed); if there is none, run `./se --post` once. It says
   whether this session can be torn and what rules follow; work by them. `./se --doctor` says what
   the repository lacks. (SE1/T2, SE1/U7)
 - **Read the repository guide** for how to run, test, and reset the system. If there is no way to
@@ -75,7 +75,7 @@ question for the human, not a task.
 - **If the repository has no requirements document, queue, check command, or `Non-goals`,** that
   absence is the first finding: say so once, treat the task's own text as the requirement for this
   task only, marked *(inferred)*, and do not stop on every task for it (SE1/W12). The guide's
-  [ADOPT.md](https://github.com/wmacevoy/software-engineering/blob/v1.4/ADOPT.md) says what to do
+  [ADOPT.md](https://github.com/wmacevoy/software-engineering/blob/v1.5/ADOPT.md) says what to do
   for each missing thing. Do not invent the missing thing to satisfy a rule.
 
 ## After a gap
@@ -117,7 +117,7 @@ to people (SE1/W4, SE1/D11):
 - It introduces a new noun into the domain vocabulary — one that would appear in the requirements'
   glossary or be shown to a user, not a class or variable name — or reuses an existing word for a
   new thing. (SE1/D9)
-- It would change the mission or the shape, or adds something they say no to. (SE1/D9)
+- It would change the mission or the fundamental shape, or adds something they say no to. (SE1/D9)
 - It touches secrets, keys, authentication, authorization, or what data about people is collected or
   kept. (SE1/R8, SE1/O8)
 - It would copy code from outside the repository, or from a source whose license you cannot state —
@@ -178,7 +178,7 @@ Attention is the scarce resource — not tokens, not runtime, not lines of code.
 ## Limit your own fluency
 
 You write code more fluently than most repositories need. Spend that fluency on finding the simple
-version, not on demonstrating range.
+version, not on demonstrating range. (SE1/A5)
 
 - Write the version a competent newcomer to this codebase would write, and recognize a month later.
 - Three plain statements beat one dense chain.

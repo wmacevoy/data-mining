@@ -26,7 +26,7 @@ SE = "SE1"
 # The SE1 release this guide is written against. Every SE1 link names it, so a reader lands on the
 # text that was read, not on whatever main says now (SE1/R10, SE1/U9). Bumping it is one edit here
 # plus a rewrite of the links, and a walk through SE1's CHANGELOG for every ID this guide reframes.
-SE_RELEASE = "v1.4"
+SE_RELEASE = "v1.5"
 SE_BLOB = f"https://github.com/wmacevoy/software-engineering/blob/{SE_RELEASE}/"
 SE_CHAPTER = {"P": "01-purpose", "U": "02-unknowing", "F": "03-feedback", "R": "04-requirements", "D": "05-design",
               "T": "06-testing", "O": "07-operating", "W": "08-work", "H": "09-people", "A": "10-agents"}

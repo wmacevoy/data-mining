@@ -3,14 +3,14 @@
 Every checklist in the guide, in the order the work meets them. Each item cites the principle that
 explains it; if an item retires no fear in your work, drop it and say why
 ([DM1/P4](guide/01-purpose.md#p4)). SE1's
-[checklists](https://github.com/wmacevoy/software-engineering/blob/v1.4/CHECKLISTS.md) still apply
+[checklists](https://github.com/wmacevoy/software-engineering/blob/v1.5/CHECKLISTS.md) still apply
 to the pipeline as software; these are the ones data work adds.
 
 ## Starting
 
 **The first conversation with the client**
 
-- [ ] The mission and the shape are written, the mission has a judge, and the shape has a holder.
+- [ ] The mission and the fundamental shape are written, the mission has a judge, and the fundamental shape has a holder.
       ([DM1/D9](guide/05-design.md#d9), [DM1/U11](guide/02-unknowing.md#u11))
 - [ ] The decision before the technique: who decides what, when, and what a wrong call costs.
       ([DM1/R1](guide/04-requirements.md#r1))
@@ -167,11 +167,11 @@ to the pipeline as software; these are the ones data work adds.
 - [ ] `AGENTS.md` (SE1's) and `AGENTS-DM.md` (this guide's) are loaded at every start from copies
       inside the working directory, not left in files to be opened, and a fresh session has been
       seen to quote a line of each.
-      ([AGENTS.md](AGENTS.md), [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/10-agents.md#a11))
+      ([AGENTS.md](AGENTS.md), [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/10-agents.md#a11))
 - [ ] The checks it is asked for are in the pipeline and CI, where they run on the work without it
       choosing to. ([DM1/A2](guide/10-agents.md#a2))
 - [ ] `./dm --doctor` ran, and what it found is in the task or the queue. ([dm.py](dm.py),
-      [SE1/T2](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/06-testing.md#t2))
+      [SE1/T2](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t2))
 - [ ] It cannot read the holdout. ([DM1/A4](guide/10-agents.md#a4))
 - [ ] It sees the schema and a fixture, not rows about people, unless decided otherwise.
       ([DM1/A8](guide/10-agents.md#a8))
@@ -189,4 +189,4 @@ to the pipeline as software; these are the ones data work adds.
 - [ ] Its count of tries, and its holdout looks (should be zero). ([DM1/A3](guide/10-agents.md#a3))
 - [ ] You can explain the number without it. ([DM1/A7](guide/10-agents.md#a7))
 - [ ] You asked the retro questions, including what it assumed about the data because nobody wrote
-      it down, and wrote the answers into the repository. ([SE1/A10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/10-agents.md#a10))
+      it down, and wrote the answers into the repository. ([SE1/A10](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/10-agents.md#a10))

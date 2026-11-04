@@ -1,7 +1,7 @@
 # Glossary
 
 The terms this guide uses precisely, beyond those in
-[SE1's glossary](https://github.com/wmacevoy/software-engineering/blob/v1.4/GLOSSARY.md) — K0–K4,
+[SE1's glossary](https://github.com/wmacevoy/software-engineering/blob/v1.5/GLOSSARY.md) — K0–K4,
 K3 factory, cache, contract, blast radius, and the rest mean the same here. One thing, one word
 ([DM1/D9](guide/05-design.md#d9)): if you find the guide using one of these loosely, that is a bug.
 
@@ -26,6 +26,7 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Fence**               | Something proved at the end of a time box — a baseline scored, an expert's objection, a cold run from raw — as opposed to something attended ([DM1/W4](guide/08-work.md#w4)). |
 | **Fixture**             | A small dataset committed with the repository, with expected outputs worked out by hand ([DM1/T6](guide/06-testing.md#t6)). |
 | **Forking paths**       | The choices an analysis could have made differently; each one taken in response to the data spends evidence, even if only one analysis was run ([DM1/F4](guide/03-feedback.md#f4)). |
+| **Fundamental shape**   | The versioned and heavy aesthetic that decides what belongs, through a few guidelines held by one named person; a sign it is working is that someone can guess the next pipeline from the last ([DM1/D9](guide/05-design.md#d9)). |
 | **Golden output**       | The fixture's full output, committed, so a change's effect on the numbers is a reviewable diff ([DM1/T7](guide/06-testing.md#t7)). |
 | **Holdout**             | Data set aside before exploration and used only at a decision, to estimate how a final choice performs on data it never influenced. Consumed by being looked at *and reacted to* ([DM1/F5](guide/03-feedback.md#f5)). |
 | **Interval**            | The range a reported number would plausibly take under resampling, reseeding, or resplitting ([DM1/F7](guide/03-feedback.md#f7)). |
@@ -54,7 +55,6 @@ K3 factory, cache, contract, blast radius, and the rest mean the same here. One 
 | **Selection bias**      | Who is in the rows differs from who the result will be applied to ([DM1/F8](guide/03-feedback.md#f8)). |
 | **Sentinel**            | A value that means "no value" — `-999`, `0`, `1970-01-01` — stored where a measurement would be.      |
 | **Shadow mode**         | Running a new model on live inputs and logging its predictions without letting it decide ([DM1/O6](guide/07-operating.md#o6)). |
-| **Shape**               | The few rules that let someone guess the next pipeline from the last, held by one named person ([DM1/D9](guide/05-design.md#d9)). |
 | **Slice**               | A subgroup the model is evaluated on separately, chosen before results ([DM1/T9](guide/06-testing.md#t9)). |
 | **Split**               | The division of rows into training, validation, and holdout. Grouped so related rows stay together; time-ordered when time matters. |
 | **Train/serve skew**    | A feature computed differently in training than where predictions are served ([DM1/D9](guide/05-design.md#d9)). |

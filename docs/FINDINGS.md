@@ -1,6 +1,6 @@
 # Findings
 
-What we learned the expensive way ([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w10)).
+What we learned the expensive way ([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w10)).
 Blameless: say what would have found it, not who should have asked.
 
 ## 2026-11-03 — This guide cited SE1 and did not follow it, and no hook could run

@@ -3,7 +3,7 @@
 The decision this work serves, and exactly what is being predicted, described, or found. The data
 equivalent of requirements: changes only with the client, and a change in meaning is a new version
 (`QUESTION_v2.md`); a spelling or lint fix is not, and is named in the commit
-([SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/04-requirements.md#r10)). See
+([SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/04-requirements.md#r10)). See
 [DM1/R1–R12](https://github.com/wmacevoy/data-mining/blob/v1.1/guide/04-requirements.md).
 
 Client (the one voice who can decide): _name_ · Date sent: _yyyy-mm-dd_ · *Tell us what is wrong
@@ -20,14 +20,15 @@ Who decides what, when, with what in front of them today — and what it costs w
   on _what_, at _when_. Veto: _what would stop the work_
   ([DM1/U11](https://github.com/wmacevoy/data-mining/blob/v1.1/guide/02-unknowing.md#u11)).
 
-## Shape
+## Fundamental shape
 
-The few rules that let someone guess the next pipeline from the last
+The versioned and heavy aesthetic that decides what belongs here, through a few guidelines; a sign it is
+working is that someone can guess the next pipeline from the last
 ([DM1/D9](https://github.com/wmacevoy/data-mining/blob/v1.1/guide/05-design.md#d9)). Mechanisms go in the plan, citing these.
 
 Held by: _one named person_
 
-- **PIPE-1** *(since v1)* *(judged)* _A rule that holds across the pipelines._ Judge: _the holder_, at _when_.
+- **PIPE-1** *(since v1)* *(judged)* _A guideline that holds across the pipelines._ Judge: _the holder_, at _when_.
 - **Says no to:** _good ideas this refuses, and why_
 - **Exceptions:** _each with its reason_
 
