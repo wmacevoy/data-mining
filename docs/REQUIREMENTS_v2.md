@@ -4,7 +4,8 @@
 true of this guide, and what it is not. Reconstructed from the repository on 2026-11-03 by Claude Opus 5.5
 ([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w12)), so **all of it is
 *(inferred)* until the client confirms it**, except where a line says it is the owner's. A change in meaning is a new
-version. This one changes the mission and the fundamental shape; everything marked *(since v1)* is unchanged from
+version. This one changes the mission, the fundamental shape, the pain, and CHK-1, and adds a glossary of this
+repository's own terms, ID-1, ADOPT-1, CONF-1, and the assumptions; everything marked *(since v1)* is unchanged from
 [v1](REQUIREMENTS_v1.md).
 
 Client: Warren MacEvoy · Proxy for the users: the field reports in GAPS.md, and the fall 2026 course projects
@@ -12,13 +13,20 @@ Client: Warren MacEvoy · Proxy for the users: the field reports in GAPS.md, and
 
 ## Glossary
 
-GLOSSARY.md, at the root, is the glossary; this repository adds no terms to it.
+GLOSSARY.md, at the root, is the glossary for data work. These are the terms of this repository itself.
+
+| Term | Meaning |
+| ---- | ------- |
+| Principle | One idea with an ID (`F5`), in one chapter, cited as `DM1/F5`. |
+| Reframe | What a principle does when it says what an SE1 principle means for data, and links to it. One that does not is new. |
+| Release | A git tag `vX.Y` (minor) or `vX.Y.Z` (patch), with a dated section in the CHANGELOG. |
+| Copy | A file adopters copy that names its release: AGENTS.md and the templates. They also copy `dm`, `dm.ps1`, and `dm.py`, which a patch release may change. |
 
 ## Mission
 
 - **MISSION-1** *(since v2)* *(judged)* *(inferred)* People and agents doing data work produce claims worth acting on.
   Judge: Warren MacEvoy, on the guide as it stands, at each minor release. Veto: a field report where following a
-  principle made the analysis worse and the guide does not change.
+  principle made the analysis worse, unanswered at that release.
 
 ## Fundamental shape
 
@@ -40,8 +48,9 @@ Held by: Warren MacEvoy *(inferred)*
 
 ## The pain
 
-*(inferred)* Wrong analysis returns a plausible number and nobody finds out. Students and agents following
-SE1 alone have no rule for leakage, the holdout, or the count of looks.
+*(inferred)* Wrong analysis returns something plausible, a number, a summary, a confident tone, and nobody finds out.
+Students and agents following SE1 alone have no rule for leakage, the holdout, the count of looks, or what a summary
+left out.
 
 ## People this touches
 
@@ -50,8 +59,9 @@ people whose rows those projects mine, who are never in the room.
 
 ## Requirements
 
-- **CHK-1** *(since v1)* *(inferred)* `tools/check.py` exits nonzero when a link, anchor, DM1 or SE1
-  citation, basis line, README index or map, or release label is wrong.
+- **CHK-1** *(since v2)* *(inferred)* `tools/check.py` exits nonzero when a link, anchor, DM1 or SE1
+  citation, basis line, README index or map, or release label is wrong, or a patch release changes a principle or
+  a copy.
 - **PIN-1** *(since v1)* *(inferred)* Every SE1 link, llms.txt, and CI name one SE1 release, and each bump
   is recorded in CHANGELOG by SE1 ID as reframed, declined, or confirmed.
 - **DOC-1** *(since v1)* *(inferred)* `./dm --doctor` reports each mechanical thing the guide asks for in a
@@ -63,6 +73,19 @@ people whose rows those projects mine, who are never in the room.
   that vendors it.
 - **AGR-1** *(since v1)* *(inferred)* `AGENTS.md` extends SE1's agreement at a named release, and each rule
   cites its principle by versioned ID.
+- **ID-1** *(since v2)* *(judged)* *(inferred)* Within DM1 an ID never moves to a different idea or gets reused; a
+  retired principle keeps its ID with a note saying where its content went. Judge: the holder, at each minor release.
+- **ADOPT-1** *(since v2)* *(inferred)* A data project with only Python 3.9 or later and git can follow `ADOPT.md` from
+  start to a passing `dm --doctor`, for new work or a repository with results.
+
+## Security, law, and ethics
+
+- **CONF-1** *(since v2)* *(judged)* *(inferred)* A field report from confidential work gives only kinds and counts,
+  never a case, person, institution, or document's content. Judge: the owner, before it is pushed.
+
+## Assumptions (K4s), read back to the client
+
+- *(inferred)* SE1's tags stay reachable and do not move.
 
 ## Non-goals
 

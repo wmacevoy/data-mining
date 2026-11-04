@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for tools/check.py (REQ1/CHK-1, REQ1/PIN-1): each breakage is planted in a copy of this repository
+"""Tests for tools/check.py (REQ2/CHK-1, REQ1/PIN-1): each breakage is planted in a copy of this repository
 and must turn the checker red with its own message (SE1/T3). Needs a clone of SE1 with its tags, by SE_GUIDE
 or at ../software-engineering, as the checker itself does. Python 3.9 or later and git; standard library
 only. Run: python3 -I tools/test_check.py"""
