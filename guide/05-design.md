@@ -1,8 +1,8 @@
 # 5. Design
 
 What a data system is made of. Every principle here reframes the one with the same number in
-[SE1 chapter 5](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/05-design.md): the
-ideas carry over unchanged, and the nouns become datasets, features, and models. The
+[SE1 chapter 5](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/05-design.md): each
+says what changes when the nouns become datasets, features, and models. The
 [DESIGN template](https://github.com/wmacevoy/software-engineering/blob/v1.5/templates/DESIGN_v1.md)
 from SE1 works as is; its *State* table is where datasets, feature tables, models, and indexes go.
 
@@ -159,11 +159,8 @@ outcome, and "day" ([DM1/D5](#d5)). Two people with two definitions of "occupanc
 dashboards that disagree, and the meeting about which is right is about vocabulary.
 
 Coherent around what? SE1/D9 answers: a written mission and, beside it, the fundamental shape. In data work
-the mission is the decision the work serves ([DM1/R1](04-requirements.md#r1)), and only the client
-can change it. The fundamental shape is the versioned and heavy aesthetic that decides what belongs, through a few
-guidelines, such as raw is read-only, one definition per feature, and every score goes in the ledger; a
-sign it is working is that someone can guess the next pipeline from the last. With it go who holds it,
-what it says no to, and the exceptions. Both go at the top of the question
+the mission is the decision the work serves ([DM1/R1](04-requirements.md#r1)), and the fundamental shape
+holds guidelines such as raw is read-only, one definition per feature, and every score goes in the ledger. Both go at the top of the question
 ([template](../templates/QUESTION_v1.md)).
 
 > **Ask:** "Is the feature the model sees in production computed by the same code it was trained
