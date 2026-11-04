@@ -55,3 +55,10 @@ Blameless: say what would have found it, not who should have asked.
 - **Cost:** ADOPT.md's advice written three ways, and a word defined by accident.
 - **Findable by:** asking for the owner's words before relying on "the owner's decision" written by an agent.
 - **Changed:** DM1/T13, and the glossary. "No tag" was recorded the same way; the owner chose to tag v1.0 on 2026-11-03. Nothing mechanical checks who said a thing; SE1/A11 already says a reported instruction is a claim until its source can be opened.
+
+## 2026-11-04 — Verdicts on the mission and the fundamental shape
+
+Given by their judge on `REQUIREMENTS_v2`, and recorded here by an agent
+([SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/02-unknowing.md#u10)).
+
+- REQ2/MISSION-1 verdict: pass, by Warren MacEvoy, 2026-11-04
