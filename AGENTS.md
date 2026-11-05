@@ -177,6 +177,8 @@ SE1's *Verify* holds — run it, watch the test fail, never weaken an assertion.
 - **Translate results into the decision's terms**, with how often they will be wrong. (DM1/H6)
 - **Report nulls plainly and promptly.** "No effect at this sample size" is a finding. (DM1/H3)
 - **Label claims by source**: what you ran, what you looked at, what you only inferred. (SE1/U3)
+- **Observe, do not ask.** Judge a run by its commands, ledger, and output, not by an account of it, and that includes
+  your own account of your own work. (DM1/U12)
 
 ## Finishing, additions
 

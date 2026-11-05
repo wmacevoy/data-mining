@@ -17,7 +17,7 @@ yours.
 
 ## v1.2 — unreleased
 
-· 100 principles
+· 101 principles
 
 Reviewed against **SE1 v1.7**. No ID moved.
 
@@ -25,6 +25,12 @@ Reviewed against **SE1 v1.7**. No ID moved.
 [ADOPT.md](ADOPT.md) now says, and add SE1's `QUICKREF.md`, imported from the root `CLAUDE.md`: `se --doctor` fails a
 repository that does not, and each agent that loads it starts about 5,000 words heavier. The QUESTION template's *Shape* section is now *Fundamental shape*, with the same
 `PIPE-` IDs; a question you already have can keep its heading until its next version.
+
+### New principles
+
+- [DM1/U12](guide/02-unknowing.md#u12): a set cannot contain itself, so complete self-awareness is not possible, and believing you have it is K3. Observe what
+  was done, which is worth far more than asking why. The owner's word, 2026-11-05, with one trial behind its example.
+  AGENTS.md's *Advising* takes the rule.
 
 ### SE1 v1.6 to v1.7, reviewed
 

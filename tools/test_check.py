@@ -254,7 +254,10 @@ class TestPatchRelease(Repo):
         with open(path, encoding="utf-8", newline="") as fh:
             text = fh.read()
         with open(path, "w", encoding="utf-8", newline="") as fh:
-            fh.write(re.sub(r"(?ms)\A(.*?)^## v.*?(?=^## v1\.0 — 2026-11-03$)", r"\1## v1.0.1 — 2026-11-04\n\n", text))
+            text = re.sub(r"(?ms)\A(.*?)^## v.*?(?=^## v1\.0 — 2026-11-03$)", r"\1## v1.0.1 — 2026-11-04\n\n", text)
+            # The fixture's newest section states the count the chapters define today, whatever it was at v1.0.
+            count = sum(open(os.path.join(cls.repo, "guide", f), encoding="utf-8").read().count("</a>DM1/") for f in os.listdir(os.path.join(cls.repo, "guide")))
+            fh.write(re.sub(r"· [0-9]+ principles", f"· {count} principles", text, count=1))
         # Whatever the guide's newest release is, this fixture is v1.0 with v1.0.1 on top.
         for name in ["AGENTS.md"] + ["templates/" + t for t in os.listdir(os.path.join(cls.repo, "templates"))]:
             path = os.path.join(cls.repo, name)
