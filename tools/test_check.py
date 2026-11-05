@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Tests for tools/check.py (REQ2/CHK-1, REQ1/PIN-1): each breakage is planted in a copy of this repository
-and must turn the checker red with its own message (SE1/T3). Needs a clone of SE1 with its tags, by SE_GUIDE
-or at ../software-engineering, as the checker itself does. Python 3.9 or later and git; standard library
+and must turn the checker red with its own message (SE1/T3). Reads SE1 from vendor/se1, as the checker itself does. Python 3.9 or later and git; standard library
 only. Run: python3 -I tools/test_check.py"""
 import os
 import re
@@ -12,8 +11,6 @@ import tempfile
 import unittest
 
 GUIDE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SE_GUIDE = os.path.abspath(os.environ.get("SE_GUIDE") or os.path.join(GUIDE, "..", "software-engineering"))
-HAVE_SE = os.path.isfile(os.path.join(SE_GUIDE, "README.md"))
 SE_BLOB = "https://github.com/wmacevoy/software-engineering/blob/"
 
 
@@ -72,10 +69,9 @@ class Repo(unittest.TestCase):
         self.saved.setdefault(name, text)
         self.write(name, edit(text))
 
-    def check(self, se_guide=SE_GUIDE, *args):
-        env = {**os.environ, "SE_GUIDE": se_guide}
+    def check(self, *args):
         return subprocess.run([sys.executable, "-I", os.path.join(self.repo, "tools", "check.py"), *args], cwd=self.repo,
-                              env=env, capture_output=True, encoding="utf-8")
+                              capture_output=True, encoding="utf-8")
 
     def red(self, message):
         r = self.check()
@@ -83,7 +79,6 @@ class Repo(unittest.TestCase):
         self.assertIn(message, r.stdout)
 
 
-@unittest.skipUnless(HAVE_SE, "needs a clone of SE1: set SE_GUIDE")
 class TestChecker(Repo):
     @classmethod
     def setUpClass(cls):
@@ -146,7 +141,7 @@ class TestChecker(Repo):
         self.red("anchor         guide/01-purpose.md")
 
     def test_id_defined_twice(self):
-        self.plant("guide/01-purpose.md", replace_once("</a>P2.", "</a>P1."))
+        self.plant("guide/01-purpose.md", replace_once("</a>DM1/P2.", "</a>DM1/P1."))
         self.red("P1 defined twice")
 
     def test_se1_link_at_another_release(self):
@@ -217,29 +212,37 @@ class TestChecker(Repo):
         self.assertEqual(self.check().returncode, 0)
 
     def test_print_gives_what_readme_must_contain(self):
-        r = self.check(SE_GUIDE, "--print")
+        r = self.check("--print")
         self.assertIn("- [**DM1/U10**](guide/02-unknowing.md#u10)", r.stdout)
         self.assertIn("- [SE1/W13](", r.stdout)
 
 
-class TestWithoutTheSe1Tag(Repo):
-    def test_no_clone_says_so(self):
-        r = self.check(os.path.join(self.tmp, "nope"))
-        self.assertIn("NOT checked (no local SE1 guide; set SE_GUIDE)", r.stdout)
-
-    def test_a_clone_without_the_tag_is_a_problem(self):
-        # REQ1/PIN-1: passing at another ref says nothing about the pinned release.
-        plain = os.path.join(self.tmp, "plain")
-        os.makedirs(plain, exist_ok=True)
-        with open(os.path.join(plain, "README.md"), "w", encoding="utf-8") as fh:
-            fh.write("[**SE1/U7**](guide/02-unknowing.md#u7)\n")
-        r = self.check(plain)
+class TestVendoredSe1(Repo):
+    def test_no_vendored_se1_is_a_problem(self):
+        readme = os.path.join(self.repo, "vendor", "se1", "README.md")
+        os.rename(readme, readme + ".gone")
+        try:
+            r = self.check()
+        finally:
+            os.rename(readme + ".gone", readme)
         self.assertEqual(r.returncode, 1)
-        self.assertIn("SE1 clone ", r.stdout)
-        self.assertIn("NOT tag", r.stdout)
+        self.assertIn("vendored SE1   vendor/se1 has no README.md", r.stdout)
+        self.assertIn("NOT checked (no vendor/se1)", r.stdout)
+
+    def test_vendored_at_another_release_is_a_problem(self):
+        # REQ1/PIN-1: passing at another release says nothing about the pinned one.
+        self.plant("vendor/se1/AGENTS.md", sub_once(r"This copy is from \*\*v[0-9.]+\*\*", "This copy is from **v1.0**"))
+        self.red("vendored SE1   vendor/se1 is v1.0")
+
+    def test_an_edited_copy_is_a_problem(self):
+        self.plant("docs/SE1-AGENTS.md", replace_once("# AGENTS.md", "# AGENTS.md, edited"))
+        self.red("vendored SE1   docs/SE1-AGENTS.md differs")
+
+    def test_an_edited_se_py_is_a_problem(self):
+        self.plant("se.py", replace_once("import ", "import  "))
+        self.red("vendored SE1   se.py differs")
 
 
-@unittest.skipUnless(HAVE_SE, "needs a clone of SE1: set SE_GUIDE")
 class TestPatchRelease(Repo):
     """The rules that read this repository's own tags: v1.0 tagged, then v1.0.1 on top."""
 

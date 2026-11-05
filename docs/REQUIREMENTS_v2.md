@@ -2,7 +2,7 @@
 
 What must be observably
 true of this guide, and what it is not. Reconstructed from the repository on 2026-11-03 by Claude Opus 5.5
-([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w12)), and **confirmed by the client, all of it, on 2026-11-04**, after a review in session. A change in meaning is a new
+([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w12)), and **confirmed by the client, all of it, on 2026-11-04**, after a review in session. A change in meaning is a new
 version. This one changes the mission, the fundamental shape, the pain, and CHK-1, and adds a glossary of this
 repository's own terms, ID-1, ADOPT-1, CONF-1, and the assumptions; everything marked *(since v1)* is unchanged from
 [v1](REQUIREMENTS_v1.md).

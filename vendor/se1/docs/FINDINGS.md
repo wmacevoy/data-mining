@@ -1,0 +1,333 @@
+# Findings
+
+What this repository learned the expensive way, about itself and its tooling. The only document
+reality writes ([SE1/W10](../guide/08-work.md#w10)). Where the *guide's principles* fell short in
+the field is [GAPS.md](../GAPS.md); this file is for the repository as a project: the checker, `se`,
+the releases, the reviews. Blameless: say what would have found it, not who should have asked
+([SE1/H12](../guide/09-people.md#h12)).
+
+## 2026-10-28 — `se`'s label pattern fails on a line-wrapped label
+
+- **What happened:** run on the DM1 guide, the doctor said its AGENTS.md "carries no release
+  label"; the label is there, wrapped across a line. The false failure went into a handoff before
+  it was caught.
+- **Kind:** K3 (the tool was sure).
+- **Cost:** one wrong line in a baseline, corrected in the same note.
+- **Findable by:** a fixture whose label wraps; every real copy is wrapped at 100 columns.
+- **Changed:** `se`'s label pattern allows a line break, with that fixture (fb7586b, v1.3.1).
+
+## 2026-10-28 — `se` takes any labeled AGENTS.md for a copy of SE1's, and knows only SE1's documents
+
+- **What happened:** the DM1 guide's own AGENTS.md carries a DM1 release label; the doctor would
+  read it as an SE1 copy and compare releases across guides. Its working-set rows look for
+  `REQUIREMENTS_vN`, `DESIGN_vN`, `QUEUE`, `FINDINGS`; a DM1 project keeps `QUESTION_vN`,
+  `PLAN_vN`, `LEDGER`, `DATASHEET`, `MODEL_CARD`, and would be told "none yet".
+- **Kind:** K2 (a sibling guide was not imagined).
+- **Findable by:** running the doctor on anything that is not an SE1 project.
+- **Changed:** `se` knows SE1's copy by the line that names this guide's release, and names a
+  `docs/` in another shape instead of reporting it as empty; it checks SE1's shape only, as the
+  Non-goals say (fb7586b, v1.3.1).
+
+## 2026-10-28 — On Windows with Python 3.9, decoding changed a hash
+
+- **What happened:** `se --self` read the released AGENTS.md through `git show` as text; on that
+  runner the locale's code page decoded the em dashes to other characters, and the hash moved. Five
+  of six CI jobs were green.
+- **Kind:** K3 (`text=True` felt safe).
+- **Findable by:** exactly the matrix that found it, within the hour.
+- **Changed:** `se` hashes bytes and decodes every subprocess read as UTF-8 explicitly.
+
+## 2026-10-28 — A commit described five changes; its diff held one
+
+- **What happened:** an edit script aborted on its second anchor, the shell guard did not stop the
+  chain, and the commit landed with a message for all five. The diff caught it; the script's output
+  would not have.
+- **Kind:** K3 (the summary was fluent).
+- **Findable by:** `git diff --stat` against the message before every commit.
+- **Changed:** the drafter's practice, and `archive/reviews/REVIEW-v1.2-candidate.md` records it.
+
+## 2026-10-28 — The published pages carry no *since* per principle
+
+- **What happened:** the site shows a principle with no version and no date, so an unchanged
+  reading and a stale one look alike; the *New/Changed in* markers are hand-made, mark only the last
+  change of meaning, and say nothing for the ninety principles that have none.
+- **Kind:** K2, found by the author reading the site as a stranger.
+- **Findable by:** asking, of any page, "when did this last change, and would I know?"
+  ([SE1/U7](../guide/02-unknowing.md#u7): make it age visibly).
+- **Changed:** `tools/since.js` mines git for each principle's text *since* and writes it under
+  the heading; the checker verifies it against git, so it cannot drift (queue #3).
+
+## 2026-10-28 — A reviewer of another family found five things in three minutes
+
+- **What happened:** Codex, on a no-push clone of v1.2.1, found five defects, four in text written
+  after the three Claude readers ran and one, a vocabulary collision, that was the drafter's to
+  see. All held when opened at the source; all fixed in v1.3.
+- **Kind:** K3 for the drafter (the text read as finished).
+- **Findable by:** a reader who does not share the writer's assumptions
+  ([SE1/U3](../guide/02-unknowing.md#u3)). The method is recorded in
+  `archive/reviews/REVIEW-METHOD-other-family.md`.
+- **Changed:** v1.3; a Codex pass before each release.
+
+## 2026-10-29 — `se` reads requirements only as bullets, and counts 0 in a table
+
+- **What happened:** lwext4-bsd's REQUIREMENTS_v10 keeps its requirements as table rows
+  (`| **FMT-1** | *(since v1)* ... |`). The doctor's pattern wanted `**ID** *(since vN)*` with
+  only space between, so it read 0 requirements, and the citations and trace rows said "none yet",
+  which read as true and was not. SE1/R10 asks for the ID and its *since*, not for a bullet.
+- **Kind:** K3 (the tool was sure).
+- **Cost:** a re-vendor's doctor run reported 0 failures on a repository whose citations it never
+  read; caught because the count, 0, was plainly wrong for a 30-requirement document.
+- **Findable by:** a fixture with a table-form requirements document.
+- **Changed:** the pattern allows a table cell boundary between the ID and its *since*, with that
+  fixture. Engaged on lwext4-bsd, the citations row then fails: 11 stale, 77 unversioned, most of
+  them historical (FINDINGS, done queue rows) or list shorthand (`REQ10/TOOL-1, RST-3`). Whether
+  those should count is a question about SE1/R10. Decided 2026-10-29: history (a FINDINGS entry, a
+  done queue row) keeps the citation it was written with and is not stale; a bare ID takes the
+  version named before it on the same line; an open row and a test still answer to the newest
+  version. Fixtures for each, the open row seen red by exempting every row on purpose.
+
+## 2026-10-29 — `se` skipped C++ and module-JavaScript test files when tracing
+
+- **What happened:** `is_text` knew `.c`, `.h`, `.js`, `.ts` and not `.cpp`, `.hpp`, `.mjs`, `.tsx`
+  and their kin, so the trace row reported oopc's `REQ2/CXX-3` as untested while `src/test_oopc.cpp`
+  named it, and the citation scan skipped the same files.
+- **Kind:** K3 (the row was sure).
+- **Cost:** two requirements shown as untested that were not; found by the owner reading the row
+  against the file.
+- **Findable by:** a fixture naming a requirement only in a file of each type; seen red for all eight
+  before the fix.
+- **Changed:** the extensions are in `is_text` (PR #3).
+
+## 2026-10-29 — With no repository guide, `se` took a README's workflow path for the check command
+
+- **What happened:** on the fall-2026 data-mining course repository, which had no CONTRIBUTING.md or
+  CLAUDE.md, the doctor's fallback took the first backticked thing on a README line that mentioned
+  tests, `.github/workflows/ci.yaml`, as the check command, then failed the CI row against it. The
+  handoff written there reported it.
+- **Kind:** K3 (a fallback that reads prose as a command).
+- **Cost:** one false row in that repository's baseline; caught by the agent reading the README line.
+- **Findable by:** a fixture with a README alone, whose only backticked text beside "tests" is a path.
+- **Changed:** the fallback runs for CONTRIBUTING.md and CLAUDE.md only; a README alone yields *none
+  yet* (queue #9).
+
+## 2026-11-02 — Comparing the Python tools with the Node tools: a clean run that proved little
+
+- **What happened:** the port of `check.js`, `since.js`, and `bodies.js` matched them on every release
+  tag and on 150 random breakages, 481 comparisons with no difference. Three bugs planted in the
+  port went unnoticed by that same run. Removing each reporting line in turn then found three no case
+  reached, and a sharp look found slug cases that failed the same way in both tools, so they could not
+  tell them apart.
+- **Kind:** K3 (identical output read as proof of equivalence).
+- **Cost:** about an hour; found before the Node tools were gone, while they could still referee.
+- **Findable by:** plant a bug in the thing under test before trusting the comparison.
+- **Changed:** 69 targeted cases, one or more per rule, identical in both tools. Every removed report
+  and logic change then seen caught, except `.strip(WS)` against `.strip()` in `bodies.py`, which
+  differs only for a principle ending in a character like U+0085. Every Unicode codepoint compared for
+  slugs and whitespace: whitespace identical; slugs differ on 14,049 codepoints, all unassigned in
+  Python 3.11's Unicode 14 and assigned later in Node 24's, so a heading using one could slug
+  differently. What Node can no longer referee is fixed in `tools/test_check.py`, and these fixtures
+  were seen to catch the mutants they were written for. CI then failed both Windows jobs: report paths came out with backslashes, which the
+  Node tools did too and nothing had tested. Forward slashes everywhere, then all six jobs green (run
+  41506991552, queue #12). The cause was inferred from that fix, since the failing log was not read.
+
+## 2026-11-02 — A hook fired on a real compaction, and misreported it
+
+- **What happened:** the first compaction seen with a hook wired, in the session building v1.4. Nothing
+  was running after 19:50:43; compaction began at about 20:44:40 and ended at 20:45:43, about 54 minutes
+  in, replacing 431,381 tokens with 12,837. The transcript's `compactMetadata` records the trigger as
+  `auto`; that it was the idle compaction is inferred from the timing. `SessionStart` with source
+  `compact` ran `se --post` 0.1 seconds after the boundary's timestamp, and the agent's next turn opened
+  with `YOU WERE COMPACTED` and SE1/A11's rule. The agent took its summary as recalled and went to the
+  transcript. The alarm was right and its numbers were wrong: `0 time(s)`, `(None)`, `? tokens with ?`,
+  where the transcript shows one compaction and the figures above.
+- **Kind:** K3 (the wrong count passed for true until this run, because a simulated `source: compact`
+  was the only test, and it printed the same line).
+- **Cost:** none to the work; the source was read before anything relied on the count.
+- **Findable by:** compare the hook's words with the transcript at the first real compaction. The
+  likely cause, inferred and not shown, is that the boundary reaches the file after the hook has read it.
+- **Changed:** `se --post` waits up to two seconds for the record, and otherwise says the transcript has
+  not recorded it, without a count or a size; a record older than two minutes is not taken for this
+  compaction. Fixtures cover each case, including the record arriving during the wait. Whether the wait
+  ever helps is unknown until the next real compaction. It also prints the mission and shape from the
+  source (SE1/D9). The README says what was seen. Open: a manual `/compact` is still unobserved, and the
+  doctor cannot tell a fired hook from a configured one.
+
+## 2026-11-02 — Codex found 4 of 5 planted defects, then real ones the check had passed
+
+- **What happened:** the second review by another family, on a copy with five defects planted. It found
+  4 of 5, and missed the weakened phrase test in `ADOPT.md`, a file it did not read
+  ([the method](../archive/reviews/REVIEW-METHOD-other-family.md)). With the plants filtered, it reproduced
+  a real failure: `REQ1/MISSION-1 verdict rejected 2020-01-01` passed the trace row for a requirement that
+  began in v3. It also showed the README index check letting a contradictory entry through, and a test named
+  "no runtime but Python" that refused only Node. Its report also noted the doctor's citations row red on
+  a test fixture written the same day: the check had passed, so the drafter reported the row without
+  rerunning the doctor.
+- **Kind:** K3: a green check read as covering what it did not look at, each time. The row said "passed
+  by a person" for a line no person had to give.
+- **Cost:** small: about three minutes of the reviewer's time, then the fixes.
+- **Findable by:** executing the rule with a value it should refuse, which is what the reviewer did. It
+  would not have been found by more cases of what the rule allows.
+- **Changed:** a verdict needs an outcome, the requirement's current version, and `by` a judge
+  (REQ1/SE-1); the check holds README's index to the headings both ways (REQ1/ID-1) and allows only the
+  runtimes contributing uses (REQ2/CHK-4); `se --post` no longer says a multiplexer saves the session; and
+  the check now runs the citations row on this repository, so a bare ID in a fixture goes red before a
+  doctor is asked. `se` still cannot check who wrote a verdict, or which version of the work it covers.
+
+## 2026-11-02 — A manual `/compact` fired the hook, and the fix said what it could know
+
+- **What happened:** the owner ran `/compact` in the session building v1.4, after the release commit. The
+  transcript records the trigger as `manual`, 277,342 tokens replaced with 11,939, at 23:34:58. `SessionStart`
+  with source `compact` ran `se --post`, and the agent's next turn opened with `YOU WERE COMPACTED just now.
+  The transcript has not recorded it yet, so its size is not known here (1 earlier on record)`, then the
+  mission and shape from the source. Each part was true: one earlier compaction was on record, and no count
+  or size was invented, where the idle compaction had printed `0 time(s)` and `? tokens`. The owner saw the
+  hooks fire.
+- **Kind:** K1 (the fix from the entry above, tried on the case it was written for).
+- **Cost:** none.
+- **Findable by:** what found it: comparing the hook's words with the transcript at a real compaction.
+- **Changed:** the README and queue #4 now say a manual `/compact` was seen. This also bears on the open
+  question about the wait, and changed nothing in `se`: the hook ran 2,206 ms, so the two-second wait ran out,
+  and it finished at 58.096, 9 ms before the boundary's timestamp of 58.105. That is the likely cause above
+  seen again, and it suggests the record cannot arrive during the wait, which then costs two seconds per
+  compaction for nothing. One run, inferred from timestamps, with no harm done, so the wait stays until
+  someone looks. The doctor still cannot tell a fired hook from a configured one.
+
+## 2026-11-02 — `since --write` wrote markers that name no release
+
+- **What happened:** during the v1.4 release commit, before the tag, a test ran `since --write` in its copy
+  of the repository and wrote `text since unreleased (unreleased)` into ten markers, which made a second test
+  fail for a reason of its own. Run in a copy, the same thing happened after the tag, on any changed principle,
+  while CHANGELOG.md has no unreleased section, which is the state right after every release. `--write` then
+  disagreed with its own `--check`.
+- **Kind:** K3 (a fallback string took the place of a release, and looked like one).
+- **Cost:** a release-time scare, settled by testing a tagged copy. No bad marker was committed, since the checker
+  goes red on them.
+- **Findable by:** a fixture with no unreleased section; every earlier fixture had a section or a tag to name.
+- **Changed:** in either state `--write` refuses with exit 2, writes nothing in any chapter, and says what to add;
+  `--check` says the same. Fixtures cover both states and both legitimate paths, `--as` and a named section; the
+  refusals failed first, and a mutant that writes chapter by chapter is caught (queue #14, v1.4.1).
+
+## 2026-11-02 — v1.4.1 went out red on one CI job, because the tag went up with the commit
+
+- **What happened:** `main` and `v1.4.1` were pushed together, and `windows-latest` with Python 3.9 then failed on
+  both, with the other five jobs green. The likely cause: the new refusal prints an em dash to stderr, `since.py`
+  set UTF-8 only on stdout, and the test decodes both as UTF-8. Forcing cp1252 here gives byte `0x97` and that
+  decoding error. The runner's log was not read, since it needs a login, so this is inferred until the job goes green.
+- **Kind:** K3 (the same class as the 2026-10-28 hash on that platform; a green local run felt like enough).
+- **Cost:** a public tag whose check fails on one platform. The refusal itself works there; `se` and the copies
+  are untouched.
+- **Findable by:** CI on a branch before the tag. Pushing them together meant the tag was public before the
+  matrix ran, and a tag is not moved.
+- **Changed:** `since.py` sets UTF-8 on stderr too, with a test that forces cp1252 and was seen to fail first (v1.4.2). v1.4.2's
+  commit ran the whole matrix on a branch before its tag existed. `v1.4.1` stays where it is, red on that job.
+
+## 2026-11-03 — `se --post` looked at less than it said, off the platform it was written on
+
+- **What happened:** the owner asked about `du` and `pmset`. `du` does not exist on Windows, so the transcript
+  line vanished there with no word. Windows' battery was never read, so a laptop on battery was not fragile.
+  Linux read only `BAT*`, the first of them, and always said "sleep not prevented", having not looked.
+- **Kind:** K3 (an unexamined `False` read as a finding; CI's `--version` never reached this code).
+- **Cost:** none seen; no one has reported running it on such a machine.
+- **Findable by:** asking of each command what it does on the other two platforms. CI on three platforms did not
+  find it, because the tests inject the power reading and no job called the real one.
+- **Changed:** see queue #16. A test now calls the real reading on every CI job. That shows it runs, not that it is
+  right: a runner has no battery, so queue #17 stays open. What is left is in queue #18 to #21.
+
+## 2026-11-02 — Verdicts on the mission and the shape
+
+Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent (SE1/U10).
+
+- REQ3/MISSION-1 verdict: pass, by Warren MacEvoy, 2026-11-02
+- REQ3/SHAPE-1 verdict: pass, by Warren MacEvoy, 2026-11-02
+
+## 2026-11-03 — Four limits: a vendored tree, Zellij, containers, and the review's isolation
+
+- **Vendored trees (queue #22).** `check_citations` read `../tribe`'s `vendor/compaction/` as its own and
+  failed. Looking for the cause showed two false passes that nobody had reported, both worse than the failure:
+  a vendored test naming a requirement counted as covering it, and a vendored verdict line could pass a judged
+  requirement of the same name. **Changed:** citations, trace, and verdicts read `own_files`; both rows name
+  what they left out. Only a top-level `vendor/`: elsewhere a false failure stays to be read. Nested or
+  `third_party/` trees therefore still fail, and a repository that keeps its own files under `vendor/` has them
+  skipped, named in the row. Not changed: `dm.py`, which is another repository's and has its own scanner.
+- **Zellij (queue #19).** Its client sets `ZELLIJ` to the string `"0"` (`zellij-client/src/lib.rs`, read
+  2026-11-03), so a test that read it as a number would miss it; `env.get` sees it. **Changed:** the
+  report names which of tmux, screen, or Zellij it found. Not run under Zellij. Others, such as `dtach`, are
+  still called no multiplexer.
+- **Containers (queue #20).** No change proposed. A Linux image is Linux inside on any host, so `/.dockerenv`
+  and the cgroup file still apply under Docker on macOS or Windows; that is reasoning, and not run. A native
+  Windows container would be missed, and so, probably, would Podman, which has neither (recollection). A miss
+  reports *fragile*, so the cost is more care than needed. Docker is installed on this machine, but this user
+  is refused its socket, so nothing was run in a container; a detection added now would be one more guess.
+- **The review's isolation (queue #21).** The method named no way to repeat it off Linux. **Changed:** the
+  method says what must be shown, and `tools/probe_isolation.py` shows it. The first draft graded a write
+  that got through as blocked, because it looked for the file after cleaning it up; its author caught that on
+  reading, before the test that now fails on it. Seen on real namespaces, without a reviewer; not on macOS or
+  Windows.
+- **Red on Windows first (run 41672924422).** Both Windows jobs failed on the branch and the other four passed.
+  The log needs a login, so the cause is inferred: a citation's location was built from a native path, so the
+  report said `docs\NOTES.md:1` beside `vendor/other`, and the new test expected a slash. **Changed:** the location
+  is always written with slashes. Found by the matrix on a branch, before any tag, as v1.4.1 taught.
+
+## 2026-11-04 — The shape was not settled at v3, and a verdict on REQ4/SHAPE-1
+
+The author used *shape* first for what became the mission. The split into two words, and the v3 definition, were
+an agent's proposal, and commit 9c4ce15 called the whole change the author's decision, which claimed too much for
+the shape. The author's v3 pass was on that wording. On 2026-11-04 the author said what it is: an aesthetic, not a
+requirement, versioned like the others, and heavy, between the mission and the requirements. An agent drafted the
+sentence with the author; the agent's opinion was not the verdict. Given by their judge on `REQUIREMENTS_v4` as
+sent, and recorded here by an agent (SE1/U10).
+
+- REQ4/SHAPE-1 verdict: pass, by Warren MacEvoy, 2026-11-04
+
+**Changed:** REQUIREMENTS_v4. `GLOSSARY.md`, [SE1/D9](../guide/05-design.md#d9), and the requirements template
+still say "the few rules", and wait for the next minor release.
+
+## 2026-11-04 — A review of the shape and W14 found two definitions and a title the guide refutes
+
+A subagent of the same family reviewed `shape-test` read-only; its main quotations were opened at the source, and its
+experiments were not rerun. Row 25 had been marked done when its own done sentence was not met, and the agent that
+wrote the change did not say so. Found by reading the row's sentence against the files.
+**Changed:** one definition in D9, `GLOSSARY.md`, and the template; W14's title, direction, and what would show it wrong;
+AGENTS.md's order of authority says earlier and later; v4's date and its "unchanged" sentence, as lint, by the author's
+word. What needs a v5 is queue row 27.
+
+## 2026-11-04 — The mission and the shape are requirements
+
+The author: "as written mission and shape are in requirements, they are just the most heavy requirements to move.
+This avoids a v2.0." The sentence "An aesthetic, not a requirement" in REQ4/SHAPE-1 was the agent's. The author had said
+"not a requirement" of including machine tests, and the agent stretched it to the whole shape, and the entries above
+repeat it. **Changed:** REQUIREMENTS_v5, W14, and D9 say so; what is left is queue row 27. Given by their judge on
+`REQUIREMENTS_v5` as sent, and recorded here by an agent (SE1/U10).
+
+- REQ5/SHAPE-1 verdict: pass, by Warren MacEvoy, 2026-11-04
+
+## 2026-11-04 — The term is the fundamental shape
+
+Policing "shape" through the guide, as queue row 26 first proposed, treated the wrong side: the word is plain English in
+a dozen places. The author named the term instead, and "fundamental" appeared nowhere in the guide. **Changed:** REQUIREMENTS_v6,
+sent 2026-11-04, and the guide say it. `se.py` reads both headings, because five requirements documents in `../compaction`,
+`../data-mining`, and `../tribe` say `## Shape`; a test holds both, seen red first. The risk is that people shorten it, so
+the glossary says "shape" alone never means this. Nothing checks that.
+
+## 2026-11-04 — A minor release could not pass CI before its tag
+
+Since v1.4.1 the practice is CI on the commit, then the tag. A minor's release commit carries dated markers, and
+`since --check` read dates only from tags, so it was red until tagged; v1.4 went up with its tag for this reason, and
+v1.5 would have. **Changed:** `--check` takes a top CHANGELOG section that is dated, untagged, and newer than every tag as
+the release being made, and prints a note saying so. A fixture covers it in whichever state the CHANGELOG is in, seen red
+first, and a wrong marker stays red. `--write` is unchanged and still refuses. **Cost:** a release commit nobody tags now
+passes, with only that note to show it; nothing fails for it.
+
+## 2026-11-04 — Finish, in the fundamental shape
+
+- **What happened:** reviewing the data-mining guide's fundamental shape, a subagent returned a long list of small objections, and the author answered that agents should work toward completion, not extension. **Changed:** [SE1/A12](../guide/10-agents.md#a12) and REQUIREMENTS_v7, sent 2026-11-04.
+- REQ7/SHAPE-2 verdict: pass, by Warren MacEvoy, 2026-11-04
+
+## 2026-11-04 — Guidelines, not law
+
+A subagent's review, asked to read the new text literally, proposed clauses to close loopholes, and an agent backed them. The author: "SE are guidelines, not law. They are meant to point." **Changed:** REQUIREMENTS_v8, sent 2026-11-04, adds REQ8/SHAPE-3, and the agent's guards in A12 came out. Given by their judge as "accept mission and shape", and recorded here by an agent (SE1/U10).
+
+- REQ3/MISSION-1 verdict: pass, by Warren MacEvoy, 2026-11-04
+- REQ5/SHAPE-1 verdict: pass, by Warren MacEvoy, 2026-11-04
+- REQ7/SHAPE-2 verdict: pass, by Warren MacEvoy, 2026-11-04
+- REQ8/SHAPE-3 verdict: pass, by Warren MacEvoy, 2026-11-04

@@ -24,12 +24,13 @@ spec.loader.exec_module(dm)
 
 DM_AGENTS = (GUIDE / "AGENTS.md").read_text(encoding="utf8")
 SE_AGENTS = ("# AGENTS.md\n\nA working agreement. The IDs are defined in the guide at "
-             "https://github.com/wmacevoy/software-engineering/tree/v1.6; This copy is from **v1.6**.\n")
+             "https://github.com/wmacevoy/software-engineering/tree/v1.7; This copy is from **v1.7**.\n")
 
 GOOD = {
     "AGENTS.md": SE_AGENTS,
     "AGENTS-DM.md": DM_AGENTS,
-    "CLAUDE.md": "# Project\n\n@AGENTS.md\n@AGENTS-DM.md\n",
+    "CLAUDE.md": "# Project\n\n@AGENTS.md\n@AGENTS-DM.md\n@QUICKREF.md\n",
+    "QUICKREF.md": "# SE1 quick reference\n",
     "CONTRIBUTING.md": (
         "# Contributing\n\n## Run it\n\n"
         "- **Raw to report:** `make report` — every reported number, about four minutes\n"
@@ -183,20 +184,20 @@ class TestAgreements(Fixture):
         # REQ1/AGR-1: this guide's agreement extends SE1's at a named release.
         f = self.doctor()
         self.assertEqual(finding(f, "extends").state, dm.PASS)
-        self.assertIn("extends SE1 v1.6", finding(f, "extends").text)
+        self.assertIn("extends SE1 v1.7", finding(f, "extends").text)
 
     def test_extends_an_older_se1_than_the_copy_here(self):
-        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("v1.6", "v1.7")}))
+        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("v1.7", "v1.8")}))
         self.assertEqual(finding(f, "extends").state, dm.WARN)
         self.assertIn("not reviewed", finding(f, "extends").text)
 
     def test_extends_a_newer_se1_than_the_copy_here(self):
-        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("v1.6", "v1.5")}))
+        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("v1.7", "v1.6")}))
         self.assertEqual(finding(f, "extends").state, dm.FAIL)
         self.assertIn("older", finding(f, "extends").text)
 
     def test_extends_needs_a_labeled_se1_copy(self):
-        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("This copy is from **v1.6**", "no label")}))
+        f = self.doctor(self.changed(**{"AGENTS.md": SE_AGENTS.replace("This copy is from **v1.7**", "no label")}))
         self.assertEqual(finding(f, "extends").state, dm.WARN)
 
     def test_agreement_row_says_configured_not_observed(self):

@@ -1,14 +1,14 @@
 # 1. Purpose
 
 What data mining is for, what makes a claim worth acting on, and who is affected by an analysis
-without ever seeing it. Read with [SE1 chapter 1](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/01-purpose.md),
+without ever seeing it. Read with [SE1 chapter 1](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/01-purpose.md),
 which still applies; this chapter says where the noun changes.
 
 ---
 
-### <a id="p1"></a>P1. Data miners produce claims worth acting on, on time, within the data and compute they have, managing discomfort for the team, the client, and the people in the data
+### <a id="p1"></a>DM1/P1. Data miners produce claims worth acting on, on time, within the data and compute they have, managing discomfort for the team, the client, and the people in the data
 
-*Reframes [SE1/P1](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/01-purpose.md#p1).*
+*Reframes [SE1/P1](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/01-purpose.md#p1).*
 
 Software engineering asks *does the thing work*. Data mining asks *is the claim true* — and, before
 that, *would anyone do anything differently if it were*. Mostly the same discipline pointed at a
@@ -24,9 +24,9 @@ what the columns mean.
 
 > **Ask:** "Which of these is fixed — and is the question the one that should move?"
 
-### <a id="p2"></a>P2. Accurate is not true: a model is correct about a dataset; a claim is true about a world
+### <a id="p2"></a>DM1/P2. Accurate is not true: a model is correct about a dataset; a claim is true about a world
 
-*Reframes [SE1/P2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/01-purpose.md#p2).*
+*Reframes [SE1/P2](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/01-purpose.md#p2).*
 
 Accuracy is a property of a model measured against a held-out sample. *True* is a property of a
 claim that has to survive a world containing selection bias, drifting definitions, revised
@@ -44,9 +44,9 @@ holding.
 > **Ask:** "Is this a fact about the dataset, or about the world — and what would have to be true
 > for it to carry over?"
 
-### <a id="p3"></a>P3. The people in the data are not in the room
+### <a id="p3"></a>DM1/P3. The people in the data are not in the room
 
-*Reframes [SE1/P3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/01-purpose.md#p3).*
+*Reframes [SE1/P3](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/01-purpose.md#p3).*
 
 SE1/P3 names the team, the client, and the users. Data work adds a party who appears in none of
 those: **the people whose rows you are modeling.** In software the user and the affected person are
@@ -67,9 +67,9 @@ information about the pipeline.
 
 > **Ask:** "Whose rows are these, and what happens to them because of this?"
 
-### <a id="p4"></a>P4. A practice that relieves the fear without reducing the risk is worse than nothing, and data work is full of them
+### <a id="p4"></a>DM1/P4. A practice that relieves the fear without reducing the risk is worse than nothing, and data work is full of them
 
-*Reframes [SE1/P4](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/01-purpose.md#p4).*
+*Reframes [SE1/P4](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/01-purpose.md#p4).*
 
 Every practice retires a named fear (SE1/P4). In data work:
 
@@ -93,9 +93,9 @@ falls down. **A wrong number just gets used.**
 
 > **Ask:** "Which fear does this retire — and would it still retire it if the split leaked?"
 
-### <a id="p5"></a>P5. The deliverable is the claim and the means to re-derive it, not the notebook
+### <a id="p5"></a>DM1/P5. The deliverable is the claim and the means to re-derive it, not the notebook
 
-*Reframes [SE1/P5](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/01-purpose.md#p5).*
+*Reframes [SE1/P5](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/01-purpose.md#p5).*
 
 The deliverable is the claim, plus the ability of someone else to reproduce it, challenge it, and
 update it next quarter. "It ran in a kernel I have since restarted" is a claim about a kernel.

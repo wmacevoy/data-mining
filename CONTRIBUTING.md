@@ -1,14 +1,13 @@
 # Contributing
 
 How to work on this repository, for a new teammate and for an agent, who both arrive knowing
-nothing ([SE1/A3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a3)).
+nothing ([SE1/A3](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a3)).
 A change that makes a line here untrue updates it in the same change. `templates/CONTRIBUTING.md` is
 the template this guide publishes for data projects; this file is about the guide itself.
 
 ## Run it
 
-- **Prerequisites:** Python 3.9 or later, git, and a clone of SE1 with its tags at
-  `../software-engineering` (or `SE_GUIDE=path`). Nothing to install.
+- **Prerequisites:** Python 3.9 or later and git. SE1 is at `vendor/se1`. Nothing to install.
 - **Build:** none; the repository is Markdown and scripts.
 - **Run:** `./dm --doctor` for this repository's state; on a guide, the data rows say *none yet*, which
   is true.
@@ -25,7 +24,7 @@ the template this guide publishes for data projects; this file is about the guid
 ## Rules for this repository
 
 - The root `AGENTS.md` is this guide's published agreement. SE1's is the unedited copy at
-  `docs/SE1-AGENTS.md`, and `se`, `se.ps1`, and `se.py` are unedited copies too; change them only by
+  `docs/SE1-AGENTS.md`, and `vendor/se1/`, `se`, `se.ps1`, and `se.py` are unedited copies too; change them only by
   re-copying from a release.
 - Bumping SE1 follows *Changing this guide* in the README: one constant, the links, CI, the copies here,
   and a CHANGELOG entry by ID. `HANDOFF-*` notes keep the links they were written with.

@@ -1,14 +1,14 @@
 # 10. Agents
 
 What changes when the analyst is fast, fluent, and has no stake in whether the number is true. Read
-with [SE1 chapter 10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md),
+with [SE1 chapter 10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md),
 all of which applies; the working agreement is [AGENTS.md](../AGENTS.md).
 
 ---
 
-### <a id="a1"></a>A1. Producing an analysis got cheaper faster than knowing it is right
+### <a id="a1"></a>DM1/A1. Producing an analysis got cheaper faster than knowing it is right
 
-*Reframes [SE1/A1](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a1).*
+*Reframes [SE1/A1](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a1).*
 
 An agent can write a pipeline, train a dozen models, and draft the report in an afternoon. None of
 that made the question better posed, the data's provenance clearer, the labels more reliable, or the
@@ -18,9 +18,9 @@ provenance, the checks, the review, and the ownership of the claim.
 > **Ask:** "Now that the analysis is cheap, which part of knowing it is right is the expensive
 > part?"
 
-### <a id="a2"></a>A2. Code that throws is safe; code that returns a number is not
+### <a id="a2"></a>DM1/A2. Code that throws is safe; code that returns a number is not
 
-*Reframes [SE1/A2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a2).*
+*Reframes [SE1/A2](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a2).*
 
 SE1/A2: an agent is a K3 factory; never let confidence substitute for a run. Data work is the worst
 place to install one, because here the wrongness does not raise ([DM1/U2](02-unknowing.md#u2)). An
@@ -39,9 +39,9 @@ rather than forbidden ([DM1/A4](#a4)).
 
 > **Ask:** "Was this run — and then, was the output looked at, or only its summary?"
 
-### <a id="a3"></a>A3. An agent's tries count as your looks
+### <a id="a3"></a>DM1/A3. An agent's tries count as your looks
 
-*Reframes [SE1/A9](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a9).*
+*Reframes [SE1/A9](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a9).*
 
 SE1/A9 hands agents the search-shaped work. In data mining the search is the hazard
 ([DM1/F4](03-feedback.md#f4)), and an agent searches at machine speed: sixty feature sets, forty
@@ -55,7 +55,7 @@ with the result.
 
 > **Ask:** "How many things did the agent try before it showed us this one?"
 
-### <a id="a4"></a>A4. Keep the holdout out of the agent's reach
+### <a id="a4"></a>DM1/A4. Keep the holdout out of the agent's reach
 
 *New.*
 
@@ -70,9 +70,9 @@ same goes for the labels of any evaluation set, and for the answer key of an ass
 
 > **Ask:** "Could the agent read the holdout if it decided to?"
 
-### <a id="a5"></a>A5. Spend the speed on checks: fixtures, assertions, the boring second case
+### <a id="a5"></a>DM1/A5. Spend the speed on checks: fixtures, assertions, the boring second case
 
-*Reframes [SE1/A5](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a5).*
+*Reframes [SE1/A5](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a5).*
 
 The work agents do best and humans skip most is exactly the work that multiplies in data work:
 the hand-computed fixture ([DM1/T6](06-testing.md#t6)), the row-count and uniqueness assertions
@@ -82,9 +82,9 @@ More checks do.
 
 > **Ask:** "What check would make the next ten analyses safer — and can the agent write it now?"
 
-### <a id="a6"></a>A6. Point review at the data handling
+### <a id="a6"></a>DM1/A6. Point review at the data handling
 
-*Reframes [SE1/A6](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a6).*
+*Reframes [SE1/A6](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a6).*
 
 SE1/A6: review capacity is the bottleneck. Spend it where K3 lives: the joins, filters, splits, fills,
 time conversions, and the definition of the outcome. Model code is usually library calls and
@@ -97,9 +97,9 @@ review there ([DM1/F10](03-feedback.md#f10)).
 
 > **Ask:** "Did the review read the joins and the split, or the model?"
 
-### <a id="a7"></a>A7. You present it, so you own it
+### <a id="a7"></a>DM1/A7. You present it, so you own it
 
-*Reframes [SE1/A7](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a7).*
+*Reframes [SE1/A7](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a7).*
 
 Delegation is not abdication. If you cannot explain why the number is what it is — which rows, which
 definition, which split, how many tries — you cannot defend it, update it next quarter, or notice when
@@ -107,7 +107,7 @@ it goes wrong. An analysis you cannot explain is a liability, whatever its metri
 
 > **Ask:** "Could I answer the client's hardest question about this number without the agent?"
 
-### <a id="a8"></a>A8. Data sent to an agent has left the room
+### <a id="a8"></a>DM1/A8. Data sent to an agent has left the room
 
 *New.*
 
@@ -123,7 +123,7 @@ see [DM1/A10](#a10).
 
 > **Ask:** "Whose data is this, and did they agree to it being sent here?"
 
-### <a id="a9"></a>A9. A language model in the pipeline is a model: version it, sample it, and check its test set was not in its training
+### <a id="a9"></a>DM1/A9. A language model in the pipeline is a model: version it, sample it, and check its test set was not in its training
 
 *New.*
 
@@ -148,7 +148,7 @@ principle in this guide applies to it, and four need restating:
 > **Ask:** "Which prompt and which model version produced this, and could it have seen the test
 > questions?"
 
-### <a id="a10"></a>A10. When reading the data is the task, the agent must read it: say what then has to be true
+### <a id="a10"></a>DM1/A10. When reading the data is the task, the agent must read it: say what then has to be true
 
 *New.*
 

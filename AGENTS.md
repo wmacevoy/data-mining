@@ -2,15 +2,15 @@
 
 A working agreement for AI agents doing data work — analysis, pipelines, models, evaluation — in a
 repository that follows this guide. It **extends** the
-[SE1 working agreement](https://github.com/wmacevoy/software-engineering/blob/v1.6/AGENTS.md) at
-SE1 v1.6, which still governs everything about the code: ownership, authority, stop/ask/proceed, writing for human
+[SE1 working agreement](https://github.com/wmacevoy/software-engineering/blob/v1.7/AGENTS.md) at
+SE1 v1.7, which still governs everything about the code: ownership, authority, stop/ask/proceed, writing for human
 attention, verifying, finishing. This file adds what data work needs on top, and where the two
 overlap, the stricter rule wins. Each rule cites the principle behind it by versioned ID — (DM1/F5),
 (SE1/T3) — so that it can be argued with rather than merely obeyed.
 
 The DM1 IDs are defined in the guide at https://github.com/wmacevoy/data-mining/tree/v1.1; its
 [principle index](https://github.com/wmacevoy/data-mining/blob/v1.1/README.md#principle-index) lists
-them all, and each has an anchor in its chapter (for example, `guide/03-feedback.md#f5`). This copy is
+them all, and each has an anchor in its chapter (for example, `guide/03-feedback.md#f5`), and a grep for `DM1/F5.` lands on it. This copy is
 from **v1.2**; what changed since, by ID, is in the guide's
 [CHANGELOG](https://github.com/wmacevoy/data-mining/blob/v1.1/CHANGELOG.md).
 
@@ -18,7 +18,7 @@ Drafted 2026-10-27 by a Claude model with Warren MacEvoy, refactoring the course
 `DATA-SCIENCE.md` (drafted 2026-08-27 with Claude Opus 5); which model did the refactoring was not
 recorded. Revised with Claude Fable 5.1 on 2026-10-28 against SE1 v1.3; the human signs each
 release. Revised on 2026-11-01 with Claude Opus 5.5, from the field reports below, and on 2026-11-03 with the
-same model, against SE1 v1.4, on 2026-11-04 against SE1 v1.5, and on 2026-11-05 against SE1 v1.6. These are rules
+same model, against SE1 v1.4, on 2026-11-04 against SE1 v1.5, and on 2026-11-05 against SE1 v1.6 and v1.7. These are rules
 an agent wrote for agents (SE1/U9), and **most of them are untried**. One field report (`GAPS.md`)
 met the 93 principles of that date with a private document review, and by that one model's judgment
 46 reached real work, 20 fit only by argument, and 27 did not reach it; five of today's principles
@@ -31,7 +31,7 @@ observed.
 
 **Load both files at every start, from copies kept inside the working directory**: SE1's as
 `AGENTS.md` at the root, where SE1's doctor and Claude Code's own read look for it, and this one as
-`AGENTS-DM.md` beside it, both imported by name from `CLAUDE.md`; an import from outside the working
+`AGENTS-DM.md` beside it, both imported by name from `CLAUDE.md` with SE1's `QUICKREF.md`; an import from outside the working
 directory may load nothing and say nothing. Then check that they loaded: a fresh session, asked without opening any file, can
 quote a line of each. A rule in a file you would have to open is a rule you will not follow, and
 in SE1's trials a rule that was loaded was still not applied unless a check ran on the work

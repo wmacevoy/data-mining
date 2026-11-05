@@ -3,7 +3,7 @@
 The decision this work serves, and exactly what is being predicted, described, or found. The data
 equivalent of requirements: changes only with the client, and a change in meaning is a new version
 (`QUESTION_v2.md`); a spelling or lint fix is not, and is named in the commit
-([SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/04-requirements.md#r10)). See
+([SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/04-requirements.md#r10)). See
 [DM1/R1–R12](https://github.com/wmacevoy/data-mining/blob/v1.1/guide/04-requirements.md).
 
 Client (the one voice who can decide): _name_ · Date sent: _yyyy-mm-dd_ · *Tell us what is wrong

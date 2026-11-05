@@ -2,14 +2,14 @@
 
 The shape of data-mining work: the six steps under their usual data names, where to slow down,
 the first slice, time boxes, the deadline pressure to find something, and what *done* means for a
-claim. Read with [SE1 chapter 8](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md);
+claim. Read with [SE1 chapter 8](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md);
 its queue and findings templates work unchanged.
 
 ---
 
-### <a id="w1"></a>W1. CRISP-DM is the six steps, with the loop back to the question drawn in
+### <a id="w1"></a>DM1/W1. CRISP-DM is the six steps, with the loop back to the question drawn in
 
-*Reframes [SE1/W1](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w1).*
+*Reframes [SE1/W1](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w1).*
 
 The standard process model for data mining, CRISP-DM, is SE1/W1's six steps under other names:
 
@@ -29,9 +29,9 @@ is to go back and rewrite the question, not to tune the model.
 
 > **Ask:** "Did the evaluation answer the question — or tell us the question was wrong?"
 
-### <a id="w2"></a>W2. Slow down around the one-way decisions: the question, the unit, the outcome, the split, the labels
+### <a id="w2"></a>DM1/W2. Slow down around the one-way decisions: the question, the unit, the outcome, the split, the labels
 
-*Reframes [SE1/W4](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w4).*
+*Reframes [SE1/W4](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w4).*
 
 SE1/W4 chooses how carefully to work per decision, by the cost of being wrong once. Data work has an
 unusual distribution of those costs: the expensive decisions all arrive early, when nothing has been
@@ -51,9 +51,9 @@ definition of the outcome.
 
 > **Ask:** "If this choice is wrong, what do we have to redo?"
 
-### <a id="w3"></a>W3. Build a thin end-to-end slice first: one source, one feature, a baseline, the real chart
+### <a id="w3"></a>DM1/W3. Build a thin end-to-end slice first: one source, one feature, a baseline, the real chart
 
-*Reframes [SE1/W6](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w6).*
+*Reframes [SE1/W6](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w6).*
 
 The usual plan is horizontal: clean all the data, then engineer all the features, then model, then
 report. Horizontal layers all finish at the same time — never — and the first contact between the
@@ -66,9 +66,9 @@ missing peak — is exposed while there is time to respond.
 
 > **Ask:** "Is there a version, however bad, that runs from raw data to the client's chart today?"
 
-### <a id="w4"></a>W4. Time-box exploration and cleaning, and end each box on a fence
+### <a id="w4"></a>DM1/W4. Time-box exploration and cleaning, and end each box on a fence
 
-*Reframes [SE1/W8](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w8) and [SE1/W9](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w9).*
+*Reframes [SE1/W8](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w8) and [SE1/W9](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w9).*
 
 Exploration is the data form of SE1/W8's spike, and it falls down the waterfall the same way: one
 more plot, one more join, one more week, and no claim at the end. Give each exploration and cleaning
@@ -85,9 +85,9 @@ A status meeting is not a fence. Neither is a notebook cell that ran.
 
 > **Ask:** "What will we know when this box ends that we don't know now?"
 
-### <a id="w5"></a>W5. The deadline pathology here is finding something; change the terrain, not the willpower
+### <a id="w5"></a>DM1/W5. The deadline pathology here is finding something; change the terrain, not the willpower
 
-*Reframes [SE1/W7](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w7).*
+*Reframes [SE1/W7](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w7).*
 
 SE1/W7's avoidance gradient applies, and in data work the behavior the spike produces is specific:
 one more peek at the holdout, one more subgroup where the effect is significant, one more outlier
@@ -111,9 +111,9 @@ Change the terrain:
 
 > **Ask:** "What would make the last week before this deadline boring?"
 
-### <a id="w6"></a>W6. Write down what you tried that did not work
+### <a id="w6"></a>DM1/W6. Write down what you tried that did not work
 
-*Reframes [SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w10) and [SE1/W13](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w13).*
+*Reframes [SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w10) and [SE1/W13](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w13).*
 
 SE1/W10 keeps the working set in the repository. For data work the working set adds three things:
 the question ([QUESTION template](../templates/QUESTION_v1.md)), the analysis plan
@@ -131,9 +131,9 @@ person who walked it leaves with them.
 > **Ask:** "If someone repeated this work from our repository, which dead ends would they walk
 > into again?"
 
-### <a id="w7"></a>W7. Done means someone else regenerated the number from raw and could argue with it
+### <a id="w7"></a>DM1/W7. Done means someone else regenerated the number from raw and could argue with it
 
-*Reframes [SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w11).*
+*Reframes [SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w11).*
 
 SE1/W11: done means all of it, one concern per change, reviewed by someone else. For a claim, *all of
 it* is:

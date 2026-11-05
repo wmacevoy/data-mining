@@ -3,14 +3,12 @@
 every relative link and anchor resolves; every DM1 citation names a real principle in the file that
 defines it; every principle says, on the line under its heading, whether it is *New.* or which SE1
 principles it *Reframes*; every SE1 link names the pinned SE1 release and the chapter and anchor its ID
-implies (and, given a local clone of the SE1 guide, names a principle and anchor that exist at the pinned
-SE1 release); copies cite no DM1 ID their labeled release lacks; a patch release changes no principle,
+implies, and a principle and anchor that exist in vendor/se1, which is the pinned release, with the copies of
+SE1's files here equal to it; copies cite no DM1 ID their labeled release lacks; a patch release changes no principle,
 AGENTS.md, or template; README's principle index and its SE1 map match the chapters exactly; chapter
 numbers agree; llms.txt links to files that exist; and CHANGELOG.md, AGENTS.md, and the templates agree
 on the release. Exits nonzero on any problem. Python 3.9 or later and git; standard library only.
-Usage: python3 -I tools/check.py           (SE1 IDs checked against ../software-engineering if present,
-                                            at tag SE_RELEASE when that clone has it)
-       SE_GUIDE=path python3 -I tools/check.py
+Usage: python3 -I tools/check.py
        python3 -I tools/check.py --print   (the index and the SE1 map as they should read)"""
 import os
 import re
@@ -26,11 +24,11 @@ SE = "SE1"
 # The SE1 release this guide is written against. Every SE1 link names it, so a reader lands on the
 # text that was read, not on whatever main says now (SE1/R10, SE1/U9). Bumping it is one edit here
 # plus a rewrite of the links, and a walk through SE1's CHANGELOG for every ID this guide reframes.
-SE_RELEASE = "v1.6"
+SE_RELEASE = "v1.7"
 SE_BLOB = f"https://github.com/wmacevoy/software-engineering/blob/{SE_RELEASE}/"
 SE_CHAPTER = {"P": "01-purpose", "U": "02-unknowing", "F": "03-feedback", "R": "04-requirements", "D": "05-design",
               "T": "06-testing", "O": "07-operating", "W": "08-work", "H": "09-people", "A": "10-agents"}
-HEADING = re.compile(r'### <a id="([a-z0-9]+)"></a>([A-Z][0-9]+)\. (.*)')
+HEADING = re.compile(r'### <a id="([a-z0-9]+)"></a>DM1/([A-Z][0-9]+)\. (.*)')
 BASIS = re.compile(r"\*(New|Reframes (.+))\.\*")
 SE_LINK = re.compile(r"\[SE1/([A-Z][0-9]+)\]\(([^)]+)\)")
 
@@ -87,8 +85,11 @@ GH = re.compile(r"^https://github\.com/wmacevoy/data-mining/blob/(main|" + "|".j
 
 files = []
 for folder, dirs, names in os.walk(root):
-    # Dot-directories include .git and CI's checkout of the SE1 guide (.se1).
+    # Dot-directories include .git.
     dirs[:] = sorted(d for d in dirs if not d.startswith("."))
+    # vendor/ at the root is another repository's, and answers to its own checker.
+    if folder == root:
+        dirs[:] = [d for d in dirs if d != "vendor"]
     # A HANDOFF note is finished history: it keeps the SE1 links it was written with.
     files += [os.path.join(folder, n) for n in sorted(names)
               if n.endswith(".md") and not n.startswith((".", "HANDOFF-"))]
@@ -117,38 +118,31 @@ def anchors_of(path):
     return anchors_of_text(read(path))
 
 
-# SE1 IDs, read from the SE1 guide at SE_RELEASE: from a local clone's tag when it has one, so the
-# check says what the pinned release defines and not what the clone's working tree happens to hold
-# (the clone passing at another ref says nothing about the pinned tag; SE1/U7). A clone without the tag is
-# checked as it stands and reported as a problem: fetch the tags. Without a clone, SE1 citations are
-# checked for form only, and the summary line says so (a check that cannot fail says so; SE1/T3).
-se_root = os.path.abspath(os.environ.get("SE_GUIDE") or os.path.join(root, "..", "software-engineering"))
+# SE1 IDs, read from vendor/se1, which must be the pinned release: passing against another says nothing about
+# it (SE1/U7).
+se_root = os.path.join(root, "vendor", "se1")
 se_text, se_source = None, None
 
 
-def se_chapter(_):
-    return None
+def se_chapter(name):
+    p = os.path.join(se_root, "guide", f"{name}.md")
+    return read(p) if os.path.exists(p) else None
 
 
-try:
-    se_text = git_in(se_root, "show", f"{SE_RELEASE}:README.md")
-    se_source = f"{SE_RELEASE} in {rel(se_root)}"
-
-    def se_chapter(name):  # noqa: F811
-        try:
-            return git_in(se_root, "show", f"{SE_RELEASE}:guide/{name}.md")
-        except GIT_FAILED:
-            return None
-except GIT_FAILED:
-    se_readme = os.path.join(se_root, "README.md")
-    if os.path.exists(se_readme):
-        se_text = read(se_readme)
-        se_source = f"{rel(se_readme)} as it stands, NOT tag {SE_RELEASE}"
-
-        def se_chapter(name):  # noqa: F811
-            p = os.path.join(se_root, "guide", f"{name}.md")
-            return read(p) if os.path.exists(p) else None
-        problem(f"SE1 clone      {rel(se_root)} has no tag {SE_RELEASE}: git fetch --tags there, or point SE_GUIDE at a clone that has it")
+if os.path.exists(os.path.join(se_root, "README.md")) and os.path.exists(os.path.join(se_root, "AGENTS.md")):
+    se_text = read(os.path.join(se_root, "README.md"))
+    se_source = f"{SE_RELEASE} in vendor/se1"
+    se_agents = read(os.path.join(se_root, "AGENTS.md"))
+    m = re.search(r"This copy is\s+from\s+\*\*(v[0-9.]+)\*\*", se_agents)
+    if not m or m.group(1) != SE_RELEASE:
+        problem(f"vendored SE1   vendor/se1 is {m.group(1) if m else 'unlabeled'}, and SE_RELEASE is {SE_RELEASE}: copy it again at that tag")
+    # The copies that run or load here are the vendored files, unedited.
+    for copy, source in (("se", "se"), ("se.ps1", "se.ps1"), ("se.py", "se.py"), ("docs/SE1-AGENTS.md", "AGENTS.md")):
+        a, b = os.path.join(root, copy), os.path.join(se_root, source)
+        if not (os.path.exists(a) and os.path.exists(b) and read(a).replace("\r\n", "\n") == read(b).replace("\r\n", "\n")):
+            problem(f"vendored SE1   {copy} differs from vendor/se1/{source}: copy it again, unedited")
+else:
+    problem("vendored SE1   vendor/se1 has no README.md or AGENTS.md: copy SE1 there at the pinned tag")
 
 se_ids = set(re.findall(r"\[\*\*SE1/([A-Z][0-9]+)\*\*\]", se_text)) if se_text else None
 se_anchors = {}  # SE1 chapter file -> its anchors at SE_RELEASE, read once; None if unreadable
@@ -398,5 +392,5 @@ if "--print" in sys.argv:
 reframing = {link for links in reframes.values() for link in links}
 print(f"{len(files)} files, {len(defined_in)} principles ({len(defined_in) - len(reframing)} new), "
       f"{len(reframes)} SE1 principles reframed, SE1 IDs "
-      f"{'checked against ' + se_source if se_ids is not None else 'NOT checked (no local SE1 guide; set SE_GUIDE)'}, {problems} problems")
+      f"{'checked against ' + se_source if se_ids is not None else 'NOT checked (no vendor/se1)'}, {problems} problems")
 sys.exit(1 if problems else 0)

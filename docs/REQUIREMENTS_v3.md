@@ -2,8 +2,8 @@
 
 What must be observably
 true of this guide, and what it is not. Reconstructed from the repository on 2026-11-03 by Claude Opus 5.5
-([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w12)), and **confirmed by the client, all of it, on 2026-11-04**, after a review in session. A change in meaning is a new
-version. This one changes SHAPE-1, on the owner's word, 2026-11-05; everything else is carried over from
+([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w12)), and **confirmed by the client, all of it, on 2026-11-04**, after a review in session. A change in meaning is a new
+version. This one changes SHAPE-1, adds an exception to the fundamental shape, and changes the decision on vendoring SE1, on the owner's word, 2026-11-05; everything else is carried over from
 [v2](REQUIREMENTS_v2.md) unchanged and keeps the version it was introduced in.
 
 Client: Warren MacEvoy · Proxy for the users: the field reports in GAPS.md, and the fall 2026 course projects
@@ -45,7 +45,9 @@ Held by: Warren MacEvoy
   - A technique or a statistics lesson, however good, unless it changes what counts as evidence (Non-goals; READING.md
     points at those).
   - A runtime beyond Python 3.9 or later and git for the tools (the owner, 2026-11-03).
-- **Exceptions:** none yet.
+- **Exceptions:**
+  - DM1/D5 keeps saying UTC inside and local at the edges, which SE1/D5 also says: a quick read is not quick if it includes
+    "and also read this" (the owner, 2026-11-05).
 
 ## The pain
 
@@ -97,8 +99,8 @@ people whose rows those projects mine, who are never in the room.
 ## Scope decisions
 
 - 2026-11-03, the owner's decision: Python 3.9 or later and git are the only dependencies of the check and the
-  tools. A clone of SE1 is a source to check against, not a dependency to install.
+  tools.
 - 2026-11-03, the owner's decision, confirmed 2026-11-04: SE1's copy lives at `docs/SE1-AGENTS.md` here, because the root `AGENTS.md` is
   what this guide publishes. Reversible by renaming, at the price of the published URLs.
-- 2026-11-03, the owner's decision, confirmed 2026-11-04: the SE1 files are vendored as ADOPT.md says (the agreement and `se`), not the whole SE1
-  repository; the checker still reads a clone of SE1 for its IDs.
+- 2026-11-05, the owner's decision, replacing that of 2026-11-03: all of SE1 is vendored at `vendor/se1`, unedited, at the pinned release; the agreement
+  and `se` are still copied where they run. The checker reads `vendor/se1` for SE1's IDs, and no clone is needed.

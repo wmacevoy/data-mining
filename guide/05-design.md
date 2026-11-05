@@ -1,16 +1,16 @@
 # 5. Design
 
 What a data system is made of. Every principle here reframes the one with the same number in
-[SE1 chapter 5](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md): each
+[SE1 chapter 5](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md): each
 says what changes when the nouns become datasets, features, and models. The
-[DESIGN template](https://github.com/wmacevoy/software-engineering/blob/v1.6/templates/DESIGN_v1.md)
+[DESIGN template](https://github.com/wmacevoy/software-engineering/blob/v1.7/templates/DESIGN_v1.md)
 from SE1 works as is; its *State* table is where datasets, feature tables, models, and indexes go.
 
 ---
 
-### <a id="d1"></a>D1. Data is the state, and a trained model is state too
+### <a id="d1"></a>DM1/D1. Data is the state, and a trained model is state too
 
-*Reframes [SE1/D1](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d1).*
+*Reframes [SE1/D1](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d1).*
 
 SE1/D1 says software's material is state, not code. In a data system that is literal: the code is
 small, and the state is everything else — raw pulls, cleaned tables, feature tables, splits, trained
@@ -27,9 +27,9 @@ to it reaches every prediction at once.
 > **Ask:** "List every dataset and model this pipeline holds: who builds it, from what, and who
 > reads it?"
 
-### <a id="d2"></a>D2. A trained model is a cache of the world at training time
+### <a id="d2"></a>DM1/D2. A trained model is a cache of the world at training time
 
-*Reframes [SE1/D2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d2).*
+*Reframes [SE1/D2](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d2).*
 
 SE1/D2: anything that might be out of date is a cache. By that definition nearly everything in a
 data system is one:
@@ -48,9 +48,9 @@ Put the age in the data — a `fetched_at`, a `trained_through` — where a test
 
 > **Ask:** "What is this a copy of, as of when — and what tells us it has gone stale?"
 
-### <a id="d3"></a>D3. There is no single "now" in a training set: join as of the prediction point
+### <a id="d3"></a>DM1/D3. There is no single "now" in a training set: join as of the prediction point
 
-*Reframes [SE1/D3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d3).*
+*Reframes [SE1/D3](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d3).*
 
 Every row in a training set has its own "now" — its prediction point ([DM1/R2](04-requirements.md#r2)) —
 and each feature must be the value as it was known *then*, not as it is known today. An ordinary join
@@ -64,9 +64,9 @@ write down the lag you are assuming ([DM1/R6](04-requirements.md#r6)).
 
 > **Ask:** "For this feature, which version would the model have seen at prediction time?"
 
-### <a id="d4"></a>D4. Make every stage idempotent: re-running it gives the same table
+### <a id="d4"></a>DM1/D4. Make every stage idempotent: re-running it gives the same table
 
-*Reframes [SE1/D4](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d4).*
+*Reframes [SE1/D4](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d4).*
 
 A pipeline gets re-run — after a crash, after a fix, by someone who was not sure it had finished. A
 stage that **appends** doubles its output on the second run, and nothing downstream will say so; a
@@ -78,9 +78,9 @@ on a key, and make a full re-fetch a flag rather than a deletion.
 
 > **Ask:** "What happens to the table if this stage runs twice?"
 
-### <a id="d5"></a>D5. Pick one clock and one definition of "day," and write them down
+### <a id="d5"></a>DM1/D5. Pick one clock and one definition of "day," and write them down
 
-*Reframes [SE1/D5](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d5).*
+*Reframes [SE1/D5](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d5).*
 
 Timestamps are data, not formatting. Store and compute in UTC with explicit offsets; convert to local
 time at the edges, once. Then decide what a "day" is — a UTC day, or a local day — because a daily
@@ -93,9 +93,9 @@ that did not happen. Test across both boundaries ([DM1/T6](06-testing.md#t6)).
 
 > **Ask:** "Which clock is this column in, and what is a day here?"
 
-### <a id="d6"></a>D6. Raw is the authority; everything else is derived by one command
+### <a id="d6"></a>DM1/D6. Raw is the authority; everything else is derived by one command
 
-*Reframes [SE1/D6](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d6).*
+*Reframes [SE1/D6](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d6).*
 
 Keep raw data immutable, exactly as it arrived, with where and when it came from. Everything
 downstream — clean tables, features, splits, models, figures, the number in the slide — is derived
@@ -115,9 +115,9 @@ them. A record *about* raw may sit beside it as a sidecar; say which files count
 > **Ask:** "If I delete everything but raw, what command brings this number back — and does it
 > come back the same?"
 
-### <a id="d7"></a>D7. Pure transforms over frames; the notebook only calls them
+### <a id="d7"></a>DM1/D7. Pure transforms over frames; the notebook only calls them
 
-*Reframes [SE1/D7](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d7).*
+*Reframes [SE1/D7](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d7).*
 
 Keep the logic away from the I/O (SE1/D7). In data: each transform is a function from frames to a
 frame, with no fetching, no file paths, no global state, no clock, and no unseeded randomness inside
@@ -129,9 +129,9 @@ real program unknowable. When a cell is worth keeping, move its logic into a mod
 
 > **Ask:** "Could I test this transform with a five-row frame I typed by hand?"
 
-### <a id="d8"></a>D8. A model's complexity must be paid for by its margin over the baseline
+### <a id="d8"></a>DM1/D8. A model's complexity must be paid for by its margin over the baseline
 
-*Reframes [SE1/D8](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d8).*
+*Reframes [SE1/D8](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d8).*
 
 SE1/D8 separates essential complexity, which the problem demands, from accidental complexity, which
 the solution chose. For a model, the measure is the baseline. A gradient-boosted ensemble with 400
@@ -144,9 +144,9 @@ dependency on a source that can go absent, late, wrong, or lying.
 
 > **Ask:** "What does this model buy over the baseline — and is that larger than the noise?"
 
-### <a id="d9"></a>D9. One definition per feature: training and serving compute it with the same code
+### <a id="d9"></a>DM1/D9. One definition per feature: training and serving compute it with the same code
 
-*Reframes [SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d9).*
+*Reframes [SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d9).*
 
 Conceptual integrity, in a data system, is that each named quantity has one definition. Its most
 expensive violation is **train/serve skew**: a feature computed one way in the training pipeline and
@@ -166,9 +166,9 @@ holds guidelines such as raw is read-only, one definition per feature, and every
 > **Ask:** "Is the feature the model sees in production computed by the same code it was trained
 > on?"
 
-### <a id="d10"></a>D10. A model's contract says what it was trained on and how it fails
+### <a id="d10"></a>DM1/D10. A model's contract says what it was trained on and how it fails
 
-*Reframes [SE1/D10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d10).*
+*Reframes [SE1/D10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d10).*
 
 SE1/D10 asks that a part can be used correctly without reading inside it, and that its contract says
 how it fails. A model cannot be read inside at all, so its contract carries more weight: what inputs
@@ -182,9 +182,9 @@ equivalent: a datasheet ([DATASHEET template](../templates/DATASHEET.md)).
 > **Ask:** "Could someone use this model correctly from its card alone — including knowing when not
 > to?"
 
-### <a id="d11"></a>D11. A metric someone tracks is a promise
+### <a id="d11"></a>DM1/D11. A metric someone tracks is a promise
 
-*Reframes [SE1/D11](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d11).*
+*Reframes [SE1/D11](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d11).*
 
 Once a team has tracked a number for a year, its definition is an interface with dependents:
 comparisons, targets, reports, decisions. Changing it silently destroys the comparability that was
@@ -196,9 +196,9 @@ least one decision.
 
 > **Ask:** "Who already compares against this number, and will they know it changed?"
 
-### <a id="d12"></a>D12. A model is capital you carry, with no expiry date printed on it
+### <a id="d12"></a>DM1/D12. A model is capital you carry, with no expiry date printed on it
 
-*Reframes [SE1/D12](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d12).*
+*Reframes [SE1/D12](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d12).*
 
 Every deployed model carries a weekly cost: monitoring, retraining, its data dependencies, its
 feature pipeline, the person who has to answer for it. In a machine learning system the model code
@@ -212,9 +212,9 @@ they will ask it.
 > **Ask:** "Who owns this model, when will they next check that it is still true — and what can we
 > delete?"
 
-### <a id="d13"></a>D13. Provenance at every layer: value, dataset, label, result
+### <a id="d13"></a>DM1/D13. Provenance at every layer: value, dataset, label, result
 
-*Reframes [SE1/D13](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d13).*
+*Reframes [SE1/D13](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d13).*
 
 A number with no lineage is a rumor. The question SE1/D13 asks — *who said this, and can I check it
 later without asking them again?* — has the same answer at four layers:

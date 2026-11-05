@@ -2,7 +2,7 @@
 
 How to make a repository doing data work follow this guide, whether the work starts today or already has
 results. This file extends
-[SE1's ADOPT.md](https://github.com/wmacevoy/software-engineering/blob/v1.6/ADOPT.md), which governs
+[SE1's ADOPT.md](https://github.com/wmacevoy/software-engineering/blob/v1.7/ADOPT.md), which governs
 everything about the code: the repository guide, the queue, findings, definition of done, CI. It adds
 what is different about data, and one thing changes the order: **SE1 rebuilds requirements from the code,
 which is safe. Rebuilding a question from results is not**, because the results choose the question
@@ -34,22 +34,24 @@ catches.
 
    ```sh
    SE=../software-engineering; DM=../data-mining
-   for f in se se.ps1 se.py; do git -C "$SE" show v1.6:"$f" > "$f"; done
-   git -C "$SE" show v1.6:AGENTS.md > AGENTS.md
+   for f in se se.ps1 se.py; do git -C "$SE" show v1.7:"$f" > "$f"; done
+   git -C "$SE" show v1.7:AGENTS.md > AGENTS.md
+   git -C "$SE" show v1.7:QUICKREF.md > QUICKREF.md
    for f in dm dm.ps1 dm.py; do git -C "$DM" show v1.1:"$f" > "$f"; done
    git -C "$DM" show v1.1:AGENTS.md > AGENTS-DM.md
    chmod +x se dm
-   printf '@AGENTS.md\n@AGENTS-DM.md\n' > CLAUDE.md
+   printf '@AGENTS.md\n@AGENTS-DM.md\n@QUICKREF.md\n' > CLAUDE.md
    ./se --hook --write
    ./dm --doctor
    ```
 
    An existing `AGENTS.md` or `CLAUDE.md` is not overwritten: keep SE1's copy under another name
-   (`docs/SE1-AGENTS.md`), and add the two imports to the `CLAUDE.md` you have. Do not edit the copies.
+   (`docs/SE1-AGENTS.md`), and add the three imports to the `CLAUDE.md` you have. `QUICKREF.md` is SE1's guide at one line per principle, about 5,000 words in every agent's context, and
+   vendoring SE1's whole guide as its ADOPT.md describes is your choice. Do not edit the copies.
    Each copy says which release it came from; read *For copies* in the CHANGELOG before moving to a
    newer one. Then start a fresh session, and ask it to
    quote a line of each file without opening them, and look for `se --post`'s report
-   ([SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a11)).
+   ([SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a11)).
 
    **Several questions in one repository:** the agreements and CI belong to the repository, and the rest to the
    question. Vendor once at the root, give each question a directory with its own `CONTRIBUTING.md` and `docs/`, and
@@ -160,9 +162,9 @@ absence once.
 - [ ] The holdout was out of reach, or recorded as impossible, before the first agent session.
       ([DM1/A4](guide/10-agents.md#a4))
 - [ ] `AGENTS.md` and `AGENTS-DM.md` are unedited copies that name their release, and a fresh session quoted
-      a line of each. ([SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a11))
+      a line of each. ([SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a11))
 - [ ] `se --post` ran at the start of a real session, and `./dm --doctor` reports no failure, after the
-      data has been fetched. ([SE1/T2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t2))
+      data has been fetched. ([SE1/T2](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/06-testing.md#t2))
 - [ ] The question names its kind of claim and a judge, and whatever was written after the outcome was seen says so.
       ([DM1/U11](guide/02-unknowing.md#u11))
 - [ ] The plan names the split, the baseline, and the slices. ([DM1/T1](guide/06-testing.md#t1))

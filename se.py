@@ -31,9 +31,9 @@ import urllib.request
 from collections import namedtuple
 from pathlib import Path
 
-RELEASE = "v1.6"
+RELEASE = "v1.7"
 # sha256 of AGENTS.md at RELEASE. `se --self` checks it in the guide's tree; the release commit sets it.
-AGENTS_SHA256 = "7e33e5758461be1a01f2e4e1999ef2c7570df60b39ae31132dcbd58c38634f36"
+AGENTS_SHA256 = "b7e05f63f92afa0188c67d6f59354bfc24b831c74ae1e5194811be4f5b226f21"
 GUIDE_REPO = "wmacevoy/software-engineering"
 LOW_DISK_GB = 10        # warn below (invented)
 NO_DISK_GB = 2          # fail below (invented)
@@ -326,6 +326,22 @@ def check_loads(repo):
                        "runner: the phrase test (ADOPT.md step 2)", "")
     return Finding("loads at every start", "SE1/A11", FAIL, "no CLAUDE.md and no AGENTS.md at the root",
                    "copy AGENTS.md to the root, or import the copy from a CLAUDE.md")
+
+
+def check_quickref(repo):
+    """The condensed guide in every working agent's context. Only CLAUDE.md does it: a hook's output is capped at 10,000
+    characters, and over that the agent gets a path and a preview (../compaction, CLAUDE-CODE-DOCS-2026-10-27.md)."""
+    repo = Path(repo).resolve()
+    fix = "add a line `@vendor/se1/QUICKREF.md` to the root CLAUDE.md, beside `@AGENTS.md` (ADOPT.md step 2)"
+    claude = repo / "CLAUDE.md"
+    found = [p for p in claude_imports(claude) if p.name == "QUICKREF.md"] if claude.is_file() else []
+    if not found:
+        return Finding("quick reference", "SE1/A11", FAIL, "the root CLAUDE.md does not import QUICKREF.md, so a working agent can skip it", fix)
+    if not found[0].is_file():
+        return Finding("quick reference", "SE1/A11", FAIL, f"CLAUDE.md imports {found[0].name}, which is not there", fix)
+    return Finding("quick reference", "SE1/A11", PASS,
+                   "[Claude Code configuration] CLAUDE.md imports it, so it loads at each start and after each compaction; "
+                   "Explore and Plan start without CLAUDE.md. Observed loading: the phrase test (ADOPT.md step 2)", "")
 
 
 def hook_commands(s):
@@ -625,6 +641,7 @@ def doctor(repo, online=True, cache_dir=None, fetch=default_fetch, today=None):
                    "" if rel["made"] else "run again with the network")]
     out.append(check_copy(repo, rel))
     out.append(check_loads(repo))
+    out.append(check_quickref(repo))
     out.append(check_hooks(repo))
     guide, cmd = check_guide(repo)
     out.append(guide)

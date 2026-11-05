@@ -1,14 +1,14 @@
 # 2. Unknowing
 
-The five kinds of not-knowing (`K0`–`K4`) from [SE1 chapter 2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md),
+The five kinds of not-knowing (`K0`–`K4`) from [SE1 chapter 2](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md),
 applied to datasets and methods — and why data work is unusually good at producing the dangerous
 kind. The labels are defined there and in [GLOSSARY.md](../GLOSSARY.md).
 
 ---
 
-### <a id="u1"></a>U1. Mining is discovering, in the right order and at the right price, which category each column and each step belongs to
+### <a id="u1"></a>DM1/U1. Mining is discovering, in the right order and at the right price, which category each column and each step belongs to
 
-*Reframes [SE1/U2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u2).*
+*Reframes [SE1/U2](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md#u2).*
 
 | From | To     | How, in data                                                                                       |
 | ---- | ------ | -------------------------------------------------------------------------------------------------- |
@@ -23,9 +23,9 @@ means something different before 2024*. Plan for the sentence.
 
 > **Ask:** "Have I looked at this column, or only at its name?"
 
-### <a id="u2"></a>U2. Data work manufactures K3, because the failure is a returned value, not an exception
+### <a id="u2"></a>DM1/U2. Data work manufactures K3, because the failure is a returned value, not an exception
 
-*Reframes [SE1/U3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u3) and [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u7).*
+*Reframes [SE1/U3](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md#u3) and [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md#u7).*
 
 Software that is wrong tends to stop. Analysis that is wrong tends to continue and produce a chart.
 
@@ -53,7 +53,7 @@ and on resuming, what you find is torn until a run from raw agrees with it.
 
 > **Ask:** "What here would return a plausible number if it were wrong?"
 
-### <a id="u3"></a>U3. Leakage is the canonical K3: it feels like a good result
+### <a id="u3"></a>DM1/U3. Leakage is the canonical K3: it feels like a good result
 
 *New.*
 
@@ -73,9 +73,9 @@ to the rows that produced it and checked that each of them existed at the predic
 
 > **Ask:** "Could the model have known this at the moment it would have to predict?"
 
-### <a id="u4"></a>U4. Every model is a chosen falsehood; name the direction it is wrong
+### <a id="u4"></a>DM1/U4. Every model is a chosen falsehood; name the direction it is wrong
 
-*Reframes [SE1/U4](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u4).*
+*Reframes [SE1/U4](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md#u4).*
 
 Box's *all models are wrong, some are useful* is a sentence about K4, and the half that matters is
 unspoken: **wrong in a specific, nameable direction.** A catalogue, every entry false and every
@@ -97,9 +97,9 @@ falsehood held unknowingly is K3** — and the distance between them is one writ
 
 > **Ask:** "Which of these are we assuming, and where is it written?"
 
-### <a id="u5"></a>U5. Estimate the category: time-box the cleaning, estimate the modeling
+### <a id="u5"></a>DM1/U5. Estimate the category: time-box the cleaning, estimate the modeling
 
-*Reframes [SE1/U5](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u5).*
+*Reframes [SE1/U5](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md#u5).*
 
 "Two days to clean this dataset" is a K0 statement about K2 work: you cannot estimate the time to
 discover things you do not know are there. Cleaning and exploration get time-boxed, and each box ends
@@ -112,9 +112,9 @@ modeling estimate.
 
 > **Ask:** "Is this an estimate, a range, or a time box — and is there cleaning hidden inside it?"
 
-### <a id="u6"></a>U6. A model always answers; give it a way to say "I don't know"
+### <a id="u6"></a>DM1/U6. A model always answers; give it a way to say "I don't know"
 
-*Reframes [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u7).*
+*Reframes [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md#u7).*
 
 A classifier asked about an input unlike anything it was trained on does not raise. It returns a
 class, often with high confidence. That is the purest K3 factory in the field: it has no way to say
@@ -133,9 +133,9 @@ Three medicines, cheapest first:
 
 > **Ask:** "What does this model say when it is shown something it has never seen?"
 
-### <a id="u7"></a>U7. A summary statistic is a concussion: look at the rows
+### <a id="u7"></a>DM1/U7. A summary statistic is a concussion: look at the rows
 
-*Reframes [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a11).*
+*Reframes [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a11).*
 
 SE1/A11 says a summary of a session drops things without knowing what it dropped, and must be
 checked from outside. A mean, a correlation, or an accuracy is the same thing for a dataset.
@@ -159,7 +159,7 @@ instructions.
 
 > **Ask:** "What did this number average away — and have I looked at the rows that disagree?"
 
-### <a id="u8"></a>U8. People ask Prob(result | me); the data holds Prob(result | the rows it counts as like me)
+### <a id="u8"></a>DM1/U8. People ask Prob(result | me); the data holds Prob(result | the rows it counts as like me)
 
 *New.*
 
@@ -195,9 +195,9 @@ the small lots, with few events of their own, get forecasts shaped by the big on
 > **Ask:** "Is this question about one case or a population — and which reference class does this
 > number actually describe?"
 
-### <a id="u9"></a>U9. Whitespace is free on the inputs and spent on the outcome
+### <a id="u9"></a>DM1/U9. Whitespace is free on the inputs and spent on the outcome
 
-*Reframes [SE1/U8](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u8).*
+*Reframes [SE1/U8](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md#u8).*
 
 SE1/U8 asks for time with no agenda, because an agenda finds only what it looks for, and K2 is what
 nobody asked about. Data work needs that time more than software does: the sentence *that column
@@ -221,9 +221,9 @@ not.
 > **Ask:** "When did someone last look at the raw rows with no question in hand, and did they look
 > at the outcome while they were there?"
 
-### <a id="u10"></a>U10. "None found" is a claim about the search
+### <a id="u10"></a>DM1/U10. "None found" is a claim about the search
 
-*Reframes [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t3).*
+*Reframes [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/06-testing.md#t3).*
 
 SE1/T3 warns of a tool that exits zero because it found nothing to check. In data work that tool is
 any search for an absence. An absence is the cheapest K3 there is: it takes no evidence to report,
@@ -240,9 +240,9 @@ Before reporting that something is missing across many cases, open one by hand.
 > **Ask:** "What would this search have returned if the thing were there, and have we seen it do
 > that?"
 
-### <a id="u11"></a>U11. Whether a result is worth acting on is a judgment: a metric taken for it is K3
+### <a id="u11"></a>DM1/U11. Whether a result is worth acting on is a judgment: a metric taken for it is K3
 
-*Reframes [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u10).*
+*Reframes [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md#u10).*
 
 SE1/U10 says some K1 no spike finishes: the answer is a judgment someone makes on meeting the thing.
 Software meets this at "usable." Data work meets it often, because its work product

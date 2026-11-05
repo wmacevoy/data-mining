@@ -1,6 +1,6 @@
 # Findings
 
-What we learned the expensive way ([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w10)).
+What we learned the expensive way ([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w10)).
 Blameless: say what would have found it, not who should have asked.
 
 ## 2026-11-03 — This guide cited SE1 and did not follow it, and no hook could run
@@ -59,6 +59,6 @@ Blameless: say what would have found it, not who should have asked.
 ## 2026-11-04 — Verdicts on the mission and the fundamental shape
 
 Given by their judge on `REQUIREMENTS_v2`, and recorded here by an agent
-([SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u10)).
+([SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md#u10)).
 
 - REQ2/MISSION-1 verdict: pass, by Warren MacEvoy, 2026-11-04

@@ -2,13 +2,13 @@
 
 How you find out you are wrong when the thing being tested is a claim: what evidence costs, which
 loop catches which error, and the fact with no counterpart in software — **searching for a result
-changes it.** Read with [SE1 chapter 3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/03-feedback.md).
+changes it.** Read with [SE1 chapter 3](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/03-feedback.md).
 
 ---
 
-### <a id="f1"></a>F1. Tests of code are free; tests of a claim are not
+### <a id="f1"></a>DM1/F1. Tests of code are free; tests of a claim are not
 
-*Reframes [SE1/F1](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/03-feedback.md#f1).*
+*Reframes [SE1/F1](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/03-feedback.md#f1).*
 
 Data work inherits software's free tests for its *code* and emphatically does not inherit them for
 its *evidence*. Both regimes live in the same afternoon:
@@ -26,9 +26,9 @@ analysis, the outcome definition, the split, and the labeling scheme ([DM1/W2](0
 
 > **Ask:** "Is this a test of the code, or of the claim — and which column of the table is it in?"
 
-### <a id="f2"></a>F2. The cost of checking a result is designed, not given
+### <a id="f2"></a>DM1/F2. The cost of checking a result is designed, not given
 
-*Reframes [SE1/F2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/03-feedback.md#f2).*
+*Reframes [SE1/F2](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/03-feedback.md#f2).*
 
 The toolkit, in data:
 
@@ -48,9 +48,9 @@ about checking.*
 > **Ask:** "How long does it take to regenerate this number from raw — and what would make it
 > minutes?"
 
-### <a id="f3"></a>F3. Push each class of error down to the cheapest loop that can catch it
+### <a id="f3"></a>DM1/F3. Push each class of error down to the cheapest loop that can catch it
 
-*Reframes [SE1/F3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/03-feedback.md#f3).*
+*Reframes [SE1/F3](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/03-feedback.md#f3).*
 
 | Loop                                  | Latency   | Catches                                                   |
 | ------------------------------------- | --------- | --------------------------------------------------------- |
@@ -70,7 +70,7 @@ who knows the domain does ([DM1/H1](09-people.md#h1)).
 
 > **Ask:** "What is the cheapest loop that could have caught this?"
 
-### <a id="f4"></a>F4. The search is part of the result
+### <a id="f4"></a>DM1/F4. The search is part of the result
 
 *New.*
 
@@ -95,7 +95,7 @@ your leakage and hand it back as a win.
 
 > **Ask:** "Would this result have survived if it were the only thing we tried?"
 
-### <a id="f5"></a>F5. The holdout is a consumable
+### <a id="f5"></a>DM1/F5. The holdout is a consumable
 
 *New.*
 
@@ -115,7 +115,7 @@ trace in git. So:
 
 > **Ask:** "How many times has this holdout been looked at — and did we change anything after?"
 
-### <a id="f6"></a>F6. Count your looks, and say the number
+### <a id="f6"></a>DM1/F6. Count your looks, and say the number
 
 *New.*
 
@@ -135,7 +135,7 @@ holdout."*
 
 > **Ask:** "How many things did we try before this one — and where is that number written?"
 
-### <a id="f7"></a>F7. A point estimate is half a result
+### <a id="f7"></a>DM1/F7. A point estimate is half a result
 
 *New.*
 
@@ -154,7 +154,7 @@ Three sources of spread, all routinely ignored:
 
 > **Ask:** "What is the interval — and does the difference survive a different seed?"
 
-### <a id="f8"></a>F8. A large sample does not rescue a biased one; it disguises it
+### <a id="f8"></a>DM1/F8. A large sample does not rescue a biased one; it disguises it
 
 *New.*
 
@@ -168,9 +168,9 @@ network most when a lot is busiest. Five years of readings describe the quiet ho
 
 > **Ask:** "Who or what is missing from these rows — and does more of them fix that?"
 
-### <a id="f9"></a>F9. When a metric becomes a target, it stops measuring — and the search is the hardest optimizer you will meet
+### <a id="f9"></a>DM1/F9. When a metric becomes a target, it stops measuring — and the search is the hardest optimizer you will meet
 
-*Reframes [SE1/F5](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/03-feedback.md#f5).*
+*Reframes [SE1/F5](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/03-feedback.md#f5).*
 
 SE1/F5 is about people gaming a measure. In data mining the optimizer is usually not a person. It is
 the training loop, the hyperparameter search, the feature selection, the agent re-running until the
@@ -193,7 +193,7 @@ is what changes the work ([DM1/F10](#f10)).
 > **Ask:** "If the search could cheat on this metric, how would it — and what second number would
 > catch it?"
 
-### <a id="f10"></a>F10. A faithful summary can still lose the finding: check what left, not only what stayed
+### <a id="f10"></a>DM1/F10. A faithful summary can still lose the finding: check what left, not only what stayed
 
 *New.*
 

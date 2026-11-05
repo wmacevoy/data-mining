@@ -14,7 +14,7 @@ source. After Gebru et al., *Datasheets for Datasets*, cut to what the guide's p
 - **This sheet:** written by _name or agent_ on _date_; each line above is measured, told by _whom_,
   or *(inferred)*. **What would show it wrong:** _the query or assertion that fails if a Meaning,
   Units, or Knowable at entry below is wrong, and when it last ran_
-  ([SE1/U9](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u9))
+  ([SE1/U9](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md#u9))
 
 ## People
 

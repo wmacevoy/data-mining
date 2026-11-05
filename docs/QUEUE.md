@@ -1,6 +1,6 @@
 # Queue
 
-The shared cursor ([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w10)).
+The shared cursor ([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w10)).
 Only a human marks an item done.
 
 | # | Item | Versioned requirement IDs (or *chore*) | Owner | Done when | Estimate (number / range / time box) | Status | Since |
