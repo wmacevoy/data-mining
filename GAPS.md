@@ -2,7 +2,7 @@
 
 Where the guide falls short. In SE1 this file holds field reports — what happened when the guide met
 a real project — and each entry is closed by changing the guide, or by a sentence saying why not
-([SE1/P4](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/01-purpose.md#p4)).
+([SE1/P4](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/01-purpose.md#p4)).
 
 **There are two field reports**, below, and neither reaches prediction. The course projects are still expected to give
 the first reports on that. The rest of this file lists where the guide is known to be thin, so that nobody mistakes silence
@@ -76,7 +76,7 @@ report by ID (its `QUEUE.md`, N6). What it had asked of this guide so far:
    `AGENTS-DM.md` loaded at start is enough.
 
 **What held:** [DM1/R6](guide/04-requirements.md#r6), whose *Knowable at* column found what the course's own lesson table doesn't
-list. [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/10-agents.md#a11), in that running the baseline
+list. [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a11), in that running the baseline
 before trusting a handoff note found a failure the note lacked.
 
 ## Known thin places
@@ -121,7 +121,7 @@ has not been tested, with people or with agents.
 
 [DM1/O1](guide/07-operating.md#o1) asks that each result record the resolved environment, so that it
 works whether or not a lock file is committed.
-[SE1/O2](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/07-operating.md#o2) says to
+[SE1/O2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/07-operating.md#o2) says to
 commit the lock. The course repository leaves its lock file uncommitted, because it resolves
 differently across students' machines.
 

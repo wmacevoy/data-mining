@@ -1,7 +1,7 @@
 # Design — v1
 
 How the repository satisfies its requirements, read off the code on 2026-11-03; confirmed by
-the owner on 2026-11-04 ([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w12)).
+the owner on 2026-11-04 ([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w12)).
 
 ## Components
 
@@ -11,7 +11,7 @@ the owner on 2026-11-04 ([SE1/W12](https://github.com/wmacevoy/software-engineer
 | `AGENTS.md`, `templates/` | what adopters copy; they name a release | the text |
 | `tools/check.py` | the documents agree with each other and with SE1 at `SE_RELEASE`; REQ2/CHK-1, REQ1/PIN-1 | none |
 | `dm`, `dm.ps1`, `dm.py` | SE1's doctor plus the data rows; REQ1/DOC-1 | none |
-| `se`, `se.ps1`, `se.py`, `docs/SE1-AGENTS.md` | unedited copies from SE1 v1.5 | none |
+| `se`, `se.ps1`, `se.py`, `docs/SE1-AGENTS.md` | unedited copies from SE1 v1.6 | none |
 | `.claude/settings.json` | runs `se --post` at startup, resume, and compaction | none |
 
 ## One-way doors

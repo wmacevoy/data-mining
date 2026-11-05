@@ -1,6 +1,6 @@
 # Queue
 
-The shared cursor ([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w10)).
+The shared cursor ([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w10)).
 Only a human marks an item done.
 
 | # | Item | Versioned requirement IDs (or *chore*) | Owner | Done when | Estimate (number / range / time box) | Status | Since |
@@ -17,4 +17,4 @@ Only a human marks an item done.
 | 10 | Say at session start which remote branches are not merged, after a fetch | chore | unassigned | `se --post`, or a line in AGENTS.md here if SE1 declines, names an unmerged remote branch on a fixture, seen red first | time box: 1 hour | ready | 2026-11-03 |
 | 11 | `dm --doctor` reads a vendored tree's question IDs as this repository's. SE1 v1.4.4 fixed this in `se.py` (its queue #22, seen in `../tribe`, which vendors compaction); `dm.py`'s `check_citations` has its own scan of every tracked file, and the same re-copy does not reach it. The holdout and writer rows also read every tracked file: say whether they should | REQ1/DOC-1 | unassigned | `se.py` re-copied from SE1 v1.4.4; a fixture with a vendored tree that reuses a question ID passes the question-citations row, the report names the tree it left out, and a bad citation outside it still fails, seen red first | time box: 1 hour | ready | 2026-11-03 |
 | 12 | `ADOPT.md` hardcodes the DM1 and SE1 releases in its copy commands, and nothing checks them | REQ1/PIN-1 | unassigned | a stale release in those commands turns the checker red, seen red first | time box: 1 hour | ready | 2026-11-03 |
-| 13 | DM1/D5 says it reframes SE1/D5 but is about time zones and "day", which SE1 does not state yet. The owner sent this to SE1 as a gap, 2026-11-04 | chore | unassigned | SE1 states it and the marker holds, or SE1 declines and DM1/D5 is marked *New* | 15 minutes | blocked on SE1's GAPS | 2026-11-04 |
+| 13 | DM1/D5 says it reframes SE1/D5 but is about time zones and "day", which SE1 does not state yet. The owner sent this to SE1 as a gap, 2026-11-04 | chore | unassigned | SE1 states it and the marker holds, or SE1 declines and DM1/D5 is marked *New* | 15 minutes | review: SE1/D5 states it at v1.6, and the marker holds | 2026-11-05 |

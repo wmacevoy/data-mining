@@ -1,7 +1,7 @@
 # Changelog
 
 What changed between releases, by principle ID, newest first. A change you cannot spot is a K3
-factory ([SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/02-unknowing.md#u7)),
+factory ([SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u7)),
 so changes are listed here by ID, and copies of AGENTS.md and the templates say which release they
 came from.
 
@@ -19,11 +19,28 @@ yours.
 
 · 100 principles
 
-Reviewed against **SE1 v1.5**. No ID moved.
+Reviewed against **SE1 v1.6**. No ID moved.
 
-**For copies:** re-copy `AGENTS.md`, which now extends SE1 v1.5, and SE1's `AGENTS.md` and `se.py`, as
+**For copies:** re-copy `AGENTS.md`, which now extends SE1 v1.6, and SE1's `AGENTS.md` and `se.py`, as
 [ADOPT.md](ADOPT.md) now says. The QUESTION template's *Shape* section is now *Fundamental shape*, with the same
 `PIPE-` IDs; a question you already have can keep its heading until its next version.
+
+### SE1 v1.5 to v1.6, reviewed
+
+Each SE1 principle that changed between v1.5 and v1.6, and what this guide did about it. Reviewed 2026-11-05 by Claude
+Opus 5.5; every wording below is a draft until Warren MacEvoy signs the release (SE1/U9).
+
+- [SE1/A12](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a12), work toward finished, not toward more: declined as a new principle. It applies to data work
+  unchanged, so it stays off the map, and [REQ2/SHAPE-3](docs/REQUIREMENTS_v2.md) holds this guide to it.
+- [SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d9), a fundamental shape iterates toward finished, and unstated, assume it does: adopted into the QUESTION
+  template, in the sentence SE1's template uses. [DM1/D9](guide/05-design.md#d9) points at SE1/D9 for this and is unchanged.
+- [SE1/D5](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d5), time zones and what a day is: confirmed, and [DM1/D5](guide/05-design.md#d5)'s *Reframes* line now
+  holds. It no longer rests on a gap. DM1/D5 still says UTC inside and local at the edges, which SE1/D5 now says too; not trimmed here.
+- SE1's AGENTS.md says it is guidelines, not law: confirmed, no change. This guide's agreement extends it, and repeats
+  neither that nor A12's two lines.
+- Not done: the *Foundation* line of SE1's requirements template, which pins a release for `se --doctor`, is not in
+  the QUESTION template or in this guide's requirements. Without it, any newer SE1 release warns.
+- Not reviewed: whether the reframings of SE1 principles v1.6 left unchanged still read true, as before.
 
 ### SE1 v1.4 to v1.5, reviewed
 
@@ -31,13 +48,13 @@ Each SE1 principle that changed between v1.4 and v1.5 (v1.4.3 and v1.4.4 are pat
 guide did about it. Reviewed 2026-11-04 by Claude Opus 5.5; every wording below is a draft until Warren MacEvoy signs
 the release (SE1/U9).
 
-- [SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/05-design.md#d9), the *fundamental shape*, an aesthetic that decides what belongs: adopted into
+- [SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d9), the *fundamental shape*, an aesthetic that decides what belongs: adopted into
   [DM1/D9](guide/05-design.md#d9), GLOSSARY, CHECKLISTS, and the QUESTION template. Plain *shape* stays plain English
   here, as it does in SE1.
-- [SE1/W14](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w14), moving a lower layer can move what is built on it: declined as a new principle for
+- [SE1/W14](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w14), moving a lower layer can move what is built on it: declined as a new principle for
   now. It applies to data work unchanged, so it stays off the map. [DM1/W2](guide/08-work.md#w2) and AGENTS.md's stop
   and ask already name what moving the question invalidates.
-- [SE1/A5](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/10-agents.md#a5), spend the speed on understanding and changing later too: confirmed, no change.
+- [SE1/A5](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a5), spend the speed on understanding and changing later too: confirmed, no change.
   [DM1/A5](guide/10-agents.md#a5) is about checks, which SE1/A5 still asks for.
 - SE1/F4 gained only a link to W14, and this guide's DM1/F4 is new and does not reframe it: confirmed, no change.
 - SE1's AGENTS.md says *earlier* and *later* in its order of authority: confirmed, no change. This guide's agreement
@@ -99,20 +116,20 @@ Each SE1 principle that changed between v1.3 and v1.4 (v1.3.1, v1.3.2, v1.4.1, a
 and change none), and what this guide did about it. Reviewed 2026-11-03 by Claude Opus 5.5 with Warren
 MacEvoy, who signs the release (SE1/U9); every wording below is a draft until then.
 
-- [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/02-unknowing.md#u10), *essential K1*: reframed as a new [DM1/U11](guide/02-unknowing.md#u11). Data work sharpens it,
+- [SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u10), *essential K1*: reframed as a new [DM1/U11](guide/02-unknowing.md#u11). Data work sharpens it,
   because the work product is a number that reads like the answer. The bar becomes a veto, and whether
   the result is worth acting on goes to a named judge. GLOSSARY gains *essential K1* and *judged*.
-- [SE1/U2](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/02-unknowing.md#u2), some K1 will not convert: adopted into the K1 row of [DM1/U1](guide/02-unknowing.md#u1).
-- [SE1/R2](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/04-requirements.md#r2), where what matters is a judgment, write down who judges it: adopted into
+- [SE1/U2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u2), some K1 will not convert: adopted into the K1 row of [DM1/U1](guide/02-unknowing.md#u1).
+- [SE1/R2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/04-requirements.md#r2), where what matters is a judgment, write down who judges it: adopted into
   [DM1/R3](guide/04-requirements.md#r3).
-- [SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/04-requirements.md#r10), a change in meaning is a new version and a spelling or lint fix is an edit named in the
+- [SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/04-requirements.md#r10), a change in meaning is a new version and a spelling or lint fix is an edit named in the
   commit: adopted into the QUESTION template. The guide had said it only there.
-- [SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/05-design.md#d9), coherence answers to a written mission and a shape: adopted into
+- [SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/05-design.md#d9), coherence answers to a written mission and a shape: adopted into
   [DM1/D9](guide/05-design.md#d9), where the mission is the decision the work serves. The QUESTION
   template gains a *(judged)* `DECISION-1` and a *Shape* section (named apart from the requirements' IDs: where a project keeps both documents, SE1's doctor reads a shared ID in a question as a bare citation of its requirements), CHECKLISTS a line, GLOSSARY both words.
-- [SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w11), *(judged)* requirements and verdicts, and a change naming what it must not break: adopted into
+- [SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w11), *(judged)* requirements and verdicts, and a change naming what it must not break: adopted into
   [DM1/W7](guide/08-work.md#w7), AGENTS.md's *Verify*, and CHECKLISTS.
-- [SE1/W13](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w13), a finding closes with what it changed: reframed by [DM1/W6](guide/08-work.md#w6), and
+- [SE1/W13](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w13), a finding closes with what it changed: reframed by [DM1/W6](guide/08-work.md#w6), and
   AGENTS.md's *Finishing*.
 - SE1's change of *shape* to *contract* or *interface* where it meant what one part promises another
   (SE1/H4, SE1/O7, SE1/W5): confirmed, no change. SE1 keeps *shape* in plain English elsewhere (the team's
@@ -136,8 +153,8 @@ MacEvoy, who signs the release (SE1/U9); every wording below is a draft until th
   name `tools/check.js` are kept as written.
 - [DM1/R12](guide/04-requirements.md#r12), [DM1/U10](guide/02-unknowing.md#u10), [DM1/F10](guide/03-feedback.md#f10),
   [DM1/T12](guide/06-testing.md#t12), and [DM1/A10](guide/10-agents.md#a10), which came from the first field report against
-  v1.3, merged here 2026-11-03: confirmed at v1.4. SE1's [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t3)
-  and [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t8) changed only their markers. Two IDs were written
+  v1.3, merged here 2026-11-03: confirmed at v1.4. SE1's [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t3)
+  and [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t8) changed only their markers. Two IDs were written
   as U10 at once, neither released: the field report's keeps it, since it came first and rests on a project,
   and this review's is [DM1/U11](guide/02-unknowing.md#u11). The owner's pin of 2026-11-02, v1.3, was replaced on 2026-11-03 by v1.4;
   the owner tagged v1.0 the same day. ADOPT.md vendors once at the root. `REVIEW-v1.md` is removed, now that it is incorporated; it had been redacted for confidentiality before it was pushed ([GAPS.md](GAPS.md)).
@@ -159,44 +176,44 @@ Each SE1 principle that changed between the commit this guide was written agains
 what this guide did about it. Reviewed 2026-10-28 by Claude Fable 5.1 with Warren MacEvoy, who
 signs the release (SE1/U9).
 
-- [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/02-unknowing.md#u7) and
-  [SE1/R8](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/04-requirements.md#r8), *medicine* for
+- [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u7) and
+  [SE1/R8](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/04-requirements.md#r8), *medicine* for
   *cure*: adopted. The guide said *cure* in [DM1/U2](guide/02-unknowing.md#u2),
   [DM1/U6](guide/02-unknowing.md#u6), and [DM1/D9](guide/05-design.md#d9). A K3 factory is
   lessened, not fixed, and so is train/serve skew.
-- [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/02-unknowing.md#u7), *torn work*: adopted
+- [SE1/U7](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u7), *torn work*: adopted
   into [DM1/U2](guide/02-unknowing.md#u2), which names its data shapes (a pipeline half-run, a
   model trained on a partial extract, a notebook run out of order) and the medicine (idempotent
   stages, the cold run from raw, and treating what you find on resuming as torn), and in one
   sentence into [DM1/U6](guide/02-unknowing.md#u6): an interrupted retrain's checkpoint answers.
-- [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/10-agents.md#a11), *knowing is not doing*:
+- [SE1/A11](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a11), *knowing is not doing*:
   adopted into [DM1/U7](guide/02-unknowing.md#u7), where *look at the rows* becomes something the
   command does on every run, and [DM1/A2](guide/10-agents.md#a2): a leakage check the agent must
   choose to run will be read and not run, so the assertions go in the pipeline and CI. A11's
   other change, that the import boundary is the working directory, is in AGENTS.md.
-- [SE1/U8](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/02-unknowing.md#u8), *leave whitespace*:
+- [SE1/U8](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u8), *leave whitespace*:
   reframed as [DM1/U9](guide/02-unknowing.md#u9). It pulls against [DM1/F4](guide/03-feedback.md#f4)
   to [DM1/F6](guide/03-feedback.md#f6), where every look spends evidence; the resolution is what
   is looked at. Whitespace on the inputs is free and is where K2 lives; on the outcome it is a
   look, and goes in the ledger. GLOSSARY gains *whitespace*.
-- [SE1/H4](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/09-people.md#h4), the stand-up's fourth
+- [SE1/H4](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/09-people.md#h4), the stand-up's fourth
   question: reframed as [DM1/H8](guide/09-people.md#h8). The discomfort in data work has a short
   list of shapes, each an early sign of something this guide names, so the question becomes *what
   about the current number do you not believe?*
-- [SE1/U9](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/02-unknowing.md#u9), *rules change*: not a
+- [SE1/U9](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/02-unknowing.md#u9), *rules change*: not a
   principle here. For labels, [DM1/R7](guide/04-requirements.md#r7) already asks who, when, and how
   often a second person disagrees; for definitions, [DM1/H5](guide/09-people.md#h5) asks who chose
   it. What the templates lacked was the falsifier: DATASHEET and MODEL_CARD now say who wrote them,
   when, and what would show them wrong.
-- [SE1/A3](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/10-agents.md#a3), an agent may ask, and a
+- [SE1/A3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a3), an agent may ask, and a
   private agent memory is a head: confirmed, no change. This guide never said the client does not
   talk to the agent, and [DM1/A3](guide/10-agents.md#a3) already keeps the record of what was
   tried in the ledger, not in the agent's memory.
-- [SE1/W7](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w7), Brown's experiment as he ran
+- [SE1/W7](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w7), Brown's experiment as he ran
   it: confirmed, no change. [DM1/W5](guide/08-work.md#w5) cites the gradient and does not restate
   the experiment.
-- [SE1/W2](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w2) and
-  [SE1/T5](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t5), wording only: no DM1
+- [SE1/W2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w2) and
+  [SE1/T5](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t5), wording only: no DM1
   principle quotes the changed words.
 - Not reviewed: whether the 73 reframings written against the earlier commit still read true
   against v1.3's unchanged principles. Their IDs resolve, which is all `tools/check.js` can say.
@@ -243,8 +260,8 @@ Written 2026-11-01 by Claude Opus 5.5, from `REVIEW-v1.md` and the course's `FIN
   [DM1/U10](guide/02-unknowing.md#u10), "none found"; [DM1/F10](guide/03-feedback.md#f10), what a summary drops;
   [DM1/T12](guide/06-testing.md#t12), a full reading as the baseline; [DM1/A10](guide/10-agents.md#a10), when reading the
   data is the task. They come from one project, so each is a lesson with one data point. The reframings of
-  [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t3) and
-  [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t8) were read against SE1's text at
+  [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t3) and
+  [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t8) were read against SE1's text at
   v1.3; the second runs through [DM1/T1](guide/06-testing.md#t1).
 - **Extended:** [DM1/P5](guide/01-purpose.md#p5), [DM1/U7](guide/02-unknowing.md#u7), [DM1/F5](guide/03-feedback.md#f5),
   [DM1/F6](guide/03-feedback.md#f6), [DM1/F9](guide/03-feedback.md#f9), [DM1/R2](guide/04-requirements.md#r2),

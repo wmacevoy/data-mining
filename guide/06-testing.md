@@ -2,14 +2,14 @@
 
 Checks worth trusting, for the two things a data system has to get right: the *pipeline*, which is
 ordinary code and tests like it, and the *model*, which cannot be read and must be tested from
-outside. Read with [SE1 chapter 6](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md),
+outside. Read with [SE1 chapter 6](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md),
 all of which applies to the pipeline as written.
 
 ---
 
 ### <a id="t1"></a>T1. Build the evaluation before the model, and enter a dumb baseline first
 
-*Reframes [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t8).*
+*Reframes [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t8).*
 
 SE1/T8: when you don't know how to build it, write the tests that would pass when it works. In
 modeling, that test is the evaluation harness — the split, the metric, the bar
@@ -29,7 +29,7 @@ For retrieval and extraction, the baseline is a full reading of some cases ([DM1
 
 ### <a id="t2"></a>T2. A reliable pipeline checks itself: assert what joins and filters break
 
-*Reframes [SE1/T2](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t2).*
+*Reframes [SE1/T2](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t2).*
 
 SE1/T2's ladder ends at *a reliable thing checks itself*. A pipeline does that with assertions that
 run every time, on real data, not only in tests:
@@ -49,7 +49,7 @@ assertion that stops a run is a gift; the same problem as a plausible number is 
 
 ### <a id="t3"></a>T3. A check that cannot fail proves nothing — including a fixture too small to exercise the estimator
 
-*Reframes [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t3).*
+*Reframes [SE1/T3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t3).*
 
 Data tests are especially prone to asserting shape instead of value: the output is non-empty, the
 column exists, the row count survived. Those pass on garbage.
@@ -67,7 +67,7 @@ search that reports an absence is one of these instruments ([DM1/U10](02-unknowi
 
 ### <a id="t4"></a>T4. A number that moves for no reason trains everyone to ignore it
 
-*Reframes [SE1/T4](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t4).*
+*Reframes [SE1/T4](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t4).*
 
 SE1/T4: a loop you do not trust is worse than none. In data, the untrusted loop is a metric that
 changes between runs with nothing changed — unseeded randomness, nondeterministic data order, a
@@ -81,7 +81,7 @@ Make every run reproduce its number, or report the spread it is expected to have
 
 ### <a id="t5"></a>T5. Decide which results must be identical and which must agree within a tolerance
 
-*Reframes [SE1/T5](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t5) and [SE1/T9](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t9).*
+*Reframes [SE1/T5](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t5) and [SE1/T9](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t9).*
 
 A seed is necessary and not sufficient. GPU kernels, thread scheduling, library versions, and the
 order of floating-point sums all change results across machines and sometimes across runs. Demanding
@@ -99,7 +99,7 @@ Decide per claim:
 
 ### <a id="t6"></a>T6. A fixture must fail the way real data fails
 
-*Reframes [SE1/T6](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t6).*
+*Reframes [SE1/T6](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t6).*
 
 SE1/T6: the mock and the real thing answer to the same test. A synthetic dataset is a mock of reality,
 and a clean one tests only the happy path. Build the fixture from the failures you have actually
@@ -132,7 +132,7 @@ same commit.
 
 ### <a id="t8"></a>T8. Test a model with properties it must have, not only with a score
 
-*Reframes [SE1/T10](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t10).*
+*Reframes [SE1/T10](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t10).*
 
 SE1/T10: state the rule that must hold for every input, and let the machine generate the cases. A
 model's rules are behavioral:
@@ -167,7 +167,7 @@ the treatment that group receives ([DM1/R10](04-requirements.md#r10), [DM1/O9](0
 
 ### <a id="t10"></a>T10. When someone else owns "correct," compare against their implementation
 
-*Reframes [SE1/T11](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t11).*
+*Reframes [SE1/T11](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t11).*
 
 Many results in data mining have an owner of correctness who is not you: a reference library's
 implementation of an algorithm, the original runtime of a model you exported, the published numbers
@@ -200,7 +200,7 @@ thousands is expected to exist by chance.
 
 ### <a id="t12"></a>T12. For retrieval and extraction, a full reading of some cases is the baseline
 
-*Reframes [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/06-testing.md#t8).*
+*Reframes [SE1/T8](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/06-testing.md#t8).*
 
 SE1/T8 asks what test would pass if this worked, and [DM1/T1](#t1) answers with a dumb baseline. The
 dumb baseline for a search system isn't another search. It's a person, or a model, reading the whole

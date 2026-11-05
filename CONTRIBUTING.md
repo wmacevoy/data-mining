@@ -1,7 +1,7 @@
 # Contributing
 
 How to work on this repository, for a new teammate and for an agent, who both arrive knowing
-nothing ([SE1/A3](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/10-agents.md#a3)).
+nothing ([SE1/A3](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/10-agents.md#a3)).
 A change that makes a line here untrue updates it in the same change. `templates/CONTRIBUTING.md` is
 the template this guide publishes for data projects; this file is about the guide itself.
 

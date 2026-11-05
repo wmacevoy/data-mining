@@ -2,8 +2,8 @@
 
 A working agreement for AI agents doing data work — analysis, pipelines, models, evaluation — in a
 repository that follows this guide. It **extends** the
-[SE1 working agreement](https://github.com/wmacevoy/software-engineering/blob/v1.5/AGENTS.md) at
-SE1 v1.5, which still governs everything about the code: ownership, authority, stop/ask/proceed, writing for human
+[SE1 working agreement](https://github.com/wmacevoy/software-engineering/blob/v1.6/AGENTS.md) at
+SE1 v1.6, which still governs everything about the code: ownership, authority, stop/ask/proceed, writing for human
 attention, verifying, finishing. This file adds what data work needs on top, and where the two
 overlap, the stricter rule wins. Each rule cites the principle behind it by versioned ID — (DM1/F5),
 (SE1/T3) — so that it can be argued with rather than merely obeyed.
@@ -18,7 +18,7 @@ Drafted 2026-10-27 by a Claude model with Warren MacEvoy, refactoring the course
 `DATA-SCIENCE.md` (drafted 2026-08-27 with Claude Opus 5); which model did the refactoring was not
 recorded. Revised with Claude Fable 5.1 on 2026-10-28 against SE1 v1.3; the human signs each
 release. Revised on 2026-11-01 with Claude Opus 5.5, from the field reports below, and on 2026-11-03 with the
-same model, against SE1 v1.4, and on 2026-11-04 against SE1 v1.5. These are rules
+same model, against SE1 v1.4, on 2026-11-04 against SE1 v1.5, and on 2026-11-05 against SE1 v1.6. These are rules
 an agent wrote for agents (SE1/U9), and **most of them are untried**. One field report (`GAPS.md`)
 met the 93 principles of that date with a private document review, and by that one model's judgment
 46 reached real work, 20 fit only by argument, and 27 did not reach it; five of today's principles

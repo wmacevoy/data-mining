@@ -1,7 +1,7 @@
 # Requirements — v1
 
 What must be observably true of this guide, and what it is not. Reconstructed from the repository on
-2026-11-03 by Claude Opus 5.5 ([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w12)),
+2026-11-03 by Claude Opus 5.5 ([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.6/guide/08-work.md#w12)),
 so **all of it is *(inferred)* until the client confirms it**, except where a line says it is the owner's. A change in meaning is a new version.
 
 Client: Warren MacEvoy · Proxy for the users: the field reports in GAPS.md, and the fall 2026 course projects
