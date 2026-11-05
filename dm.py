@@ -30,7 +30,7 @@ import sys
 from collections import namedtuple
 from pathlib import Path
 
-RELEASE = "v1.2"
+RELEASE = "v1.3"
 GUIDE_REPO = "wmacevoy/data-mining"
 SE_REPO = "wmacevoy/software-engineering"
 

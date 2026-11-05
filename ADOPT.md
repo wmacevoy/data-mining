@@ -37,8 +37,8 @@ catches.
    for f in se se.ps1 se.py; do git -C "$SE" show v1.7:"$f" > "$f"; done
    git -C "$SE" show v1.7:AGENTS.md > AGENTS.md
    git -C "$SE" show v1.7:QUICKREF.md > QUICKREF.md
-   for f in dm dm.ps1 dm.py; do git -C "$DM" show v1.2:"$f" > "$f"; done
-   git -C "$DM" show v1.2:AGENTS.md > AGENTS-DM.md
+   for f in dm dm.ps1 dm.py; do git -C "$DM" show v1.3:"$f" > "$f"; done
+   git -C "$DM" show v1.3:AGENTS.md > AGENTS-DM.md
    chmod +x se dm
    printf '@AGENTS.md\n@AGENTS-DM.md\n@QUICKREF.md\n' > CLAUDE.md
    ./se --hook --write

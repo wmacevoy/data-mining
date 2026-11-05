@@ -15,9 +15,9 @@ states.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.3 — unreleased
+## v1.3 — 2026-11-05
 
-· 101 principles
+[Full diff from v1.2.1](https://github.com/wmacevoy/data-mining/compare/v1.2.1...v1.3) · 101 principles
 
 **For copies:** `AGENTS.md`'s *Observe, do not ask* now says to trust a record of what was done over an account of it.
 
