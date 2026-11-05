@@ -15,6 +15,16 @@ states.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.2.1 — 2026-11-05
+
+[Full diff from v1.2](https://github.com/wmacevoy/data-mining/compare/v1.2...v1.2.1). No principle, AGENTS.md, or template
+changed; copies at v1.2 are current.
+
+### Also changed
+
+- The README's principle index escapes a `|` in a title, which the web guidebook rendered as a table at DM1/U8.
+  `tools/check.py` writes the index that way, and a test holds it to it.
+
 ## v1.2 — 2026-11-05
 
 [Full diff from v1.1](https://github.com/wmacevoy/data-mining/compare/v1.1...v1.2) · 101 principles

@@ -193,7 +193,8 @@ for f in sorted(x for x in files if in_dir(x, "guide")):
             problem(f"{id_} defined twice")
         defined_in[id_] = f
         link = f"guide/{os.path.basename(f)}#{anchor}"
-        index.append(f"- [**{VERSION}/{id_}**]({link}) {title}")
+        # An unescaped | in a list item renders as a table on the site, so the index escapes it.
+        index.append(f"- [**{VERSION}/{id_}**]({link}) {title.replace('|', chr(92) + '|')}")
         basis = BASIS.fullmatch(lines[i + 2] if i + 2 < len(lines) else "")
         if not basis:
             problem(f"no basis       {rel(f)}: {id_} needs *New.* or *Reframes [SE1/…](…).* under its heading")

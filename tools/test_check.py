@@ -216,6 +216,11 @@ class TestChecker(Repo):
         self.assertIn("- [**DM1/U10**](guide/02-unknowing.md#u10)", r.stdout)
         self.assertIn("- [SE1/W13](", r.stdout)
 
+    def test_index_escapes_a_pipe_in_a_title(self):
+        # The site's renderer reads an unescaped | in a list item as a table, as it did DM1/U8's index line.
+        r = self.check("--print")
+        self.assertIn("People ask Prob(result \\| me)", r.stdout)
+
 
 class TestVendoredSe1(Repo):
     def test_no_vendored_se1_is_a_problem(self):

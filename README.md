@@ -142,7 +142,7 @@ these.)
 - [**DM1/U5**](guide/02-unknowing.md#u5) Estimate the category: time-box the cleaning, estimate the modeling
 - [**DM1/U6**](guide/02-unknowing.md#u6) A model always answers; give it a way to say "I don't know"
 - [**DM1/U7**](guide/02-unknowing.md#u7) A summary statistic is a concussion: look at the rows
-- [**DM1/U8**](guide/02-unknowing.md#u8) People ask Prob(result | me); the data holds Prob(result | the rows it counts as like me)
+- [**DM1/U8**](guide/02-unknowing.md#u8) People ask Prob(result \| me); the data holds Prob(result \| the rows it counts as like me)
 - [**DM1/U9**](guide/02-unknowing.md#u9) Whitespace is free on the inputs and spent on the outcome
 - [**DM1/U10**](guide/02-unknowing.md#u10) "None found" is a claim about the search
 - [**DM1/U11**](guide/02-unknowing.md#u11) Whether a result is worth acting on is a judgment: a metric taken for it is K3
