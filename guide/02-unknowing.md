@@ -274,19 +274,27 @@ spare is ever turned down by the person who has to act on it.
 
 > **Ask:** "When this score is perfect, what could still be wrong, and who would tell us?"
 
-### <a id="u12"></a>DM1/U12. A set cannot contain itself: observe what was done, because asking why returns K3
+### <a id="u12"></a>DM1/U12. Trust data about observations over data about reflection: asking why is a K3 factory
 
 *New.*
 
-A set cannot contain itself, so no mind, a person's or an agent's, can hold a complete account of itself. Being completely
-self-aware is not possible. Believing you are is K3: the account of why you did something arrives fluent and feels
-like knowledge, with nothing in it to say what it left out.
+Data about what someone did and data about their reflection on it, why they did it, what they would prefer, what they
+will do, are different instruments. Trust the first. Asking what you would prefer is far less useful than observing what
+you choose: a survey of intentions is not a record of behavior, and a model trained on what people say learns what they
+say.
 
-So an analyst's "I only looked at the holdout once" and an agent's "the holdout was untouched" are claims, made in good faith
-and from inside. What was done is in the commands, the ledger, and the output, and it can be checked by someone who was not
-there. Observing behavior is far more valuable than asking why. Work that is good is good whether or not its author can
-cite the reason, and work that cites every reason can still be wrong.
+The reason is structural. A set cannot contain itself, so no mind, a person's or an agent's, can hold a complete account of
+itself, and being completely self-aware is not possible. An account of why arrives fluent and feels like knowledge, with
+nothing in it to say what it left out. So asking why is a K3 factory for both parties: the one answering believes the
+account, the one asking takes it as evidence, and neither has a way to hear that it is wrong.
 
+The same holds for work. An analyst's "I only looked at the holdout once" and an agent's "the holdout was untouched" are
+reflections, made in good faith and from inside. What was done is in the commands, the ledger, and the output, and it can be
+checked by someone who was not there. Work that is good is good whether or not its author can cite the reason, and work
+that cites every reason can still be wrong.
+
+- **Prefer the record of a choice to a stated preference.** When reflection is all the data there is, a survey, an
+  interview, a self-report, say the claim is about what people say, and name the observation that would check it.
 - **Check an account against the record**, your own included: the count of looks in the ledger, not in the
   summary ([DM1/F6](03-feedback.md#f6)), the transcript behind the report.
 - **To learn what changes behavior, change something and watch**: a trial on the same task, not a question about what
@@ -294,10 +302,10 @@ cite the reason, and work that cites every reason can still be wrong.
 - **Asking why still gives a hypothesis.** It tells you where to look, and looking settles it.
 
 In a [trial on 2026-11-05](https://github.com/wmacevoy/data-mining-self-improvement/blob/5032133b6e/trials/2026-11-05-quickref/RESULTS.md), three of nine agents' reports made a claim about their own work that their transcripts contradicted, such
-as "touched once" after more than one evaluation of the holdout. The owner's word, 2026-11-05, on what a report can tell you
-about its author. Wrong if accounts of why turn out to predict what someone does next better than a record of what they did.
+as "touched once" after more than one evaluation of the holdout. The owner's word, 2026-11-05, with the reframe toward observation
+over reflection the same day. Wrong if accounts of why turn out to predict what someone does next better than a record of what they did.
 
-> **Ask:** "What did it actually do, and what shows that other than its own account?"
+> **Ask:** "Is this a record of what was done, or an account of it, and what would check the account?"
 
 ---
 

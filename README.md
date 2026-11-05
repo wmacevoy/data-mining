@@ -146,7 +146,7 @@ these.)
 - [**DM1/U9**](guide/02-unknowing.md#u9) Whitespace is free on the inputs and spent on the outcome
 - [**DM1/U10**](guide/02-unknowing.md#u10) "None found" is a claim about the search
 - [**DM1/U11**](guide/02-unknowing.md#u11) Whether a result is worth acting on is a judgment: a metric taken for it is K3
-- [**DM1/U12**](guide/02-unknowing.md#u12) A set cannot contain itself: observe what was done, because asking why returns K3
+- [**DM1/U12**](guide/02-unknowing.md#u12) Trust data about observations over data about reflection: asking why is a K3 factory
 
 **[3. Feedback](guide/03-feedback.md)**
 

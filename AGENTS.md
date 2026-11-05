@@ -11,7 +11,7 @@ overlap, the stricter rule wins. Each rule cites the principle behind it by vers
 The DM1 IDs are defined in the guide at https://github.com/wmacevoy/data-mining/tree/v1.2; its
 [principle index](https://github.com/wmacevoy/data-mining/blob/v1.2/README.md#principle-index) lists
 them all, and each has an anchor in its chapter (for example, `guide/03-feedback.md#f5`), and a grep for `DM1/F5.` lands on it. This copy is
-from **v1.2**; what changed since, by ID, is in the guide's
+from **v1.3**; what changed since, by ID, is in the guide's
 [CHANGELOG](https://github.com/wmacevoy/data-mining/blob/v1.2/CHANGELOG.md). The Markdown in that repository is the
 canonical text; the site at https://wmacevoy.github.io/data-mining/ renders the latest version for human readers.
 
@@ -177,8 +177,8 @@ SE1's *Verify* holds — run it, watch the test fail, never weaken an assertion.
 - **Translate results into the decision's terms**, with how often they will be wrong. (DM1/H6)
 - **Report nulls plainly and promptly.** "No effect at this sample size" is a finding. (DM1/H3)
 - **Label claims by source**: what you ran, what you looked at, what you only inferred. (SE1/U3)
-- **Observe, do not ask.** Judge a run by its commands, ledger, and output, not by an account of it, and that includes
-  your own account of your own work. (DM1/U12)
+- **Observe, do not ask.** Trust a record of what was done over an account of it: a stated preference, a reason
+  given, a report of work, your own included. (DM1/U12)
 
 ## Finishing, additions
 

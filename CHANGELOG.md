@@ -15,6 +15,18 @@ states.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.3 — unreleased
+
+· 101 principles
+
+**For copies:** `AGENTS.md`'s *Observe, do not ask* now says to trust a record of what was done over an account of it.
+
+### Changed principles
+
+- [DM1/U12](guide/02-unknowing.md#u12): reframed as trusting data about observations over data about reflection. Asking what someone would prefer is
+  far less useful than observing what they choose, and asking why is a K3 factory for both parties. A stated preference or a self-report
+  is labeled as what people say, with the observation that would check it. The owner's word, 2026-11-05.
+
 ## v1.2.1 — 2026-11-05
 
 [Full diff from v1.2](https://github.com/wmacevoy/data-mining/compare/v1.2...v1.2.1). No principle, AGENTS.md, or template
