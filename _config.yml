@@ -23,6 +23,8 @@ exclude:
   - se
   - se.py
   - se.ps1
+  # Instructions for agents, not part of the book.
+  - CLAUDE.md
 
 defaults:
   - scope: { path: "" }
