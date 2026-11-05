@@ -15,6 +15,14 @@ aux_links:
 
 exclude:
   - tools/
+  # All of SE1, which has its own site, and the scripts adopters copy.
+  - vendor/
+  - dm
+  - dm.py
+  - dm.ps1
+  - se
+  - se.py
+  - se.ps1
 
 defaults:
   - scope: { path: "" }
@@ -57,4 +65,11 @@ defaults:
   - scope: { path: "templates" }
     values: { nav_exclude: true }
   - scope: { path: "archive" }
+    values: { nav_exclude: true }
+  - scope: { path: "ADOPT.md" }
+    values: { title: Adopt, nav_order: 13 }
+  # The repository's own working set and guide are not part of the book.
+  - scope: { path: "docs" }
+    values: { nav_exclude: true }
+  - scope: { path: "CONTRIBUTING.md" }
     values: { nav_exclude: true }

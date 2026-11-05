@@ -15,9 +15,9 @@ states.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.2 — unreleased
+## v1.2 — 2026-11-05
 
-· 101 principles
+[Full diff from v1.1](https://github.com/wmacevoy/data-mining/compare/v1.1...v1.2) · 101 principles
 
 Reviewed against **SE1 v1.7**. No ID moved.
 
@@ -32,10 +32,18 @@ repository that does not, and each agent that loads it starts about 5,000 words 
   was done, which is worth far more than asking why. The owner's word, 2026-11-05, with one trial behind its example.
   AGENTS.md's *Advising* takes the rule.
 
+### Also changed
+
+- [DM1/D9](guide/05-design.md#d9) no longer restates SE1/D9, and chapter 5's opening no longer says its ideas carry over unchanged. Wording only; the owner's word, 2026-11-04.
+- `tools/check.py` and CI read SE1 from `vendor/se1`, and the checker holds that tree to `SE_RELEASE` and the copies here to it. Contributors no longer need a clone.
+- Requirements v2 and v3, confirmed by the owner, 2026-11-04 and 2026-11-05: the mission, the fundamental shape, and that this guide iterates to completion and adapts SE1's fundamental shape.
+- AGENTS.md and the README say what a synthetic trial has and has not tested.
+- The guide now has a [web guidebook](https://wmacevoy.github.io/data-mining/), a rendering of the Markdown, which stays the source. The owner's request, 2026-11-05.
+- The DM1 quick reference was tried and not adopted: [why](https://github.com/wmacevoy/data-mining-self-improvement). The owner's decision, 2026-11-05.
+
 ### SE1 v1.6 to v1.7, reviewed
 
-SE1 v1.7 changes no principle's meaning. Reviewed 2026-11-05 by Claude Opus 5.5; every wording below is a draft until
-Warren MacEvoy signs the release (SE1/U9).
+SE1 v1.7 changes no principle's meaning. Reviewed 2026-11-05 by Claude Opus 5.5; Warren MacEvoy signed this review with the release (SE1/U9).
 
 - SE1's [QUICKREF.md](https://github.com/wmacevoy/software-engineering/blob/v1.7/QUICKREF.md), one line per principle, about 5,000 words: adopted. `CLAUDE.md` imports
   it from `vendor/se1/`, and [ADOPT.md](ADOPT.md) step 2 copies it to an adopter's root.
@@ -49,7 +57,7 @@ Warren MacEvoy signs the release (SE1/U9).
 ### SE1 v1.5 to v1.6, reviewed
 
 Each SE1 principle that changed between v1.5 and v1.6, and what this guide did about it. Reviewed 2026-11-05 by Claude
-Opus 5.5; every wording below is a draft until Warren MacEvoy signs the release (SE1/U9).
+Opus 5.5; Warren MacEvoy signed this review with the release (SE1/U9).
 
 - [SE1/A12](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a12), work toward finished, not toward more: declined as a new principle. It applies to data work
   unchanged, so it stays off the map, and [REQ2/SHAPE-3](docs/REQUIREMENTS_v2.md) holds this guide to it.
@@ -67,14 +75,13 @@ Opus 5.5; every wording below is a draft until Warren MacEvoy signs the release 
 ### SE1 v1.4 to v1.5, reviewed
 
 Each SE1 principle that changed between v1.4 and v1.5 (v1.4.3 and v1.4.4 are patches and change none), and what this
-guide did about it. Reviewed 2026-11-04 by Claude Opus 5.5; every wording below is a draft until Warren MacEvoy signs
-the release (SE1/U9).
+guide did about it. Reviewed 2026-11-04 by Claude Opus 5.5; Warren MacEvoy signed this review with the release (SE1/U9).
 
 - [SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/05-design.md#d9), the *fundamental shape*, an aesthetic that decides what belongs: adopted into
   [DM1/D9](guide/05-design.md#d9), GLOSSARY, CHECKLISTS, and the QUESTION template. Plain *shape* stays plain English
   here, as it does in SE1.
-- [SE1/W14](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w14), moving a lower layer can move what is built on it: declined as a new principle for
-  now. It applies to data work unchanged, so it stays off the map. [DM1/W2](guide/08-work.md#w2) and AGENTS.md's stop
+- [SE1/W14](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w14), moving a lower layer can move what is built on it: declined as a new principle.
+  It applies to data work unchanged, so it stays off the map. [DM1/W2](guide/08-work.md#w2) and AGENTS.md's stop
   and ask already name what moving the question invalidates.
 - [SE1/A5](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/10-agents.md#a5), spend the speed on understanding and changing later too: confirmed, no change.
   [DM1/A5](guide/10-agents.md#a5) is about checks, which SE1/A5 still asks for.

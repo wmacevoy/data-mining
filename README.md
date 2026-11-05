@@ -8,7 +8,8 @@ Software engineering asks *does the thing work*. Data mining asks *is the claim 
 that, *would anyone act differently if it were*. Most of the discipline is the same, pointed at a
 different noun, so this guide does not repeat SE1. Each principle here either **reframes** an SE1
 principle for data (and links to it), or is **new**: something SE1 does not say because software
-does not need it. Every principle says which, on the line under its heading.
+does not need it. Every principle says which, on the line under its heading. The
+[web guidebook](https://wmacevoy.github.io/data-mining/) renders these files.
 
 It is organized as **numbered principles** with versioned IDs (`DM1/F5`, `DM1/D2`, `DM1/R6`, …),
 in the same ten chapters, with the same letters, as SE1. Each states one idea and says why it is
@@ -394,8 +395,7 @@ asks of any rule.
   review with nothing trained and nothing predicted, went through the 93 principles of that date: by
   one model's judgment, 26 held, 20 needed extending or changing, 20 fit by argument only, and 27
   didn't reach it (a review since incorporated and removed, and redacted for confidentiality: [GAPS.md](GAPS.md)). Five principles came out of it, and rest on that one
-  project. The second is the course's migration, still under way, with one of its five projects done. Nothing
-  has tested a principle on a trained model, a spent holdout, or production, and no person and no
+  project. The second is the course's migration, still under way, with one of its five projects done. [A trial of 2026-11-05](https://github.com/wmacevoy/data-mining-self-improvement/blob/5032133b6e/trials/2026-11-05-quickref/RESULTS.md) ran Claude agents through one synthetic task with parts of this guide loaded, and trained models on it. Nothing has tested a principle on a real project's trained model, spent holdout, or production, and no person and no
   other model family has reviewed them. The reframings were written against one SE1 commit and re-read
   against v1.3, v1.4, v1.5, and v1.6 only where SE1 changed; v1.7 changed no principle's meaning; the rest were not re-read.
 - **What has been seen to fail.** `tools/check.py`, on a breakage planted per rule

@@ -293,7 +293,7 @@ cite the reason, and work that cites every reason can still be wrong.
   influenced the work.
 - **Asking why still gives a hypothesis.** It tells you where to look, and looking settles it.
 
-In a trial on 2026-11-05, three of nine agents' reports made a claim about their own work that their transcripts contradicted, such
+In a [trial on 2026-11-05](https://github.com/wmacevoy/data-mining-self-improvement/blob/5032133b6e/trials/2026-11-05-quickref/RESULTS.md), three of nine agents' reports made a claim about their own work that their transcripts contradicted, such
 as "touched once" after more than one evaluation of the holdout. The owner's word, 2026-11-05, on what a report can tell you
 about its author. Wrong if accounts of why turn out to predict what someone does next better than a record of what they did.
 

@@ -9,6 +9,7 @@ the owner on 2026-11-04 ([SE1/W12](https://github.com/wmacevoy/software-engineer
 | --------- | ------------------- | ------------ |
 | `guide/`, `README.md`, the root documents | the principles, their index, and the map to SE1 | the text |
 | `AGENTS.md`, `templates/` | what adopters copy; they name a release | the text |
+| GitHub Pages, `_config.yml` | renders `main` with the named theme, and nothing else | none |
 | `tools/check.py` | the documents agree with each other and with SE1 at `SE_RELEASE`; REQ2/CHK-1, REQ1/PIN-1 | none |
 | `dm`, `dm.ps1`, `dm.py` | SE1's doctor plus the data rows; REQ1/DOC-1 | none |
 | `se`, `se.ps1`, `se.py`, `docs/SE1-AGENTS.md`, `vendor/se1/` | unedited copies from SE1 v1.7 | none |

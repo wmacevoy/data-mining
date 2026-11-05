@@ -8,11 +8,12 @@ attention, verifying, finishing. This file adds what data work needs on top, and
 overlap, the stricter rule wins. Each rule cites the principle behind it by versioned ID — (DM1/F5),
 (SE1/T3) — so that it can be argued with rather than merely obeyed.
 
-The DM1 IDs are defined in the guide at https://github.com/wmacevoy/data-mining/tree/v1.1; its
-[principle index](https://github.com/wmacevoy/data-mining/blob/v1.1/README.md#principle-index) lists
+The DM1 IDs are defined in the guide at https://github.com/wmacevoy/data-mining/tree/v1.2; its
+[principle index](https://github.com/wmacevoy/data-mining/blob/v1.2/README.md#principle-index) lists
 them all, and each has an anchor in its chapter (for example, `guide/03-feedback.md#f5`), and a grep for `DM1/F5.` lands on it. This copy is
 from **v1.2**; what changed since, by ID, is in the guide's
-[CHANGELOG](https://github.com/wmacevoy/data-mining/blob/v1.1/CHANGELOG.md).
+[CHANGELOG](https://github.com/wmacevoy/data-mining/blob/v1.2/CHANGELOG.md). The Markdown in that repository is the
+canonical text; the site at https://wmacevoy.github.io/data-mining/ renders the latest version for human readers.
 
 Drafted 2026-10-27 by a Claude model with Warren MacEvoy, refactoring the course document
 `DATA-SCIENCE.md` (drafted 2026-08-27 with Claude Opus 5); which model did the refactoring was not
@@ -23,8 +24,7 @@ an agent wrote for agents (SE1/U9), and **most of them are untried**. One field 
 met the 93 principles of that date with a private document review, and by that one model's judgment
 46 reached real work, 20 fit only by argument, and 27 did not reach it; five of today's principles
 come from it and rest on that one project. A second report, partial, is the fall 2026 course's
-migration. Nothing has yet tested a rule here on a trained model, a spent holdout, or production,
-and no person and no other model family has reviewed them. The rest are inferences from SE1's trials
+migration. [A trial of 2026-11-05](https://github.com/wmacevoy/data-mining-self-improvement/blob/5032133b6e/trials/2026-11-05-quickref/RESULTS.md) ran Claude agents through one synthetic task with parts of this guide loaded, and trained models on it. Nothing has yet tested a rule here on a real project's trained model, spent holdout, or production, and no person and no other model family has reviewed them. The rest are inferences from SE1's trials
 and from the author's teaching, marked here once rather than on every line (SE1/W12). An agent or a
 person who finds a rule wrong for their case should say so and propose the change, with what was
 observed.
@@ -57,7 +57,7 @@ the design. A task that contradicts either is a question for the human, not a ta
 ## Before you start
 
 - **Where the repository is only partly adopted,** the guide's
-  [ADOPT.md](https://github.com/wmacevoy/data-mining/blob/v1.1/ADOPT.md) says what to do for each missing
+  [ADOPT.md](https://github.com/wmacevoy/data-mining/blob/v1.2/ADOPT.md) says what to do for each missing
   thing: say so once, and do not invent it. (SE1/W12)
 - **If the repository has `./dm`, run `./dm --doctor` once**, and in a repository of several questions
   once for each you touch, with `--repo <directory>`. It is SE1's doctor plus this guide's

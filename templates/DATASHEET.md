@@ -1,7 +1,7 @@
 # Datasheet — _source name_
 
 Where this data came from and what it means, so it can be checked later without asking anyone
-([DM1/D13](https://github.com/wmacevoy/data-mining/blob/v1.1/guide/05-design.md#d13)). One per
+([DM1/D13](https://github.com/wmacevoy/data-mining/blob/v1.2/guide/05-design.md#d13)). One per
 source. After Gebru et al., *Datasheets for Datasets*, cut to what the guide's principles ask for.
 
 ## Origin
@@ -20,12 +20,12 @@ source. After Gebru et al., *Datasheets for Datasets*, cut to what the guide's p
 
 - **Is any row about a person, or linkable to one?** _…_
 - **Consent and permitted uses:** _…_ · **Retention:** _…_
-  ([DM1/R9](https://github.com/wmacevoy/data-mining/blob/v1.1/guide/04-requirements.md#r9))
+  ([DM1/R9](https://github.com/wmacevoy/data-mining/blob/v1.2/guide/04-requirements.md#r9))
 
 ## Columns
 
 *Knowable at* is when the value became available to someone who could act on it — the column that
-prevents leakage ([DM1/R6](https://github.com/wmacevoy/data-mining/blob/v1.1/guide/04-requirements.md#r6)).
+prevents leakage ([DM1/R6](https://github.com/wmacevoy/data-mining/blob/v1.2/guide/04-requirements.md#r6)).
 
 | Column | Meaning | Units / clock | Sentinels and defaults | Knowable at | Absent / late / wrong / lying |
 | ------ | ------- | ------------- | ---------------------- | ----------- | ----------------------------- |
@@ -34,8 +34,8 @@ prevents leakage ([DM1/R6](https://github.com/wmacevoy/data-mining/blob/v1.1/gui
 ## Documents
 
 For a source made of documents, in place of *Columns*: one row per kind of document in it. What each file holds, how each page was made, and what might be printed on it
-([DM1/U7](https://github.com/wmacevoy/data-mining/blob/v1.1/guide/02-unknowing.md#u7),
-[DM1/O8](https://github.com/wmacevoy/data-mining/blob/v1.1/guide/07-operating.md#o8)).
+([DM1/U7](https://github.com/wmacevoy/data-mining/blob/v1.2/guide/02-unknowing.md#u7),
+[DM1/O8](https://github.com/wmacevoy/data-mining/blob/v1.2/guide/07-operating.md#o8)).
 
 | Part | How each page was made | Text layer? | Identifiers printed | Knowable at | Absent / late / wrong / lying |
 | ---- | ---------------------- | ----------- | ------------------- | ----------- | ----------------------------- |
@@ -43,7 +43,7 @@ For a source made of documents, in place of *Columns*: one row per kind of docum
 
 ## Labels
 
-If this source supplies a target ([DM1/R7](https://github.com/wmacevoy/data-mining/blob/v1.1/guide/04-requirements.md#r7)):
+If this source supplies a target ([DM1/R7](https://github.com/wmacevoy/data-mining/blob/v1.2/guide/04-requirements.md#r7)):
 
 - **Applied by, under which instructions (version):** _…_
 - **Agreement between two labelers, on a sample:** _…_

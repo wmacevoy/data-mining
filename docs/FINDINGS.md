@@ -62,3 +62,13 @@ Given by their judge on `REQUIREMENTS_v2`, and recorded here by an agent
 ([SE1/U10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/02-unknowing.md#u10)).
 
 - REQ2/MISSION-1 verdict: pass, by Warren MacEvoy, 2026-11-04
+
+## 2026-11-05 — Verdicts for v1.2
+
+Given by their judge on `REQUIREMENTS_v3`, for the v1.2 release, and recorded here by an agent.
+
+- REQ2/MISSION-1 verdict: pass, by Warren MacEvoy, 2026-11-05
+- REQ3/SHAPE-1 verdict: pass, by Warren MacEvoy, 2026-11-05
+- REQ2/SHAPE-2 verdict: pass, by Warren MacEvoy, 2026-11-05
+- REQ2/SHAPE-3 verdict: pass, by Warren MacEvoy, 2026-11-05
+- REQ2/ID-1 verdict: pass, by Warren MacEvoy, 2026-11-05

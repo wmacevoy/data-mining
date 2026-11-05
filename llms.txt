@@ -3,7 +3,7 @@
 > A guide to producing claims from data that are worth acting on, organized as numbered principles
 > with versioned IDs (DM1/F5, DM1/D2, DM1/R6, ...) that people and agents cite. A companion to the
 > Software Engineering guide (SE1): each principle either reframes an SE1 principle for data, and
-> links to it, or is new. The Markdown files linked below are the canonical source.
+> links to it, or is new. The Markdown files linked below are the canonical source; the GitHub Pages site is a rendering of them.
 
 Agents doing data work in a repository that follows this guide: read AGENTS.md here and SE1's
 AGENTS.md, which it extends, then the chapter that bears on the task. Principle anchors are the

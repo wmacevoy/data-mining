@@ -8,7 +8,7 @@ the template this guide publishes for data projects; this file is about the guid
 ## Run it
 
 - **Prerequisites:** Python 3.9 or later and git. SE1 is at `vendor/se1`. Nothing to install.
-- **Build:** none; the repository is Markdown and scripts.
+- **Build:** none; the repository is Markdown and scripts. GitHub Pages renders `main` with the theme named in `_config.yml`, and there is no local build.
 - **Run:** `./dm --doctor` for this repository's state; on a guide, the data rows say *none yet*, which
   is true.
 - **Reset to a known state:** `git status`, then `git restore` on what you do not want. Nothing is generated.
